@@ -18,6 +18,8 @@ CS-E major, Education minor. I am graduating in 2024 and am very excited to work
 EE major
 
 ### Quan Zhou
+2024 CSE major, and I am interested in completing a game project related to a world famous IP.
+
 
 
 ## Project Information
