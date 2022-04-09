@@ -15,7 +15,7 @@ I am a Computer Science and Engineering Major of the class of 2024. I have never
 CS-E major, Education minor. I am graduating in 2024 and am very excited to work on a project revolving around pokemon.
 
 ### RuiTong Jiang<br>
-EE major
+2024 EE major, And I am very excited to implement a game of an animation we watched into real life.
 
 ### Quan Zhou
 2024 CSE major, and I am interested in completing a game project related to a world famous IP.
