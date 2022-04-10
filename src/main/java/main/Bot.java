@@ -10,10 +10,9 @@ public class Bot extends Player{
      * and the total number of pokemon they have
      *
      * @param initPokemon
-     * @param selectedPokemonByIndex
      */
-    public Bot(ArrayList<Pokemon> initPokemon, int selectedPokemonByIndex, int difficulty) {
-        super(initPokemon, selectedPokemonByIndex);
+    public Bot(ArrayList<Pokemon> initPokemon, int difficulty) {
+        super(initPokemon);
         this.difficulty = difficulty;
     }
 }

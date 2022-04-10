@@ -3,10 +3,10 @@ package main;
 import java.util.ArrayList;
 
 public class Pokemon {
-    private int id;
+    private String id;
     private String name;
     private String image;
-    private ArrayList<Integer> stats;
+    private ArrayList<Double> stats;
     private ArrayList<String> moves;
     private PokemonStatusEffect statusEffect;
     private boolean isAlive;
@@ -20,7 +20,7 @@ public class Pokemon {
      * @param stats
      * @param moves
      */
-    public Pokemon(int id, String name, String image, ArrayList<Integer> stats, ArrayList<String> moves){
+    public Pokemon(String id, String name, String image, ArrayList<Double> stats, ArrayList<String> moves){
         this.id = id;
         this.name = name;
         this.image = image;
@@ -32,19 +32,22 @@ public class Pokemon {
 
     // Getter Methods
     public boolean getIsAlive() { return this.isAlive; }
+    public String getName() { return this.name;}
+    public String getID() {return this.id;}
     public PokemonStatusEffect getStatusEffect() { return this.statusEffect; }
-    public int getHP() { return this.stats.get(0); }
-    public int getAtk() { return this.stats.get(1); }
-    public int getDef() { return this.stats.get(2); }
-    public int getSpAtk() { return this.stats.get(3); }
-    public int getSpDef() { return this.stats.get(4); }
-    public int getSpe() { return this.stats.get(5); }
-    public ArrayList<Integer> getStats() { return this.stats; }
+    public Double getHP() { return this.stats.get(0); }
+    public Double getAtk() { return this.stats.get(1); }
+    public Double getDef() { return this.stats.get(2); }
+    public Double getSpAtk() { return this.stats.get(3); }
+    public Double getSpDef() { return this.stats.get(4); }
+    public Double getSpe() { return this.stats.get(5); }
+    public ArrayList<Double> getStats() { return this.stats; }
+
 
 
     // Setter/Update Methods
     public void setStatusEffect(PokemonStatusEffect statusEffect){ this.statusEffect = statusEffect; }
-    public void setStats(ArrayList<Integer> stats) { this.stats = stats; }
+    public void setStats(ArrayList<Double> stats) { this.stats = stats; }
     public void setIsAlive(boolean state) { this.isAlive = state; }
 
     /**
@@ -53,6 +56,6 @@ public class Pokemon {
      */
     @Override
     public String toString() {
-        return String.format("id: %d\nname: %s\nimage: %s\nstats: %s\nmoves: %s\nstatusEffect: %s\nisAlive: %s\n", id, name, image, stats, moves, statusEffect, isAlive);
+        return String.format("id: %s\nname: %s\nimage: %s\nstats: %s\nmoves: %s\nstatusEffect: %s\nisAlive: %s\n", id, name, image, stats, moves, statusEffect, isAlive);
     }
 }
