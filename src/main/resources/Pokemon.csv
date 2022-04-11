@@ -1,0 +1,925 @@
+Entry,Species,Move 1,Move 2,Move 3,Move 4,HP,Atk,Def,Spa,SpD,Spe
+1,Sunkern,Mega Drain,Helping Hand,Sunny Day,Light Screen,264,96,105,159,96,86
+2,Azurill,Water Pulse,Attract,Sing,Charm,304,76,116,152,104,76
+3,Caterpie,Tackle,String Shot,---,---,294,159,106,76,76,126
+4,Weedle,Poison Sting,String Shot,---,---,284,169,96,76,76,136
+5,Wurmple,Tackle,String Shot,Poison Sting,---,294,189,106,76,96,76
+6,Ralts,Confusion,Imprison,Double Team,Light Screen,260,86,86,189,106,116
+7,Magikarp,Flail,---,---,---,244,119,146,66,76,196
+8,Feebas,Flail,Mirror Coat,---,---,244,141,68,56,146,196
+9,Metapod,Harden,---,---,---,304,76,146,86,149,96
+10,Kakuna,Harden,---,---,---,294,86,136,86,149,106
+11,Pichu,Sweet Kiss,Thunder Wave,Attract,Shock Wave,244,116,66,185,95,156
+12,Silcoon,Harden,---,---,---,304,106,146,86,149,66
+13,Cascoon,Harden,---,---,---,304,106,146,86,149,66
+14,Igglybuff,Sweet Kiss,Sing,Attract,Seismic Toss,384,159,66,116,76,66
+15,Wooper,Yawn,Dig,Water Pulse,Rain Dance,314,189,126,86,86,66
+16,Tyrogue,Mach Punch,Protect,Double Team,Facade,274,169,106,106,106,106
+17,Sentret,Quick Attack,Follow Me,Helping Hand,Assist,274,191,104,106,126,76
+18,Cleffa,Sweet Kiss,Sing,Attract,Metronome,304,86,92,189,146,66
+19,Seedot,Bullet Seed,Bide,Defense Curl,Rollout,284,179,136,96,96,96
+20,Lotad,Rain Dance,Water Pulse,Sunny Day,Mega Drain,284,96,96,179,136,96
+21,Poochyena,Crunch,Swagger,Roar,Sand-Attack,274,146,116,159,96,95
+22,Shedinja,Shadow Ball,Confuse Ray,Silver Wind,Grudge,1,216,126,96,86,196
+23,Makuhita,Fake Out,Seismic Toss,Detect,Whirlwind,348,219,96,76,96,86
+24,Whismur,Uproar,Swagger,Body Slam,SmellingSalt,332,201,90,138,82,82
+25,Zigzagoon,Headbutt,Pin Missile,Swift,Sand-Attack,280,143,118,96,118,171
+26,Zubat,Poison Fang,Whirlwind,Confuse Ray,Aerial Ace,284,189,106,96,127,131
+27,Togepi,Return,Yawn,Wish,Sweet Kiss,274,139,182,116,166,68
+28,Spinarak,Signal Beam,Night Shade,Spider Web,Scary Face,284,219,116,116,116,96
+29,Marill,Water Pulse,Rain Dance,Light Screen,Return,344,139,122,76,149,116
+30,Hoppip,Mega Drain,Leech Seed,Sleep Powder,Stun Spore,211,106,196,106,188,136
+31,Slugma,Ember,Rock Slide,Yawn,Body Slam,263,116,158,176,173,68
+32,Swinub,Icy Wind,Dig,Rock Tomb,Endure,241,199,104,159,105,136
+33,Smeargle,ExtremeSpeed,Fake Out,Quick Attack,Mach Punch,314,139,106,76,126,186
+34,Pidgey,Gust,Sand-Attack,Whirlwind,Quick Attack,284,207,104,106,106,148
+35,Rattata,Hyper Fang,Pursuit,Quick Attack,Swagger,264,211,106,86,106,180
+36,Wynaut,Encore,Counter,Mirror Coat,Charm,331,82,195,73,195,90
+37,Skitty,Sing,Attract,Charm,DoubleSlap,304,189,126,106,106,136
+38,Spearow,Fury Attack,Pursuit,Mirror Move,Protect,284,156,96,98,98,239
+39,Hoothoot,Confusion,Hypnosis,Supersonic,Reflect,324,96,96,171,148,136
+40,Diglett,Magnitude,Slash,Rock Tomb,Sand-Attack,161,209,86,106,113,317
+41,Ledyba,Psybeam,Agility,Baton Pass,Light Screen,284,76,96,179,196,146
+42,Nincada,Mud-Slap,Dig,Toxic,Protect,266,170,216,96,105,116
+43,Surskit,BubbleBeam,Rain Dance,Sweet Scent,Quick Attack,284,96,110,199,140,149
+44,Jigglypuff,Sing,Wish,Mimic,DoubleSlap,413,126,129,126,128,68
+45,Taillow,Fly,Quick Attack,Endeavor,Focus Energy,263,188,86,96,105,248
+46,Wingull,Water Pulse,Fly,Quick Attack,Steel Wing,284,96,96,209,96,206
+47,Nidoran♂,Double Kick,Poison Sting,Disable,Helping Hand,296,213,116,116,116,136
+48,Nidoran♀,Crunch,Double Kick,Flatter,Helping Hand,314,193,140,116,116,118
+49,Kirlia,Confusion,Will-O-Wisp,Future Sight,Light Screen,280,106,106,166,146,199
+50,Mareep,Shock Wave,Flash,Reflect,Cotton Spore,314,116,127,229,126,95
+51,Meditite,Hi Jump Kick,Meditate,Swagger,Psych Up,264,196,146,116,131,156
+52,Slakoth,Yawn,Scratch,Encore,Counter,324,219,156,106,106,96
+53,Paras,Spore,Leech Life,Slash,Light Screen,274,176,160,189,146,77
+54,Ekans,Acid,Dig,Screech,Torment,274,219,124,116,144,146
+55,Ditto,Transform,---,---,---,300,132,132,132,132,195
+56,Barboach,Magnitude,Water Pulse,Spark,Future Sight,241,195,122,191,118,156
+57,Meowth,Slash,Bite,Screech,Fake Out,284,189,106,116,116,216
+58,Pineco,Selfdestruct,Take Down,Reflect,Light Screen,304,229,216,106,106,66
+59,Trapinch,Toxic,Dig,Sandstorm,Sand-Attack,294,299,126,126,126,56
+60,Spheal,Ice Ball,Water Pulse,Hail,Mud-Slap,344,116,136,209,136,86
+61,Horsea,Water Gun,Agility,Icy Wind,Twister,264,116,193,239,86,140
+62,Shroomish,Spore,Bullet Seed,Leech Seed,Headbutt,324,116,171,179,156,95
+63,Shuppet,Will-O-Wisp,Night Shade,Grudge,Knock Off,292,249,106,178,91,126
+64,Duskull,Skill Swap,Night Shade,Disable,Confuse Ray,244,116,216,96,216,149
+65,Electrike,Spark,Thunder Wave,Roar,Quick Attack,284,126,116,166,116,229
+66,Vulpix,Will-O-Wisp,Confuse Ray,Fire Spin,Quick Attack,280,118,116,136,166,229
+67,Pikachu,ThunderPunch,Thunder Wave,Double Team,Quick Attack,274,146,96,136,116,279
+68,Sandshrew,Dig,Rock Tomb,Sandstorm,Sand-Attack,304,249,206,76,96,116
+69,Poliwag,Hypnosis,Icy Wind,Water Gun,Rain Dance,284,136,127,116,116,251
+70,Bellsprout,Razor Leaf,Acid,Stun Spore,Wrap,283,186,162,176,124,116
+71,Geodude,Magnitude,Rock Blast,Strength,Protect,284,284,236,96,96,68
+72,Dratini,Outrage,Thunder Wave,Supersonic,Water Pulse,286,164,126,199,136,136
+73,Snubbull,Bite,Charm,Swagger,Scary Face,324,259,149,116,116,86
+74,Remoraid,BubbleBeam,Aurora Beam,Psybeam,Protect,211,166,106,229,106,229
+75,Larvitar,Thrash,Rock Slide,Dig,Dragon Dance,304,249,136,126,122,118
+76,Baltoy,Psybeam,AncientPower,Light Screen,Mud-Slap,221,196,146,179,158,146
+77,Snorunt,Icy Wind,Headbutt,Leer,Bite,304,218,136,136,136,122
+78,Bagon,DragonBreath,Headbutt,Brick Break,Scary Face,294,273,156,116,86,136
+79,Beldum,Take Down,---,---,---,284,209,196,106,156,96
+80,Gulpin,Toxic,Yawn,Pain Split,Attract,323,122,184,122,184,116
+81,Venonat,Psybeam,Supersonic,Stun Spore,Skill Swap,324,146,149,179,146,113
+82,Mankey,Karate Chop,Low Kick,Screech,Swagger,284,284,106,106,113,176
+83,Machop,Seismic Toss,Revenge,Rock Tomb,Scary Face,344,284,136,95,106,106
+84,Shellder,Icicle Spear,Supersonic,Clamp,Withdraw,264,166,259,189,86,104
+85,Smoochum,Sweet Kiss,Sing,Mud-Slap,Fake Out,294,159,66,206,166,166
+86,Numel,Ember,Magnitude,Rock Tomb,Sandstorm,324,219,116,166,126,106
+87,Carvanha,Bite,Screech,Scary Face,Swagger,294,216,76,251,76,149
+88,Corphish,Crabhammer,Water Pulse,Mud-Slap,Protect,290,215,166,199,106,95
+89,Charmander,Fire Spin,Metal Claw,SmokeScreen,Scary Face,282,140,122,219,136,166
+90,Cyndaquil,Ember,Swift,Quick Attack,SmokeScreen,282,140,122,219,136,166
+91,Abra,Mimic,Metronome,Flash,Seismic Toss,254,83,59,246,146,279
+92,Doduo,Fury Attack,Uproar,Mud-Slap,Faint Attack,274,226,113,106,106,249
+93,Gastly,Dream Eater,Hypnosis,Night Shade,Confuse Ray,264,116,86,236,106,259
+94,Swablu,Take Down,Dream Eater,Sing,Attract,294,127,140,179,186,136
+95,Treecko,Bullet Seed,Aerial Ace,Quick Attack,Double Team,221,207,95,229,146,176
+96,Torchic,Fire Spin,Quick Attack,Sand-Attack,Double Team,294,171,104,239,136,126
+97,Mudkip,Whirlpool,Endeavor,Mud Sport,Mud-Slap,304,176,136,199,136,116
+98,Squirtle,Water Pulse,Bite,Withdraw,Protect,292,132,166,199,164,122
+99,Totodile,Slash,Water Pulse,Screech,Icy Wind,304,166,164,187,132,122
+100,Slowpoke,Confusion,Disable,Water Pulse,Yawn,384,182,166,179,116,59
+101,Bulbasaur,Razor Leaf,Sweet Scent,Sleep Powder,Light Screen,294,134,147,229,166,113
+102,Chikorita,Secret Power,Bullet Seed,Mud-Slap,Light Screen,294,134,182,197,166,113
+103,Oddish,Acid,Stun Spore,Sweet Scent,Moonlight,294,199,160,186,166,86
+104,Psyduck,Confusion,Fury Swipes,Aerial Ace,Disable,241,203,118,229,136,160
+105,Cubone,Bone Club,Headbutt,Brick Break,Aerial Ace,304,199,226,116,136,106
+106,Goldeen,Waterfall,Fury Attack,Agility,Psybeam,294,170,156,169,136,162
+107,Natu,Night Shade,Future Sight,Confuse Ray,Flash,284,136,138,239,126,158
+108,Clefairy,Follow Me,Return,Encore,Sing,344,207,118,156,166,106
+109,Magnemite,Shock Wave,Supersonic,Metal Sound,Reflect,191,106,158,289,160,189
+110,Seel,Aurora Beam,Dive,Body Slam,Fake Out,334,126,146,189,176,126
+111,Grimer,Sludge,Rock Tomb,Acid Armor,Minimize,343,196,178,116,178,86
+112,Krabby,Crabhammer,Mud Shot,Flail,Knock Off,264,309,216,86,86,136
+113,Exeggcute,Confusion,AncientPower,Leech Seed,Light Screen,324,127,196,219,113,116
+114,Eevee,Charm,Attract,Flail,Endure,314,146,136,126,166,209
+115,Drowzee,Confusion,Headbutt,Disable,Barrier,303,174,126,164,216,120
+116,Voltorb,Spark,Screech,Rollout,Light Screen,284,96,136,209,146,236
+117,Chinchou,Spark,Dive,Confuse Ray,Take Down,291,175,112,211,148,170
+118,Teddiursa,Secret Power,Fake Tears,Faint Attack,Rest,324,259,149,136,136,104
+119,Delibird,Present,Ice Ball,Aerial Ace,Hail,294,146,126,229,126,186
+120,Houndour,Crunch,Ember,Roar,Protect,294,156,96,259,136,166
+121,Phanpy,Rollout,Defense Curl,Rock Tomb,Sandstorm,384,240,156,116,104,116
+122,Spoink,Psywave,Bounce,Magic Coat,Confuse Ray,324,86,116,239,196,140
+123,Aron,Metal Claw,Aerial Ace,Metal Sound,Roar,304,239,236,116,116,96
+124,Luvdisc,Sweet Kiss,Attract,Dive,Rain Dance,290,96,160,179,166,207
+125,Tentacool,BubbleBeam,Acid,Barrier,Wrap,263,158,106,178,236,176
+126,Cacnea,Needle Arm,Faint Attack,Cotton Spore,Sand-Attack,304,269,116,206,116,106
+127,Unown,Hidden Power,---,---,---,279,222,132,222,132,132
+128,Koffing,Sludge,SmokeScreen,Torment,Haze,284,229,226,156,126,106
+129,Staryu,BubbleBeam,Minimize,Swift,Light Screen,264,126,146,239,146,206
+130,Skiploom,Mega Drain,Confusion,Cotton Spore,Synthesis,314,126,136,189,166,196
+131,Nuzleaf,Extrasensory,Fake Out,Razor Wind,Faint Attack,344,176,116,219,116,156
+132,Lombre,Water Pulse,Fake Out,Brick Break,Absorb,324,199,136,156,176,136
+133,Vibrava,DragonBreath,Dig,Screech,Rock Tomb,304,239,136,136,136,176
+134,Rhyhorn,Rock Blast,Dig,Scary Face,Roar,364,269,226,96,96,86
+135,Clamperl,Dive,Toxic,Iron Defense,Double Team,253,164,248,184,188,100
+136,Pidgeotto,Aerial Ace,Quick Attack,FeatherDance,Sand-Attack,330,219,146,136,136,178
+137,Growlithe,Flame Wheel,Bite,Roar,Agility,314,176,126,239,136,156
+138,Farfetch'd,Slash,Knock Off,Swords Dance,Agility,287,166,206,152,202,140
+139,Omanyte,Mud Shot,Water Gun,AncientPower,Tickle,253,158,236,258,146,106
+140,Kabuto,Mega Drain,AncientPower,Sand-Attack,Protect,201,259,216,209,126,146
+141,Lileep,AncientPower,Acid,Ingrain,Confuse Ray,336,181,190,158,210,82
+142,Anorith,Metal Claw,Fury Cutter,AncientPower,Water Gun,294,289,136,116,136,186
+143,Aipom,Fury Swipes,Sand-Attack,Baton Pass,Agility,314,239,160,116,146,185
+144,Elekid,ThunderPunch,Quick Attack,Swift,Light Screen,294,162,110,229,131,248
+145,Loudred,Stomp,Howl,Astonish,Supersonic,372,241,134,178,122,118
+146,Spinda,Dizzy Punch,Teeter Dance,Psybeam,Faint Attack,324,219,171,156,156,140
+147,Nidorina,Double Kick,Bite,Aerial Ace,Flatter,344,223,170,146,146,148
+148,Nidorino,Double Kick,Water Pulse,Mud-Slap,Flatter,326,243,150,146,146,166
+149,Flaaffy,Shock Wave,Thunder Wave,Cotton Spore,Light Screen,344,146,131,284,156,126
+150,Magby,Fire Punch,SmokeScreen,Confuse Ray,Smog,294,186,110,239,146,202
+151,Nosepass,Rock Slide,Shock Wave,Thunder Wave,Sandstorm,264,126,306,126,306,86
+152,Corsola,BubbleBeam,Mirror Coat,Attract,AncientPower,293,146,272,149,248,106
+153,Mawile,Crunch,Fake Tears,Iron Defense,Baton Pass,304,206,206,209,146,136
+154,Butterfree,Silver Wind,Psybeam,Toxic,Whirlwind,324,126,136,259,196,176
+155,Beedrill,Twineedle,Pursuit,Endeavor,Agility,271,284,116,126,176,249
+156,Poliwhirl,Water Pulse,DoubleSlap,Icy Wind,Rain Dance,334,166,166,199,136,216
+157,Onix,Rock Slide,Bind,DragonBreath,Sandstorm,253,126,398,96,168,176
+158,Beautifly,Silver Wind,Mega Drain,Attract,Whirlwind,324,176,136,216,136,229
+159,Dustox,Silver Wind,Toxic,Psybeam,Whirlwind,324,136,176,136,216,229
+160,Ledian,Comet Punch,Baton Pass,Swords Dance,Agility,251,169,136,146,256,269
+161,Ariados,Signal Beam,Spider Web,Night Shade,Toxic,344,279,176,156,156,116
+162,Yanma,Signal Beam,Aerial Ace,Double Team,Detect,271,166,207,186,189,203
+163,Delcatty,Secret Power,Faint Attack,Double Team,Heal Bell,344,251,149,146,146,176
+164,Sableye,Faint Attack,Confuse Ray,Knock Off,Fake Out,304,273,167,166,166,136
+165,Lickitung,Slam,Brick Break,Lick,Mud-Slap,384,209,186,156,186,96
+166,Weepinbell,Razor Leaf,Acid,Wrap,Sweet Scent,334,216,136,295,126,131
+167,Graveler,Magnitude,Rock Throw,Defense Curl,Brick Break,293,294,266,113,168,106
+168,Gloom,Petal Dance,Acid,Stun Spore,Moonlight,324,166,176,269,186,116
+169,Porygon,Psybeam,Icy Wind,Recycle,Agility,334,156,193,269,186,104
+170,Kadabra,Confusion,Role Play,Future Sight,Disable,284,106,174,248,176,246
+171,Wailmer,Whirlpool,Roar,Defense Curl,Rollout,401,176,169,176,169,156
+172,Roselia,Magical Leaf,Toxic,GrassWhistle,Cotton Spore,304,156,189,236,196,166
+173,Volbeat,Silver Wind,Confuse Ray,Quick Attack,Helping Hand,271,245,146,130,186,269
+174,Illumise,Silver Wind,Wish,Quick Attack,Helping Hand,334,193,146,182,186,206
+175,Ivysaur,Petal Dance,Growth,Sweet Scent,Fury Cutter,324,160,145,259,215,156
+176,Charmeleon,Slash,Fire Spin,Swords Dance,Aerial Ace,320,249,152,196,149,196
+177,Wartortle,Water Pulse,Bite,Mud-Slap,Yawn,322,162,196,229,196,152
+178,Parasect,Slash,Psybeam,Stun Spore,Flash,261,226,259,171,233,96
+179,Machoke,Low Kick,Rock Tomb,Foresight,Scary Face,364,259,176,122,219,126
+180,Haunter,Shadow Punch,Confuse Ray,Spite,Grudge,294,199,126,292,131,226
+181,Bayleef,Razor Leaf,Toxic,Safeguard,Light Screen,324,160,196,225,196,156
+182,Quilava,Flame Wheel,Fury Swipes,Swift,SmokeScreen,320,164,152,259,166,196
+183,Croconaw,Slash,Water Pulse,Bite,Scary Face,271,259,196,217,162,152
+184,Togetic,Aerial Ace,Magical Leaf,Wish,Follow Me,314,116,295,196,246,104
+185,Murkrow,Faint Attack,Fly,Torment,Taunt,303,206,162,206,162,218
+186,Wobbuffet,Counter,Mirror Coat,Charm,Safeguard,563,102,194,91,213,102
+187,Plusle,Spark,Fake Tears,Quick Attack,Helping Hand,324,136,179,206,186,226
+188,Minun,Spark,Charm,Encore,Helping Hand,324,116,199,186,206,226
+189,Grovyle,Fury Cutter,Endeavor,Brick Break,Double Team,304,229,138,206,166,203
+190,Combusken,Ember,Double Kick,Quick Attack,Sand-Attack,261,269,156,269,156,146
+191,Marshtomp,Mud Shot,Water Gun,Rock Tomb,Mud-Slap,281,269,176,219,176,136
+192,Ponyta,Fire Spin,Bounce,Quick Attack,Tail Whip,304,269,146,166,166,216
+193,Azumarill,BubbleBeam,Facade,Dig,Protect,341,136,259,136,259,136
+194,Sudowoodo,Rock Slide,Faint Attack,Sandstorm,Block,344,236,266,96,229,96
+195,Magcargo,Rock Slide,Ember,Acid Armor,Sandstorm,304,136,248,196,284,96
+196,Pupitar,Dig,Bite,Scary Face,Sandstorm,344,204,176,166,176,201
+197,Sealeo,Ice Ball,Hail,Snore,Rest,363,156,218,186,218,126
+198,Raticate,Endeavor,Pursuit,Scary Face,Quick Attack,293,240,156,136,158,299
+199,Masquerain,Silver Wind,Aerial Ace,Icy Wind,Stun Spore,281,219,245,196,200,140
+200,Furret,Slam,Protect,Helping Hand,Follow Me,311,188,227,126,209,216
+201,Dunsparce,Headbutt,Glare,Defense Curl,Rollout,404,239,176,166,166,126
+202,Dragonair,DragonBreath,Leer,Wrap,Safeguard,326,204,166,176,239,176
+203,Mightyena,Bite,Poison Fang,Taunt,Roar,281,251,176,219,156,193
+204,Linoone,Secret Power,Sand-Attack,Covet,Tickle,360,262,158,122,158,236
+205,Castform,Ember,Water Pulse,Shock Wave,Icy Wind,344,176,158,239,176,193
+206,Shelgon,Headbutt,DragonBreath,Protect,Scary Face,313,268,236,156,178,136
+207,Metang,Metal Claw,Confusion,Pursuit,Scary Face,261,249,236,146,259,136
+208,Wigglytuff,Sing,Disable,Wish,Secret Power,421,176,207,186,199,113
+209,Sunflora,Petal Dance,Ingrain,Leech Seed,Light Screen,354,186,209,246,206,96
+210,Chimecho,Psywave,Take Down,Heal Bell,Safeguard,334,136,176,289,215,149
+211,Gligar,Metal Claw,Dig,Aerial Ace,Quick Attack,334,186,221,106,229,226
+212,Qwilfish,BubbleBeam,Pin Missile,Spikes,Minimize,271,226,204,188,209,206
+213,Sneasel,Faint Attack,Fake Out,Icy Wind,Quick Attack,293,226,206,106,228,239
+214,Pelipper,Water Pulse,Aerial Ace,Stockpile,Swallow,324,136,236,226,239,149
+215,Swellow,Fly,Endeavor,Facade,Quick Attack,324,226,156,122,199,286
+216,Lairon,Metal Claw,Rock Tomb,Iron Defense,Protect,324,216,316,136,218,104
+217,Tangela,Mega Drain,Slam,Toxic,Bind,334,146,266,236,179,156
+218,Arbok,Poison Fang,Dig,Bite,Glare,324,295,174,149,194,196
+219,Persian,Fake Out,Slash,Torment,Swagger,313,176,198,166,208,266
+220,Seadra,Aurora Beam,SmokeScreen,Water Gun,Rain Dance,314,166,226,289,138,185
+221,Kecleon,Secret Power,Psybeam,Magic Coat,Seismic Toss,303,258,218,156,248,127
+222,Vigoroth,Slash,Counter,Encore,Uproar,364,284,176,146,146,216
+223,Lunatone,Confusion,Cosmic Power,Light Screen,Sandstorm,344,146,229,248,206,158
+224,Solrock,Confusion,Fire Spin,Light Screen,Sandstorm,344,226,206,160,229,158
+225,Noctowl,Confusion,Aerial Ace,Faint Attack,Reflect,404,136,218,188,228,158
+226,Sandslash,Crush Claw,Rock Slide,Swift,Sandstorm,354,259,256,113,209,166
+227,Venomoth,Silver Wind,Psybeam,Sleep Powder,Skill Swap,344,166,156,216,186,279
+228,Chansey,Metronome,Refresh,Defense Curl,Minimize,641,46,119,106,309,122
+229,Seaking,Water Pulse,Psybeam,Swift,Agility,364,220,166,166,259,172
+230,Jumpluff,Aerial Ace,Swagger,Psych Up,Synthesis,354,146,176,146,206,319
+231,Piloswine,Dig,AncientPower,Hail,Light Screen,404,299,196,156,156,136
+232,Golbat,Air Cutter,Confuse Ray,Toxic,Steel Wing,354,259,193,166,186,194
+233,Primeape,Karate Chop,Counter,Swagger,Screech,313,246,198,156,218,226
+234,Hitmonlee,Rolling Kick,Brick Break,Focus Energy,Facade,304,303,205,95,256,210
+235,Hitmonchan,Mach Punch,Sky Uppercut,Detect,Counter,304,270,257,95,256,188
+236,Girafarig,Psybeam,Stomp,Wish,Skill Swap,344,196,166,306,166,185
+237,Hitmontop,Triple Kick,Dig,Mach Punch,Quick Attack,304,289,226,106,256,176
+238,Banette,Night Shade,Will-O-Wisp,Spite,Knock Off,311,266,208,202,224,149
+239,Ninjask,Baton Pass,Swords Dance,Endure,Dig,305,216,151,149,178,356
+240,Seviper,Poison Tail,Bite,Glare,Screech,350,299,156,236,156,166
+241,Zangoose,Slash,Double Kick,Roar,Quick Attack,350,329,156,156,156,216
+242,Camerupt,Magnitude,Protect,Sandstorm,Rock Slide,344,299,176,246,186,116
+243,Sharpedo,Slash,Bite,Water Pulse,Scary Face,281,372,116,203,179,226
+244,Tropius,Magical Leaf,Whirlwind,Aerial Ace,Steel Wing,402,235,202,180,210,138
+245,Magneton,Shock Wave,SonicBoom,Thunder Wave,Supersonic,241,171,203,339,176,239
+246,Mantine,BubbleBeam,Aerial Ace,Rain Dance,Icy Wind,334,116,176,196,379,176
+247,Stantler,Extrasensory,Confuse Ray,Stomp,Sand-Attack,350,226,144,269,182,206
+248,Absol,Bite,Razor Wind,Future Sight,Quick Attack,334,394,156,167,156,186
+249,Swalot,Stockpile,Swallow,Spit Up,Sludge,341,182,265,182,265,146
+250,Crawdaunt,BubbleBeam,ViceGrip,Knock Off,Protect,309,303,248,194,188,146
+251,Pidgeot,Aerial Ace,FeatherDance,Mud-Slap,Faint Attack,370,259,186,176,176,218
+252,Grumpig,Psybeam,Confuse Ray,Future Sight,Magic Coat,364,126,182,279,256,176
+253,Torkoal,Ember,Fire Spin,SmokeScreen,Amnesia,344,206,347,206,239,68
+254,Kingler,Crabhammer,Metal Claw,Mud Shot,Protect,314,296,266,136,199,186
+255,Cacturne,Needle Arm,Faint Attack,Acid,Mega Punch,344,266,140,266,156,229
+256,Bellossom,Petal Dance,Safeguard,Sunny Day,Synthesis,354,196,206,306,236,122
+257,Octillery,Octazooka,Aurora Beam,Psybeam,Rock Blast,291,309,186,309,186,126
+258,Huntail,Whirlpool,Scary Face,Mud-Slap,Bite,314,307,246,246,186,126
+259,Gorebyss,Whirlpool,Amnesia,Icy Wind,Confusion,314,224,246,327,186,126
+260,Relicanth,AncientPower,Water Pulse,Harden,Amnesia,383,216,296,168,228,131
+261,Omastar,BubbleBeam,Spike Cannon,Tickle,AncientPower,344,156,286,329,176,146
+262,Kabutops,Slash,Dig,Fury Cutter,Knock Off,324,361,246,149,176,196
+263,Poliwrath,Submission,Dig,Rock Tomb,BubbleBeam,384,295,226,158,216,176
+264,Scyther,Fury Cutter,Aerial Ace,Light Screen,Double Team,344,319,215,146,196,221
+265,Pinsir,Submission,Focus Energy,Swords Dance,Revenge,334,383,236,146,158,206
+266,Politoed,Dive,Dig,Hypnosis,Swagger,321,186,273,216,299,158
+267,Cloyster,Aurora Beam,Spike Cannon,Supersonic,Protect,304,226,396,206,207,158
+268,Delcatty,Fake Tears,Sing,Thunderbolt,Ice Beam,281,149,166,229,146,239
+269,Sableye,Shadow Ball,Faint Attack,Confuse Ray,Recover,283,228,186,208,166,136
+270,Lickitung,Earthquake,Body Slam,Shadow Ball,Rock Slide,321,206,228,140,228,96
+271,Weepinbell,Sludge Bomb,Razor Leaf,Sleep Powder,Reflect,271,216,199,206,189,146
+272,Graveler,Earthquake,Rock Slide,Brick Break,Counter,314,248,266,113,189,106
+273,Gloom,SolarBeam,Sunny Day,Sludge Bomb,Moonlight,261,229,176,269,186,116
+274,Porygon,Tri Attack,Psychic,Thunder Wave,Recover,271,219,176,295,186,104
+275,Kadabra,Psychic,Thunder Wave,Reflect,Recover,284,95,159,303,176,246
+276,Wailmer,Water Spout,Earthquake,Body Slam,Rest,401,176,169,176,169,156
+277,Roselia,Giga Drain,Sludge Bomb,GrassWhistle,Synthesis,304,156,189,236,196,166
+278,Volbeat,Signal Beam,Thunderbolt,Ice Punch,Tail Glow,271,182,146,193,186,269
+279,Illumise,Silver Wind,Thunderbolt,Ice Punch,Giga Drain,271,130,146,245,186,269
+280,Ivysaur,Giga Drain,Sludge Bomb,Sleep Powder,Leech Seed,261,223,162,259,196,156
+281,Charmeleon,Flamethrower,Slash,AncientPower,Dragon Rage,257,227,152,196,166,259
+282,Wartortle,Surf,Ice Beam,Rapid Spin,Protect,322,162,196,229,196,152
+283,Parasect,Spore,Giga Drain,Dig,Double Team,303,203,238,156,261,96
+284,Machoke,Cross Chop,Rock Slide,Foresight,Scary Face,364,328,176,122,156,126
+285,Haunter,Psychic,Hypnosis,Nightmare,Confuse Ray,273,136,184,266,188,203
+286,Bayleef,Giga Drain,Body Slam,GrassWhistle,Rest,303,160,238,162,238,156
+287,Quilava,Flamethrower,Crush Claw,Body Slam,SmokeScreen,257,227,152,259,166,196
+288,Croconaw,Mega Kick,Aerial Ace,Rock Slide,Dig,334,284,196,138,162,152
+289,Togetic,Return,Sweet Kiss,Aerial Ace,Yawn,314,116,295,196,246,104
+290,Murkrow,Perish Song,Mean Look,Double Team,Thunder Wave,303,206,162,206,162,218
+291,Wobbuffet,Counter,Mirror Coat,Encore,Destiny Bond,521,102,215,91,236,102
+292,Plusle,Thunderbolt,Thunder Wave,Seismic Toss,Wish,261,136,116,269,186,289
+293,Minun,Thunderbolt,Attract,Charm,Wish,261,116,136,249,206,289
+294,Grovyle,Giga Drain,Crush Claw,Screech,Rock Tomb,241,229,126,206,166,289
+295,Combusken,Flamethrower,Sky Uppercut,Slash,Sand-Attack,261,248,156,248,156,188
+296,Marshtomp,Muddy Water,Earthquake,Mud-Slap,Protect,281,269,176,219,176,136
+297,Ponyta,Flamethrower,Body Slam,Double Kick,Double Team,241,206,146,229,166,279
+298,Azumarill,Mega Kick,Brick Break,Iron Tail,Dig,404,149,196,122,259,136
+299,Sudowoodo,Mega Kick,Earthquake,Low Kick,Selfdestruct,344,236,266,96,229,96
+300,Magcargo,Overheat,Earthquake,Rock Slide,Body Slam,304,136,276,215,259,86
+301,Pupitar,Earthquake,Rock Slide,Crunch,Scary Face,344,267,176,166,176,138
+302,Sealeo,Ice Beam,Surf,Body Slam,Hail,384,156,176,273,176,113
+303,Raticate,Super Fang,Hyper Fang,Shadow Ball,Scary Face,251,287,156,122,176,293
+304,Masquerain,Hydro Pump,Ice Beam,Giga Drain,Stun Spore,281,156,223,284,200,140
+305,Furret,Trick,Frustration,Shadow Ball,Follow Me,311,276,164,113,146,279
+306,Dunsparce,Ice Beam,Rock Tomb,Bite,Shadow Ball,341,176,239,182,229,113
+307,Dragonair,Return,Rest,Thunder Wave,Dragon Dance,326,224,166,158,239,176
+308,Mightyena,Crunch,Shadow Ball,Frustration,Scary Face,281,216,239,219,156,176
+309,Linoone,Trick,Frustration,Thunder Wave,Sand-Attack,297,239,158,122,158,328
+310,Castform,Thunderbolt,Flamethrower,Ice Beam,Water Pulse,344,158,176,262,176,176
+311,Shelgon,Frustration,Dragon Dance,Crunch,Scary Face,334,226,236,156,199,136
+312,Metang,Meteor Mash,Psychic,Body Slam,Scary Face,324,186,236,209,196,136
+313,Wigglytuff,Fake Tears,Sing,Dream Eater,Brick Break,421,176,189,186,199,126
+314,Sunflora,Giga Drain,GrassWhistle,Growth,Double Team,354,186,209,270,206,86
+315,Chimecho,Psychic,Hypnosis,Dream Eater,Heal Bell,313,136,218,248,238,149
+316,Gligar,Earthquake,Aerial Ace,Guillotine,Screech,334,204,246,95,229,206
+317,Qwilfish,Revenge,Sludge Bomb,Shadow Ball,Destiny Bond,334,248,186,131,209,206
+318,Sneasel,Crush Claw,Brick Break,Aerial Ace,Screech,293,226,188,95,186,338
+319,Pelipper,Surf,Blizzard,Aerial Ace,Protect,324,136,236,226,239,149
+320,Swellow,Facade,Aerial Ace,Pursuit,Double Team,324,226,156,122,199,286
+321,Lairon,Earthquake,Iron Tail,Roar,Protect,324,216,316,136,218,104
+322,Tangela,Giga Drain,Stun Spore,Rest,Amnesia,334,131,266,236,196,156
+323,Arbok,Sludge Bomb,Earthquake,Iron Tail,Glare,324,226,237,149,194,196
+324,Persian,Frustration,Shadow Ball,Roar,Fake Out,313,176,198,166,208,266
+325,Seadra,Hydro Pump,Frustration,DragonBreath,Dragon Dance,314,166,226,226,189,206
+326,Kecleon,Trick,Brick Break,Shadow Ball,Skill Swap,324,216,239,156,276,116
+327,Vigoroth,Crush Claw,Reversal,Endure,Shadow Ball,301,284,196,131,209,216
+328,Lunatone,Psychic,Ice Beam,Cosmic Power,Calm Mind,344,146,229,248,206,158
+329,Solrock,Earthquake,Rock Slide,Cosmic Power,Overheat,344,226,206,146,229,176
+330,Noctowl,Psychic,Faint Attack,Aerial Ace,Reflect,341,136,199,276,228,158
+331,Sandslash,Earthquake,Rock Slide,Crush Claw,Sandstorm,354,259,256,113,209,166
+332,Venomoth,Signal Beam,Psychic,Sludge Bomb,Giga Drain,344,166,156,216,186,279
+333,Chansey,Seismic Toss,Shadow Ball,Double Team,Softboiled,641,46,119,106,309,122
+334,Seaking,Horn Drill,Megahorn,Sleep Talk,Rest,343,220,228,149,238,172
+335,Jumpluff,Leech Seed,Sleep Powder,Giga Drain,Double Team,291,131,262,146,269,256
+336,Piloswine,Earthquake,Rock Slide,Body Slam,Roar,341,259,259,140,219,136
+337,Golbat,Sludge Bomb,Shadow Ball,Confuse Ray,Air Cutter,354,284,176,149,186,216
+338,Primeape,Cross Chop,Rock Tomb,Overheat,Bulk Up,313,246,198,156,218,226
+339,Hitmonlee,Mega Kick,Brick Break,Foresight,Rock Tomb,304,303,205,95,256,210
+340,Hitmonchan,DynamicPunch,Mach Punch,Detect,Counter,304,270,257,95,256,188
+341,Girafarig,Psychic,Crunch,Baton Pass,Agility,281,176,229,237,229,206
+342,Hitmontop,Double-Edge,Seismic Toss,Rock Slide,Counter,304,248,289,95,256,176
+343,Banette,Shadow Ball,Frustration,Screech,Will-O-Wisp,269,292,229,181,225,166
+344,Ninjask,Slash,Shadow Ball,Swords Dance,Baton Pass,305,216,168,136,178,356
+345,Seviper,Sludge Bomb,Earthquake,Crunch,Giga Drain,329,236,198,236,198,166
+346,Zangoose,Crush Claw,Shadow Ball,Brick Break,Aerial Ace,287,361,156,140,156,279
+347,Camerupt,Earthquake,Eruption,Body Slam,Scary Face,281,299,176,309,186,116
+348,Sharpedo,Double-Edge,Crunch,Earthquake,Surf,281,318,116,268,116,268
+349,Tropius,SolarBeam,Sunny Day,Synthesis,Body Slam,339,235,202,267,210,124
+350,Magneton,Thunder,Rain Dance,Thunder Wave,Metal Sound,304,156,226,276,239,176
+351,Mantine,Surf,Ice Beam,Rain Dance,Confuse Ray,334,104,239,215,316,176
+352,Stantler,Frustration,Shadow Ball,Thunder Wave,Confuse Ray,287,317,160,185,166,269
+353,Absol,Double-Edge,Shadow Ball,Aerial Ace,Iron Tail,271,394,156,167,156,249
+354,Swalot,Sludge Bomb,Shadow Ball,Body Slam,Counter,404,269,202,163,202,146
+355,Crawdaunt,Guillotine,Frustration,AncientPower,Aerial Ace,330,303,206,194,209,146
+356,Pidgeot,Return,Aerial Ace,Steel Wing,Mud-Slap,307,284,186,158,176,281
+357,Grumpig,Psychic,Ice Punch,ThunderPunch,Fire Punch,301,113,229,306,256,196
+358,Torkoal,Overheat,Body Slam,SmokeScreen,Protect,344,206,316,206,262,68
+359,Kingler,Guillotine,Rock Tomb,Flail,Endure,314,325,266,122,199,186
+360,Cacturne,Mega Kick,Teeter Dance,Faint Attack,Sandstorm,281,266,219,266,219,146
+361,Bellossom,SolarBeam,Attract,Sunny Day,Synthesis,291,176,269,306,236,136
+362,Octillery,Octazooka,Fire Blast,Thunder Wave,Mud-Slap,333,246,228,246,228,126
+363,Huntail,Surf,Rain Dance,Crunch,Body Slam,314,244,246,246,249,126
+364,Gorebyss,Surf,Rain Dance,Psychic,Body Slam,314,204,246,290,249,126
+365,Relicanth,Earthquake,Rock Slide,Amnesia,Rest,404,216,296,126,251,131
+366,Omastar,Hydro Pump,Rain Dance,Ice Beam,Protect,344,140,286,292,239,146
+367,Kabutops,Slash,Rock Slide,Flail,Endure,261,361,246,149,239,196
+368,Poliwrath,Brick Break,Hypnosis,Rest,Belly Drum,384,295,226,158,216,176
+369,Scyther,Silver Wind,Aerial Ace,Swords Dance,Double Team,281,350,196,131,196,309
+370,Pinsir,Guillotine,Swords Dance,Flail,Endure,334,286,236,131,176,295
+371,Politoed,Surf,Psychic,Mud-Slap,Swagger,321,167,249,306,236,176
+372,Cloyster,Dive,Toxic,Double Team,Protect,304,226,396,185,207,176
+373,Dugtrio,Earthquake,Tri Attack,Slash,Sand Tomb,211,284,136,122,176,339
+374,Medicham,Psychic,Hi Jump Kick,Calm Mind,Baton Pass,261,219,186,156,186,259
+375,Misdreavus,Pain Split,Shadow Ball,Confuse Ray,Thunder Wave,324,156,240,185,206,206
+376,Fearow,Drill Peck,Tri Attack,Facade,Mud-Slap,271,306,166,142,158,299
+377,Granbull,Mega Kick,SmellingSalt,Thunder Wave,Roar,384,372,186,140,156,126
+378,Jynx,Ice Beam,Fake Out,Lovely Kiss,Attract,334,122,106,361,226,226
+379,Dusclops,Will-O-Wisp,Seismic Toss,Pain Split,Confuse Ray,263,176,371,140,338,86
+380,Dodrio,Drill Peck,Tri Attack,Sleep Talk,Rest,261,350,176,140,156,299
+381,Mr. Mime,Psychic,Magical Leaf,Fake Out,Reflect,284,126,251,236,276,194
+382,Lanturn,Surf,Confuse Ray,Attract,Thunder Wave,391,152,215,276,188,153
+383,Breloom,Sky Uppercut,Mach Punch,Headbutt,Counter,261,359,196,140,156,262
+384,Forretress,Double-Edge,Rock Slide,Light Screen,Spikes,291,306,316,140,219,116
+385,Whiscash,Earthquake,Rock Slide,Amnesia,Rest,424,280,182,169,178,156
+386,Xatu,Drill Peck,Night Shade,Wish,Future Sight,313,228,176,268,176,226
+387,Skarmory,Steel Wing,Air Cutter,Counter,Agility,313,261,316,104,218,176
+388,Marowak,Bonemerang,Rock Slide,Icy Wind,Headbutt,324,284,256,122,196,126
+389,Quagsire,Earthquake,Brick Break,Counter,Mud-Slap,331,295,206,149,229,106
+390,Clefable,Metronome,Double Team,Reflect,Follow Me,331,193,245,206,279,140
+391,Hariyama,Cross Chop,Rock Slide,Counter,Fake Out,471,303,198,104,198,136
+392,Raichu,Thunderbolt,Quick Attack,Light Screen,Double Team,261,194,188,283,196,278
+393,Dewgong,Ice Beam,Icy Wind,Headbutt,Fake Out,384,176,196,262,226,158
+394,Manectric,Thunderbolt,Flash,Quick Attack,Roar,281,167,156,339,156,309
+395,Vileplume,Sludge Bomb,Petal Dance,Moonlight,Aromatherapy,354,259,226,212,216,136
+396,Victreebel,Giga Drain,Sleep Powder,Sweet Scent,Synthesis,301,246,229,259,219,158
+397,Electrode,Thunderbolt,Swift,Light Screen,Protect,324,136,176,284,196,284
+398,Exploud,Hyper Voice,Shadow Ball,Sleep Talk,Rest,412,281,178,196,162,172
+399,Shiftry,Giga Drain,Faint Attack,Quick Attack,Fake Out,321,236,198,283,198,176
+400,Glalie,Ice Beam,Crunch,Hail,Protect,364,176,196,284,196,196
+401,Ludicolo,Surf,Rain Dance,ThunderPunch,Fire Punch,343,176,218,283,236,158
+402,Hypno,ThunderPunch,Fire Punch,Ice Punch,Hypnosis,311,182,239,269,266,153
+403,Golem,Earthquake,Body Slam,Counter,Rock Tomb,301,350,296,131,229,126
+404,Rhydon,Earthquake,Rock Tomb,Scary Face,Brick Break,393,371,276,113,168,116
+405,Alakazam,ThunderPunch,Fire Punch,Ice Punch,Thunder Wave,251,122,189,405,206,276
+406,Weezing,Sludge Bomb,Will-O-Wisp,Shadow Ball,SmokeScreen,334,306,276,185,176,156
+407,Kangaskhan,Dizzy Punch,Brick Break,Counter,Fake Out,414,317,196,104,196,216
+408,Electabuzz,Thunderbolt,Thunder Wave,Brick Break,Light Screen,313,202,211,268,206,221
+409,Tauros,Earthquake,Thrash,Swagger,Facade,291,328,226,104,176,319
+410,Slowbro,Surf,Rain Dance,Headbutt,Ice Punch,394,186,256,259,259,86
+411,Slowking,Psychic,Brick Break,Amnesia,Attract,394,186,259,259,256,86
+412,Miltank,Facade,Shadow Ball,Counter,Milk Drink,373,196,288,104,239,236
+413,Altaria,Dragon Claw,Aerial Ace,Refresh,Body Slam,354,239,216,176,246,196
+414,Nidoqueen,Sludge Bomb,Double Kick,Body Slam,Counter,384,289,210,167,206,188
+415,Nidoking,Horn Drill,Double Kick,Body Slam,Counter,366,311,190,185,186,206
+416,Magmar,Flamethrower,SmokeScreen,Brick Break,Barrier,313,226,211,278,206,199
+417,Cradily,Giga Drain,Rock Slide,Barrier,Confuse Ray,355,198,299,198,292,109
+418,Armaldo,Slash,Aerial Ace,AncientPower,Protect,354,383,236,158,196,126
+419,Golduck,Hydro Pump,Dig,Brick Break,Light Screen,301,263,192,317,196,185
+420,Rapidash,Flamethrower,Double Kick,Quick Attack,Protect,271,236,176,284,196,278
+421,Muk,Sludge Bomb,Body Slam,Screech,Minimize,414,339,186,149,236,136
+422,Gengar,Dream Eater,Hypnosis,Confuse Ray,Attract,303,149,156,338,186,327
+423,Ampharos,Thunder,Rain Dance,Thunder Wave,Attract,384,186,204,329,216,131
+424,Scizor,Metal Claw,Aerial Ace,Counter,Quick Attack,281,394,236,131,259,166
+425,Heracross,Megahorn,Brick Break,Rock Tomb,Counter,301,383,249,104,226,206
+426,Ursaring,Mega Kick,Crunch,Aerial Ace,Counter,363,338,186,228,186,146
+427,Houndoom,Flamethrower,Shadow Ball,Counter,Will-O-Wisp,291,258,136,298,196,268
+428,Donphan,Earthquake,AncientPower,Swagger,Rest,384,372,276,140,156,136
+429,Claydol,Earthquake,Rock Slide,Swagger,Psych Up,324,262,246,158,276,186
+430,Wailord,Surf,Icy Wind,Body Slam,Roar,523,216,168,216,184,140
+431,Ninetales,Flamethrower,Roar,Confuse Ray,Will-O-Wisp,287,169,186,287,236,299
+432,Machamp,Cross Chop,Rock Slide,Counter,Scary Face,384,394,196,149,206,146
+433,Shuckle,Rollout,Defense Curl,Sleep Talk,Rest,181,61,559,56,559,41
+434,Steelix,Earthquake,DragonBreath,Rock Tomb,Roar,291,295,436,131,229,96
+435,Tentacruel,Sludge Bomb,Icy Wind,Barrier,Confuse Ray,301,239,251,176,276,236
+436,Aerodactyl,AncientPower,DragonBreath,Aerial Ace,Roar,343,316,166,140,186,338
+437,Porygon2,Tri Attack,Aerial Ace,Shadow Ball,Recover,374,284,216,221,226,156
+438,Gardevoir,Dream Eater,Hypnosis,Magical Leaf,Reflect,319,149,208,286,266,261
+439,Exeggutor,SolarBeam,Sunny Day,Synthesis,Light Screen,331,226,269,314,229,131
+440,Starmie,Psychic,Confuse Ray,Thunder Wave,Recover,324,167,206,328,206,266
+441,Flygon,Earthquake,Steel Wing,Faint Attack,Facade,301,328,196,176,196,299
+442,Venusaur,Giga Drain,Sunny Day,Synthesis,Sleep Powder,364,200,202,328,236,176
+443,Vaporeon,Surf,Roar,Bite,Quick Attack,401,149,198,327,268,166
+444,Jolteon,Thunderbolt,Thunder Wave,Attract,Protect,271,149,156,350,226,359
+445,Flareon,Flamethrower,Roar,Bite,Sand-Attack,271,266,219,317,256,166
+446,Meganium,SolarBeam,Sunny Day,Light Screen,Synthesis,364,180,236,291,236,196
+447,Espeon,Psychic,Charm,Calm Mind,Baton Pass,271,149,198,325,268,298
+448,Umbreon,Confuse Ray,Faint Attack,Double Team,Baton Pass,373,149,327,156,338,166
+449,Blastoise,Hydro Pump,Rain Dance,Bite,Seismic Toss,362,181,236,295,246,192
+450,Feraligatr,Surf,Rain Dance,Aerial Ace,Roar,353,246,236,259,244,172
+451,Aggron,Iron Tail,Earthquake,Aerial Ace,Roar,344,350,396,140,156,136
+452,Blaziken,Flamethrower,Sunny Day,Double Kick,Roar,301,339,176,319,176,196
+453,Walrein,Blizzard,Hail,Yawn,Protect,403,196,258,248,258,149
+454,Sceptile,Leaf Blade,Leech Seed,Aerial Ace,Detect,281,185,166,339,206,339
+455,Charizard,Fire Blast,Sunny Day,Roar,Scary Face,297,183,192,348,206,299
+456,Typhlosion,Fire Blast,Sunny Day,SmokeScreen,Roar,297,183,192,348,206,299
+457,Lapras,Surf,Attract,Confuse Ray,Sing,401,185,284,206,289,156
+458,Crobat,Sludge Bomb,Bite,Astonish,Screech,353,258,196,218,196,296
+459,Swampert,Earthquake,Counter,Rest,Curse,383,281,258,185,258,156
+460,Gyarados,Return,Bite,Thunder Wave,Dragon Dance,394,286,194,140,328,198
+461,Snorlax,Facade,Shadow Ball,Attract,Double Team,461,350,229,149,256,96
+462,Kingdra,Hydro Pump,DragonBreath,Icy Wind,Attract,354,203,226,317,226,206
+463,Blissey,Toxic,Double Team,Sing,Softboiled,651,50,130,186,369,146
+464,Milotic,Hydro Pump,Icy Wind,Recover,Mirror Coat,373,140,236,305,286,198
+465,Arcanine,Flamethrower,ExtremeSpeed,Crunch,Body Slam,321,350,196,212,196,289
+466,Salamence,Dragon Claw,Aerial Ace,Headbutt,Rock Slide,331,369,196,256,196,299
+467,Metagross,Meteor Mash,Aerial Ace,Facade,Light Screen,301,382,296,203,258,218
+468,Slaking,Yawn,Bulk Up,Swagger,Aerial Ace,483,391,278,203,208,236
+469,Dugtrio,Earthquake,AncientPower,Aerial Ace,Tri Attack,211,284,136,122,176,339
+470,Medicham,Reversal,Endure,Psychic,Fake Out,261,219,186,156,186,259
+471,Marowak,Earthquake,Rock Slide,Swords Dance,Icy Wind,261,284,256,122,196,189
+472,Quagsire,Curse,Attract,Yawn,AncientPower,331,206,269,166,251,95
+473,Misdreavus,Psychic,Attract,Thunder Wave,Confuse Ray,261,140,240,269,206,206
+474,Fearow,Drill Peck,Tri Attack,Attract,Pursuit,271,306,166,142,158,299
+475,Granbull,Overheat,Thunderbolt,Ice Punch,Facade,321,276,186,240,219,113
+476,Jynx,Perish Song,Mean Look,Lovely Kiss,Protect,334,136,185,239,226,226
+477,Dusclops,Toxic,Confuse Ray,Double Team,Protect,263,176,371,140,338,86
+478,Dodrio,Drill Peck,Double-Edge,Faint Attack,Protect,261,350,176,140,156,299
+479,Mr. Mime,Baton Pass,Swagger,Psych Up,Psychic,263,138,208,212,318,216
+480,Lanturn,Flail,Endure,Thunderbolt,Surf,391,215,152,251,188,170
+481,Breloom,Giga Drain,Leech Seed,Focus Punch,Spore,261,296,196,219,156,239
+482,Forretress,Earthquake,Double-Edge,Counter,Protect,291,306,316,140,219,116
+483,Skarmory,Spikes,Roar,Drill Peck,Toxic,313,238,316,104,239,176
+484,Whiscash,Surf,Earthquake,Spark,Future Sight,361,255,182,251,178,156
+485,Xatu,Fly,Toxic,Confuse Ray,Attract,313,186,239,203,218,226
+486,Clefable,Meteor Mash,Cosmic Power,Double Team,Follow Me,331,262,245,185,216,156
+487,Hariyama,Cross Chop,Fire Punch,Ice Punch,ThunderPunch,429,339,156,196,156,122
+488,Raichu,Thunderbolt,Reversal,Endure,Agility,261,306,146,194,196,299
+489,Dewgong,Blizzard,Double-Edge,Encore,Disable,321,239,196,239,226,176
+490,Manectric,Thunder,Rain Dance,Crunch,Roar,281,167,156,339,156,309
+491,Vileplume,Ingrain,Double Team,Toxic,Giga Drain,333,176,272,236,258,136
+492,Victreebel,Giga Drain,Sludge Bomb,Sleep Powder,Attract,301,309,166,299,156,176
+493,Electrode,Thunder,Rain Dance,Double Team,Swagger,303,122,218,215,238,316
+494,Exploud,SolarBeam,Sunny Day,Earthquake,Counter,349,281,162,281,162,172
+495,Shiftry,Leech Seed,Dig,Double Team,Rest,321,236,240,194,219,196
+496,Glalie,Explosion,Endure,Body Slam,Icy Wind,301,259,196,196,196,259
+497,Ludicolo,Surf,Ice Beam,ThunderPunch,Fire Punch,364,158,176,306,236,176
+498,Hypno,Hypnosis,Nightmare,Dream Eater,Psychic,311,163,239,200,329,170
+499,Golem,Focus Punch,Substitute,Double Team,Rest,364,350,296,131,166,126
+500,Rhydon,Earthquake,Horn Drill,Rock Slide,Brick Break,351,394,276,113,189,116
+501,Alakazam,Psychic,Calm Mind,Thunder Wave,Recover,251,122,189,405,206,276
+502,Weezing,Memento,Sludge Bomb,Facade,Destiny Bond,334,306,276,185,176,156
+503,Kangaskhan,Crush Claw,Shadow Ball,Attract,Rest,414,317,196,104,196,216
+504,Electabuzz,Thunder,Rain Dance,Attract,Focus Punch,271,244,150,268,206,288
+505,Tauros,Double-Edge,Earthquake,Double Team,Rest,354,328,226,104,176,256
+506,Slowbro,Surf,Ice Beam,Calm Mind,Yawn,331,224,256,259,259,96
+507,Slowking,Yawn,Thunder Wave,Surf,Psychic,331,167,259,328,256,96
+508,Miltank,Focus Punch,Shadow Ball,Attract,Thunder Wave,373,238,246,104,239,236
+509,Altaria,Perish Song,DragonBreath,Pursuit,Attract,333,158,283,176,288,196
+510,Nidoqueen,Double-Edge,Earthquake,Aerial Ace,Rock Slide,384,289,210,167,206,188
+511,Nidoking,Mega Kick,Earthquake,Shadow Ball,Brick Break,366,311,190,185,186,206
+512,Magmar,Fire Blast,SmokeScreen,ThunderPunch,Confuse Ray,271,203,150,328,206,285
+513,Cradily,Earthquake,AncientPower,Swagger,Psych Up,376,287,230,178,250,122
+514,Armaldo,Iron Tail,AncientPower,Brick Break,Knock Off,354,383,236,158,196,126
+515,Golduck,Cross Chop,Surf,Swagger,Psych Up,301,242,192,268,196,248
+516,Rapidash,Fire Blast,Bounce,Double Team,Attract,271,278,176,238,196,288
+517,Muk,Curse,Rest,Sludge Bomb,DynamicPunch,351,309,249,166,236,136
+518,Gengar,Sludge Bomb,Shadow Ball,Confuse Ray,Will-O-Wisp,261,251,156,266,186,319
+519,Ampharos,ThunderPunch,Fire Punch,Focus Punch,Thunder Wave,321,249,186,329,216,146
+520,Scizor,Silver Wind,Steel Wing,Swords Dance,Light Screen,281,394,236,131,259,166
+521,Heracross,Megahorn,Earthquake,Attract,Bulk Up,364,286,186,104,226,295
+522,Ursaring,Double-Edge,Earthquake,Brick Break,Counter,384,394,186,167,186,146
+523,Houndoom,Fire Blast,Crunch,Roar,Rest,291,194,136,350,196,289
+524,Donphan,Flail,Endure,Earthquake,Rock Tomb,321,339,276,140,156,218
+525,Claydol,Psychic,Earthquake,Double Team,Cosmic Power,303,158,288,176,349,186
+526,Wailord,Double-Edge,Rest,Curse,Amnesia,523,237,168,194,168,156
+527,Ninetales,Heat Wave,Body Slam,Grudge,Sunny Day,287,188,186,261,236,299
+528,Machamp,Cross Chop,Earthquake,Bulk Up,Rest,363,325,238,149,248,146
+529,Shuckle,Sandstorm,Dig,Flash,Double Team,181,56,559,50,614,46
+530,Steelix,Earthquake,DragonBreath,Sandstorm,Block,291,269,436,146,229,96
+531,Tentacruel,Toxic,Giga Drain,Confuse Ray,Surf,343,176,208,238,276,236
+532,Aerodactyl,Hyper Beam,Earthquake,Aerial Ace,AncientPower,343,316,166,140,186,338
+533,Porygon2,SolarBeam,Sunny Day,Thunder Wave,Recover,374,176,216,339,226,156
+534,Gardevoir,Psychic,Calm Mind,Double Team,Rest,340,149,229,314,266,196
+535,Exeggutor,Return,Curse,Sleep Powder,Rest,331,289,206,286,229,146
+536,Starmie,Hydro Pump,Thunder,Rain Dance,Recover,303,167,248,259,248,266
+537,Flygon,SolarBeam,Fire Blast,Crunch,Sunny Day,301,212,196,284,196,299
+538,Venusaur,Leech Seed,Giga Drain,Double Team,Light Screen,343,180,268,236,278,196
+539,Vaporeon,Surf,Ice Beam,Body Slam,Shadow Ball,443,166,198,256,268,166
+540,Jolteon,Thunderbolt,Dig,Double Kick,Roar,271,229,156,319,226,296
+541,Flareon,Curse,Attract,Double-Edge,Shadow Ball,313,296,217,226,298,149
+542,Meganium,Leech Seed,Substitute,Double Team,GrassWhistle,343,180,278,202,305,196
+543,Espeon,Psychic,Shadow Ball,Calm Mind,Rest,271,229,156,296,226,319
+544,Umbreon,Curse,Screech,Double Team,Double-Edge,373,228,256,140,338,166
+545,Blastoise,Hydro Pump,Mega Kick,Brick Break,Mirror Coat,341,268,236,248,246,172
+546,Feraligatr,Surf,Dragon Claw,Brick Break,Scary Face,353,246,236,236,268,172
+547,Aggron,Focus Punch,Earthquake,Rock Slide,Thunder Wave,344,350,396,140,156,136
+548,Blaziken,Blaze Kick,Mega Kick,ThunderPunch,Brick Break,301,339,176,319,176,196
+549,Walrein,Earthquake,Ice Beam,Curse,Double Team,403,196,258,226,258,166
+550,Sceptile,Leaf Blade,ThunderPunch,Attract,Double Team,281,185,166,339,206,339
+551,Charizard,Earthquake,Aerial Ace,Dragon Dance,SmokeScreen,297,293,192,228,206,299
+552,Typhlosion,Flamethrower,ThunderPunch,Aerial Ace,Rock Slide,297,246,192,296,206,278
+553,Lapras,Surf,Ice Beam,Body Slam,Roar,401,185,196,269,226,240
+554,Crobat,Toxic,Giga Drain,Confuse Ray,Double Team,353,194,238,176,261,296
+555,Swampert,Surf,Earthquake,Counter,Mirror Coat,383,256,258,206,258,156
+556,Gyarados,Hydro Pump,Thunderbolt,Fire Blast,Blizzard,331,257,194,240,236,261
+557,Snorlax,Earthquake,Rock Slide,Curse,Rest,503,281,208,149,298,96
+558,Kingdra,Surf,Ice Beam,DragonBreath,Rest,333,203,268,248,268,206
+559,Blissey,Seismic Toss,Sing,Attract,Substitute,651,50,130,186,369,146
+560,Milotic,Surf,Ice Beam,Safeguard,Mirror Coat,394,140,194,328,286,198
+561,Arcanine,Fire Blast,Sunny Day,Crunch,Roar,321,256,196,299,196,289
+562,Salamence,Double-Edge,Crunch,Swagger,Protect,331,348,196,298,196,278
+563,Metagross,Earthquake,Meteor Mash,Psych Up,Swagger,343,336,296,203,258,218
+564,Slaking,Mega Kick,Shadow Ball,Yawn,Amnesia,441,391,299,203,229,236
+565,Dugtrio,Earthquake,Double-Edge,Sludge Bomb,Fissure,211,284,136,122,176,339
+566,Medicham,DynamicPunch,ThunderPunch,Ice Punch,Fire Punch,261,156,186,219,186,259
+567,Misdreavus,Perish Song,Mean Look,Thunder Wave,Confuse Ray,324,140,240,206,206,206
+568,Fearow,Drill Peck,Return,Steel Wing,Faint Attack,271,279,166,158,158,299
+569,Granbull,Double-Edge,Earthquake,Sludge Bomb,Rock Slide,384,372,186,140,156,126
+570,Jynx,Dream Eater,Lovely Kiss,Attract,Substitute,334,136,169,266,226,226
+571,Dusclops,Psych Up,Swagger,Shadow Ball,Earthquake,263,193,338,140,338,86
+572,Dodrio,Double-Edge,Drill Peck,Steel Wing,Faint Attack,261,350,176,140,156,299
+573,Mr. Mime,Trick,Torment,Psychic,Thunderbolt,284,113,166,328,276,216
+574,Lanturn,Hydro Pump,Thunder,Confuse Ray,Rain Dance,391,136,152,276,188,233
+575,Breloom,Iron Tail,Focus Punch,Attract,Spore,261,394,196,140,156,239
+576,Forretress,Explosion,Earthquake,Giga Drain,Zap Cannon,291,258,316,217,198,104
+577,Whiscash,Sleep Talk,Rest,Surf,Fissure,361,192,245,188,241,156
+578,Xatu,Drill Peck,Psychic,Giga Drain,Steel Wing,271,228,176,241,176,294
+579,Skarmory,Toxic,Curse,Rest,Fly,334,196,316,104,262,176
+580,Marowak,Earthquake,Rock Slide,Swords Dance,Brick Break,261,284,256,122,196,189
+581,Quagsire,Earthquake,Sludge Bomb,Double-Edge,Curse,331,295,206,149,229,106
+582,Clefable,Thunderbolt,Ice Beam,Flamethrower,Magical Leaf,331,158,245,295,216,156
+583,Hariyama,Cross Chop,Earthquake,Rock Slide,Facade,492,372,156,104,156,136
+584,Raichu,Thunder,Rain Dance,Iron Tail,Attract,261,216,146,279,196,299
+585,Dewgong,Horn Drill,Sheer Cold,Sleep Talk,Rest,384,158,284,176,226,176
+586,Manectric,Thunderbolt,Iron Tail,Thunder Wave,Roar,281,186,156,309,156,309
+587,Vileplume,Attract,Stun Spore,Sludge Bomb,Giga Drain,291,259,206,299,216,136
+588,Victreebel,Stun Spore,Ingrain,Giga Drain,Sludge Bomb,301,309,166,299,156,176
+589,Electrode,Explosion,Thunderbolt,Thunder Wave,Endure,261,218,176,259,176,316
+590,Exploud,Overheat,Ice Beam,ThunderPunch,Extrasensory,349,196,162,309,162,235
+591,Shiftry,SolarBeam,Sunny Day,Explosion,Synthesis,321,299,156,279,156,196
+592,Glalie,Blizzard,Earthquake,Double-Edge,Shadow Ball,301,238,196,238,196,238
+593,Ludicolo,Leech Seed,Rain Dance,Double Team,Giga Drain,343,158,239,216,278,176
+594,Hypno,Psych Up,Swagger,Mega Kick,Shadow Ball,374,269,176,163,266,170
+595,Golem,Explosion,Earthquake,Flamethrower,Brick Break,301,350,296,131,229,126
+596,Rhydon,Megahorn,Crush Claw,Earthquake,Horn Drill,414,394,276,113,126,116
+597,Alakazam,Trick,Disable,Psychic,Skill Swap,251,122,189,405,206,276
+598,Weezing,Explosion,Sludge Bomb,Flamethrower,Thunderbolt,271,279,276,269,176,156
+599,Kangaskhan,Reversal,Endure,Thunderbolt,Earthquake,351,289,196,104,196,306
+600,Electabuzz,Fire Punch,Ice Punch,Thunderbolt,Cross Chop,271,202,150,289,206,309
+601,Tauros,Double-Edge,Earthquake,Flamethrower,Ice Beam,291,299,226,179,176,256
+602,Slowbro,Surf,Psychic,Shadow Ball,Attract,331,186,256,328,259,86
+603,Slowking,Psychic,Surf,Ice Beam,Earthquake,331,228,238,305,256,86
+604,Miltank,Reversal,Endure,Earthquake,Shadow Ball,331,284,246,104,239,236
+605,Altaria,Sing,Dragon Dance,Earthquake,Aerial Ace,354,262,216,158,246,196
+606,Nidoqueen,Thunderbolt,Flamethrower,Ice Beam,Crunch,384,180,210,273,206,188
+607,Nidoking,Horn Drill,Fire Blast,Blizzard,Surf,366,198,190,295,186,206
+608,Magmar,Mega Kick,Cross Chop,Iron Tail,Counter,271,289,234,212,206,222
+609,Cradily,Substitute,SolarBeam,Sunny Day,Recover,313,178,272,264,292,122
+610,Armaldo,Earthquake,Rock Slide,Brick Break,Swords Dance,354,383,236,158,196,126
+611,Golduck,Hydro Pump,Cross Chop,Blizzard,Protect,301,263,192,289,196,206
+612,Rapidash,Overheat,SolarBeam,Sunny Day,Hypnosis,313,212,176,261,196,288
+613,Muk,Sludge Bomb,Thunderbolt,Flamethrower,Ice Punch,351,246,249,251,236,122
+614,Gengar,Psychic,Thunderbolt,Giga Drain,Skill Swap,261,149,156,394,186,319
+615,Ampharos,Thunderbolt,Mega Kick,Iron Tail,Brick Break,321,249,186,329,216,146
+616,Scizor,Reversal,Endure,Agility,Slash,281,359,236,131,284,166
+617,Heracross,Megahorn,Earthquake,Rock Slide,Brick Break,301,383,186,104,226,269
+618,Ursaring,Fire Punch,ThunderPunch,Ice Punch,Crunch,363,266,186,250,186,188
+619,Houndoom,Overheat,Shadow Ball,Sludge Bomb,Double-Edge,291,279,136,256,196,289
+620,Donphan,Fissure,Earthquake,Rock Slide,Secret Power,384,372,276,140,156,136
+621,Claydol,Psychic,Ice Beam,SolarBeam,Sunny Day,324,158,246,262,276,186
+622,Wailord,Hydro Pump,Fissure,Double Team,Rest,523,194,168,237,168,156
+623,Ninetales,Fire Blast,Iron Tail,Confuse Ray,Attract,287,188,186,261,236,299
+624,Machamp,Cross Chop,Fire Blast,ThunderPunch,Ice Punch,321,359,196,229,206,146
+625,Shuckle,Substitute,Attract,Toxic,Double Team,181,56,559,50,614,46
+626,Steelix,Earthquake,Body Slam,Rock Slide,Explosion,291,295,436,131,229,96
+627,Tentacruel,Surf,Giga Drain,Ice Beam,Mirror Coat,301,158,208,261,276,278
+628,Aerodactyl,Double-Edge,Rock Slide,Fire Blast,Dragon Claw,301,309,166,219,186,296
+629,Porygon2,Psychic,Tri Attack,Thunder Wave,Recover,374,176,216,339,226,156
+630,Gardevoir,Psychic,Ice Punch,Fire Punch,Magical Leaf,277,149,166,383,266,259
+631,Exeggutor,Leech Seed,Giga Drain,Toxic,Explosion,373,226,248,286,208,146
+632,Starmie,Surf,Psychic,Thunderbolt,Ice Beam,261,167,206,328,206,329
+633,Flygon,Earthquake,Dragon Claw,Flamethrower,Giga Drain,301,278,196,238,196,278
+634,Venusaur,Double-Edge,Sludge Bomb,Earthquake,Sleep Powder,301,266,244,212,278,196
+635,Vaporeon,Surf,Ice Beam,Acid Armor,Baton Pass,443,149,198,256,294,166
+636,Jolteon,Thunderbolt,Thunder Wave,Agility,Baton Pass,313,149,217,256,268,296
+637,Flareon,Shadow Ball,Flail,Endure,Overheat,271,359,156,203,256,251
+638,Meganium,Earthquake,Flail,Endure,Giga Drain,301,263,236,181,236,284
+639,Espeon,Psychic,Bite,Wish,Reflect,271,149,156,394,226,319
+640,Umbreon,Swagger,Psych Up,Attract,Shadow Ball,373,149,327,156,338,166
+641,Blastoise,Surf,Earthquake,Ice Beam,Counter,341,244,236,248,246,192
+642,Feraligatr,Hydro Pump,Crunch,Earthquake,Rock Slide,353,288,236,236,202,192
+643,Aggron,Surf,Thunder,Fire Blast,Blizzard,344,230,396,240,156,136
+644,Blaziken,Overheat,Earthquake,Endure,Reversal,301,339,176,256,176,259
+645,Walrein,Sheer Cold,Fissure,Surf,Attract,403,196,258,226,258,166
+646,Sceptile,Leaf Blade,Earthquake,Crush Claw,Aerial Ace,281,248,166,288,206,318
+647,Charizard,Flamethrower,Dragon Claw,Bite,Brick Break,297,183,192,348,206,299
+648,Typhlosion,Earthquake,Overheat,Endure,Reversal,297,293,192,228,206,299
+649,Lapras,Double-Edge,Psychic,Confuse Ray,Dragon Dance,443,206,238,206,268,156
+650,Crobat,Air Cutter,Double-Edge,Shadow Ball,Screech,311,306,196,158,196,359
+651,Swampert,Surf,Earthquake,Ice Beam,Counter,341,350,216,269,216,140
+652,Gyarados,Surf,Thunder,Rain Dance,Earthquake,331,349,194,219,236,198
+653,Snorlax,Mega Kick,Shadow Ball,Swagger,Psych Up,461,281,229,149,319,96
+654,Kingdra,Flail,Hydro Pump,Dragon Dance,Endure,333,248,268,203,268,206
+655,Blissey,Fire Blast,Blizzard,Calm Mind,Softboiled,651,50,130,186,369,146
+656,Milotic,Surf,Blizzard,Attract,Recover,373,140,259,236,328,198
+657,Arcanine,Overheat,ExtremeSpeed,Crunch,Aerial Ace,321,230,196,328,196,289
+658,Salamence,Double-Edge,Earthquake,Crunch,Endure,331,369,196,319,196,236
+659,Metagross,Earthquake,Meteor Mash,Double Team,Rest,343,382,296,203,216,218
+660,Slaking,Earthquake,Shadow Ball,Aerial Ace,Brick Break,441,391,299,203,229,236
+661,Dugtrio,Earthquake,Double-Edge,Rock Slide,Fissure,211,284,136,122,176,339
+662,Medicham,Mega Kick,Psychic,Shadow Ball,Rock Slide,261,219,186,219,186,196
+663,Misdreavus,Destiny Bond,Psychic,Shadow Ball,Thunderbolt,261,140,156,269,206,295
+664,Fearow,Drill Peck,Double-Edge,Steel Wing,Sky Attack,271,279,166,221,158,236
+665,Granbull,Mega Kick,Earthquake,Crunch,Shadow Ball,321,372,186,219,156,113
+666,Jynx,Psychic,Ice Beam,Lovely Kiss,Fake Tears,334,122,106,361,226,226
+667,Dusclops,Double-Edge,Shadow Ball,Curse,Rest,284,262,296,140,296,86
+668,Dodrio,Flail,Endure,Drill Peck,Facade,261,350,176,140,156,299
+669,Mr. Mime,Psychic,Thunderbolt,Ice Punch,Fire Punch,284,113,166,328,276,216
+670,Lanturn,Surf,Thunderbolt,Ice Beam,Confuse Ray,391,136,152,276,188,233
+671,Breloom,Focus Punch,Sludge Bomb,Spore,Double Team,261,394,196,140,156,239
+672,Forretress,Explosion,Earthquake,Rock Slide,Double-Edge,291,306,316,140,219,116
+673,Whiscash,Fissure,Surf,Earthquake,Ice Beam,361,255,182,276,178,140
+674,Xatu,Psychic,Drill Peck,Shadow Ball,Confuse Ray,271,249,176,289,176,226
+675,Skarmory,Drill Peck,Steel Wing,Counter,Rock Slide,334,284,316,104,176,176
+676,Marowak,Earthquake,Rock Slide,Swords Dance,Mega Kick,261,284,256,122,196,189
+677,Quagsire,Surf,Earthquake,Ice Beam,Amnesia,331,248,206,208,228,95
+678,Clefable,Mega Kick,Psychic,Shadow Ball,Softboiled,331,239,245,206,216,156
+679,Hariyama,Cross Chop,Earthquake,Rock Slide,Fake Out,492,372,156,104,156,136
+680,Raichu,Thunderbolt,Thunder Wave,Protect,Mega Kick,261,279,146,279,196,236
+681,Dewgong,Sheer Cold,Ice Beam,Surf,Signal Beam,321,239,196,239,226,176
+682,Manectric,Thunderbolt,Crunch,Thunder Wave,Roar,281,167,156,339,156,309
+683,Vileplume,SolarBeam,Sludge Bomb,Sunny Day,Synthesis,291,259,206,328,216,122
+684,Victreebel,Giga Drain,Double-Edge,Sludge Bomb,Synthesis,301,309,166,299,156,176
+685,Electrode,Explosion,Thunderbolt,Thunder Wave,Mirror Coat,261,218,176,259,176,316
+686,Exploud,Mega Kick,Earthquake,Shadow Ball,Overheat,349,281,162,281,162,172
+687,Shiftry,Explosion,Giga Drain,Mega Kick,Fake Out,321,299,156,279,156,196
+688,Glalie,Ice Beam,Earthquake,Crunch,Shadow Ball,343,238,196,238,196,196
+689,Ludicolo,Leech Seed,Rain Dance,Double Team,Toxic,343,158,239,216,278,176
+690,Hypno,Psychic,ThunderPunch,Fire Punch,Ice Punch,374,163,176,269,266,170
+691,Golem,Explosion,Earthquake,Rock Slide,Double-Edge,301,350,296,131,229,126
+692,Rhydon,Megahorn,Earthquake,Rock Slide,Horn Drill,414,394,276,113,126,116
+693,Alakazam,Psychic,ThunderPunch,Fire Punch,Ice Punch,251,122,189,405,206,276
+694,Weezing,Explosion,Sludge Bomb,Frustration,Shadow Ball,334,306,276,185,176,156
+695,Kangaskhan,Mega Kick,Earthquake,Aerial Ace,Shadow Ball,351,317,196,104,196,279
+696,Electabuzz,Thunderbolt,Psychic,Mega Kick,Cross Chop,271,265,150,289,206,246
+697,Tauros,Double-Edge,Rock Tomb,Thunderbolt,Surf,291,299,226,179,176,256
+698,Slowbro,Psychic,Surf,Earthquake,Ice Beam,331,186,256,299,284,86
+699,Slowking,Psychic,Surf,Ice Beam,Flamethrower,331,167,259,328,256,96
+700,Miltank,Double-Edge,Curse,Double Team,Milk Drink,331,284,246,104,239,236
+701,Altaria,Dragon Claw,Earthquake,Flamethrower,Ice Beam,291,239,216,239,246,196
+702,Nidoqueen,Superpower,Sludge Bomb,Earthquake,Shadow Ball,384,289,210,167,206,188
+703,Nidoking,Megahorn,Sludge Bomb,Earthquake,Thunder,303,283,190,269,186,206
+704,Magmar,Flamethrower,Psychic,Cross Chop,Confuse Ray,334,226,213,236,206,222
+705,Cradily,Toxic,Ingrain,Mirror Coat,Giga Drain,355,178,299,198,292,122
+706,Armaldo,Double-Edge,Earthquake,Aerial Ace,Rock Slide,354,383,236,158,196,126
+707,Golduck,Surf,Cross Chop,Ice Beam,Aerial Ace,301,263,192,226,196,269
+708,Rapidash,Overheat,Double-Edge,Iron Tail,Double Kick,271,278,176,238,196,288
+709,Muk,Sludge Bomb,Brick Break,Giga Drain,Explosion,351,339,249,166,236,122
+710,Gengar,Psychic,Fire Punch,Ice Punch,Destiny Bond,261,149,156,394,186,319
+711,Ampharos,Thunderbolt,Fire Punch,Thunder Wave,Reflect,321,167,249,361,216,146
+712,Scizor,Silver Wind,Swords Dance,Agility,Baton Pass,344,296,236,131,284,166
+713,Heracross,Megahorn,Earthquake,Reversal,Endure,301,383,186,104,226,269
+714,Ursaring,Double-Edge,Earthquake,Rock Slide,Aerial Ace,384,394,186,167,186,146
+715,Houndoom,Overheat,SolarBeam,Crunch,Sunny Day,291,194,136,350,196,289
+716,Donphan,Fissure,Earthquake,Rock Slide,Iron Tail,384,372,276,140,156,136
+717,Claydol,Psychic,Earthquake,Shadow Ball,Explosion,324,262,246,158,276,186
+718,Wailord,Surf,Ice Beam,Earthquake,Fissure,523,216,168,216,168,156
+719,Ninetales,Overheat,Double-Edge,Confuse Ray,Will-O-Wisp,287,188,186,261,236,299
+720,Machamp,Cross Chop,Earthquake,Flamethrower,Rock Slide,321,359,196,229,206,146
+721,Shuckle,Toxic,Double Team,Wrap,Rest,181,56,559,50,614,46
+722,Steelix,Earthquake,Iron Tail,Double-Edge,Explosion,291,295,436,131,229,96
+723,Tentacruel,Hydro Pump,Sludge Bomb,Ice Beam,Mirror Coat,301,218,208,238,276,236
+724,Aerodactyl,Double-Edge,Earthquake,Fire Blast,Bite,301,309,166,219,186,296
+725,Porygon2,Psychic,Thunderbolt,Ice Beam,Recover,374,176,216,339,226,156
+726,Gardevoir,Psychic,Thunderbolt,Ice Punch,Fire Punch,277,149,166,383,266,259
+727,Exeggutor,Psychic,Giga Drain,Sludge Bomb,Explosion,331,289,206,349,166,146
+728,Starmie,Psychic,Thunderbolt,Ice Beam,Recover,261,167,206,328,206,329
+729,Flygon,Earthquake,Dragon Claw,Double-Edge,Crunch,301,278,196,238,196,278
+730,Venusaur,SolarBeam,Sludge Bomb,Sunny Day,Earthquake,301,242,202,278,278,196
+731,Vaporeon,Surf,Ice Beam,Acid Armor,Rest,443,149,156,298,294,166
+732,Jolteon,Thunderbolt,Thunder Wave,Bite,Shadow Ball,271,149,156,319,226,394
+733,Flareon,Overheat,Sunny Day,Double-Edge,Shadow Ball,271,359,156,317,256,149
+734,Meganium,Giga Drain,Earthquake,AncientPower,Body Slam,343,242,236,244,236,196
+735,Espeon,Psychic,Bite,Attract,Calm Mind,271,149,156,394,226,319
+736,Umbreon,Confuse Ray,Toxic,Faint Attack,Double Team,373,149,327,156,338,166
+737,Blastoise,Surf,Earthquake,Ice Beam,Mirror Coat,341,244,236,248,246,192
+738,Feraligatr,Hydro Pump,Ice Beam,Earthquake,Aerial Ace,353,288,236,236,202,192
+739,Aggron,Double-Edge,Earthquake,Rock Slide,Aerial Ace,344,350,396,140,156,136
+740,Blaziken,Overheat,Earthquake,ThunderPunch,Rock Slide,301,339,176,319,176,196
+741,Walrein,Surf,Ice Beam,Earthquake,Sheer Cold,361,259,216,317,216,149
+742,Sceptile,Leaf Blade,Dragon Claw,Crunch,ThunderPunch,281,185,166,339,206,339
+743,Charizard,Overheat,Earthquake,Aerial Ace,Rock Slide,297,246,192,296,206,278
+744,Typhlosion,Overheat,ThunderPunch,Earthquake,Crush Claw,297,246,192,296,206,278
+745,Lapras,Surf,Ice Beam,Thunderbolt,Psychic,464,185,196,295,226,156
+746,Crobat,Sludge Bomb,Aerial Ace,Shadow Ball,Confuse Ray,311,306,196,158,196,359
+747,Swampert,Surf,Earthquake,Ice Beam,Mirror Coat,341,319,216,295,216,140
+748,Gyarados,Return,Earthquake,Dragon Dance,Rest,373,314,236,140,278,198
+749,Snorlax,Double-Edge,Shadow Ball,Brick Break,Curse,461,350,229,149,256,96
+750,Kingdra,Double-Edge,Ice Beam,Dragon Dance,Rest,333,226,268,226,268,206
+751,Blissey,Ice Beam,Calm Mind,Counter,Softboiled,651,50,130,186,369,146
+752,Milotic,Surf,Ice Beam,Recover,Mirror Coat,331,140,236,305,328,198
+753,Arcanine,Overheat,ExtremeSpeed,Crunch,Double-Edge,321,256,196,299,196,289
+754,Salamence,Double-Edge,Earthquake,Aerial Ace,Dragon Dance,394,405,196,230,196,236
+755,Metagross,Meteor Mash,Psychic,Earthquake,Shadow Ball,301,369,296,289,216,176
+756,Slaking,Thunderbolt,Flamethrower,Ice Beam,Yawn,441,320,236,317,229,236
+757,Articuno,Ice Beam,Water Pulse,Icy Wind,Roar,321,185,236,317,286,269
+758,Zapdos,Thunderbolt,Drill Peck,Thunder Wave,Roar,321,216,206,349,216,299
+759,Moltres,Flamethrower,Aerial Ace,Mud-Slap,Roar,321,299,216,349,206,216
+760,Raikou,Thunderbolt,Thunder Wave,Calm Mind,Rest,321,185,186,361,236,329
+761,Entei,Flamethrower,Double Team,Calm Mind,Rest,371,239,206,306,186,299
+762,Suicune,Surf,Double Team,Calm Mind,Rest,341,167,266,306,266,269
+763,Regirock,Superpower,Earthquake,Rock Slide,Explosion,364,328,436,122,236,136
+764,Regice,Ice Beam,Thunderbolt,Amnesia,Rest,364,122,236,328,436,136
+765,Registeel,Metal Claw,Curse,Amnesia,Rest,364,273,336,167,336,136
+766,Latias,Psychic,Thunderbolt,Ice Beam,Dragon Claw,364,176,216,350,296,256
+767,Latios,Psychic,Thunderbolt,Ice Beam,Dragon Claw,364,194,196,394,256,256
+768,Articuno,Substitute,Toxic,Blizzard,Double Team,363,206,305,203,328,206
+769,Zapdos,Thunder,Rain Dance,Drill Peck,Double Team,321,279,206,286,216,299
+770,Moltres,Overheat,Aerial Ace,Double Team,Protect,321,299,216,349,206,216
+771,Raikou,Thunder,Rain Dance,Double Team,Reflect,321,185,186,361,236,329
+772,Entei,Fire Blast,Sunny Day,SolarBeam,Reflect,371,239,206,306,186,299
+773,Suicune,Toxic,Dive,Double Team,Protect,383,167,308,216,338,206
+774,Regirock,Earthquake,Rock Slide,Counter,Explosion,364,328,436,122,236,136
+775,Regice,Thunder,Rain Dance,Blizzard,Brick Break,364,136,236,328,436,122
+776,Registeel,Thunderbolt,Ice Punch,Earthquake,Aerial Ace,343,228,336,250,336,122
+777,Latias,Psychic,Thunderbolt,Ice Beam,Earthquake,301,259,216,319,296,256
+778,Latios,Psychic,Thunderbolt,Ice Beam,Earthquake,301,279,196,359,256,256
+779,Articuno,Ice Beam,Facade,Aerial Ace,Protect,321,269,236,289,286,206
+780,Zapdos,Thunderbolt,Drill Peck,Thunder Wave,Substitute,321,258,206,328,216,278
+781,Moltres,Fire Blast,Sunny Day,Double Team,Rest,321,212,216,383,206,279
+782,Raikou,Thunderbolt,Thunder Wave,Quick Attack,Roar,321,185,186,361,236,329
+783,Entei,Flamethrower,Double-Edge,Swagger,Psych Up,371,329,206,216,186,299
+784,Suicune,Surf,Ice Beam,Rain Dance,Roar,341,167,266,306,266,269
+785,Regirock,Rock Slide,Earthquake,Curse,Rest,364,259,436,122,299,136
+786,Regice,Ice Beam,Thunderbolt,Thunder Wave,Explosion,364,136,236,328,436,122
+787,Registeel,AncientPower,Amnesia,Counter,Explosion,343,204,378,167,378,136
+788,Latias,Dragon Claw,Thunderbolt,Ice Beam,Earthquake,301,259,216,319,296,256
+789,Latios,Dragon Claw,Thunderbolt,Ice Beam,Earthquake,301,279,196,359,256,256
+790,Articuno,Blizzard,Double-Edge,Rest,Reflect,321,269,236,289,286,206
+791,Zapdos,Thunderbolt,Drill Peck,Thunder Wave,Light Screen,321,279,206,349,216,236
+792,Moltres,Overheat,Double-Edge,Steel Wing,Safeguard,321,299,216,383,206,194
+793,Raikou,Thunderbolt,Bite,Thunder Wave,Reflect,321,185,186,361,236,329
+794,Entei,Flamethrower,Bite,Double Team,Reflect,371,239,206,306,186,299
+795,Suicune,Surf,Ice Beam,Bite,Reflect,341,167,266,306,266,269
+796,Regirock,Rock Slide,Brick Break,Double Team,Thunder Wave,343,278,436,122,305,136
+797,Regice,Ice Beam,Hail,Double Team,Thunder Wave,364,122,328,236,436,136
+798,Registeel,AncientPower,Earthquake,Double Team,Thunder Wave,343,186,415,167,378,136
+799,Latias,Mist Ball,Shadow Ball,Charm,Reflect,343,238,216,298,296,256
+800,Latios,Luster Purge,Thunderbolt,Ice Beam,Dragon Claw,364,194,196,394,256,256
+801,Gengar,Psychic,Shadow Ball,Thunderbolt,Fire Punch,261,149,156,394,186,319
+802,Gengar,Psychic,Shadow Ball,Thunderbolt,Ice Punch,261,149,156,394,186,319
+803,Gengar,Psychic,Thunderbolt,Fire Punch,Destiny Bond,261,149,156,394,186,319
+804,Gengar,Psychic,Thunderbolt,Ice Punch,Destiny Bond,261,149,156,394,186,319
+805,Ursaring,Mega Kick,Aerial Ace,Rock Slide,Brick Break,384,394,186,167,186,146
+806,Ursaring,Hyper Beam,Yawn,Swords Dance,Double Team,384,394,186,167,186,146
+807,Ursaring,Facade,Earthquake,Crunch,Bulk Up,363,338,186,228,186,146
+808,Ursaring,Facade,Earthquake,Crunch,Brick Break,363,338,186,228,186,146
+809,Machamp,Cross Chop,Double-Edge,Earthquake,Rock Slide,384,394,196,149,206,146
+810,Machamp,Cross Chop,Earthquake,Counter,Rock Tomb,384,394,196,149,206,146
+811,Machamp,Focus Punch,Substitute,Attract,Double Team,384,394,196,149,206,146
+812,Machamp,Revenge,Rock Slide,Facade,Counter,384,394,196,149,206,146
+813,Gardevoir,Psychic,Shadow Ball,Endure,Destiny Bond,319,166,208,286,266,238
+814,Gardevoir,Psychic,Thunderbolt,Will-O-Wisp,Destiny Bond,340,149,166,286,266,284
+815,Gardevoir,Psychic,Calm Mind,Will-O-Wisp,Destiny Bond,319,149,228,286,308,196
+816,Gardevoir,Psychic,Magical Leaf,Attract,Double Team,277,149,166,383,266,259
+817,Starmie,Surf,Psychic,Recover,Light Screen,261,167,206,328,206,329
+818,Starmie,Surf,Confuse Ray,Thunder Wave,Recover,303,167,248,236,272,266
+819,Starmie,Psychic,Ice Beam,Cosmic Power,Recover,261,167,206,328,206,329
+820,Starmie,Surf,Thunderbolt,Cosmic Power,Recover,261,167,206,328,206,329
+821,Lapras,Psychic,Thunderbolt,Iron Tail,Double-Edge,401,269,196,269,226,156
+822,Lapras,Hydro Pump,Thunder,Rain Dance,Blizzard,464,185,196,295,226,156
+823,Lapras,Sheer Cold,Horn Drill,Rest,Sleep Talk,443,185,238,206,294,156
+824,Lapras,Sheer Cold,Horn Drill,Sing,Attract,443,185,238,206,294,156
+825,Snorlax,Mega Kick,Shadow Ball,Brick Break,Counter,461,350,229,149,256,96
+826,Snorlax,Earthquake,Shadow Ball,Brick Break,Counter,461,350,229,149,256,96
+827,Snorlax,Hyper Beam,Shadow Ball,Earthquake,Curse,503,281,208,149,298,96
+828,Snorlax,Return,Shadow Ball,Belly Drum,Rest,503,281,208,149,298,96
+829,Salamence,Facade,Earthquake,Rock Slide,Dragon Dance,373,336,238,230,238,236
+830,Salamence,Headbutt,Aerial Ace,Crunch,Dragon Dance,373,306,238,256,238,236
+831,Salamence,Flamethrower,Dragon Claw,Crunch,Brick Break,331,275,196,350,196,299
+832,Salamence,Flamethrower,Dragon Claw,Crunch,Attract,331,275,196,350,196,299
+833,Metagross,Explosion,Earthquake,Rock Slide,Brick Break,343,348,296,203,216,239
+834,Metagross,Meteor Mash,Psychic,Ice Punch,ThunderPunch,301,369,296,289,216,176
+835,Metagross,Earthquake,Shadow Ball,Ice Punch,ThunderPunch,301,369,296,289,216,176
+836,Metagross,Meteor Mash,Earthquake,Brick Break,Explosion,343,382,296,203,216,218
+837,Regirock,Hyper Beam,Focus Punch,Rock Slide,Double Team,364,328,436,122,236,136
+838,Regirock,Swagger,Psych Up,Rock Slide,Explosion,364,259,436,122,299,136
+839,Regice,Earthquake,Ice Beam,Curse,Counter,343,149,278,278,436,122
+840,Regice,Ice Beam,Thunderbolt,Sleep Talk,Rest,364,122,236,328,436,136
+841,Registeel,Focus Punch,Substitute,Toxic,Double Team,343,204,378,167,378,136
+842,Registeel,Superpower,Aerial Ace,Swagger,Psych Up,343,204,378,167,378,136
+843,Latias,Dragon Claw,Thunder Wave,Calm Mind,Recover,343,176,258,281,338,256
+844,Latias,Mist Ball,Dragon Claw,Attract,Thunder Wave,364,176,216,350,296,256
+845,Latias,Earthquake,Shadow Ball,Swagger,Psych Up,364,215,279,230,296,256
+846,Latias,Psychic,Shadow Ball,Earthquake,Aerial Ace,301,238,216,298,296,298
+847,Latios,Dragon Claw,Thunder Wave,Calm Mind,Recover,343,194,238,325,298,256
+848,Latios,Luster Purge,Shadow Ball,Dragon Claw,Thunder Wave,301,279,196,359,256,256
+849,Latios,Earthquake,Shadow Ball,Dragon Dance,Recover,364,237,259,266,256,256
+850,Latios,Psychic,Shadow Ball,Earthquake,Aerial Ace,301,258,196,338,256,298
+851,Dragonite,Earthquake,Aerial Ace,Brick Break,Dragon Dance,365,334,268,212,278,196
+852,Dragonite,Earthquake,Double-Edge,Aerial Ace,Dragon Dance,365,334,268,212,278,196
+853,Dragonite,Hyper Beam,Attract,Double Team,Thunder Wave,323,380,268,212,278,196
+854,Dragonite,Hyper Beam,Thunder Wave,Dragon Dance,Rest,365,334,268,212,278,196
+855,Dragonite,Outrage,Double-Edge,Thunder Wave,Roar,323,367,226,299,236,196
+856,Dragonite,Dragon Claw,Thunderbolt,Surf,Flamethrower,323,273,226,328,236,259
+857,Dragonite,Dragon Claw,Thunderbolt,Surf,Ice Beam,323,273,226,328,236,259
+858,Dragonite,Dragon Claw,Flamethrower,Ice Beam,Brick Break,323,273,226,328,236,259
+859,Dragonite,Thunder,Surf,Rain Dance,Earthquake,386,304,226,299,236,196
+860,Dragonite,Fire Blast,Blizzard,Sunny Day,Earthquake,386,304,226,299,236,196
+861,Tyranitar,Earthquake,Aerial Ace,Thunderbolt,Surf,341,367,256,289,236,158
+862,Tyranitar,Earthquake,Rock Slide,Crunch,Thunderbolt,341,367,256,289,236,158
+863,Tyranitar,Earthquake,Rock Slide,Counter,Dragon Dance,383,334,298,203,278,158
+864,Tyranitar,Crunch,Ice Beam,Thunderbolt,Flamethrower,404,273,256,317,236,158
+865,Tyranitar,Earthquake,Rock Slide,Dragon Dance,Rest,383,334,298,203,278,158
+866,Tyranitar,Earthquake,Rock Slide,Curse,Rest,383,334,298,203,278,158
+867,Tyranitar,Rock Slide,Aerial Ace,Brick Break,Curse,404,403,256,203,236,158
+868,Tyranitar,Rock Slide,Thunder Wave,Dragon Dance,Rest,383,334,298,203,278,158
+869,Tyranitar,Crunch,Earthquake,Aerial Ace,Attract,341,367,256,289,236,158
+870,Tyranitar,Double-Edge,Earthquake,Rock Slide,Dragon Dance,383,334,298,203,278,158
+871,Articuno,Blizzard,Double-Edge,Agility,Swagger,321,269,236,289,286,206
+872,Articuno,Ice Beam,Aerial Ace,Reflect,Rest,321,269,236,289,286,206
+873,Zapdos,Thunderbolt,Drill Peck,Double-Edge,Thunder Wave,321,279,206,349,216,236
+874,Zapdos,Thunder,Drill Peck,Rain Dance,Double-Edge,321,258,206,328,216,278
+875,Moltres,Overheat,Sunny Day,Swagger,Facade,321,236,216,349,206,279
+876,Moltres,Overheat,Double-Edge,Aerial Ace,Steel Wing,321,299,216,349,206,216
+877,Raikou,Thunderbolt,Double-Edge,Roar,Reflect,321,185,186,361,236,329
+878,Raikou,Thunderbolt,Calm Mind,Substitute,Rest,384,185,249,292,236,266
+879,Entei,Fire Blast,Double-Edge,Endure,Reflect,371,266,269,216,249,236
+880,Entei,Flamethrower,Calm Mind,Roar,Rest,371,239,269,237,249,236
+881,Suicune,Surf,Ice Beam,Calm Mind,Icy Wind,404,167,266,306,266,206
+882,Suicune,Surf,Ice Beam,Calm Mind,Rest,383,167,308,237,308,206
+883,Alakazam,ThunderPunch,Fire Punch,Ice Punch,Disable,270,116,157,356,199,307
+884,Entei,Fire Blast,Calm Mind,Return,Roar,389,326,213,234,180,229
+885,Snorlax,Body Slam,Belly Drum,Yawn,Shadow Ball,492,315,159,166,274,89
+886,Raikou,Thunderbolt,Calm Mind,Reflect,Rest,360,185,249,292,236,291
+887,Latios,Psychic,Calm Mind,Recover,Dragon Claw,364,194,259,325,256,257
+888,Snorlax,Curse,Return,Rest,Shadow Ball,524,350,166,150,256,96
+889,Swampert,Surf,Earthquake,Ice Beam,Counter,368,311,231,220,205,130
+890,Salamence,Earthquake,Brick Break,Dragon Claw,Aerial Ace,358,366,211,220,185,250
+891,Charizard,Overheat,Rock Slide,Aerial Ace,Earthquake,311,231,207,267,195,236
+892,Swampert,Surf,Earthquake,Ice Beam,Mirror Coat,404,350,217,206,216,140
+893,Metagross,Psychic,Meteor Mash,Earthquake,Protect,364,405,297,226,216,158
+894,Latias,Thunderbolt,Psychic,Calm Mind,Rest,364,176,279,281,296,257
+895,Crobat,Confuse Ray,Double Team,Toxic,Fly,334,221,181,167,207,319
+896,Slaking,Earthquake,Swagger,Shadow Ball,Brick Break,464,379,221,236,151,247
+897,Lapras,Ice Beam,Horn Drill,Confuse Ray,Protect,386,191,244,238,249,126
+898,Arcanine,Overheat,ExtremeSpeed,Roar,Protect,322,319,233,236,196,248
+899,Slaking,Hyper Beam,Earthquake,Shadow Ball,Yawn,442,419,236,226,166,299
+900,Suicune,Blizzard,Surf,Bite,Calm Mind,404,186,296,216,266,227
+901,Heracross,Megahorn,Rock Tomb,Endure,Reversal,316,313,175,94,240,256
+902,Umbreon,Body Slam,Confuse Ray,Psychic,Faint Attack,358,139,270,183,342,155
+903,Shedinja,Shadow Ball,Return,Confuse Ray,Aerial Ace,132,294,116,76,85,168
+904,Umbreon,Double-Edge,Confuse Ray,Rest,Psychic,394,149,256,219,326,166
+905,Gengar,Psychic,Hypnosis,Dream Eater,Destiny Bond,324,149,219,326,186,256
+906,Breloom,Spore,Focus Punch,Giga Drain,Headbutt,262,359,196,140,156,262
+907,Metang,Light Screen,Psychic,Reflect,Metal Claw,261,273,299,147,196,122
+908,Skarmory,Toxic,Aerial Ace,Protect,Steel Wing,334,196,347,105,239,176
+909,Aggron,Thunderbolt,Protect,SolarBeam,Dragon Claw,281,350,396,197,157,136
+910,Metang,Light Screen,Psychic,Reflect,Metal Claw,261,273,299,147,196,122
+911,Skarmory,Toxic,Aerial Ace,Protect,Steel Wing,334,196,347,105,239,176
+912,Aggron,Thunderbolt,Protect,SolarBeam,Dragon Claw,281,350,396,197,157,136
+913,Seviper,Swagger,Crunch,Poison Fang,Giga Drain,335,243,204,222,141,135
+914,Shuckle,Toxic,Sandstorm,Protect,Rest,229,36,529,67,544,31
+915,Milotic,Ice Beam,Mirror Coat,Surf,Recover,354,126,204,284,297,183
+916,Seviper,Swagger,Crunch,Sludge Bomb,Giga Drain,350,212,171,299,157,166
+917,Steelix,Earthquake,Rock Slide,Explosion,Screech,354,226,436,147,229,86
+918,Gyarados,Dragon Dance,Return,Roar,Rest,394,315,194,140,299,198
+919,Regirock,Explosion,Superpower,Earthquake,AncientPower,324,284,421,132,246,121
+920,Registeel,Earthquake,Metal Claw,Toxic,Iron Defense,324,229,321,154,371,121
+921,Regice,Ice Beam,Amnesia,Thunder,Rest,312,108,259,270,459,121
+922,Articuno,Blizzard,Water Pulse,Aerial Ace,Reflect,322,206,269,248,286,269
+923,Zapdos,Thunder,Detect,Drill Peck,Light Screen,322,216,242,314,216,299
+924,Moltres,Fire Blast,Hyper Beam,Aerial Ace,Safeguard,322,236,251,314,206,279
