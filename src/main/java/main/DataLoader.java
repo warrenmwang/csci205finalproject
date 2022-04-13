@@ -51,34 +51,104 @@ public class DataLoader {
         // get HP,Atk,Def,Spa,SpD,Spe
     }
 
-    public ArrayList<Pokemon> getCSVFromOnline() throws IOException {
-        // get from online
-        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/Pokemon.csv");
-        Scanner scnr = new Scanner(url.openStream());
 
-        // skip first header line
+
+
+//    /**
+//     * TODO: this only works with the old CSV, but our Pokemon class has now been updated.
+//     *   This is now depreciated...
+//     * @return
+//     * @throws IOException
+//     */
+//    public ArrayList<Pokemon> getCSVFromOnline() throws IOException {
+//        // get from online
+//        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/Pokemon.csv");
+//        Scanner scnr = new Scanner(url.openStream());
+//
+//        // skip first header line
+//        scnr.nextLine();
+//
+//        Scanner CSVScanner;
+//
+//        // list of Pokemon to be created from CSV
+//        ArrayList<Pokemon> allPokemon = new ArrayList<>();
+//
+//        // loop over poke
+//        while(scnr.hasNextLine()){
+//            CSVScanner = new Scanner(scnr.nextLine());
+//            CSVScanner.useDelimiter(",");
+//
+//
+//            // for each poke
+//            String id = CSVScanner.next();
+//            String name = CSVScanner.next();
+//            String move1 = CSVScanner.next();
+//            String move2 = CSVScanner.next();
+//            String move3 = CSVScanner.next();
+//            String move4 = CSVScanner.next();
+//
+//            String HP_S = CSVScanner.next();
+//            double HP = Double.parseDouble(HP_S);
+//
+//            String Atk_S = CSVScanner.next();
+//            double Atk = Double.parseDouble(Atk_S);
+//
+//            String Def_S = CSVScanner.next();
+//            double Def = Double.parseDouble(Def_S);
+//
+//            String SpA_S = CSVScanner.next();
+//            double SpA = Double.parseDouble(SpA_S);
+//
+//            String SpD_S = CSVScanner.next();
+//            double SpD = Double.parseDouble(SpD_S);
+//
+//            String Spe_S = CSVScanner.next();
+//            double Spe = Double.parseDouble(Spe_S);
+//
+//
+//            // TODO image url/uri string
+//            String image = "CHANGEME";
+//
+//            ArrayList<Double> stats = new ArrayList<>();
+//            stats.add(HP);
+//            stats.add(Atk);
+//            stats.add(Def);
+//            stats.add(SpA);
+//            stats.add(SpD);
+//            stats.add(Spe);
+//
+//            ArrayList<String> moves = new ArrayList<>();
+//            moves.add(move1);
+//            moves.add(move2);
+//            moves.add(move3);
+//            moves.add(move4);
+//
+//            allPokemon.add(new Pokemon(id, name, image, stats, moves));
+//
+//        }
+//        return allPokemon;
+//    }
+
+
+    public ArrayList<Pokemon> getTESTSETPokemon() throws IOException {
+        // get from online, skip header line
+        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Pokemon.csv");
+        Scanner scnr = new Scanner(url.openStream());
         scnr.nextLine();
 
         Scanner CSVScanner;
+        ArrayList<Pokemon> allPoke = new ArrayList<>();
 
-        // list of Pokemon to be created from CSV
-        ArrayList<Pokemon> allPokemon = new ArrayList<>();
-
-        // loop over poke
         while(scnr.hasNextLine()){
             CSVScanner = new Scanner(scnr.nextLine());
             CSVScanner.useDelimiter(",");
 
-
+            // get attributes
             // for each poke
             String id = CSVScanner.next();
             String name = CSVScanner.next();
-            String move1 = CSVScanner.next();
-            String move2 = CSVScanner.next();
-            String move3 = CSVScanner.next();
-            String move4 = CSVScanner.next();
+            String image = CSVScanner.next();
             String HP_S = CSVScanner.next();
-
             double HP = Double.parseDouble(HP_S);
 
             String Atk_S = CSVScanner.next();
@@ -86,18 +156,25 @@ public class DataLoader {
 
             String Def_S = CSVScanner.next();
             double Def = Double.parseDouble(Def_S);
+
             String SpA_S = CSVScanner.next();
             double SpA = Double.parseDouble(SpA_S);
+
             String SpD_S = CSVScanner.next();
             double SpD = Double.parseDouble(SpD_S);
 
             String Spe_S = CSVScanner.next();
-
             double Spe = Double.parseDouble(Spe_S);
 
+            String move1 = CSVScanner.next();
+            String move2 = CSVScanner.next();
+            String move3 = CSVScanner.next();
+            String move4 = CSVScanner.next();
 
-            // TODO image url/uri string
-            String image = "CHANGEME";
+            String Status = CSVScanner.next(); // this is ignored
+            String type1 = CSVScanner.next();
+            String type2 = CSVScanner.next();
+            String item = CSVScanner.next();
 
             ArrayList<Double> stats = new ArrayList<>();
             stats.add(HP);
@@ -113,9 +190,33 @@ public class DataLoader {
             moves.add(move3);
             moves.add(move4);
 
-            allPokemon.add(new Pokemon(id, name, image, stats, moves));
+            ArrayList<String> types = new ArrayList<>();
+            types.add(type1);
+            types.add(type2);
 
+            ArrayList<String> items = new ArrayList<>();
+            items.add(item);
+
+            //(String id, String name, String image, ArrayList<Double> stats, ArrayList<String> moves, ArrayList<String> types, ArrayList<String> items){
+            allPoke.add(new Pokemon(id, name, image, stats, moves,types,items));
         }
-        return allPokemon;
+
+        return allPoke;
+    }
+
+    public ArrayList<ArrayList<String>> getTESTSETMoves() throws IOException {
+        // get from online, skip header line
+        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Moves.csv");
+        Scanner scnr = new Scanner(url.openStream());
+        scnr.nextLine();
+
+        ArrayList<>
+    }
+
+    public ArrayList<String> getTESTSETItems() throws IOException{
+        // get from online, skip header line
+        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Items.csv");
+        Scanner scnr = new Scanner(url.openStream());
+        scnr.nextLine();
     }
 }

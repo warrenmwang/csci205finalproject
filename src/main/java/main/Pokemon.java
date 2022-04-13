@@ -43,6 +43,10 @@ public class Pokemon {
     public Double getSpe() { return this.stats.get(5); }
     public ArrayList<Double> getStats() { return this.stats; }
 
+    //todo
+    public String getType() { return "FIRE";}
+    public double getAccurRate() { return 1.0;}
+
 
 
     // Setter/Update Methods
@@ -50,6 +54,7 @@ public class Pokemon {
     public void setStats(ArrayList<Double> stats) { this.stats = stats; }
     public void setIsAlive(boolean state) { this.isAlive = state; }
     public void setHp(double hp) { this.stats.set(0,hp);}
+    public void setSpAtk(double SpAtk) {this.stats.set(3,SpAtk);}
 
 
 

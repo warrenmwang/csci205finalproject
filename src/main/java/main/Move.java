@@ -1,4 +1,7 @@
+package main;
 
+import java.util.HashMap;
+import java.util.Random;
 
 public class Move {
 
@@ -23,12 +26,14 @@ public class Move {
         //Calculate the damage
         double damage = 0;
 
-        if(rand.nextInt(1000) < 1000 * BaseAccur * (1+DefAccurRate)){
+        if(new Random().nextInt(1000) < 1000 * BaseAccur * (1+DefAccurRate)){
             damage = BaseDamage * damageParam(Type,defendType);
+
+            // Move effect of halfing the special attack
+            attacker.getCurrPokemon().setSpAtk(attacker.getCurrPokemon().getSpAtk() * 0.5);
         }
 
-        // Move effect of halfing the special attack
-        attacker.setSpA(attacker.getSpA() * 0.5);
+
 
         // Pokemeon receives damage, check if alive
         defendePoke.setHp(defendePoke.getHP() - damage);

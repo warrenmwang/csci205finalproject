@@ -1,5 +1,9 @@
 package main;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+
 public class BattleMicro {
     private Player user;
     private Bot bot;
@@ -22,19 +26,19 @@ public class BattleMicro {
      */
     public void checkTurn(){
         if (user.getCurrPokemon().getSpe() > bot.getCurrPokemon().getSpe()){
-            whoseTurn = 1;
+            whoseTurn = true;
         } else {
-            whoseTurn = 0;
+            whoseTurn = false;
         }
     }
 
     // example of reflection API:
     // https://stackoverflow.com/questions/160970/how-do-i-invoke-a-java-method-when-given-the-method-name-as-a-string
-    public void Attack(Player attacker, String move, Player defender ){
-        private Move move =  new move();
+    public void Attack(Player attacker, String move, Player defender ) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Move moves =  new Move();
         Class<?>[] paramTypes = {Player.class, Player.class};
-        Method setNameMethod = move.getClass().getMethod(methodName, paramTypes);
-        setNameMethod.invoke(move, attacker, defender);
+        Method setNameMethod = moves.getClass().getMethod(move, paramTypes);
+        setNameMethod.invoke(moves, attacker, defender);
     }
 
     // TODO all of the functions
