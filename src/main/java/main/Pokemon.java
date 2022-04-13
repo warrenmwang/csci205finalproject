@@ -49,6 +49,16 @@ public class Pokemon {
     public void setStatusEffect(PokemonStatusEffect statusEffect){ this.statusEffect = statusEffect; }
     public void setStats(ArrayList<Double> stats) { this.stats = stats; }
     public void setIsAlive(boolean state) { this.isAlive = state; }
+    public void setHp(double hp) { this.stats.set(0,hp);}
+
+
+
+    public void checkIsAlive(){
+        if(this.getHP() <= 0){
+            this.isAlive = false;
+        }
+    }
+
 
     /**
      * TODO mainly for testing purposes, probably remove later.
