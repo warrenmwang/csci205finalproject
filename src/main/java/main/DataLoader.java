@@ -17,39 +17,39 @@ import java.util.Scanner;
 
 public class DataLoader {
 
-    // TODO while we can just use the csv hosted on bucknell's server, we could also
-    //  explore getting the data from the local resources folder
-    public void getCSVFromLocal() throws URISyntaxException, FileNotFoundException {
-
-        String dir = System.getProperty("user.dir");
-        System.out.println(dir);
-        dir += "/src/main/resouces/Pokemon.csv";
-
-        // Read in raw data from csv file
-        URL resource = getClass().getClassLoader().getResource("Pokemon.csv");
-        File file = new File(resource.toURI());
-
-        File file1 = new File(dir);
-
-        Scanner scnr = new Scanner(file1);
-
-
-
-        ArrayList<String> data = new ArrayList<>();
-        while(scnr.hasNextLine()){
-            System.out.println(scnr.nextLine());
-        }
-
-
-
-        // get id
-
-        // get name
-
-        // get moves
-
-        // get HP,Atk,Def,Spa,SpD,Spe
-    }
+//    // TODO while we can just use the csv hosted on bucknell's server, we could also
+//    //  explore getting the data from the local resources folder
+//    public void getCSVFromLocal() throws URISyntaxException, FileNotFoundException {
+//
+//        String dir = System.getProperty("user.dir");
+//        System.out.println(dir);
+//        dir += "/src/main/resouces/Pokemon.csv";
+//
+//        // Read in raw data from csv file
+//        URL resource = getClass().getClassLoader().getResource("Pokemon.csv");
+//        File file = new File(resource.toURI());
+//
+//        File file1 = new File(dir);
+//
+//        Scanner scnr = new Scanner(file1);
+//
+//
+//
+//        ArrayList<String> data = new ArrayList<>();
+//        while(scnr.hasNextLine()){
+//            System.out.println(scnr.nextLine());
+//        }
+//
+//
+//
+//        // get id
+//
+//        // get name
+//
+//        // get moves
+//
+//        // get HP,Atk,Def,Spa,SpD,Spe
+//    }
 
 
 

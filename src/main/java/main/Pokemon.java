@@ -8,6 +8,8 @@ public class Pokemon {
     private String image;
     private ArrayList<Double> stats;
     private ArrayList<String> moves;
+    private ArrayList<String> types;
+    private ArrayList<String> items;
     private PokemonStatusEffect statusEffect;
     private boolean isAlive;
 
@@ -20,12 +22,14 @@ public class Pokemon {
      * @param stats
      * @param moves
      */
-    public Pokemon(String id, String name, String image, ArrayList<Double> stats, ArrayList<String> moves){
+    public Pokemon(String id, String name, String image, ArrayList<Double> stats, ArrayList<String> moves, ArrayList<String> types, ArrayList<String> items){
         this.id = id;
         this.name = name;
         this.image = image;
         this.stats = stats;
         this.moves = moves;
+        this.types = types;
+        this.items = items;
         this.statusEffect = PokemonStatusEffect.NO_EFFECT;
         this.isAlive = true;
     }
@@ -42,6 +46,9 @@ public class Pokemon {
     public Double getSpDef() { return this.stats.get(4); }
     public Double getSpe() { return this.stats.get(5); }
     public ArrayList<Double> getStats() { return this.stats; }
+    public ArrayList<String> getTypes() { return this.types; }
+    public ArrayList<String> getMoves() { return this.moves; }
+    public ArrayList<String> getItems() { return this.items; }
 
     //todo
     public String getType() { return "FIRE";}

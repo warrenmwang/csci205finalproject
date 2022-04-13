@@ -6,9 +6,11 @@ import java.util.Random;
 public class Move {
 
     public double damageParam(String attackType, String defendType){
+        // use a 2d matrix,
+        HashMap<String, HashMap<String, Double>> x;
+
         return 0.5;
     }
-
 
 
     public void overHeat(Player attacker, Player defender){
@@ -19,9 +21,9 @@ public class Move {
 
         //Get the pokemon and their type information
         Pokemon attackPoke = attacker.getCurrPokemon();
-        Pokemon defendePoke = defender.getCurrPokemon();
-        String defendType = defendePoke.getType();
-        Double DefAccurRate = defendePoke.getAccurRate();
+        Pokemon defenderPoke = defender.getCurrPokemon();
+        String defendType = defenderPoke.getType();
+        Double DefAccurRate = defenderPoke.getAccurRate();
 
         //Calculate the damage
         double damage = 0;
@@ -36,7 +38,7 @@ public class Move {
 
 
         // Pokemeon receives damage, check if alive
-        defendePoke.setHp(defendePoke.getHP() - damage);
-        defendePoke.checkIsAlive();
+        defenderPoke.setHp(defenderPoke.getHP() - damage);
+        defenderPoke.checkIsAlive();
     }
 }
