@@ -9,7 +9,7 @@ public class BattleMicro {
      * Constructor
      */
     public BattleMicro(){
-
+        // create the
     }
 
     // TODO all of the functions
