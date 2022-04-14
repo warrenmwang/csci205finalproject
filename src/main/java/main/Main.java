@@ -43,11 +43,19 @@ public class Main {
 //        System.out.println("Expect Blaziken's Other Twin Brother: ");
 //        System.out.println(player.getCurrPokemon()); // expect id = 2
 
-        PokemonInventory pokeInv = new PokemonInventory();
-        HashMap<String, Pokemon> test = pokeInv.getAllPokemon();
-        for(String name : pokeInv.getAllPokemon().keySet()){
-            System.out.println(test.get(name));
-        }
-        System.out.printf("tot pokemon: %d\n", test.size());
+//        PokemonInventory pokeInv = new PokemonInventory();
+//        HashMap<String, Pokemon> test = pokeInv.getAllPokemon();
+//        for(String name : pokeInv.getAllPokemon().keySet()){
+//            System.out.println(test.get(name));
+//        }
+//        System.out.printf("tot pokemon: %d\n", test.size());
+        testTypeMatchup();
+    }
+
+        // test the type mult matrix
+        public static void testTypeMatchup(){
+            MovesInventory m = new MovesInventory();
+            System.out.println(m.damageParam("DRAGON", "DRAGON"));
     }
 }
+

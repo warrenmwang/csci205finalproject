@@ -194,29 +194,28 @@ public class DataLoader {
             types.add(type1);
             types.add(type2);
 
-            ArrayList<String> items = new ArrayList<>();
-            items.add(item);
+
 
             //(String id, String name, String image, ArrayList<Double> stats, ArrayList<String> moves, ArrayList<String> types, ArrayList<String> items){
-            allPoke.add(new Pokemon(id, name, image, stats, moves,types,items));
+            allPoke.add(new Pokemon(id, name, image, stats, moves, types, item));
         }
 
         return allPoke;
     }
 
-    public ArrayList<ArrayList<String>> getTESTSETMoves() throws IOException {
-        // get from online, skip header line
-        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Moves.csv");
-        Scanner scnr = new Scanner(url.openStream());
-        scnr.nextLine();
-
-        ArrayList<>
-    }
-
-    public ArrayList<String> getTESTSETItems() throws IOException{
-        // get from online, skip header line
-        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Items.csv");
-        Scanner scnr = new Scanner(url.openStream());
-        scnr.nextLine();
-    }
+//    public ArrayList<ArrayList<String>> getTESTSETMoves() throws IOException {
+//        // get from online, skip header line
+//        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Moves.csv");
+//        Scanner scnr = new Scanner(url.openStream());
+//        scnr.nextLine();
+//
+//        ArrayList<>
+//    }
+//
+//    public ArrayList<String> getTESTSETItems() throws IOException{
+//        // get from online, skip header line
+//        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Items.csv");
+//        Scanner scnr = new Scanner(url.openStream());
+//        scnr.nextLine();
+//    }
 }
