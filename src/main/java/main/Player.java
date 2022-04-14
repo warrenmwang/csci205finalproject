@@ -48,5 +48,6 @@ public class Player {
     public ArrayList<Pokemon> getPokemonTeam(){
         return pokemonTeam;
     }
+    public void setPokemonTeam(ArrayList<Pokemon> newTeam) { this.pokemonTeam = newTeam; }
 
 }
