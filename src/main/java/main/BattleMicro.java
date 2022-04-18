@@ -364,7 +364,7 @@ public class BattleMicro {
                 // read in user selection
                 SelectedMove = movesInventory.getMove(selectMove);
                 break;
-            } ;
+            }
             case ("forfeit"): {
                 System.out.println("Are you sure you want to forfeit? (y/n): ");
                 input = scnr.nextLine();
@@ -374,7 +374,7 @@ public class BattleMicro {
 
                 break;
             }
-            ;
+
         }
 
         return SelectedMove;

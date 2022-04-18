@@ -101,7 +101,8 @@ public class Player {
                 SelectedMove = new Move("Switch", choice);
                 break;
             }
-            ;
+
+
             case ("attack"): {
                 System.out.println("Which move do you want to choose?");
                 // print out the moves of the currently selected pokemon for the player to select from
@@ -116,7 +117,7 @@ public class Player {
                 SelectedMove = movesInventory.getMove(selectMove);
                 break;
             }
-            ;
+
             case ("forfeit"): {
                 System.out.println("Are you sure you want to forfeit? (y/n): ");
                 input = scnr.nextLine();
@@ -126,7 +127,7 @@ public class Player {
 
                 break;
             }
-            ;
+
         }
 
         return SelectedMove;

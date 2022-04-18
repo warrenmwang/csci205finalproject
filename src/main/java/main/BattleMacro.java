@@ -16,6 +16,9 @@
 
 package main;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
 public class BattleMacro {
     private int playerPokemonAlive;
     private int botPokemonAlive;
@@ -29,7 +32,7 @@ public class BattleMacro {
     /**
      * CONSTRUCTOR -- This will have to represent our most top level game loop.
      */
-    public BattleMacro(){
+    public BattleMacro() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
         // initialize the BattleMicro object
         battleMicro = new BattleMicro();
         // generate the 6 random pokemon teams for both player and bot
@@ -58,7 +61,7 @@ public class BattleMacro {
      * Main Game Loop. Calls functions on the BattleMicro object and other BattleMacro
      * objects when necessary to facilitate the progression of the game.
      */
-    public void mainGameLoop(){
+    public void mainGameLoop() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
         // Select the first player
         battleMicro.checkTurn();
 

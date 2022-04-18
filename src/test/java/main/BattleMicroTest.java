@@ -3,7 +3,9 @@ package main;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,7 +25,7 @@ class BattleMicroTest {
      * Test to see if we can generate 6 Random Pokemon Consistently
      */
     @Test
-    void generateRandomTeam() {
+    void generateRandomTeam() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
         // generate the 2 teams of 6 Pokemon randomly
         BattleMicro bm = new BattleMicro();
         bm.generateInitialPlayerRandomTeam();
@@ -44,7 +46,7 @@ class BattleMicroTest {
      * Test to see if player can correctly select 3 Pokemon from the 6 Pokemon initially given to them
      */
     @Test
-    void initPlayer() {
+    void initPlayer() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
         InputStream sysInOrig = System.in; // save System.in to be restored later
 
         // initialize the BattleMicro (initializes the PokemonInventory)
@@ -91,7 +93,7 @@ class BattleMicroTest {
      * Test choosing 3 pokemon for the bot team
      */
     @Test
-    void initBot() {
+    void initBot() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
         // generate 6 random pokemon and check it is randomly generated with 6 pokemon first
         BattleMicro bm = new BattleMicro();
         bm.generateInitialBotRandomTeam();
