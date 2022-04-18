@@ -12,6 +12,7 @@ public class Pokemon {
     private String item;
     private PokemonStatusEffect statusEffect;
     private boolean isAlive;
+    private ArrayList<Double> originalStats;
 
     /**
      * Constructor, initialize Pokemon with given information.
@@ -32,27 +33,43 @@ public class Pokemon {
         this.item = item;
         this.statusEffect = PokemonStatusEffect.NO_EFFECT;
         this.isAlive = true;
+        this.originalStats = stats;
+
     }
+    final private int HP = 0;
+    final private int ATK = 1;
+    final private int DEF = 2;
+    final private int SPATK = 3;
+    final private int SPDEF = 4;
+    final private int SPEED = 5;
+
 
     // Getter Methods
     public boolean getIsAlive() { return this.isAlive; }
     public String getName() { return this.name;}
     public String getID() {return this.id;}
     public PokemonStatusEffect getStatusEffect() { return this.statusEffect; }
-    public Double getHP() { return this.stats.get(0); }
-    public Double getAtk() { return this.stats.get(1); }
-    public Double getDef() { return this.stats.get(2); }
-    public Double getSpAtk() { return this.stats.get(3); }
-    public Double getSpDef() { return this.stats.get(4); }
-    public Double getSpe() { return this.stats.get(5); }
+    public Double getHP() { return this.stats.get(HP); }
+    public Double getAtk() { return this.stats.get(ATK); }
+    public Double getDef() { return this.stats.get(DEF); }
+    public Double getSpAtk() { return this.stats.get(SPATK); }
+    public Double getSpDef() { return this.stats.get(SPDEF); }
+    public Double getSpe() { return this.stats.get(SPEED); }
     public ArrayList<Double> getStats() { return this.stats; }
     public ArrayList<String> getTypes() { return this.types; }
     public ArrayList<String> getMoves() { return this.moves; }
     public String getItems() { return this.item; }
 
-    //todo
-    public String getType() { return "FIRE";}
-    public double getAccurRate() { return 1.0;}
+    public Double getMaxHp() {return this.originalStats.get(HP);}
+
+
+    public String getType1() { return types.get(0);}
+    public String getType2() { return types.get(1);}
+    //public double getAccurRate() { return 1.0;}
+
+    public String getMove(int index){
+        return moves.get(index);
+    }
 
 
 
@@ -60,8 +77,12 @@ public class Pokemon {
     public void setStatusEffect(PokemonStatusEffect statusEffect){ this.statusEffect = statusEffect; }
     public void setStats(ArrayList<Double> stats) { this.stats = stats; }
     public void setIsAlive(boolean state) { this.isAlive = state; }
-    public void setHp(double hp) { this.stats.set(0,hp);}
-    public void setSpAtk(double SpAtk) {this.stats.set(3,SpAtk);}
+    public void setHp(double hp) { this.stats.set(HP,hp);}
+    public void setAtk(double Atk) {this.stats.set(ATK, Atk);}
+    public void setDef(double Def) { this.stats.set(DEF,Def);}
+    public void setSpAtk(double SpAtk) {this.stats.set(SPATK,SpAtk);}
+    public void setSpDef(double SpDef) {this.stats.set(SPDEF,SpDef);}
+    public void setSpe(double spe) { this.stats.set(SPEED, spe);}
 
 
 
@@ -70,6 +91,34 @@ public class Pokemon {
             this.isAlive = false;
         }
     }
+
+
+    public void receiveDamage(double damage){
+        this.setHp(this.getHP()-damage);
+        this.checkIsAlive();
+    }
+
+    public void heal(double heal){
+        if((this.getMaxHp()-this.getHP() )< heal){
+            this.setHp(this.getMaxHp());
+        } else{
+            this.setHp(this.getHP() + heal);
+        }
+    }
+
+    public void switch_reset(){
+        ArrayList<Double> tempStats = this.originalStats;
+        tempStats.set(HP,this.getHP());
+        this.setStats(tempStats);
+        this.setStatusEffect(PokemonStatusEffect.NO_EFFECT);
+    }
+
+    public void thorough_reset(){
+        this.setStats(this.originalStats);
+        this.setStatusEffect(PokemonStatusEffect.NO_EFFECT);
+        this.setIsAlive(true);
+    }
+
 
 
     /**

@@ -2,11 +2,14 @@
 package main;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         // create a pokemon
 //        ArrayList<Double> stats = new ArrayList<>();
 //        stats.add(301);
@@ -49,12 +52,74 @@ public class Main {
 //            System.out.println(test.get(name));
 //        }
 //        System.out.printf("tot pokemon: %d\n", test.size());
-        testTypeMatchup();
+
+        //testTypeMatchup();
+
+        //test moveloader
+//        DataLoader data = new DataLoader();
+//        HashMap<String,Move> a = data.getTESTSETMoves();
+//
+//        for (Map.Entry<String, Move> entry : a.entrySet()) {
+//            System.out.println(entry.getKey()+" : "+entry.getValue());
+//        }
+
+        //test attack
+        DataLoader data1 = new DataLoader();
+        PokemonInventory pokemonInventory= new PokemonInventory();
+        HashMap<String, Pokemon> pokemap = pokemonInventory.getAllPokemon();
+        HashMap<String,Move> movemap = data1.getTESTSETMoves();
+        ArrayList<Pokemon> Player1poke = new ArrayList<>();
+        Player1poke.add(pokemap.get("1"));
+        Player1poke.add(pokemap.get("2"));
+        Player player1 = new Player(Player1poke);
+
+        ArrayList<Pokemon> Player2poke = new ArrayList<>();
+        Player2poke.add(pokemap.get("3"));
+        Player2poke.add(pokemap.get("4"));
+        Player player2 = new Player(Player2poke);
+
+        /**
+         * Change this index to choose different move
+         */
+        String moveName = player1.getCurrPokemon().getMove(0);
+        Move move = movemap.get(moveName);
+        Move overHeat = movemap.get("overheat");
+
+        System.out.println("attacker:");
+        System.out.println(player1.getCurrPokemon());
+        System.out.println("defender:");
+        System.out.println(player2.getCurrPokemon());
+
+        System.out.println("\n\n");
+        System.out.println("move chosen: " + moveName);
+        System.out.println(movemap.get(moveName));
+
+        BattleMicro battleMicro = new BattleMicro();
+        battleMicro.Attack(player1,move,player2);
+
+        System.out.println("\n \n \n");
+        System.out.println("attacker:");
+        System.out.println(player1.getCurrPokemon());
+        System.out.println("defender");
+        System.out.println(player2.getCurrPokemon());
+
+
     }
 
         // test the type mult matrix
         public static void testTypeMatchup(){
-            MovesInventory m = new MovesInventory();
+            MovesInventory m = null;
+            try {
+                m = new MovesInventory();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            }
             System.out.println(m.damageParam("DRAGON", "DRAGON"));
     }
 }

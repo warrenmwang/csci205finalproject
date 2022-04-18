@@ -13,6 +13,8 @@ import java.net.URL;
 import java.net.URISyntaxException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class DataLoader {
@@ -203,14 +205,26 @@ public class DataLoader {
         return allPoke;
     }
 
-//    public ArrayList<ArrayList<String>> getTESTSETMoves() throws IOException {
-//        // get from online, skip header line
-//        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Moves.csv");
-//        Scanner scnr = new Scanner(url.openStream());
-//        scnr.nextLine();
-//
-//        ArrayList<>
-//    }
+    public HashMap<String,Move> getTESTSETMoves() throws IOException {
+        HashMap<String,Move> allMoves = new HashMap<>();
+
+        // get from online, skip header line
+        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Moves.csv");
+        Scanner scnr = new Scanner(url.openStream());
+        scnr.nextLine();
+
+        Scanner moveScanner;
+        while(scnr.hasNextLine()){
+            moveScanner = new Scanner(scnr.nextLine());
+            moveScanner.useDelimiter(",");
+            String name = moveScanner.next();
+            String movestats = moveScanner.nextLine().substring(1);
+            allMoves.put(name, new Move(name,movestats));
+        }
+
+        return allMoves;
+
+    }
 //
 //    public ArrayList<String> getTESTSETItems() throws IOException{
 //        // get from online, skip header line

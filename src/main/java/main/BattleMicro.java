@@ -42,8 +42,15 @@ public class BattleMicro {
         this.user = new Player(team1);
         this.bot = new Bot(team2, 1); // TODO still have difficulty level? temporary set to 1
 
-        // TODO: prompt user to choose 3 from the random 6 chosen for them
-        initPlayer();
+        // TODO: prompt user to choose 3 from the random 6 chosen for them, then initialize bot's team
+        //initPlayer();
+        //initBot();
+        
+        // compares the speed of the first pokemon in both player's teams
+        // the faster one get's the first turn
+
+
+
 
     }
 
@@ -60,11 +67,16 @@ public class BattleMicro {
 
     // example of reflection API:
     // https://stackoverflow.com/questions/160970/how-do-i-invoke-a-java-method-when-given-the-method-name-as-a-string
-    public void Attack(Player attacker, String moveName, Player defender ) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-        MovesInventory moves =  new MovesInventory();
-        Class<?>[] paramTypes = {Player.class, Player.class};
-        Method setNameMethod = moves.getClass().getMethod(moveName, paramTypes);
-        setNameMethod.invoke(moves, attacker, defender);
+    public void Attack(Player attacker, Move move, Player defender ) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        MovesInventory moves = null;
+        try {
+            moves = new MovesInventory();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Class<?>[] paramTypes = {Player.class, Player.class,Move.class};
+        Method setNameMethod = moves.getClass().getMethod(move.getName(), paramTypes);
+        setNameMethod.invoke(moves, attacker, defender,move);
     }
 
 
@@ -146,10 +158,39 @@ public class BattleMicro {
 
     }
 
-    // TODO initialize the team for the bot (right now they are given 6 random pokemon as well)
-    //   should we randomly select 3 ?
-    //   or should we pick wisely?
+    // choose completely random pokemon for bot's team
     public void initBot(){
+        Random rand = new Random();
+        ArrayList<String> selectedIDs = new ArrayList<>();
+        // choose 3 random unique id's
+        int numIdsChosen = 0;
+        while(true){
+            int id = rand.nextInt(6);
+            if(! selectedIDs.contains(id)){
+                selectedIDs.add(String.format("%d",id));
+                numIdsChosen++;
+            }
+            if(numIdsChosen == 3) break;
+        }
+
+        // now update the pokemon team of the player by removing
+        // all pokemon whose id's are not in the selected id's list
+        ArrayList<Pokemon> team = bot.getPokemonTeam();
+        for(int i = 0 ; i < team.size() ; i++){
+            // if selected id's does NOT contain the id of the current pokemon, remove it from the team
+            if( ! selectedIDs.contains(team.get(i).getID())){
+                team.remove(i);
+            }
+        }
+
+        // check there's only 3 pokemon in the new team and set player's team to be it
+        if(team.size() == 3){
+            bot.setPokemonTeam(team);
+        }else{
+            // this shouldn't happen but...just in case
+            System.out.println("SOMETHING WENT WRONG");
+            System.exit(1);
+        }
 
     }
 }
