@@ -13,8 +13,8 @@ public class BattleMicro {
     private Bot bot;
     private boolean whoseTurn; // 1 for Player, 0 for Bot
     
-    private ArrayList<Pokemon> team1;   // holds team for user
-    private ArrayList<Pokemon> team2;   // holds team for bot
+    private ArrayList<Pokemon> userTeam;   // holds team for user
+    private ArrayList<Pokemon> botTeam;   // holds team for bot
 
     private ArrayList<Pokemon> AtkDef = new ArrayList<>(2);
     private Pokemon Attaker;
@@ -31,20 +31,26 @@ public class BattleMicro {
         // generate random pokemon teams and then assign them to player and bot
         // they will be prompted to pick from their teams
         try {
+            System.out.println("BattleMicro - Creating PokemonInventory");
             pokemonInventory = new PokemonInventory();
         }
         catch(IOException e){
             // shouldn't happen.
         }
-        team1 = generateRandomTeam();
-        team2 = generateRandomTeam();
+        System.out.println("Generating the userTeam");
+        userTeam = generateRandomTeam();
+        System.out.println("Generating the botTeam");
+        botTeam = generateRandomTeam();
 
-        this.user = new Player(team1);
-        this.bot = new Bot(team2, 1); // TODO still have difficulty level? temporary set to 1
+        this.user = new Player(userTeam);
+        this.bot = new Bot(botTeam, 1); // TODO still have difficulty level? temporary set to 1
+
 
         // TODO: prompt user to choose 3 from the random 6 chosen for them, then initialize bot's team
-        //initPlayer();
-        //initBot();
+        System.out.println("Prompting the player to choose 3 pokemon.");
+        initPlayer();
+        System.out.println("Randomly selecting 3 Pokemon for the BOT");
+        initBot();
         
         // compares the speed of the first pokemon in both player's teams
         // the faster one get's the first turn
@@ -53,6 +59,10 @@ public class BattleMicro {
 
 
     }
+
+    // getter method for user and bot teams
+    public ArrayList<Pokemon> getUserTeam(){ return this.userTeam; }
+    public ArrayList<Pokemon> getBotTeam() { return this.botTeam; }
 
     /**
      * check who moves first
@@ -123,6 +133,13 @@ public class BattleMicro {
     public void initPlayer(){
         // TODO: for now we will use the terminal as our interface of interaction
         // TODO: for now also assuming user enters input in 100% correctly ...
+
+        // print out the 6 Pokemon options that the user can choose from
+        ArrayList<Pokemon> team = user.getPokemonTeam();
+        for(int i = 0; i < team.size(); i++){
+            System.out.println(team.get(i));
+        }
+
         int n = 3;
         String id;
         ArrayList<String> selectedIDs = new ArrayList<>(3);
@@ -132,14 +149,14 @@ public class BattleMicro {
         System.out.println("Please choose 3 from the 6 Pokemon shown here:");
         while(n > 0){
             System.out.printf("You have %d choices remaining. Please type the ID of the Pokemon that you want: ", n);
-            id = scnr.next();
+            id = scnr.nextLine();
             selectedIDs.add(id);
             n--;
         }
 
         // now update the pokemon team of the player by removing
         // all pokemon whose id's are not in the selected id's list
-        ArrayList<Pokemon> team = user.getPokemonTeam();
+
         for(int i = 0 ; i < team.size() ; i++){
             // if selected id's does NOT contain the id of the current pokemon, remove it from the team
             if( ! selectedIDs.contains(team.get(i).getID())){
@@ -161,31 +178,19 @@ public class BattleMicro {
     // choose completely random pokemon for bot's team
     public void initBot(){
         Random rand = new Random();
-        ArrayList<String> selectedIDs = new ArrayList<>();
-        // choose 3 random unique id's
-        int numIdsChosen = 0;
-        while(true){
-            int id = rand.nextInt(6);
-            if(! selectedIDs.contains(id)){
-                selectedIDs.add(String.format("%d",id));
-                numIdsChosen++;
-            }
-            if(numIdsChosen == 3) break;
+
+        // generate 3 random numbers and remove the corresponding pokemon from the 6
+        int randIndex;
+        for(int i = 0 ; i < 3 ; i++) {
+            randIndex = rand.nextInt(botTeam.size());
+            botTeam.remove(randIndex);
         }
 
-        // now update the pokemon team of the player by removing
-        // all pokemon whose id's are not in the selected id's list
-        ArrayList<Pokemon> team = bot.getPokemonTeam();
-        for(int i = 0 ; i < team.size() ; i++){
-            // if selected id's does NOT contain the id of the current pokemon, remove it from the team
-            if( ! selectedIDs.contains(team.get(i).getID())){
-                team.remove(i);
-            }
-        }
+
 
         // check there's only 3 pokemon in the new team and set player's team to be it
-        if(team.size() == 3){
-            bot.setPokemonTeam(team);
+        if(botTeam.size() == 3){
+            return;
         }else{
             // this shouldn't happen but...just in case
             System.out.println("SOMETHING WENT WRONG");

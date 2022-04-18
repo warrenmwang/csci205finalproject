@@ -6,13 +6,14 @@ public class Pokemon {
     private String id;
     private String name;
     private String image;
-    private ArrayList<Double> stats;
+    private ArrayList<Double> currStats;
     private ArrayList<String> moves;
     private ArrayList<String> types;
     private String item;
     private PokemonStatusEffect statusEffect;
     private boolean isAlive;
     private ArrayList<Double> originalStats;
+    private int turnsActive = 0;
 
     /**
      * Constructor, initialize Pokemon with given information.
@@ -27,7 +28,7 @@ public class Pokemon {
         this.id = id;
         this.name = name;
         this.image = image;
-        this.stats = stats;
+        this.currStats = stats;
         this.moves = moves;
         this.types = types;
         this.item = item;
@@ -49,13 +50,13 @@ public class Pokemon {
     public String getName() { return this.name;}
     public String getID() {return this.id;}
     public PokemonStatusEffect getStatusEffect() { return this.statusEffect; }
-    public Double getHP() { return this.stats.get(HP); }
-    public Double getAtk() { return this.stats.get(ATK); }
-    public Double getDef() { return this.stats.get(DEF); }
-    public Double getSpAtk() { return this.stats.get(SPATK); }
-    public Double getSpDef() { return this.stats.get(SPDEF); }
-    public Double getSpe() { return this.stats.get(SPEED); }
-    public ArrayList<Double> getStats() { return this.stats; }
+    public Double getHP() { return this.currStats.get(HP); }
+    public Double getAtk() { return this.currStats.get(ATK); }
+    public Double getDef() { return this.currStats.get(DEF); }
+    public Double getSpAtk() { return this.currStats.get(SPATK); }
+    public Double getSpDef() { return this.currStats.get(SPDEF); }
+    public Double getSpe() { return this.currStats.get(SPEED); }
+    public ArrayList<Double> getStats() { return this.currStats; }
     public ArrayList<String> getTypes() { return this.types; }
     public ArrayList<String> getMoves() { return this.moves; }
     public String getItems() { return this.item; }
@@ -75,14 +76,14 @@ public class Pokemon {
 
     // Setter/Update Methods
     public void setStatusEffect(PokemonStatusEffect statusEffect){ this.statusEffect = statusEffect; }
-    public void setStats(ArrayList<Double> stats) { this.stats = stats; }
+    public void setStats(ArrayList<Double> stats) { this.currStats = stats; }
     public void setIsAlive(boolean state) { this.isAlive = state; }
-    public void setHp(double hp) { this.stats.set(HP,hp);}
-    public void setAtk(double Atk) {this.stats.set(ATK, Atk);}
-    public void setDef(double Def) { this.stats.set(DEF,Def);}
-    public void setSpAtk(double SpAtk) {this.stats.set(SPATK,SpAtk);}
-    public void setSpDef(double SpDef) {this.stats.set(SPDEF,SpDef);}
-    public void setSpe(double spe) { this.stats.set(SPEED, spe);}
+    public void setHp(double hp) { this.currStats.set(HP,hp);}
+    public void setAtk(double Atk) {this.currStats.set(ATK, Atk);}
+    public void setDef(double Def) { this.currStats.set(DEF,Def);}
+    public void setSpAtk(double SpAtk) {this.currStats.set(SPATK,SpAtk);}
+    public void setSpDef(double SpDef) {this.currStats.set(SPDEF,SpDef);}
+    public void setSpe(double spe) { this.currStats.set(SPEED, spe);}
 
 
 
@@ -127,6 +128,6 @@ public class Pokemon {
      */
     @Override
     public String toString() {
-        return String.format("id: %s\nname: %s\nimage: %s\nstats: %s\nmoves: %s\nstatusEffect: %s\nisAlive: %s\n", id, name, image, stats, moves, statusEffect, isAlive);
+        return String.format("id: %s\nname: %s\nimage: %s\nstats: %s\nmoves: %s\nstatusEffect: %s\nisAlive: %s\n", id, name, image, currStats, moves, statusEffect, isAlive);
     }
 }

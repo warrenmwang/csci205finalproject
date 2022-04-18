@@ -80,6 +80,14 @@ public class MovesInventory {
         String moveType = move.getType();
         String designation = move.getDesignation();
 
+        //accounts for critical hits
+        double criticalMult = new Random().nextInt(24);
+        if (criticalMult == 17.0){
+            criticalMult = 2;
+            System.out.println("Wow! A critical hit!");
+        }
+        else {criticalMult = 1;}
+
         // TODO
         // check type of move against defender's both types
 
@@ -117,11 +125,12 @@ public class MovesInventory {
 
         double dmgVariance = (new Random().nextInt(150)+850)/1000.0;;
         dmg = dmg * dmgVariance;
-        dmg = dmg * modifier;
+        dmg = dmg * modifier * criticalMult;
 //      System.out.println(stab);
-        System.out.println(dmgVariance);
-        System.out.println(modifier);
-        System.out.println(dmg);
+//        System.out.println(criticalMult);
+//        System.out.println(dmgVariance);
+//        System.out.println(modifier);
+//        System.out.println(dmg);
         return Math.ceil(dmg); //rounds up damage to prevent endless battles
     }
 
