@@ -1,6 +1,7 @@
 package main;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Pokemon {
     private String id;
@@ -119,6 +120,7 @@ public class Pokemon {
         this.setStatusEffect(PokemonStatusEffect.NO_EFFECT);
         this.setIsAlive(true);
     }
+
 
 
 

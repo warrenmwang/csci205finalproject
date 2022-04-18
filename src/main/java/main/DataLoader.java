@@ -222,6 +222,10 @@ public class DataLoader {
             allMoves.put(name, new Move(name,movestats));
         }
 
+        //add switch move
+        allMoves.put("Switch", new Move("Switch","0"));
+
+
         return allMoves;
 
     }
