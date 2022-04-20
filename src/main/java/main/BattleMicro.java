@@ -15,9 +15,12 @@ public class BattleMicro {
     private Bot bot;
     private boolean whoseTurn; // 1 for Player, 0 for Bot
     private boolean forfeitStatus;
+    private boolean gameOverStatus; // false for game in progress, true for game over
+    private boolean playerWonStatus; // only use when game is over, false for player lost, true for player won
 
-    private ArrayList<Pokemon> userTeam;   // holds team for user
-    private ArrayList<Pokemon> botTeam;   // holds team for bot
+
+    private ArrayList<Pokemon> userTeam;   // only used to generate the initial Player team
+    private ArrayList<Pokemon> botTeam;   // only used to generate the initial Bot team
 
     private ArrayList<Pokemon> AtkDef = new ArrayList<>(2);
     private Pokemon Attaker;
@@ -28,6 +31,10 @@ public class BattleMicro {
 
     private Player firstPlayer;
     private Player secondPlayer;
+
+    private Move firstMove;
+    private Move secondMove;
+
 
     /**
      * Constructor
@@ -41,6 +48,8 @@ public class BattleMicro {
 
         // initialize any instance vars
         forfeitStatus = false;
+        gameOverStatus = false;
+        playerWonStatus = false;
     }
 
 
@@ -49,18 +58,40 @@ public class BattleMicro {
     public ArrayList<Pokemon> getBotTeam() { return this.botTeam; }
     public boolean getWhoseTurn(){ return this.whoseTurn; }
     public boolean getForfeitStatus(){ return this.forfeitStatus; }
+    public boolean getGameOverStatus(){ return this.gameOverStatus; }
+    public boolean getPlayerWonStatus(){ return this.playerWonStatus; }
 
     // setter methods
     public void setUserTeam(ArrayList<Pokemon> team){ this.userTeam = team; }
     public void setBotTeam(ArrayList<Pokemon> team){ this.botTeam = team; }
     public void setForfeitStatus(boolean status){ this.forfeitStatus = status; }
+    public void setGameOverStatus(boolean status){ this.gameOverStatus = status; }
+    public void setPlayerWonStatus(boolean status){ this.playerWonStatus = status; }
 
 
 
     /**
      * check who moves first
      */
-    public void checkTurn(){
+    public void checkTurn(Move userMove, Move botMove){
+        String moveName1 = userMove.getName();
+        String moveName2 = botMove.getName();
+
+        if(XOR(moveName1.equals("Switch"),moveName2.equals("Switch"))){
+            if(moveName1.equals("Switch")){
+                firstPlayer = user;
+                firstMove = userMove;
+                secondPlayer = bot;
+                secondMove = botMove;
+            } else{
+                firstPlayer = bot;
+                firstMove = botMove;
+                secondPlayer = user;
+                secondMove = userMove;
+            }
+            return;
+        }
+
         if (user.getCurrPokemon().getSpe() > bot.getCurrPokemon().getSpe()){
             whoseTurn = true;
             firstPlayer = user;
@@ -175,6 +206,13 @@ public class BattleMicro {
             }
         }
 
+        // TODO remove me
+        // print out selected pokemon
+        System.out.println("You just selected the following pokemon:");
+        for(Pokemon p: newTeam){
+            System.out.println(p);
+        }
+
         // update player's team in the Player object AND in the BattleMicro object
         setUserTeam(newTeam);
     }
@@ -192,17 +230,23 @@ public class BattleMicro {
             randIndex = rand.nextInt(botTeam.size());
             botTeam.remove(randIndex);
         }
+
+        //TODO remove me
+        System.out.println("Printing BOT's Team: ");
+        for(Pokemon p : botTeam){
+            System.out.println(p);
+        }
     }
 
     /**
      * Constructs the Player object once their team has been completely chosen and is ready to play.
      */
-    public void constructPlayer(){ user = new Player(userTeam); }
+    public void constructPlayer()throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{ user = new Player(userTeam); }
 
     /**
      * Constructs the Bot object once their team has been completely chosen and is ready to play.
      */
-    public void constructBot(){ bot = new Bot(botTeam); }
+    public void constructBot()throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{ bot = new Bot(botTeam); }
 
 
     /**
@@ -245,145 +289,126 @@ public class BattleMicro {
      * Does everything within a single round of a Battle.
      */
     public void playOneTurn() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
+
+        // get player's moves
+        Move userMove = user.chooseMove();
+        Move botMove = bot.chooseMove();
+
+        // See who gets the first move in this round
+        checkTurn(userMove,botMove);
+
+        // TODO remove me
+        System.out.println("First player turn:");
+
+        // check if forfeit
+        if(firstPlayer.getForfeitStatus() || getGameOverStatus()){
+            return;
+        }
+
+        // first move player goes
+        Attack(firstPlayer, firstMove , secondPlayer);
+
+        // checks to see if game is over if a pokemon has died
+        checkDeath();
+
+        // Quit if one of the following applies:
+        // 1. Forfeit
+        // 2. Player has won
+        // 3. Player has lost
+        // Battle Macro will need to know if player has won or loss (get the playerwonstatus)
+        if(secondPlayer.getForfeitStatus() || getGameOverStatus()){
+            return;
+        }
+
+
+        // If game is still in progress, second move player goes:
+        Attack(secondPlayer, secondMove, firstPlayer);
+
+
+
+        // checks to see if game is over if a pokemon has died
+        checkDeath();
+        // Quit if one of the following applies:
+        // 1. Forfeit
+        // 2. Player has won
+        // 3. Player has lost
+        // Battle Macro will need to know if player has won or loss (get the playerwonstatus)
+        if(secondPlayer.getForfeitStatus() || getGameOverStatus()){
+            return;
+        }
+
+        // end turn effect
+        endTurnEffect(firstPlayer,secondPlayer);
+
+
+
+    }
+
+
+
+
+//    public Move chooseMove(){
+//        Move SelectedMove = new Move("blank","");
+//
 //        // player can either switch, attack, or forfeit
 //        System.out.println("Player, do you want to switch, attack, or forfeit?");
 //        Scanner scnr = new Scanner(System.in);
 //        String input = scnr.nextLine();
-//        switch(input){
-//            case("Switch"):{
+//        switch(input) {
+//            case ("Switch"): {
 //                // print out currently selected pokemon
 //                System.out.println("Your currently selected Pokemon: ");
 //                System.out.println(user.getCurrPokemon());
 //
 //                // print out other pokemon user can switch their current pokemon with
 //                System.out.println("Other Pokemon you can switch with: ");
-//                for(int i = 1; i < user.getNumberOfPokemon(); i++){
+//                for (int i = 1; i < user.getNumberOfPokemon(); i++) {
 //                    System.out.println(user.getPokemonTeam().get(i));
 //                }
 //
 //                // get user selection
 //                System.out.println("Which pokemon do you want to switch?");
-//                Scanner scnr1 = new Scanner(System.in);
-//                String choice = scnr1.next();
-//                Move SelectedMove = new Move("Switch", choice);
+//                String choice = readInputLine();
+//
+//                //todo: change name into ID/index
+//                //might not need in the future, cause we can hard code within javaFX
+//                SelectedMove = new Move("Switch", choice);
 //                break;
-//            };
-//            case("attack"):{
+//            }
+//
+//            case ("attack"): {
 //                System.out.println("Which move do you want to choose?");
 //                // print out the moves of the currently selected pokemon for the player to select from
 //                System.out.println("~~~Moves available~~~");
-//                for(String move : user.getCurrPokemon().getMoves()){
+//                for (String move : user.getCurrPokemon().getMoves()) {
 //                    System.out.println(move);
 //                }
 //                System.out.println("~~~~~~~~~~~~");
 //
+//                String selectMove = readInputLine();
 //                // read in user selection
-//                Move SelectedMove = chooseMove();
+//                SelectedMove = movesInventory.getMove(selectMove);
 //                break;
-//            };
-//            case("forfeit"):{
+//            }
+//            case ("forfeit"): {
 //                System.out.println("Are you sure you want to forfeit? (y/n): ");
 //                input = scnr.nextLine();
-//                if(input.equalsIgnoreCase("y")){
+//                if (input.equalsIgnoreCase("y")) {
 //                    setForfeitStatus(true);
 //                }
+//
 //                break;
-//            };
+//            }
+//
 //        }
-
-        checkTurn();
-        Move move1 = firstPlayer.chooseMove();
-
-        // quit if user forfeit
-        if(firstPlayer.getForfeitStatus()){
-            return;
-        }
-
-        Attack(firstPlayer, move1 , secondPlayer);
-
-        checkDeath();
-
-        Move move2 = secondPlayer.chooseMove();
-
-        // quit if user forfeit
-        if(secondPlayer.getForfeitStatus()){
-            return;
-        }
-
-        Attack(secondPlayer, move2, firstPlayer);
-
-
-
-        // use the player's selectedMove
-
-
-
-    }
-
-
-
-    public Move chooseMove(){
-        Move SelectedMove = new Move("blank","");
-
-        // player can either switch, attack, or forfeit
-        System.out.println("Player, do you want to switch, attack, or forfeit?");
-        Scanner scnr = new Scanner(System.in);
-        String input = scnr.nextLine();
-        switch(input) {
-            case ("Switch"): {
-                // print out currently selected pokemon
-                System.out.println("Your currently selected Pokemon: ");
-                System.out.println(user.getCurrPokemon());
-
-                // print out other pokemon user can switch their current pokemon with
-                System.out.println("Other Pokemon you can switch with: ");
-                for (int i = 1; i < user.getNumberOfPokemon(); i++) {
-                    System.out.println(user.getPokemonTeam().get(i));
-                }
-
-                // get user selection
-                System.out.println("Which pokemon do you want to switch?");
-                String choice = readInputLine();
-
-                //todo: change name into ID/index
-
-                SelectedMove = new Move("Switch", choice);
-                break;
-            }
-
-            case ("attack"): {
-                System.out.println("Which move do you want to choose?");
-                // print out the moves of the currently selected pokemon for the player to select from
-                System.out.println("~~~Moves available~~~");
-                for (String move : user.getCurrPokemon().getMoves()) {
-                    System.out.println(move);
-                }
-                System.out.println("~~~~~~~~~~~~");
-
-                String selectMove = readInputLine();
-                // read in user selection
-                SelectedMove = movesInventory.getMove(selectMove);
-                break;
-            }
-            case ("forfeit"): {
-                System.out.println("Are you sure you want to forfeit? (y/n): ");
-                input = scnr.nextLine();
-                if (input.equalsIgnoreCase("y")) {
-                    setForfeitStatus(true);
-                }
-
-                break;
-            }
-
-        }
-
-        return SelectedMove;
-
-
-
-
-
-    }
+//
+//        return SelectedMove;
+//
+//
+//
+//
+//
+//    }
 
     private String readInputLine(){
         Scanner scnr = new Scanner(System.in);
@@ -396,10 +421,56 @@ public class BattleMicro {
     // if the user's pokemon has died, let the user choose
     // if the bot's pokemon has died, just choose the next pokemon in its array
     // need to a designation somewhere that the pokemon has died and cannot be reselected
-    public void checkDeath(){
+
+    /**
+     * After Pokemon have attacked, checks to see if a Pokemon has died AND
+     * if player has won or loss. Will set the gameOverStatus and playerWonStatus
+     * if player has won or loss.
+     *
+     * Depends on the checkDeathHelper() function.
+     */
+    private void checkDeath() {
+        // check if a pokemon has died
+        // check to see if a pokemon has died, whether player of bot have
+        // no more alive pokemon to switch with meaning there is a WINNER/LOSER
+        switch(checkDeathHelper()){
+            // player has lost
+            case(3):{
+                setGameOverStatus(true);
+                setPlayerWonStatus(false);
+                break;
+            }
+            // player has won
+            case(4):{
+                setGameOverStatus(true);
+                setPlayerWonStatus(true);
+                break;
+            }
+            // every other case
+            default:{
+                // do nothing
+                break;
+            }
+        }
+    }
+
+    /**
+     * Returns 0 if no pokemon has died
+     * Returns 1 if Player Pokemon has died and can continue playing
+     * Returns 2 if Bot Pokemon has died and can continue playing
+     * Returns 3 if Player Pokemon has died and CANNOT continue playing (player lost)
+     * Returns 4 if Bot Pokemon has died and CANNOT continue playing (player wins)
+     * @return
+     */
+    public int checkDeathHelper(){
+
         if(user.getCurrPokemon().getHP() <= 0){
             // user's pokemon has died
 
+            // first set user's curr pokemon isAlive status to false
+            user.getCurrPokemon().setIsAlive(false);
+
+            // check to see if player has any remaining pokemon to choose from
             // get all pokemon user has that are alive (if any)
             ArrayList<Pokemon> alivePoke = new ArrayList<>();
             for(Pokemon p : user.getPokemonTeam()){
@@ -407,6 +478,7 @@ public class BattleMicro {
                     alivePoke.add(p);
                 }
             }
+
             // if player has pokemon to choose from
             if(alivePoke.size() > 0){
                 // print out pokemon they can choose from
@@ -421,26 +493,52 @@ public class BattleMicro {
                 // then swap it with the newly selected pokemon
                 user.getCurrPokemon().setIsAlive(false);
                 user.switchCurrPokemon(id);
+
+                return 1;
             }else{
-                // no pokemon to choose from, just set the curr pokemon dead
-                user.getCurrPokemon().setIsAlive(false);
+                // no alive pokemon to choose from, player has lost
+                return 3;
             }
 
 
         }else if(bot.getCurrPokemon().getHP() <= 0){
             // bot pokemon has died, select the next available in its arraylist
+            // first set the bot's current pokemon to be dead
+            bot.getCurrPokemon().setIsAlive(false);
 
-        }else{
+            // search for next available pokemon if any
+            for(Pokemon p : bot.getPokemonTeam()){
+                if(p.getIsAlive()){
+                    bot.switchCurrPokemon(p.getID());
+                }
+            }
+            // if current pokemon alive status is still dead, that means bot had no remaining
+            // alive pokemon to switch with
+            if(bot.getCurrPokemon().getIsAlive() == false){
+                // bot has no alive pokmon remaining to choose from, player has won
+                return 4;
+            }else{
+                // bot can continue playing
+                return 2;
+            }
+        }else {
             // no pokemon has died
-
+            return 0;
         }
+
+    }
+
+    public void endTurnEffect(Player player1,Player player2){
+        Pokemon player1poke = player1.getCurrPokemon();
+        Pokemon player2Poke = player2.getCurrPokemon();
+    }
+
+
+    public boolean XOR(boolean statement1, boolean statement2){
+        return ( ( statement1 || statement2 ) && ! ( statement1 && statement2 ) );
     }
 }
 
 
 
 
-//    public void Switch(Player attacker, Player defender,Move move){
-//        int SwitchId = (int)move.getBasePower();
-//        attacker.switchCurrPokemon(SwitchId);
-//    }

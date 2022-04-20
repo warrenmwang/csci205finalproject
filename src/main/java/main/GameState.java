@@ -1,5 +1,5 @@
 package main;
 
 public enum GameState {
-    BATTLE, TEAMBUILDING
+    BATTLE, TEAMBUILDING, GAME_OVER, NEW_GAME
 };

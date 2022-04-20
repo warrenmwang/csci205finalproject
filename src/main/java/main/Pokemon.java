@@ -14,7 +14,7 @@ public class Pokemon {
     private PokemonStatusEffect statusEffect;
     private boolean isAlive;
     private ArrayList<Double> originalStats;
-    private int turnsActive = 0;
+    private int turnsActive;
 
     /**
      * Constructor, initialize Pokemon with given information.
@@ -36,6 +36,7 @@ public class Pokemon {
         this.statusEffect = PokemonStatusEffect.NO_EFFECT;
         this.isAlive = true;
         this.originalStats = stats;
+        this.turnsActive = 0;
 
     }
     final private int HP = 0;
@@ -61,6 +62,7 @@ public class Pokemon {
     public ArrayList<String> getTypes() { return this.types; }
     public ArrayList<String> getMoves() { return this.moves; }
     public String getItems() { return this.item; }
+    public int getTurnsActive() { return this.turnsActive;}
 
     public Double getMaxHp() {return this.originalStats.get(HP);}
 
@@ -85,6 +87,7 @@ public class Pokemon {
     public void setSpAtk(double SpAtk) {this.currStats.set(SPATK,SpAtk);}
     public void setSpDef(double SpDef) {this.currStats.set(SPDEF,SpDef);}
     public void setSpe(double spe) { this.currStats.set(SPEED, spe);}
+    public void setTurnsActive(int turn) {this.turnsActive = turn;}
 
 
 
@@ -113,12 +116,14 @@ public class Pokemon {
         tempStats.set(HP,this.getHP());
         this.setStats(tempStats);
         this.setStatusEffect(PokemonStatusEffect.NO_EFFECT);
+        this.setTurnsActive(-1);
     }
 
     public void thorough_reset(){
         this.setStats(this.originalStats);
         this.setStatusEffect(PokemonStatusEffect.NO_EFFECT);
         this.setIsAlive(true);
+        this.setTurnsActive(0);
     }
 
 

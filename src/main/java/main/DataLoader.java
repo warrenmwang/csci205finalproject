@@ -223,7 +223,7 @@ public class DataLoader {
         }
 
         //add switch move
-        allMoves.put("Switch", new Move("Switch","0"));
+        allMoves.put("Switch", new Move("Switch","0,0,0,0,0,0"));
 
 
         return allMoves;

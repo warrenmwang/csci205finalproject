@@ -29,6 +29,7 @@ public class Move {
     private String designation;
     private String specialEffect;
 
+    // Constructor 1
     public Move(String Name, String csvCopy){
         Scanner scnr = new Scanner(csvCopy);
         scnr.useDelimiter(",");
@@ -38,10 +39,9 @@ public class Move {
         this.Type = scnr.next();
         this.designation = scnr.next();
         this.specialEffect = scnr.next();
-
-
     }
 
+    // Constructor 2
     public Move(String Name, double basePower, double accuracy, String Type, String designation,String specialEffect){
         this.name = Name;
         this.basePower = basePower;

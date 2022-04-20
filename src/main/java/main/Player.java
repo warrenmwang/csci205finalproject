@@ -1,5 +1,7 @@
 package main;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -19,9 +21,10 @@ public class Player {
      *
      * @param initPokemon
      */
-    public Player(ArrayList<Pokemon> initPokemon) {
+    public Player(ArrayList<Pokemon> initPokemon) throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
         this.pokemonTeam = initPokemon;
         this.numberOfPokemon = initPokemon.size();
+        this.movesInventory = new MovesInventory();
     }
 
     /**
@@ -32,7 +35,6 @@ public class Player {
     public Pokemon getCurrPokemon() {
         return this.pokemonTeam.get(0);
     }
-
     /**
      * Switch current Pokemon with another Pokemon that is on the Player's team.
      *
@@ -74,7 +76,7 @@ public class Player {
      * @return Move object encapsulating the move
      */
     public Move chooseMove() {
-        Move SelectedMove = new Move("blank", "");
+        Move SelectedMove = new Move("blank", "0,0,0,0,0,0");
 
         // player can either switch, attack, or forfeit
         System.out.println("Player, do you want to switch, attack, or forfeit?");
@@ -94,11 +96,12 @@ public class Player {
 
                 // get user selection
                 System.out.println("Which pokemon do you want to switch?");
-                String choice = readInputLine();
+                String id = readInputLine(); // read in ID
 
                 //todo: change name into ID/index
+                int index = pokemonTeam.indexOf(pokemonTeam.stream().filter(p -> p.getID().equals(id)));
 
-                SelectedMove = new Move("Switch", choice);
+                SelectedMove = new Move("Switch", index +",0,0,0,0");
                 break;
             }
 
@@ -133,6 +136,9 @@ public class Player {
         return SelectedMove;
 
     }
+    public void readSwitch(){
+
+    }
 
     private String readInputLine(){
         Scanner scnr = new Scanner(System.in);
@@ -142,4 +148,6 @@ public class Player {
     public boolean getForfeitStatus(){
         return ForfeitStatus;
     }
+
+
 }
