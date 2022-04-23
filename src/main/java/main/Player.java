@@ -13,6 +13,7 @@ public class Player {
 
     private MovesInventory movesInventory;
     private boolean ForfeitStatus = false;
+    private boolean protectState = true;
 
 
     /**
@@ -166,6 +167,8 @@ public class Player {
     public boolean getForfeitStatus(){
         return ForfeitStatus;
     }
+
+
 
 
 }

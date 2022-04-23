@@ -29,10 +29,17 @@ public class Model {
      * Constructor
      */
     public Model(){
-        try {
-            battleMacro = new BattleMacro();
-        }catch(Exception e){
-            // blah
-        }
+        // TODO might have to use a thread
+        Runnable r = () -> {
+            try {
+                battleMacro = new BattleMacro();
+                battleMacro.mainGameLoop();
+            } catch (Exception e) {
+                // blah
+            }
+        };
+        Thread t = new Thread(r);
+        t.start();
+
     }
 }

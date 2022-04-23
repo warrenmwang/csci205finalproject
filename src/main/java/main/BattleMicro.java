@@ -34,6 +34,8 @@ public class BattleMicro {
     private Move firstMove;
     private Move secondMove;
 
+    private ArrayList<ArrayList<String>> PriorityMoveList;
+
 
     /**
      * Constructor
@@ -44,6 +46,8 @@ public class BattleMicro {
         // initialize our two main inventories
         pokemonInventory = new PokemonInventory();
         movesInventory = new MovesInventory();
+
+        PriorityMoveList = movesInventory.getPriorityMoveList();
 
         // initialize any instance vars
         gameOverStatus = false;
@@ -73,23 +77,38 @@ public class BattleMicro {
      * Switch gets highest priority
      * If attack, will compare current pokemon speed
      */
+
+    final int firstPriority = 0;
+    final int secondPrority = 1;
     public void checkTurn(Move userMove, Move botMove){
         String moveName1 = userMove.getName();
         String moveName2 = botMove.getName();
 
-        if(XOR(moveName1.equals("Switch"),moveName2.equals("Switch"))){
-            if(moveName1.equals("Switch")){
+        if(XOR(PriorityMoveList.get(firstPriority).contains(moveName1),PriorityMoveList.get(firstPriority).contains(moveName2))) {
+            if (PriorityMoveList.get(firstPriority).contains(moveName1)) {
                 firstPlayer = user;
                 firstMove = userMove;
                 secondPlayer = bot;
                 secondMove = botMove;
-            } else{
+            } else {
                 firstPlayer = bot;
                 firstMove = botMove;
                 secondPlayer = user;
                 secondMove = userMove;
             }
-//            return;
+        }else if (XOR(PriorityMoveList.get(secondPrority).contains(moveName1),PriorityMoveList.get(secondPrority).contains(moveName2))){
+            if(PriorityMoveList.get(secondPrority).contains(moveName1)){
+                firstPlayer = user;
+                firstMove = userMove;
+                secondPlayer = bot;
+                secondMove = botMove;
+            } else {
+                firstPlayer = bot;
+                firstMove = botMove;
+                secondPlayer = user;
+                secondMove = userMove;
+            }
+
         } else if (user.getCurrPokemon().getSpe() > bot.getCurrPokemon().getSpe()){
             whoseTurn = true;
             firstPlayer = user;

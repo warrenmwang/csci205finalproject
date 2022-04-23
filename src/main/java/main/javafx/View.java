@@ -29,8 +29,13 @@ public class View {
     private TextArea outputText;
     private VBox vbox;
 
+    private Button btn1;
+
     // getter methods
     public HBox getRoot(){ return root; }
+    public TextArea getOutputText() { return outputText; }
+    public Button getBtn1() { return btn1; }
+
 
     /**
      * Constructor
@@ -52,8 +57,11 @@ public class View {
         outputText = new TextArea("THIS IS WHERE OUTPUT WILL GO");
         vbox = new VBox();
 
+        btn1 = new Button("Refresh");
+
         vbox.getChildren().add(inputTextFieldLabel);
         vbox.getChildren().add(inputTextField);
+        vbox.getChildren().add(btn1);
 
         root.getChildren().add(vbox);
         root.getChildren().add(outputText);

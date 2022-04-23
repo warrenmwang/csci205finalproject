@@ -119,7 +119,7 @@ public class Bot extends Player{
 //    }
 
     public Move testbotChooseMove(Pokemon Defender){
-        return new Move("blank","0,0,0,0,0");
+        return new Move("Switch","1,0,0,0,0");
     }
 
         // getter methods

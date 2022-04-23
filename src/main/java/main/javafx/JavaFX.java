@@ -33,11 +33,8 @@ public class JavaFX extends Application{
     @Override
     public void init() throws Exception {
         super.init();
-        System.out.println("constructing view");
         view = new View();
-        System.out.println("constructing model");
         model = new Model();
-        System.out.println("constructing controller");
         controller = new Controller(model, view);
     }
 

@@ -15,6 +15,7 @@ public class Pokemon {
     private boolean isAlive;
     private ArrayList<Double> originalStats;
     private int turnsActive;
+    private boolean protectState;
 
     /**
      * Constructor, initialize Pokemon with given information.
@@ -37,6 +38,7 @@ public class Pokemon {
         this.isAlive = true;
         this.originalStats = new ArrayList<>(stats);
         this.turnsActive = 0;
+        this.protectState = false;
 
     }
     final private int HP = 0;
@@ -88,6 +90,16 @@ public class Pokemon {
     public void setSpDef(double SpDef) {this.currStats.set(SPDEF,SpDef);}
     public void setSpe(double spe) { this.currStats.set(SPEED, spe);}
     public void setTurnsActive(int turn) {this.turnsActive = turn;}
+
+    public void setProtectState(boolean bool) { this.protectState = bool;}
+
+    public boolean getProtectState() { return this.protectState;}
+
+    public void resetstatsNoHp(){
+        double currentHp = this.getHP();
+        this.setStats(this.originalStats);
+        this.setHp(currentHp);
+    }
 
 
     // check if alive

@@ -17,6 +17,14 @@ public class MovesInventory {
     // store all the move as string
     private HashMap<String, Move> allMoves;
 
+    private ArrayList<String> firstPriorityMove;
+
+    private ArrayList<String> secondPriorityMove;
+
+    private ArrayList<ArrayList<String>> PriorityMoveList;
+
+
+
     // TODO Constructor
 
     /**
@@ -27,6 +35,20 @@ public class MovesInventory {
         allMultipliers = new HashMap<>();
         allTypes = new ArrayList<>();
         dontusemeMults = new ArrayList<>();
+
+        firstPriorityMove = new ArrayList<>();
+        firstPriorityMove.add("Switch");
+
+        secondPriorityMove = new ArrayList<>();
+        secondPriorityMove.add("ice_shard");
+        secondPriorityMove.add("aqua_jet");
+        secondPriorityMove.add("ackerman_insight");
+
+        ArrayList<String> thirdPriotityMove = new ArrayList<>();
+
+        PriorityMoveList = new ArrayList<>();
+        PriorityMoveList.add(firstPriorityMove);
+        PriorityMoveList.add(secondPriorityMove);
 
 
         // load the types
@@ -76,6 +98,8 @@ public class MovesInventory {
     public Move getMove(String moveName) {
         return this.allMoves.get(moveName);
     }
+
+    public ArrayList<ArrayList<String>> getPriorityMoveList() {return PriorityMoveList;}
 
     // TODO: call this function in every move function
     /**
@@ -172,6 +196,13 @@ public class MovesInventory {
         ;
         dmg = dmg * dmgVariance;
         dmg = dmg * modifier * criticalMult;
+
+
+        if(defender.getProtectState()){
+            dmg = 0;
+        }
+        defender.setProtectState(false);
+
 //      System.out.println(stab);
 //        System.out.println(criticalMult);
 //        System.out.println(dmgVariance);
@@ -599,6 +630,7 @@ public class MovesInventory {
         printAttackMessage(attackPoke,defenderPoke,move,hit,damage,false);
     }
 
+    // TODO: finish
     //power: 70, Accur: 1, ELECTRIC, user switch out after move is used
     public void volt_switch(Player attacker, Player defender, Move move) {
         double Accur = 1.0;
@@ -889,6 +921,8 @@ public class MovesInventory {
     //todo
     //new status, immune (priority = 2)
     public void protect(Player attacker,  Player defender, Move move) {
+        Pokemon attackPoke = attacker.getCurrPokemon();
+        attackPoke.setProtectState(true);
 
     }
 
@@ -919,9 +953,12 @@ public class MovesInventory {
         boolean effectHit = false;
         if (AccuracyCheck(Accur)) {
             hit = true;
-            move.setBasePower(0.5 * (defenderPoke.getSpe() - attackPoke.getSpe()));
+            double pow = Math.ceil(0.5 * (defenderPoke.getSpe() - attackPoke.getSpe()));
+            move.setBasePower(pow);
+            if (pow < 21) {
+                move.setBasePower(20);
+            }
             damage = calcDamage(attackPoke, defenderPoke, move);
-
         }
 
         defenderPoke.receiveDamage(damage);
@@ -1218,7 +1255,7 @@ public class MovesInventory {
 
 
 
-    public void dark_palse(Player attacker,  Player defender, Move move) {
+    public void dark_pulse(Player attacker,  Player defender, Move move) {
         double Accur = move.getAccuracy();
         double effectAccur = 0.3;
 
@@ -1246,23 +1283,79 @@ public class MovesInventory {
         printAttackMessage(attackPoke, defenderPoke, move, hit, damage,effectHit);
     }
 
-    // TODO write me
-    public void swords_dance(Player attacker, Player defender, Move move){
-        System.out.println("swords_dance: IMPLEMENT ME");
-    }
 
-    // TODO write me
-    public void dark_pulse(Player attacker, Player defender, Move move){
-        System.out.println("dark_pulse: IMPLEMENT ME");
-    }
-
-    // TODO write me
+    // TODO : sequence
     public void clear_smog(Player attacker, Player defender, Move move){
-        System.out.println("clear_smog: IMPLEMENT ME");
+        Pokemon defenderPoke = defender.getCurrPokemon();
+        simplemove(attacker,defender,move);
+        defenderPoke.resetstatsNoHp();
+    }
+
+    public void shadow_ball(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+    public void hydro_pump(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+    public void swords_dance(Player attacker, Player defender, Move move){
+        //get poke
+        Pokemon attackerPoke = attacker.getCurrPokemon();
+        Pokemon defenderPoke = defender.getCurrPokemon();
+
+        attackerPoke.setAtk(2* attackerPoke.getAtk());
+
+        printStatusMoveMessage(attackerPoke,defenderPoke,move);
+    }
+
+    public void titanic_rage(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+    //second priority
+    public void ackerman_insight(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
     }
 
 
-        // complete turn
+    public void wild_growth(Player attacker, Player defender, Move move){
+        //get poke
+        Pokemon attackerPoke = attacker.getCurrPokemon();
+        Pokemon defenderPoke = defender.getCurrPokemon();
+
+        attackerPoke.setSpe(1.5 * attackerPoke.getSpe());
+        attackerPoke.setSpAtk(1.5 * attackerPoke.getSpAtk());
+
+        printStatusMoveMessage(attackerPoke,defenderPoke,move);
+    }
+
+
+    public void zen_headbutt(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+
+    public void shadow_rush(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+
+    public void seed_bomb(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+    public void flash_cannon(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+
+    public void shuck_you_up(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+
+    // complete turn
         // prompt users for input (switch, 1 of 4 attacks, or quit)
         // if one user chooses to switch pokemon, that pokemon switches out first, the other pokemon then gets the opportunity to use a move
         // if both switch, then the pokemon's speed is compared. the faster one switches out first
