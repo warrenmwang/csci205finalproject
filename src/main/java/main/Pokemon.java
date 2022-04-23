@@ -29,13 +29,13 @@ public class Pokemon {
         this.id = id;
         this.name = name;
         this.image = image;
-        this.currStats = stats;
+        this.currStats = new ArrayList<>(stats);
         this.moves = moves;
         this.types = types;
         this.item = item;
         this.statusEffect = PokemonStatusEffect.NO_EFFECT;
         this.isAlive = true;
-        this.originalStats = stats;
+        this.originalStats = new ArrayList<>(stats);
         this.turnsActive = 0;
 
     }
@@ -90,19 +90,20 @@ public class Pokemon {
     public void setTurnsActive(int turn) {this.turnsActive = turn;}
 
 
-
+    // check if alive
     public void checkIsAlive(){
         if(this.getHP() <= 0){
             this.isAlive = false;
         }
     }
 
-
+    // take damage as specified in input
     public void receiveDamage(double damage){
         this.setHp(this.getHP()-damage);
         this.checkIsAlive();
     }
 
+    // heal amount specified in input
     public void heal(double heal){
         if((this.getMaxHp()-this.getHP() )< heal){
             this.setHp(this.getMaxHp());
@@ -111,6 +112,7 @@ public class Pokemon {
         }
     }
 
+    // reset the stats that get reset when this pokemon is switched
     public void switch_reset(){
         ArrayList<Double> tempStats = this.originalStats;
         tempStats.set(HP,this.getHP());
@@ -119,6 +121,7 @@ public class Pokemon {
         this.setTurnsActive(-1);
     }
 
+    // reset this pokemon completely
     public void thorough_reset(){
         this.setStats(this.originalStats);
         this.setStatusEffect(PokemonStatusEffect.NO_EFFECT);
@@ -135,6 +138,16 @@ public class Pokemon {
      */
     @Override
     public String toString() {
-        return String.format("id: %s\nname: %s\nimage: %s\nstats: %s\nmoves: %s\nstatusEffect: %s\nisAlive: %s\n", id, name, image, currStats, moves, statusEffect, isAlive);
+        return String.format("id: %s\n" +
+                "name: %s\n" +
+                "image: %s\n" +
+                "currStats: %s\n" +
+                "origStats: %s\n" +
+                "types: %s\n" +
+                "moves: %s\n" +
+                "statusEffect: %s\n" +
+                "isAlive: %s\n" +
+                "turnsActive: %s\n" +
+                "item %s\n", id, name, image, currStats, originalStats, types, moves, statusEffect, isAlive, turnsActive, item);
     }
 }

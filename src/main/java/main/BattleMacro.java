@@ -38,9 +38,6 @@ public class BattleMacro {
         battleMicro = new BattleMicro();
         // go into teambuilding state
         setGameState(GameState.TEAMBUILDING);
-        // use reset function to create teams, prompt for picking teams,
-        // refresh variables
-        reset();
     }
 
     // getter methods
@@ -53,12 +50,17 @@ public class BattleMacro {
      * objects when necessary to facilitate the progression of the game.
      */
     public void mainGameLoop() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
+        // use reset function to create teams, prompt for picking teams,
+        // refresh variables
+        reset();
+
         // start game, set game state
         setGameState(GameState.BATTLE);
 
         // run game loop while game state is in Battle
         while(getGameState().equals(GameState.BATTLE)){
             // play one complete round (both players attack or do their moves)
+            System.out.printf("Start of round %d\n", numberOfRounds);
             battleMicro.playOneTurn();
 
             // increment number of rounds player has played
@@ -83,6 +85,8 @@ public class BattleMacro {
             if(getGameState().equals(GameState.NEW_GAME)){
                 reset();
                 setGameState(GameState.BATTLE);
+            }else if (getGameState().equals(GameState.GAME_OVER)){
+                break;
             }
         }
 
@@ -110,7 +114,6 @@ public class BattleMacro {
         numberOfRounds = 0;
 
         // reset all important BattleMicro statuses
-        battleMicro.setForfeitStatus(false);
         battleMicro.setGameOverStatus(false);
         battleMicro.setPlayerWonStatus(false);
 
@@ -149,24 +152,6 @@ public class BattleMacro {
         System.out.printf("You have played %d rounds, won %d times, and loss %d times.\n", numberOfRounds, playerWins, playerLosses);
         System.out.println("We are sad to see you go, but have a nice day.");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     private String readInputLine(){
         Scanner scnr = new Scanner(System.in);

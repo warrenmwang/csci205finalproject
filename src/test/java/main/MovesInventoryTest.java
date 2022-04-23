@@ -14,7 +14,7 @@ class MovesInventoryTest {
         try {
             movesInventory = new MovesInventory();
         } catch(Exception e){
-
+            System.out.println("???");
         }
     }
 
@@ -30,10 +30,14 @@ class MovesInventoryTest {
      */
     @Test
     void damageParamTest() {
+
         // check that damageParam is returning the right values (manually check some)
         assertEquals(0.0, movesInventory.damageParam("GROUND", "FLYING"));
-        assertEquals(2.0, movesInventory.damageParam("ROCK", "ICE"));  
+        assertEquals(2.0, movesInventory.damageParam("ROCK", "ICE"));
         assertEquals(0.0, movesInventory.damageParam("GHOST", "NORMAL"));
+        assertEquals(1.0, movesInventory.damageParam("GHOST", "NULL"));
+
+
 
     }
 }

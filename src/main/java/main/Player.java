@@ -41,7 +41,7 @@ public class Player {
      * @param ind index of Pokemon to be selected in the Player's Pokemon Team
      */
     public void switchCurrPokemon(int ind) {
-        Collections.swap(pokemonTeam, 0, ind);
+        Collections.swap(this.pokemonTeam, 0, ind);
     }
 
     /**
@@ -53,9 +53,17 @@ public class Player {
         // find pokemon with id
         // swap it with the first pokemon in list
 
-        int index = pokemonTeam.indexOf(pokemonTeam.stream().filter(p -> p.getID().equals(id)));
-        Collections.swap(pokemonTeam, 0, index);
+        // get index of pokemon with the input id
+        int index = 0 ;
+        for(Pokemon p : pokemonTeam){
+            if(p.getID().equalsIgnoreCase(id)){
+                break;
+            }
+            index++;
+        }
 
+        // swap current pokemon with the pokemon at index
+        Collections.swap(pokemonTeam, 0, index);
     }
 
     public ArrayList<Pokemon> getPokemonTeam() {
@@ -95,13 +103,23 @@ public class Player {
                 }
 
                 // get user selection
-                System.out.println("Which pokemon do you want to switch?");
+                System.out.println("Which Pokemon do you want to switch with?");
                 String id = readInputLine(); // read in ID
-
+                System.out.println("Read in id: " + id);
                 //todo: change name into ID/index
-                int index = pokemonTeam.indexOf(pokemonTeam.stream().filter(p -> p.getID().equals(id)));
+                int id_as_index = 0;
+                for(Pokemon p: pokemonTeam){
+                    if(p.getID().equalsIgnoreCase(id)){
+                        break;
+                    }else{
+                        id_as_index++;
+                    }
+                }
 
-                SelectedMove = new Move("Switch", index +",0,0,0,0");
+
+//                int id_as_index = pokemonTeam.indexOf(pokemonTeam.stream().filter(p -> p.getID().equals(id)));
+                System.out.println("id_as_index: " + id_as_index);
+                SelectedMove = new Move("Switch", String.format("%d,0,0,0,0", id_as_index));
                 break;
             }
 

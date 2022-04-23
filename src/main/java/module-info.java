@@ -5,4 +5,6 @@ module csci205finalproject{
     requires javafx.graphics;
     requires javafx.controls;
     requires javafx.fxml;
+    exports main.javafx;
+
 }

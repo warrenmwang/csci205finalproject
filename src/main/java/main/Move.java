@@ -29,12 +29,17 @@ public class Move {
     private String designation;
     private String specialEffect;
 
-    // Constructor 1
+    /**
+     * Constructor 1
+     *
+     * @param Name
+     * @param csvCopy comma separated 5 values
+     */
     public Move(String Name, String csvCopy){
         Scanner scnr = new Scanner(csvCopy);
         scnr.useDelimiter(",");
         this.name = Name;
-        this.basePower = Double.parseDouble(scnr.next());
+        this.basePower = Double.parseDouble(scnr.next());   // NOTE: for Switch move, this holds the index of the Pokemon in their team arraylist that the Player wants to switch their current Pokemon with
         this.accuracy = Double.parseDouble(scnr.next());
         this.Type = scnr.next();
         this.designation = scnr.next();
@@ -42,7 +47,7 @@ public class Move {
     }
 
     // Constructor 2
-    public Move(String Name, double basePower, double accuracy, String Type, String designation,String specialEffect){
+    public Move(String Name, double basePower, double accuracy, String Type, String designation, String specialEffect){
         this.name = Name;
         this.basePower = basePower;
         this.accuracy = accuracy;
@@ -62,6 +67,8 @@ public class Move {
     public String getDesignation() {return this.designation;}
 
     public String getSpecialEffect() {return this.specialEffect;}
+
+    public void setBasePower(double basePower) {this.basePower = basePower;}
 
 
     @Override
