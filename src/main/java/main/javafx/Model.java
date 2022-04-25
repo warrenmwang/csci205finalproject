@@ -18,6 +18,9 @@ package main.javafx;
 
 import main.BattleMacro;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+
 public class Model {
 
     private BattleMacro battleMacro;
@@ -28,11 +31,13 @@ public class Model {
     /**
      * Constructor
      */
-    public Model(){
+    public Model() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
+
+        battleMacro = new BattleMacro();
+
         // TODO might have to use a thread
         Runnable r = () -> {
             try {
-                battleMacro = new BattleMacro();
                 battleMacro.mainGameLoop();
             } catch (Exception e) {
                 // blah

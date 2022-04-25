@@ -23,6 +23,8 @@ public class MovesInventory {
 
     private ArrayList<ArrayList<String>> PriorityMoveList;
 
+    private ArrayList<String> attackSwitchMove;
+
 
 
     // TODO Constructor
@@ -43,6 +45,10 @@ public class MovesInventory {
         secondPriorityMove.add("ice_shard");
         secondPriorityMove.add("aqua_jet");
         secondPriorityMove.add("ackerman_insight");
+
+        attackSwitchMove = new ArrayList<>();
+        attackSwitchMove.add("u_turn");
+        attackSwitchMove.add("volt_switch");
 
         ArrayList<String> thirdPriotityMove = new ArrayList<>();
 
@@ -100,6 +106,8 @@ public class MovesInventory {
     }
 
     public ArrayList<ArrayList<String>> getPriorityMoveList() {return PriorityMoveList;}
+
+    public ArrayList<String> getAttackSwitchMove() { return attackSwitchMove;}
 
     // TODO: call this function in every move function
     /**
@@ -899,7 +907,29 @@ public class MovesInventory {
 
 
     //todo
-    public void u_turn(Player attacker,  Player defender, Move move) {}
+    public void u_turn(Player attacker,  Player defender, Move move) {
+        double Accur = move.getAccuracy();
+        double effectAccur = 0.2;
+
+        // Get poke
+        Pokemon attackPoke = attacker.getCurrPokemon();
+        Pokemon defenderPoke = defender.getCurrPokemon();
+
+        double damage = 0.0;
+        //deal damage or effect based on accuracy
+        boolean hit = false;
+
+        if (AccuracyCheck(Accur)) {
+            hit = true;
+            damage = calcDamage(attackPoke, defenderPoke, move);
+
+
+
+
+        }
+
+        defenderPoke.receiveDamage(damage);
+    }
 
         // I believe this should call the switch move if it lands
 

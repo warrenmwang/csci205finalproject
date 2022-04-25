@@ -18,9 +18,12 @@ package main.javafx;
 
 import javafx.scene.control.TextArea;
 import main.BattleMacro;
+import main.UserInput;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.*;
+import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 public class Controller {
 
@@ -28,6 +31,10 @@ public class Controller {
     private View view;
     private BattleMacro battleMacro;
     private ByteArrayOutputStream newSysOut;
+//    private ByteArrayInputStream newSysIn;
+    private String stringToPassIntoNewSysIn;
+
+    //private UserInput playerUserInput;
 
     /**
      * Constructor of the JavaFX controller
@@ -40,6 +47,12 @@ public class Controller {
         newSysOut = new ByteArrayOutputStream();
         System.setOut(new PrintStream(newSysOut));
 
+        // also change sys.in to something we capture
+//        InputStream sysInOrig = System.in;
+//        stringToPassIntoNewSysIn = "";
+//        newSysIn = new ByteArrayInputStream(stringToPassIntoNewSysIn.getBytes());
+//        System.setIn(newSysIn);
+
         // create the javafx
         this.view = view;
 
@@ -47,25 +60,42 @@ public class Controller {
         this.model = model;
 
         battleMacro = this.model.getBattleMacro();
+        //playerUserInput = battleMacro.getBattleMicro().getUser().getUserInput();
 
         initEventHandlers();
     }
 
-    // TODO this entire function
     public void initEventHandlers(){
         // put system.out in the textArea whenever new system.out is outputted
-//        TextArea output = view.getOutputText();
-        // TODO bind system.out to the javafx output
         // capture system.out
 
+        // refresh the screen when we press the refresh button
         view.getBtn1().setOnMouseClicked(Event -> {
-            Runnable r = () -> {
-                view.getOutputText().appendText("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
-                view.getOutputText().appendText(newSysOut.toString());
-            };
-            Thread t = new Thread(r);
-            t.start();
+            refreshTextAreaWithSysOut();
         });
+
+        // TODO SEND INPUT FROM TEXTFIELD TO SYSTEM.IN
+        // get user input from the textField box
+        view.getInputTextField().setOnAction(event -> {
+            // read in user input from System.in
+            stringToPassIntoNewSysIn = view.getInputTextField().getText();
+
+            // TODO remove me
+            view.getTestBottomLabel().setText(stringToPassIntoNewSysIn);
+
+            UserInput.setUSERINPUT(stringToPassIntoNewSysIn);
+            UserInput.setCanGetUSERINPUT(true);
+
+//            System.out.println("controller get userinput" + battleMacro.getBattleMicro().getUSERINPUT());
+//            System.out.println("controller get cangetuserinput" + battleMacro.getBattleMicro().getCanGetUSERINPUT());
+            try{
+                TimeUnit.MILLISECONDS.sleep(100);
+            }catch(Exception e){
+
+            }
+            refreshTextAreaWithSysOut();
+        });
+
 
         // TODO: have 7 buttons for Attack, Switch, Forfeit, Move1, Move2, Move3, Move4
 
@@ -73,7 +103,11 @@ public class Controller {
         // that can be swapped with a 3 button box (Attk, Switch, Forfeit)
         // or with the 4 button box
 
+        // TODO: when mouse hovers over move or any button, give more info
+        //   on a floating popup above button, goes away when mouse is not hovering
+        //   over button
 
+        // TODO change pokemon pictures when pokemon are switched (switch move, or died)
 
 
         // get input from inputTextField and put into system.in
@@ -83,4 +117,13 @@ public class Controller {
 //        System.setOut(sysOutOrig);
     }
 
+    public void refreshTextAreaWithSysOut(){
+        Runnable r = () -> {
+            view.getOutputText().setText("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+            view.getOutputText().appendText(newSysOut.toString());
+            view.getOutputText().setScrollTop(Double.MAX_VALUE); // set scrolled to bottom
+        };
+        Thread t = new Thread(r);
+        t.start();
+    }
 }

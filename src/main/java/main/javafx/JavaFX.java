@@ -21,9 +21,11 @@ import javafx.stage.Stage;
 
 public class JavaFX extends Application{
 
-    private View view;
+    private View view1;
+    private ViewGridPane view2;
     private Model model;
     private Controller controller;
+    private GuiController controller2;
 
     /**
      * The application initialization method. This method is called immediately
@@ -33,9 +35,11 @@ public class JavaFX extends Application{
     @Override
     public void init() throws Exception {
         super.init();
-        view = new View();
-        model = new Model();
-        controller = new Controller(model, view);
+//        view1 = new View();
+        view2 = new ViewGridPane();
+//        model = new Model();
+//        controller = new Controller(model, view1);
+        controller2 = new GuiController(view2);
     }
 
     /**
@@ -49,7 +53,12 @@ public class JavaFX extends Application{
      */
     @Override
     public void start(Stage primaryStage) {
-        Scene scene = new Scene(this.view.getRoot());
+        // original text based view
+//        Scene scene = new Scene(this.view1.getRoot());
+
+        // testing GridPane view
+        Scene scene = new Scene(this.view2.getRoot());
+
         primaryStage.setTitle("Pokemon BattleFactory Simulator");
         primaryStage.setScene(scene);
         primaryStage.sizeToScene();

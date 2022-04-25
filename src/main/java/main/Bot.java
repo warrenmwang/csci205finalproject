@@ -178,6 +178,11 @@ public class Bot extends Player{
 
     }
 
+    //TODO
+    public int askChooseSwitch(){
+        return 0;
+    }
+
 
 }
 

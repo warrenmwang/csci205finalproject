@@ -45,6 +45,8 @@ public class BattleMacro {
     // setter methods
     public void setGameState(GameState state){ this.gameState = state;}
 
+    public BattleMicro getBattleMicro() {return this.battleMicro;}
+
     /**
      * Main Game Loop. Calls functions on the BattleMicro object and other BattleMacro
      * objects when necessary to facilitate the progression of the game.
@@ -132,6 +134,9 @@ public class BattleMacro {
         // create the Player and Bot objects with their handpicked teams for play
         battleMicro.constructPlayer();
         battleMicro.constructBot();
+
+        // initialize userinput obj
+        //battleMicro.initInput();
     }
 
     /**
@@ -158,8 +163,8 @@ public class BattleMacro {
     }
 
     private String readInputLine(){
-        Scanner scnr = new Scanner(System.in);
-        return scnr.nextLine();
+       UserInput.waitFXinput();
+       return UserInput.getUSERINPUT();
     }
 
 }

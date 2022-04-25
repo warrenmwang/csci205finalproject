@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class BattleMicro {
     private Player user;
@@ -36,6 +37,12 @@ public class BattleMicro {
 
     private ArrayList<ArrayList<String>> PriorityMoveList;
 
+    private ArrayList<String> attackSwitchMove;
+
+    //private UserInput userInput;
+
+
+
 
     /**
      * Constructor
@@ -49,9 +56,12 @@ public class BattleMicro {
 
         PriorityMoveList = movesInventory.getPriorityMoveList();
 
+        attackSwitchMove = movesInventory.getAttackSwitchMove();
+
         // initialize any instance vars
         gameOverStatus = false;
         playerWonStatus = false;
+
     }
 
 
@@ -62,12 +72,15 @@ public class BattleMicro {
     public boolean getForfeitStatus(){ return user.getForfeitStatus(); }
     public boolean getGameOverStatus(){ return this.gameOverStatus; }
     public boolean getPlayerWonStatus(){ return this.playerWonStatus; }
+    public Player getUser() { return this.user; }
+
 
     // setter methods
     public void setUserTeam(ArrayList<Pokemon> team){ this.userTeam = team; }
     public void setBotTeam(ArrayList<Pokemon> team){ this.botTeam = team; }
     public void setGameOverStatus(boolean status){ this.gameOverStatus = status; }
     public void setPlayerWonStatus(boolean status){ this.playerWonStatus = status; }
+
 
 
 
@@ -212,13 +225,37 @@ public class BattleMicro {
         String id;
         ArrayList<String> selectedIDs = new ArrayList<>(3);
         // get user to select 3 pokemon by id
-        Scanner scnr = new Scanner(System.in);
+
+        //Original
+//        while(!canGetUSERINPUT){}
+//        Scanner scnr = new Scanner(USERINPUT);
         while(n > 0){
             System.out.printf("You have %d choices remaining. Please type the ID of the Pokemon that you want: ", n);
-            id = scnr.nextLine();
+//            System.out.println("userinput"+USERINPUT);
+//            System.out.println("cangetuserinput"+canGetUSERINPUT);
+
+            UserInput.waitFXinput();
+            id = UserInput.getUSERINPUT();
+
+            System.out.println("\n\n");
+            System.out.println(id);
+
             selectedIDs.add(id);
             n--;
         }
+
+        //Test
+//        while(n > 0){
+//            System.out.printf("You have %d choices remaining. Please type the ID of the Pokemon that you want: ", n);
+//            String a = System.in.toString();
+//            while(a.equals(System.in.toString())){}
+//            Scanner scnr = new Scanner(System.in);
+//            id = scnr.nextLine();
+//            selectedIDs.add(id);
+//            n--;
+//        }
+
+
 
         // loop thru original pokemon team, new team only has pokemon whose id are in selectedIDs list
         // original team of 6, then replace it with this new team of 3
@@ -239,6 +276,8 @@ public class BattleMicro {
 
         // update player's team in the Player object AND in the BattleMicro object
         setUserTeam(newTeam);
+
+//        UserInput = user.getUserInput();
     }
 
     /**
@@ -268,7 +307,10 @@ public class BattleMicro {
     /**
      * Constructs the Player object once their team has been completely chosen and is ready to play.
      */
-    public void constructPlayer()throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{ user = new Player(userTeam); }
+    public void constructPlayer()throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{ user = new Player(userTeam);
+        // initialize userinput obj
+        //initInput();
+        }
 
     /**
      * Constructs the Bot object once their team has been completely chosen and is ready to play.
@@ -331,12 +373,31 @@ public class BattleMicro {
         Move userMove = user.chooseMove();
         System.out.println(userMove);
 
+
+
+
         System.out.println("------------------ BOT CHOOSE MOVE ------------------");
         Move botMove = bot.botChooseMove(user.getCurrPokemon());
         System.out.println(botMove);
 
+
+
+
         // See who gets the first move in this round
         checkTurn(userMove,botMove);
+
+
+        //for uturn and volt switch
+        int switchIndexFirst = 0;
+        int switchIndexSecond = 0;
+        Pokemon currSecondPoke = secondPlayer.getCurrPokemon();
+        if(attackSwitchMove.contains(firstMove.getName())){
+            //show the pokemon can be changed
+            switchIndexFirst = firstPlayer.askChooseSwitch();
+        }
+
+
+
 
         System.out.println("------------------ First Player's Move Commences ------------------");
 
@@ -350,7 +411,12 @@ public class BattleMicro {
 
         // checks to see if game is over if a pokemon has died
         System.out.println("------------------ Checking if Pokemon Died after First Player's Move ------------------");
-        checkDeath();
+        if (checkDeath() == 1){
+            return;
+        }
+
+        //switch (usually should be 0)
+        firstPlayer.switchCurrPokemon(switchIndexFirst);
 
         // Quit if one of the following applies:
         // 1. Forfeit
@@ -377,6 +443,14 @@ public class BattleMicro {
         if(secondPlayer.getForfeitStatus() || getGameOverStatus()){
             return;
         }
+        if(attackSwitchMove.contains(secondMove.getName())) {
+            if (currSecondPoke == secondPlayer.getCurrPokemon()) {
+                System.out.println("which Pokemon do you want to Switch?");
+                switchIndexSecond = secondPlayer.askChooseSwitch();
+                secondPlayer.switchCurrPokemon(switchIndexSecond);
+            }
+        }
+
 
         System.out.println("------------------ End of Turn ------------------");
         // end turn effect
@@ -386,10 +460,7 @@ public class BattleMicro {
 
     }
 
-    private String readInputLine(){
-        Scanner scnr = new Scanner(System.in);
-        return scnr.nextLine();
-    }
+
 
     // check if any of the current pokemon have died
     // if a pokemon has died, need to choose another pokemon to take
@@ -405,11 +476,20 @@ public class BattleMicro {
      *
      * Depends on the checkDeathHelper() function.
      */
-    private void checkDeath() {
+    private int checkDeath() {
         // check if a pokemon has died
         // check to see if a pokemon has died, whether player of bot have
         // no more alive pokemon to switch with meaning there is a WINNER/LOSER
         switch(checkDeathHelper()){
+            //one pokemon is dead
+            case(1):{
+                ;
+            }
+            case(2):{
+                return 1;
+            }
+
+
             // player has lost
             case(3):{
                 setGameOverStatus(true);
@@ -428,6 +508,7 @@ public class BattleMicro {
                 break;
             }
         }
+        return 0;
     }
 
     /**
@@ -464,7 +545,7 @@ public class BattleMicro {
                 }
                 // read in user selection
                 System.out.println("ID of the Pokemon to make current: ");
-                String id = readInputLine();
+                String id = UserInput.readInputLine();
                 // set the current pokemon isAlive status to dead
                 // then swap it with the newly selected pokemon
                 user.getCurrPokemon().setIsAlive(false);
@@ -513,6 +594,12 @@ public class BattleMicro {
     public boolean XOR(boolean statement1, boolean statement2){
         return ( ( statement1 || statement2 ) && ! ( statement1 && statement2 ) );
     }
+
+//    public void initInput(){
+//        userInput = user.getUserInput();
+//    }
+
+
 }
 
 

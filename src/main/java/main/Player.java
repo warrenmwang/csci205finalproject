@@ -15,6 +15,8 @@ public class Player {
     private boolean ForfeitStatus = false;
     private boolean protectState = true;
 
+//    private UserInput userInput;
+
 
     /**
      * Constructor, initializes player with list of pokemon, current pokemon to battle with,
@@ -26,6 +28,7 @@ public class Player {
         this.pokemonTeam = initPokemon;
         this.numberOfPokemon = initPokemon.size();
         this.movesInventory = new MovesInventory();
+        //this.userInput = new UserInput();
     }
 
     /**
@@ -79,6 +82,8 @@ public class Player {
         this.pokemonTeam = newTeam;
     }
 
+    //public UserInput getUserInput() { return userInput;}
+
     /**
      * Prompt player to choose a move that is available to their current Pokemon.
      *
@@ -89,8 +94,8 @@ public class Player {
 
         // player can either switch, attack, or forfeit
         System.out.println("Player, do you want to switch, attack, or forfeit?");
-        Scanner scnr = new Scanner(System.in);
-        String input = scnr.nextLine();
+        UserInput.waitFXinput();
+        String input = UserInput.getUSERINPUT();
         switch (input) {
             case ("Switch"): {
                 // print out currently selected pokemon
@@ -142,7 +147,8 @@ public class Player {
 
             case ("forfeit"): {
                 System.out.println("Are you sure you want to forfeit? (y/n): ");
-                input = scnr.nextLine();
+                UserInput.waitFXinput();
+                input = UserInput.getUSERINPUT();
                 if (input.equalsIgnoreCase("y")) {
                     ForfeitStatus = true;
                 }
@@ -160,12 +166,27 @@ public class Player {
     }
 
     private String readInputLine(){
-        Scanner scnr = new Scanner(System.in);
-        return scnr.nextLine();
+        UserInput.waitFXinput();
+        return UserInput.getUSERINPUT();
     }
 
     public boolean getForfeitStatus(){
         return ForfeitStatus;
+    }
+
+
+
+
+    // For u_turn and volt_switch
+    public int askChooseSwitch(){
+        String input = readInputLine();
+        int result = 0;
+        try{
+            result = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            ;
+        }
+        return result;
     }
 
 
