@@ -22,7 +22,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
-public class View {
+public class TextView {
     private HBox root;
     private TextField inputTextField;
     private Label inputTextFieldLabel;
@@ -31,6 +31,7 @@ public class View {
     private VBox vbox;
 
     private Button btn1;
+    private Button SwitchSceneBtn;
 
     // getter methods
     public HBox getRoot(){ return root; }
@@ -38,6 +39,7 @@ public class View {
     public Button getBtn1() { return btn1; }
     public TextField getInputTextField(){ return inputTextField; }
     public Label getTestBottomLabel(){ return testBottomLabel; }
+    public Button getSwitchSceneBtn(){ return SwitchSceneBtn; }
 
     // TODO: add all the buttons for the moves, attack, switch, forfeit
     //   2 pokemon sprite/picture things
@@ -49,7 +51,7 @@ public class View {
     /**
      * Constructor
      */
-    public View(){
+    public TextView(){
         initSceneGraph();
         initStyling();
     }
@@ -68,6 +70,7 @@ public class View {
 
         btn1 = new Button("Refresh");
         testBottomLabel = new Label("to be replaced");
+        SwitchSceneBtn = new Button("Switch Scene");
 
         vbox.getChildren().add(inputTextFieldLabel);
         vbox.getChildren().add(inputTextField);
@@ -76,6 +79,7 @@ public class View {
 
         root.getChildren().add(vbox);
         root.getChildren().add(outputText);
+        root.getChildren().add(SwitchSceneBtn);
 
     }
 

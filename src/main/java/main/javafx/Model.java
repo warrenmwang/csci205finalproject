@@ -24,16 +24,16 @@ import java.lang.reflect.InvocationTargetException;
 public class Model {
 
     private BattleMacro battleMacro;
-
-    // getter method
-    public BattleMacro getBattleMacro(){ return battleMacro; }
+//
+//    // getter method
+//    public BattleMacro getBattleMacro(){ return battleMacro; }
 
     /**
      * Constructor
      */
-    public Model() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
+    public Model(BattleMacro battleMacro){
 
-        battleMacro = new BattleMacro();
+        this.battleMacro = battleMacro;
 
         // TODO might have to use a thread
         Runnable r = () -> {

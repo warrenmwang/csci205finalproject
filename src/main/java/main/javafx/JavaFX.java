@@ -16,15 +16,12 @@
 
 package main.javafx;
 import javafx.application.Application;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class JavaFX extends Application{
 
-    private View view1;
-    private ViewGridPane view2;
-    private Model model;
-    private Controller controller;
+    private TextView view1;
+    private BattleView view2;
     private GuiController controller2;
 
     /**
@@ -34,12 +31,11 @@ public class JavaFX extends Application{
      */
     @Override
     public void init() throws Exception {
+        String placeholder1 = "https://img.pokemondb.net/sprites/black-white/anim/back-normal/rotom-wash.gif";
+        String placerholder2 = "https://img.pokemondb.net/sprites/heartgold-soulsilver/back-normal/bulbasaur.png";
         super.init();
-//        view1 = new View();
-        view2 = new ViewGridPane();
-//        model = new Model();
-//        controller = new Controller(model, view1);
-        controller2 = new GuiController(view2);
+        view1 = new TextView();
+        view2 = new BattleView(placeholder1, placerholder2);
     }
 
     /**
@@ -53,16 +49,12 @@ public class JavaFX extends Application{
      */
     @Override
     public void start(Stage primaryStage) {
-        // original text based view
-//        Scene scene = new Scene(this.view1.getRoot());
+        // give the primary stage to the controller to be able to switch scenes
+        try {
+            controller2 = new GuiController(view1, view2, primaryStage);
+        }catch(Exception e){
 
-        // testing GridPane view
-        Scene scene = new Scene(this.view2.getRoot());
-
-        primaryStage.setTitle("Pokemon BattleFactory Simulator");
-        primaryStage.setScene(scene);
-        primaryStage.sizeToScene();
-        primaryStage.show();
+        }
     }
 
     /**

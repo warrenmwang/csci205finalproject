@@ -112,6 +112,7 @@ public class Bot extends Player{
             return movesInventory.getMove(getCurrPokemon().getMove(moveID));
 
             }
+
         }
 
 //        }

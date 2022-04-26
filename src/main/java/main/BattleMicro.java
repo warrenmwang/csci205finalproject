@@ -456,6 +456,9 @@ public class BattleMicro {
         // end turn effect
         endTurnEffect(firstPlayer,secondPlayer);
 
+        //TODO : check if pokemon switch
+        checkDeath();
+
 
 
     }
@@ -584,10 +587,27 @@ public class BattleMicro {
         }
 
     }
-
+    //Todo
     public void endTurnEffect(Player player1,Player player2){
         Pokemon player1poke = player1.getCurrPokemon();
-        Pokemon player2Poke = player2.getCurrPokemon();
+        Pokemon player2poke = player2.getCurrPokemon();
+
+        if (player1poke.getStatusEffect() == PokemonStatusEffect.BURNED){
+            player1poke.receiveDamage(player1poke.getMaxHp()*0.125);
+        }
+        if (player1poke.getStatusEffect() == PokemonStatusEffect.TOXIC){
+            player1poke.incToxicTurn();
+            player1poke.receiveDamage(player1poke.getToxicTurn() * player1poke.getMaxHp()*0.125);
+        }
+
+        if (player2poke.getStatusEffect() == PokemonStatusEffect.BURNED){
+            player2poke.receiveDamage(player2poke.getMaxHp()*0.125);
+        }
+        if (player2poke.getStatusEffect() == PokemonStatusEffect.TOXIC){
+            player2poke.incToxicTurn();
+            player2poke.receiveDamage(player2poke.getToxicTurn() * player2poke.getMaxHp()*0.125);
+        }
+
     }
 
 

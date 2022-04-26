@@ -45,6 +45,8 @@ public class Player {
      * @param ind index of Pokemon to be selected in the Player's Pokemon Team
      */
     public void switchCurrPokemon(int ind) {
+
+        getCurrPokemon().resetstatsNoHp();
         Collections.swap(this.pokemonTeam, 0, ind);
     }
 
@@ -66,6 +68,7 @@ public class Player {
             index++;
         }
 
+        getCurrPokemon().resetstatsNoHp();
         // swap current pokemon with the pokemon at index
         Collections.swap(pokemonTeam, 0, index);
     }

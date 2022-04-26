@@ -6,12 +6,14 @@ import java.util.Scanner;
 public class Pokemon {
     private String id;
     private String name;
-    private String image;
+    private String botImage;
+    private String playerImage;
     private ArrayList<Double> currStats;
     private ArrayList<String> moves;
     private ArrayList<String> types;
     private String item;
     private PokemonStatusEffect statusEffect;
+    private int toxicTurn;
     private boolean isAlive;
     private ArrayList<Double> originalStats;
     private int turnsActive;
@@ -22,14 +24,14 @@ public class Pokemon {
      * Defaults: status is NO EFFECT and isAlive is True
      * @param id
      * @param name
-     * @param image
+     * @param bot_image
      * @param stats
      * @param moves
      */
-    public Pokemon(String id, String name, String image, ArrayList<Double> stats, ArrayList<String> moves, ArrayList<String> types, String item){
+    public Pokemon(String id, String name, String bot_image, ArrayList<Double> stats, ArrayList<String> moves, ArrayList<String> types, String item,String player_image){
         this.id = id;
         this.name = name;
-        this.image = image;
+        this.botImage = bot_image;
         this.currStats = new ArrayList<>(stats);
         this.moves = moves;
         this.types = types;
@@ -39,6 +41,9 @@ public class Pokemon {
         this.originalStats = new ArrayList<>(stats);
         this.turnsActive = 0;
         this.protectState = false;
+        this.playerImage = player_image;
+
+        this.toxicTurn = 0;
 
     }
     final private int HP = 0;
@@ -66,6 +71,9 @@ public class Pokemon {
     public String getItems() { return this.item; }
     public int getTurnsActive() { return this.turnsActive;}
 
+    public String getBotImage() {return this.botImage;}
+    public String getPlayerImage() {return this.playerImage;}
+
     public Double getMaxHp() {return this.originalStats.get(HP);}
 
 
@@ -76,8 +84,8 @@ public class Pokemon {
     public String getMove(int index){
         return moves.get(index);
     }
-
-
+    public boolean getProtectState() { return this.protectState;}
+    public int getToxicTurn() {return toxicTurn;}
 
     // Setter/Update Methods
     public void setStatusEffect(PokemonStatusEffect statusEffect){ this.statusEffect = statusEffect; }
@@ -90,15 +98,17 @@ public class Pokemon {
     public void setSpDef(double SpDef) {this.currStats.set(SPDEF,SpDef);}
     public void setSpe(double spe) { this.currStats.set(SPEED, spe);}
     public void setTurnsActive(int turn) {this.turnsActive = turn;}
-
     public void setProtectState(boolean bool) { this.protectState = bool;}
+    public void setToxicTurn(int turn) {this.toxicTurn = turn;}
+    public void incToxicTurn() { this.toxicTurn += 1;}
 
-    public boolean getProtectState() { return this.protectState;}
+
 
     public void resetstatsNoHp(){
         double currentHp = this.getHP();
         this.setStats(this.originalStats);
         this.setHp(currentHp);
+        this.statusEffect = PokemonStatusEffect.NO_EFFECT;
     }
 
 
@@ -152,7 +162,7 @@ public class Pokemon {
     public String toString() {
         return String.format("id: %s\n" +
                 "name: %s\n" +
-                "image: %s\n" +
+                //"image: %s\n" +
                 "currStats: %s\n" +
                 "origStats: %s\n" +
                 "types: %s\n" +
@@ -160,6 +170,6 @@ public class Pokemon {
                 "statusEffect: %s\n" +
                 "isAlive: %s\n" +
                 "turnsActive: %s\n" +
-                "item %s\n", id, name, image, currStats, originalStats, types, moves, statusEffect, isAlive, turnsActive, item);
+                "item %s\n", id, name, currStats, originalStats, types, moves, statusEffect, isAlive, turnsActive, item);
     }
 }
