@@ -57,10 +57,19 @@ public class ChoosePokemonView {
      */
     public ChoosePokemonView(ArrayList<Pokemon> team){
         this.chooseFromPoke = team;
+        System.out.println(team);
+        System.out.println("start of view");
+        for(Pokemon p:team){
+            System.out.println(p.getID());
+        }
+        System.out.println("end of view");
         currPokeInd = 0;
         pokemonChosenCounter = 0;
+        System.out.println("step3");
         initSceneGraph();
+        System.out.println("step4");
         initSceneStyling();
+        System.out.println("step5");
     }
 
     /**
@@ -73,19 +82,31 @@ public class ChoosePokemonView {
         layer3 = new HBox();
         layer4 = new HBox();
 
+        System.out.println("step3.1");
 
         // layer 1 contents
         exitBtn = new Button("Exit");
         layer1.getChildren().add(exitBtn);
 
+        System.out.println("step3.2");
+
         // layer 2 contents
         leftArrow = new Button("<--");
         rightArrow = new Button("-->");
         allPokeImgs = new ArrayList<>();
+
+        System.out.println("step3.3");
+
         for(Pokemon p : chooseFromPoke){
             String url = p.getPlayerImage();
+            System.out.println("player image: ");
+            System.out.println(url);
+            System.out.println("\n");
             allPokeImgs.add(new ImageView(new Image(url)));
         }
+
+        System.out.println("step3.4");
+
         currViewPokemon = allPokeImgs.get(0);
         layer2.getChildren().add(leftArrow);
         layer2.getChildren().add(currViewPokemon);
@@ -110,7 +131,7 @@ public class ChoosePokemonView {
         layer3.getChildren().add(Move4);
 
         // layer 4 contents
-        checkMark = new Button("✅");
+        checkMark = new Button("yes");
         moveDesc = new Label("");
         layer4.getChildren().add(moveDesc);
         layer4.getChildren().add(checkMark);

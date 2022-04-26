@@ -14,6 +14,7 @@
  * *****************************************/
 
 
+
 package main.javafx;
 
 import javafx.scene.Scene;
@@ -38,6 +39,7 @@ public class GuiController {
     private ByteArrayOutputStream newSysOut;
     private BattleMacro battleMacro;
 
+
     public GuiController(TextView textView, BattleView battleView, Stage primaryStage) throws Exception{
         // before creating out main game, change sys.out to something we capture
         PrintStream sysOutOrig = System.out;
@@ -48,11 +50,15 @@ public class GuiController {
         battleMacro = new BattleMacro();
         this.model = new Model(battleMacro);
 
+        System.out.println("step1");
 
         // create all the views
         this.battleView = battleView;
         this.textView = textView;
+        System.out.println("step2");
         this.choosePokemonView = new ChoosePokemonView(battleMacro.getBattleMicro().getUserTeam());
+
+        System.out.println("steplast");
 
         // create scenes from the views
         this.textScene = new Scene(this.textView.getRoot());
@@ -67,6 +73,10 @@ public class GuiController {
         this.primaryStage.show();
 
         this.primaryStage.setTitle("Pokemon BattleFactory Simulator");
+
+        //model.run();
+
+
         initEventHandler();
     }
 

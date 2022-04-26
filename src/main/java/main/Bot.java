@@ -51,6 +51,9 @@ public class Bot extends Player{
             //if the difficulty is easy, the bot will just select a random move and never switch
             //use completely random moves
             int moveID = new Random().nextInt(4);
+
+            System.out.println(getCurrPokemon().getMove(moveID));
+
             return movesInventory.getMove(getCurrPokemon().getMove(moveID));
 
         } else if (this.difficulty == 2) {

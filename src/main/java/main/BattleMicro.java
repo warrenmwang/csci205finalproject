@@ -174,7 +174,7 @@ public class BattleMicro {
         String id;
         int randNum;
         while(true){
-            randNum = rand.nextInt(1, pokemonInventory.getNumPokemon() - 1) + 1; // offset by 1 bc there is no id of 0, id range is [1, totNum]
+            randNum = rand.nextInt(1, pokemonInventory.getNumPokemon() - 1) -1; // offset by 1 bc there is no id of 0, id range is [1, totNum]
             id = String.format("%d", randNum);
             // if id NOT already selected, add this new pokemon and save the id
             // else skip to next iteration of while loop to pick randomly again

@@ -73,9 +73,9 @@ public class test {
 
         downside = new HBox();
         VBox confirm = new VBox();
-        confirm.getChildren().add(new Button("√"));
+        confirm.getChildren().add(new Button("yes"));
         VBox cancel = new VBox();
-        cancel.getChildren().add(new Button("×"));
+        cancel.getChildren().add(new Button("no"));
         downside.getChildren().addAll(confirm,cancel);
 
 

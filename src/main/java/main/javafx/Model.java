@@ -18,6 +18,7 @@ package main.javafx;
 
 import main.BattleMacro;
 
+import java.util.concurrent.TimeUnit;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
@@ -34,8 +35,10 @@ public class Model {
     public Model(BattleMacro battleMacro){
 
         this.battleMacro = battleMacro;
-
-        // TODO might have to use a thread
+//        try{
+//            TimeUnit.MICROSECONDS.sleep(1000000);}
+//        catch(Exception e){
+//        }
         Runnable r = () -> {
             try {
                 battleMacro.mainGameLoop();
@@ -45,6 +48,18 @@ public class Model {
         };
         Thread t = new Thread(r);
         t.start();
+    }
 
+
+    public void run(){
+        Runnable r = () -> {
+            try {
+                battleMacro.mainGameLoop();
+            } catch (Exception e) {
+                // blah
+            }
+        };
+        Thread t = new Thread(r);
+        t.start();
     }
 }

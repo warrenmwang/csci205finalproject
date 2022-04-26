@@ -28,6 +28,7 @@ public class BattleMacro {
 //    private boolean whoseTurn; // 1 for Player, 0 for Bot
 
     private GameState gameState;
+    private boolean firstTurn;
 
 
     /**
@@ -38,6 +39,9 @@ public class BattleMacro {
         battleMicro = new BattleMicro();
         // go into teambuilding state
         setGameState(GameState.TEAMBUILDING);
+        firstTurn = true;
+        battleMicro.generateInitialPlayerRandomTeam();
+
     }
 
     // getter methods
@@ -60,6 +64,7 @@ public class BattleMacro {
         // use reset function to create teams, prompt for picking teams,
         // refresh variables
         reset();
+        firstTurn = false;
 
         // start game, set game state
         setGameState(GameState.BATTLE);
@@ -124,7 +129,8 @@ public class BattleMacro {
         battleMicro.setPlayerWonStatus(false);
 
         // generate random 6 pokemon teams
-        battleMicro.generateInitialPlayerRandomTeam();
+        if(!firstTurn){
+        battleMicro.generateInitialPlayerRandomTeam();}
         battleMicro.generateInitialBotRandomTeam();
 
         // bring teams down to their final form of 3
