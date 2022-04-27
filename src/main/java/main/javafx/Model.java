@@ -51,15 +51,15 @@ public class Model {
     }
 
 
-    public void run(){
-        Runnable r = () -> {
-            try {
-                battleMacro.mainGameLoop();
-            } catch (Exception e) {
-                // blah
-            }
-        };
-        Thread t = new Thread(r);
-        t.start();
-    }
+//    public void run(){
+//        Runnable r = () -> {
+//            try {
+//                battleMacro.mainGameLoop();
+//            } catch (Exception e) {
+//                // blah
+//            }
+//        };
+//        Thread t = new Thread(r);
+//        t.start();
+//    }
 }

@@ -108,7 +108,7 @@ public class BattleView {
      * Styling stuff in scene
      */
     public void initSceneStyling() {
-        // -------------------- root contents --------------------
+        // -------------------- root --------------------
         Image img = new Image(backgroundImageURL);
 
         BackgroundImage bImg = new BackgroundImage(img,
@@ -119,13 +119,31 @@ public class BattleView {
 
         Background bGround = new Background(bImg);
 
+        // set vbox size for entire graphical view
+        root.setPrefSize(1050, 700);
+
+        // ------------ Stack Pane containing gridpane ------------
+
         stackPane.setBackground(bGround);
 
         // set stackPane's pref size just right for background image
         stackPane.setPrefSize(1050, 540);
 
-        // set vbox size for entire graphical view
-        root.setPrefSize(1050, 700);
+        // ------------- GridPane --------------
+
+        // set gridpane's pref size
+        gridPane.setPrefSize(1050, 540);
+
+        // set fixed column sizes
+        gridPane.getColumnConstraints().add(new ColumnConstraints(200));
+        gridPane.getColumnConstraints().add(new ColumnConstraints(200));
+        gridPane.getColumnConstraints().add(new ColumnConstraints(200));
+
+        gridPane.getRowConstraints().add(new RowConstraints(100));
+        gridPane.getRowConstraints().add(new RowConstraints(100));
+        gridPane.getRowConstraints().add(new RowConstraints(100));
+
+
 
     }
 

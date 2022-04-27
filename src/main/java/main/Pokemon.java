@@ -161,16 +161,15 @@ public class Pokemon {
     @Override
     public String toString() {
         return String.format("id: %s\n" +
-                "name: %s\n" ,id,name);
-//                +
-//                //"image: %s\n" +
-//                "currStats: %s\n" +
-//                "origStats: %s\n" +
-//                "types: %s\n" +
-//                "moves: %s\n" +
-//                "statusEffect: %s\n" +
-//                "isAlive: %s\n" +
-//                "turnsActive: %s\n" +
-//                "item %s\n", id, name, currStats, originalStats, types, moves, statusEffect, isAlive, turnsActive, item);
+                "name: %s\n"+
+//                "image: %s\n" +
+                "currStats: %s\n" +
+                "origStats: %s\n" +
+                "types: %s\n" +
+                "moves: %s\n" +
+                "statusEffect: %s\n" +
+                "isAlive: %s\n" +
+                "turnsActive: %s\n" +
+                "item %s\n", id, name, currStats, originalStats, types, moves, statusEffect, isAlive, turnsActive, item);
     }
 }

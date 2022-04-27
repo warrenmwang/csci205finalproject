@@ -131,6 +131,14 @@ public class GuiController {
             }
         });
 
+        // left arrow cycle pokemon, subtract index, wrap around if needed
+        choosePokemonView.getLeftArrow().setOnMouseClicked(event -> {
+
+        });
+
+        // right arrow cycle pokemon, add index, wrap around if neeeded
+
+
     }
 
     /**

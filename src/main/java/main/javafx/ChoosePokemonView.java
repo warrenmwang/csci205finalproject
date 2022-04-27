@@ -82,30 +82,19 @@ public class ChoosePokemonView {
         layer3 = new HBox();
         layer4 = new HBox();
 
-        System.out.println("step3.1");
-
         // layer 1 contents
         exitBtn = new Button("Exit");
         layer1.getChildren().add(exitBtn);
-
-        System.out.println("step3.2");
 
         // layer 2 contents
         leftArrow = new Button("<--");
         rightArrow = new Button("-->");
         allPokeImgs = new ArrayList<>();
 
-        System.out.println("step3.3");
-
         for(Pokemon p : chooseFromPoke){
-            String url = p.getPlayerImage();
-            System.out.println("player image: ");
-            System.out.println(url);
-            System.out.println("\n");
+            String url = p.getBotImage(); // get bot image bc that faces forward
             allPokeImgs.add(new ImageView(new Image(url)));
         }
-
-        System.out.println("step3.4");
 
         currViewPokemon = allPokeImgs.get(0);
         layer2.getChildren().add(leftArrow);
@@ -151,6 +140,8 @@ public class ChoosePokemonView {
     public void initSceneStyling(){
 
     }
+
+
     public Button getCheckMark(){return this.checkMark;}
     public int getPointer() {return this.currPokeInd % 6;}
     public void incPointer() {this.currPokeInd += 1;}
@@ -160,6 +151,9 @@ public class ChoosePokemonView {
     public String getCurrPokemonID() {
         return this.chooseFromPoke.get(currPokeInd).getID();
     }
+
+    public Button getLeftArrow(){return this.leftArrow;}
+    public Button getRightArrow(){return this.rightArrow;}
 
     public void incrementChosenPokemonCounter(){ this.pokemonChosenCounter += 1;}
 
