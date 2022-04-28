@@ -41,9 +41,9 @@ public class ChoosePokemonView {
     private Button exitBtn;
     private Button leftArrow;
     private Button rightArrow;
-    private ArrayList<ImageView> allPokeImgs;
+    private ArrayList<Image> allPokeImgs;
     private ImageView currViewPokemon;
-    private Pokemon currPokemon;
+
     private Button Move1;
     private Button Move2;
     private Button Move3;
@@ -56,7 +56,7 @@ public class ChoosePokemonView {
      * Constructor
      */
     public ChoosePokemonView(ArrayList<Pokemon> team){
-        this.chooseFromPoke = team;
+        this.chooseFromPoke = new ArrayList<>(team);
         System.out.println(team);
         System.out.println("start of view");
         for(Pokemon p:team){
@@ -93,10 +93,11 @@ public class ChoosePokemonView {
 
         for(Pokemon p : chooseFromPoke){
             String url = p.getBotImage(); // get bot image bc that faces forward
-            allPokeImgs.add(new ImageView(new Image(url)));
+            allPokeImgs.add(new Image(url));
         }
 
-        currViewPokemon = allPokeImgs.get(0);
+        // set currViewPokemon based on currPokeInd
+        currViewPokemon = new ImageView(allPokeImgs.get(currPokeInd));
         layer2.getChildren().add(leftArrow);
         layer2.getChildren().add(currViewPokemon);
         layer2.getChildren().add(rightArrow);
@@ -138,26 +139,48 @@ public class ChoosePokemonView {
      * Style scene contents
      */
     public void initSceneStyling(){
+        // set a pref size for the whole thing
+        root.setPrefSize(500, 500);
 
+        // set a max size for pokemon being viewed
+        currViewPokemon.setFitHeight(250);
+        currViewPokemon.setFitWidth(250);
     }
 
 
     public Button getCheckMark(){return this.checkMark;}
-    public int getPointer() {return this.currPokeInd % 6;}
-    public void incPointer() {this.currPokeInd += 1;}
-    public void decPointer() {this.currPokeInd -= 1;}
+    public void incCurrPokeInd() {
+        this.currPokeInd += 1;
+        if(this.currPokeInd >= allPokeImgs.size()) this.currPokeInd = 0;
+    }
+    public void decCurrPokeInd() {
+        this.currPokeInd -= 1;
+        if(this.currPokeInd <= -1) this.currPokeInd = (allPokeImgs.size()-1);
+    }
     public int getPokemonChosenCounter() {return this.pokemonChosenCounter;}
 
     public String getCurrPokemonID() {
         return this.chooseFromPoke.get(currPokeInd).getID();
     }
+    public int getCurrPokeInd(){return currPokeInd;}
+    public ArrayList<Image> getAllPokeImgs(){return allPokeImgs;}
 
+    public Button getExitBtn(){return this.exitBtn;}
     public Button getLeftArrow(){return this.leftArrow;}
     public Button getRightArrow(){return this.rightArrow;}
 
     public void incrementChosenPokemonCounter(){ this.pokemonChosenCounter += 1;}
 
-    public void setCurrPokeInd(int ind){this.currPokeInd = ind;}
+    // assumes currpokeind is updated before this function is called
+    public void updateCurrViewPokemon(){
+        System.out.println("updatecurrviewpoke " + currPokeInd);
+        this.currViewPokemon.setImage(this.allPokeImgs.get(currPokeInd));
+    }
+
+    // just calls the 4 set move functions to be displayed
+    public void setAllMoves(){
+        setMove1(); setMove2(); setMove3(); setMove4();
+    }
 
     public void setMove1(){
         Move1.setText(this.chooseFromPoke.get(currPokeInd).getMoves().get(0));
@@ -178,4 +201,7 @@ public class ChoosePokemonView {
     public VBox getRoot() {
         return this.root;
     }
+
+    public ArrayList<Pokemon> getChooseFromPoke(){return chooseFromPoke;}
+
 }

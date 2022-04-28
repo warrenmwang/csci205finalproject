@@ -50,15 +50,10 @@ public class GuiController {
         battleMacro = new BattleMacro();
         this.model = new Model(battleMacro);
 
-        System.out.println("step1");
-
         // create all the views
         this.battleView = battleView;
         this.textView = textView;
-        System.out.println("step2");
         this.choosePokemonView = new ChoosePokemonView(battleMacro.getBattleMicro().getUserTeam());
-
-        System.out.println("steplast");
 
         // create scenes from the views
         this.textScene = new Scene(this.textView.getRoot());
@@ -66,15 +61,13 @@ public class GuiController {
         this.choosePokemonScene = new Scene(this.choosePokemonView.getRoot());
 
         // start with the gui scene
-        // TODO choose the first scene to start with
+        // TODO start the game with the StartGameScene
         this.primaryStage = primaryStage;
         this.primaryStage.setScene(choosePokemonScene);
         this.primaryStage.sizeToScene();
         this.primaryStage.show();
 
         this.primaryStage.setTitle("Pokemon BattleFactory Simulator");
-
-        //model.run();
 
 
         initEventHandler();
@@ -85,7 +78,6 @@ public class GuiController {
 
         // switch from gui to text
         battleView.getSwitchSceneBtn().setOnMouseClicked(event -> {
-//            view.setRoot(view.getRoot2());
               primaryStage.setScene(textScene);
         });
 
@@ -93,6 +85,10 @@ public class GuiController {
         textView.getSwitchSceneBtn().setOnMouseClicked(event -> {
             primaryStage.setScene(battleScene);
         });
+
+        // TODO switch from BattleView to DoYouWantToPlayAgainAndEndScene
+
+
 
         // ------- stuff to handle events in the text view --------
 
@@ -125,6 +121,17 @@ public class GuiController {
             UserInput.setCanGetUSERINPUT(true);
             choosePokemonView.incrementChosenPokemonCounter();
 
+            // remove chosen pokemon from being able to be chosen again
+            choosePokemonView.getChooseFromPoke().remove(choosePokemonView.getChooseFromPoke().get(choosePokemonView.getCurrPokeInd()));
+            choosePokemonView.getAllPokeImgs().remove(choosePokemonView.getCurrPokeInd());
+
+            // increment counter, then set curr pokemon to be where the new index is at
+            choosePokemonView.incCurrPokeInd();
+            choosePokemonView.updateCurrViewPokemon();
+            // then update the moves on the screen
+            choosePokemonView.setAllMoves();
+
+
             // check if need to switch scene when 3 pokemon are chosen
             if(choosePokemonView.getPokemonChosenCounter() == 3){
                 primaryStage.setScene(battleScene);
@@ -133,14 +140,32 @@ public class GuiController {
 
         // left arrow cycle pokemon, subtract index, wrap around if needed
         choosePokemonView.getLeftArrow().setOnMouseClicked(event -> {
-
+            // decrement counter, then set curr pokemon to be where the new index is at
+            choosePokemonView.decCurrPokeInd();
+            choosePokemonView.updateCurrViewPokemon();
+            // then update the moves on the screen
+            choosePokemonView.setAllMoves();
         });
 
         // right arrow cycle pokemon, add index, wrap around if neeeded
+        choosePokemonView.getRightArrow().setOnMouseClicked(event -> {
+            // increment counter, then set curr pokemon to be where the new index is at
+            choosePokemonView.incCurrPokeInd();
+            choosePokemonView.updateCurrViewPokemon();
+            // then update the moves on the screen
+            choosePokemonView.setAllMoves();
+        });
 
+        // exit button returns player to the start game scene
+        choosePokemonView.getExitBtn().setOnMouseClicked(event -> {
+            // switch to the starting scene
+            primaryStage.setScene(startScene);
+        });
 
     }
 
+
+    // ------------------- for the Text scene, which won't be used in final product -----
     /**
      * Refresh text area of the TextView
      */
