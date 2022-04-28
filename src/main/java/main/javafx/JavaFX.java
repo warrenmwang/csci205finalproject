@@ -31,11 +31,13 @@ public class JavaFX extends Application{
      */
     @Override
     public void init() throws Exception {
-        String placeholder1 = "https://img.pokemondb.net/sprites/black-white/anim/back-normal/rotom-wash.gif";
-        String placerholder2 = "https://img.pokemondb.net/sprites/heartgold-soulsilver/back-normal/bulbasaur.png";
+        //bot
+        String placeholder2 = "https://img.pokemondb.net/sprites/black-white/anim/back-normal/rotom-wash.gif";
+        //player
+        String placeholder1 = "https://img.pokemondb.net/sprites/heartgold-soulsilver/back-normal/bulbasaur.png";
         super.init();
         view1 = new TextView();
-        view2 = new BattleView(placeholder1, placerholder2);
+        view2 = new BattleView(placeholder1, placeholder2);
     }
 
     /**

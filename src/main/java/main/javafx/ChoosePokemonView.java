@@ -16,6 +16,8 @@
 
 package main.javafx;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -140,11 +142,28 @@ public class ChoosePokemonView {
      */
     public void initSceneStyling(){
         // set a pref size for the whole thing
-        root.setPrefSize(500, 500);
+        root.setPrefSize(450, 450);
 
         // set a max size for pokemon being viewed
         currViewPokemon.setFitHeight(250);
         currViewPokemon.setFitWidth(250);
+
+        //left and right switches
+        layer2.setAlignment(Pos.CENTER_LEFT);
+        layer2.setPadding(new Insets(10,50,10,50));
+        layer2.setSpacing(10);
+        leftArrow.setPrefSize(60,10);
+        rightArrow.setPrefSize(60,10);
+
+        //buttons
+        layer3.setPadding(new Insets(10,10,10,10));
+        layer3.setSpacing(10);
+        Move1.setPrefSize(100,40);
+        Move2.setPrefSize(100,40);
+        Move3.setPrefSize(100,40);
+        Move4.setPrefSize(100,40);
+
+
     }
 
 

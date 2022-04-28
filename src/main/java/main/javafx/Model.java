@@ -47,6 +47,7 @@ public class Model {
             }
         };
         Thread t = new Thread(r);
+        t.setDaemon(true);
         t.start();
     }
 
