@@ -90,6 +90,8 @@ public class GuiController {
     public void initEventHandler() {
         // ------- event handler to switch scenes on the main stage -------
         startGameView.getStart_game().setOnMouseClicked(event -> {
+            model.getNewThread();
+            model.run();
             primaryStage.setScene(choosePokemonScene);
         });
 
@@ -259,6 +261,8 @@ public class GuiController {
         // exit button returns player to the start game scene
         choosePokemonView.getExitBtn().setOnMouseClicked(event -> {
             // switch to the starting scene
+            model.stop();
+            choosePokemonView.setPokemonChosenCounter(0);
             primaryStage.setScene(startScene);
         });
 

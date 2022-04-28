@@ -24,7 +24,12 @@ import java.lang.reflect.InvocationTargetException;
 
 public class Model {
 
+    public Thread getT() {
+        return t;
+    }
+
     private BattleMacro battleMacro;
+    Thread t;
 //
 //    // getter method
 //    public BattleMacro getBattleMacro(){ return battleMacro; }
@@ -35,10 +40,7 @@ public class Model {
     public Model(BattleMacro battleMacro){
 
         this.battleMacro = battleMacro;
-//        try{
-//            TimeUnit.MICROSECONDS.sleep(1000000);}
-//        catch(Exception e){
-//        }
+
         Runnable r = () -> {
             try {
                 battleMacro.mainGameLoop();
@@ -46,21 +48,32 @@ public class Model {
                 // blah
             }
         };
-        Thread t = new Thread(r);
+        t = new Thread(r);
         t.setDaemon(true);
-        t.start();
+
     }
 
 
-//    public void run(){
-//        Runnable r = () -> {
-//            try {
-//                battleMacro.mainGameLoop();
-//            } catch (Exception e) {
-//                // blah
-//            }
-//        };
-//        Thread t = new Thread(r);
-//        t.start();
-//    }
+    public void run(){
+        t.start();
+    }
+
+    public void getNewThread(){
+        Runnable r = () -> {
+            try {
+                battleMacro.mainGameLoop();
+            } catch (Exception e) {
+                // blah
+            }
+        };
+        t = new Thread(r);
+        t.setDaemon(true);
+    }
+
+    public void stop(){
+        t.interrupt();
+
+    }
 }
+
+
