@@ -30,11 +30,15 @@ public class GuiController {
     private TextView textView;
     private BattleView battleView;
     private ChoosePokemonView choosePokemonView;
+    private StartGameView startGameView;
+
     private Stage primaryStage;
     private Scene guiScene;
     private Scene textScene;
     private Scene battleScene;
     private Scene choosePokemonScene;
+    private Scene startScene;
+
     private Model model;
     private ByteArrayOutputStream newSysOut;
     private BattleMacro battleMacro;
@@ -42,20 +46,22 @@ public class GuiController {
 
     public GuiController(TextView textView, BattleView battleView, Stage primaryStage) throws Exception{
         // before creating out main game, change sys.out to something we capture
-        PrintStream sysOutOrig = System.out;
-        newSysOut = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(newSysOut));
+//        PrintStream sysOutOrig = System.out;
+//        newSysOut = new ByteArrayOutputStream();
+//        System.setOut(new PrintStream(newSysOut));
 
         // create model
         battleMacro = new BattleMacro();
         this.model = new Model(battleMacro);
 
         // create all the views
+        this.startGameView = new StartGameView();
         this.battleView = battleView;
         this.textView = textView;
         this.choosePokemonView = new ChoosePokemonView(battleMacro.getBattleMicro().getUserTeam());
 
         // create scenes from the views
+        this.startScene = new Scene(this.startGameView.getRoot());
         this.textScene = new Scene(this.textView.getRoot());
         this.battleScene = new Scene(this.battleView.getRoot());
         this.choosePokemonScene = new Scene(this.choosePokemonView.getRoot());
@@ -63,7 +69,8 @@ public class GuiController {
         // start with the gui scene
         // TODO start the game with the StartGameScene
         this.primaryStage = primaryStage;
-        this.primaryStage.setScene(choosePokemonScene);
+        this.primaryStage.setScene(startScene);
+        //this.primaryStage.setScene(choosePokemonScene);
         this.primaryStage.sizeToScene();
         this.primaryStage.show();
 
@@ -75,6 +82,18 @@ public class GuiController {
 
     public void initEventHandler() {
         // ------- event handler to switch scenes on the main stage -------
+        startGameView.getStart_game().setOnMouseClicked(event -> {
+            primaryStage.setScene(choosePokemonScene);
+        });
+
+        startGameView.getExit_btn().setOnMouseClicked(event -> {
+            //TODO terminate the program
+
+        });
+
+        startGameView.getRule().setOnMouseClicked(event -> {
+
+        });
 
         // switch from gui to text
         battleView.getSwitchSceneBtn().setOnMouseClicked(event -> {

@@ -16,11 +16,14 @@
 
 package main.javafx;
 
+import javafx.geometry.HPos;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
 public class BattleView {
@@ -32,6 +35,11 @@ public class BattleView {
     private String playerPokemonImageURL;
     private String botPokemonImageURL;
     private final String backgroundImageURL = "http://eg.bucknell.edu/~wmw015/code/backgroundforpokemon.jfif";
+
+    private Rectangle playerBaseHp;
+    private Rectangle playerHpBar;
+    private Rectangle BotBaseHp;
+    private Rectangle BotHpBar;
 
     private Button SwitchSceneBtn;
     private Button Move1;
@@ -54,10 +62,16 @@ public class BattleView {
     public Button getSwitchSceneBtn(){ return SwitchSceneBtn; }
     public String getPlayerPokemonImageURL(){return this.playerPokemonImageURL;}
     public String getBotPokemonImageURL(){return this.botPokemonImageURL;}
+    public Rectangle getPlayerHpBar() {return playerHpBar;}
+    public Rectangle getPlayerBaseHp() {return playerBaseHp;}
+    public Rectangle getBotHpBar() {return BotHpBar;}
+    public Rectangle getBotBaseHp() {return BotBaseHp;}
 
     // ---------------- setter methods ---------------
     public void setPlayerPokemonImageURL(String newString){this.playerPokemonImageURL = newString; }
     public void setBotPokemonImageURL(String newString){this.botPokemonImageURL = newString; }
+
+
 
     /**
      * Constructor
