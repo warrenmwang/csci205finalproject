@@ -172,4 +172,13 @@ public class Pokemon {
                 "turnsActive: %s\n" +
                 "item %s\n", id, name, currStats, originalStats, types, moves, statusEffect, isAlive, turnsActive, item);
     }
+
+    public String toSmallString(){
+        return String.format(
+                "name: %s\n"+
+                "Stats: %s\n" +
+                "types: %s\n" +
+                "moves: %s\n",name,originalStats,types,moves);
+
+    }
 }

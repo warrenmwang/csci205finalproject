@@ -20,11 +20,14 @@ package main.javafx;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.BattleMacro;
+import main.MovesInventory;
 import main.UserInput;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.concurrent.TimeUnit;
+
+import static java.lang.System.exit;
 
 public class GuiController {
     private TextView textView;
@@ -38,6 +41,7 @@ public class GuiController {
     private Scene battleScene;
     private Scene choosePokemonScene;
     private Scene startScene;
+    private MovesInventory movesInventory;
 
     private Model model;
     private ByteArrayOutputStream newSysOut;
@@ -46,9 +50,12 @@ public class GuiController {
 
     public GuiController(TextView textView, BattleView battleView, Stage primaryStage) throws Exception{
         // before creating out main game, change sys.out to something we capture
-//        PrintStream sysOutOrig = System.out;
-//        newSysOut = new ByteArrayOutputStream();
-//        System.setOut(new PrintStream(newSysOut));
+        PrintStream sysOutOrig = System.out;
+        newSysOut = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(newSysOut));
+
+        movesInventory = new MovesInventory();
+
 
         // create model
         battleMacro = new BattleMacro();
@@ -88,6 +95,7 @@ public class GuiController {
 
         startGameView.getExit_btn().setOnMouseClicked(event -> {
             //TODO terminate the program
+            exit(0);
 
         });
 
@@ -175,11 +183,86 @@ public class GuiController {
             choosePokemonView.setAllMoves();
         });
 
+
+        //In choosePokemonscene, display move description when move button is clicked
+
+        choosePokemonView.getCurrViewPokemon().setOnMouseClicked(event -> {
+            String PokeDes = choosePokemonView.getChooseFromPoke().get(choosePokemonView.getCurrPokeInd()).toSmallString();
+            try {
+                newSysOut.reset();
+            }catch(Exception e){
+                System.out.println("???");
+            }
+            System.out.println(PokeDes);
+            choosePokemonView.getMoveDesc().clear();
+            choosePokemonView.getMoveDesc().appendText(newSysOut.toString());
+            choosePokemonView.getMoveDesc().setScrollTop(Double.MAX_VALUE);
+        });
+
+
+        choosePokemonView.getMove1().setOnMouseClicked(event -> {
+            String moveName = choosePokemonView.getChooseFromPoke().get(choosePokemonView.getCurrPokeInd()).getMove(0);
+            try {
+                newSysOut.reset();
+            }catch(Exception e){
+                System.out.println("???");
+            }
+            System.out.println(movesInventory.getMove(moveName));
+            choosePokemonView.getMoveDesc().clear();
+            choosePokemonView.getMoveDesc().appendText(newSysOut.toString());
+            choosePokemonView.getMoveDesc().setScrollTop(Double.MAX_VALUE);
+        });
+
+        choosePokemonView.getMove2().setOnMouseClicked(event -> {
+            String moveName = choosePokemonView.getChooseFromPoke().get(choosePokemonView.getCurrPokeInd()).getMove(1);
+            try {
+                newSysOut.reset();
+            }catch(Exception e){
+                System.out.println("???");
+            }
+            System.out.println(movesInventory.getMove(moveName));
+            choosePokemonView.getMoveDesc().clear();
+            choosePokemonView.getMoveDesc().appendText(newSysOut.toString());
+            choosePokemonView.getMoveDesc().setScrollTop(Double.MAX_VALUE);
+        });
+
+        choosePokemonView.getMove3().setOnMouseClicked(event -> {
+            String moveName = choosePokemonView.getChooseFromPoke().get(choosePokemonView.getCurrPokeInd()).getMove(2);
+            try {
+                newSysOut.reset();
+            }catch(Exception e){
+                System.out.println("???");
+            }
+            System.out.println(movesInventory.getMove(moveName));
+            choosePokemonView.getMoveDesc().clear();
+            choosePokemonView.getMoveDesc().appendText(newSysOut.toString());
+            choosePokemonView.getMoveDesc().setScrollTop(Double.MAX_VALUE);
+        });
+
+        choosePokemonView.getMove4().setOnMouseClicked(event -> {
+            String moveName = choosePokemonView.getChooseFromPoke().get(choosePokemonView.getCurrPokeInd()).getMove(3);
+            try {
+                newSysOut.reset();
+            }catch(Exception e){
+                System.out.println("???");
+            }
+            System.out.println(movesInventory.getMove(moveName));
+            choosePokemonView.getMoveDesc().clear();
+            choosePokemonView.getMoveDesc().appendText(newSysOut.toString());
+            choosePokemonView.getMoveDesc().setScrollTop(Double.MAX_VALUE);
+        });
+
+
+
+
+
         // exit button returns player to the start game scene
         choosePokemonView.getExitBtn().setOnMouseClicked(event -> {
             // switch to the starting scene
             primaryStage.setScene(startScene);
         });
+
+
 
     }
 

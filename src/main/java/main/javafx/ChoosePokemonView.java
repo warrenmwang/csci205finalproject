@@ -20,6 +20,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -51,7 +52,7 @@ public class ChoosePokemonView {
     private Button Move3;
     private Button Move4;
     private Button checkMark;
-    private Label moveDesc;
+    private TextArea moveDesc;
     private int pokemonChosenCounter;
 
     /**
@@ -72,6 +73,122 @@ public class ChoosePokemonView {
         System.out.println("step4");
         initSceneStyling();
         System.out.println("step5");
+    }
+
+    public void setChooseFromPoke(ArrayList<Pokemon> chooseFromPoke) {
+        this.chooseFromPoke = chooseFromPoke;
+    }
+
+    public void setCurrPokeInd(int currPokeInd) {
+        this.currPokeInd = currPokeInd;
+    }
+
+    public void setRoot(VBox root) {
+        this.root = root;
+    }
+
+    public HBox getLayer1() {
+        return layer1;
+    }
+
+    public void setLayer1(HBox layer1) {
+        this.layer1 = layer1;
+    }
+
+    public HBox getLayer2() {
+        return layer2;
+    }
+
+    public void setLayer2(HBox layer2) {
+        this.layer2 = layer2;
+    }
+
+    public HBox getLayer3() {
+        return layer3;
+    }
+
+    public void setLayer3(HBox layer3) {
+        this.layer3 = layer3;
+    }
+
+    public HBox getLayer4() {
+        return layer4;
+    }
+
+    public void setLayer4(HBox layer4) {
+        this.layer4 = layer4;
+    }
+
+    public void setExitBtn(Button exitBtn) {
+        this.exitBtn = exitBtn;
+    }
+
+    public void setLeftArrow(Button leftArrow) {
+        this.leftArrow = leftArrow;
+    }
+
+    public void setRightArrow(Button rightArrow) {
+        this.rightArrow = rightArrow;
+    }
+
+    public void setAllPokeImgs(ArrayList<Image> allPokeImgs) {
+        this.allPokeImgs = allPokeImgs;
+    }
+
+    public ImageView getCurrViewPokemon() {
+        return currViewPokemon;
+    }
+
+    public void setCurrViewPokemon(ImageView currViewPokemon) {
+        this.currViewPokemon = currViewPokemon;
+    }
+
+    public Button getMove1() {
+        return Move1;
+    }
+
+    public void setMove1(Button move1) {
+        Move1 = move1;
+    }
+
+    public Button getMove2() {
+        return Move2;
+    }
+
+    public void setMove2(Button move2) {
+        Move2 = move2;
+    }
+
+    public Button getMove3() {
+        return Move3;
+    }
+
+    public void setMove3(Button move3) {
+        Move3 = move3;
+    }
+
+    public Button getMove4() {
+        return Move4;
+    }
+
+    public void setMove4(Button move4) {
+        Move4 = move4;
+    }
+
+    public void setCheckMark(Button checkMark) {
+        this.checkMark = checkMark;
+    }
+
+    public TextArea getMoveDesc() {
+        return moveDesc;
+    }
+
+    public void setMoveDesc(TextArea moveDesc) {
+        this.moveDesc = moveDesc;
+    }
+
+    public void setPokemonChosenCounter(int pokemonChosenCounter) {
+        this.pokemonChosenCounter = pokemonChosenCounter;
     }
 
     /**
@@ -124,7 +241,7 @@ public class ChoosePokemonView {
 
         // layer 4 contents
         checkMark = new Button("yes");
-        moveDesc = new Label("");
+        moveDesc = new TextArea();
         layer4.getChildren().add(moveDesc);
         layer4.getChildren().add(checkMark);
 
@@ -142,7 +259,7 @@ public class ChoosePokemonView {
      */
     public void initSceneStyling(){
         // set a pref size for the whole thing
-        root.setPrefSize(450, 450);
+        root.setPrefSize(450, 500);
 
         // set a max size for pokemon being viewed
         currViewPokemon.setFitHeight(250);
@@ -159,9 +276,27 @@ public class ChoosePokemonView {
         layer3.setPadding(new Insets(10,10,10,10));
         layer3.setSpacing(10);
         Move1.setPrefSize(100,40);
+        Move1.setAlignment(Pos.CENTER);
+
         Move2.setPrefSize(100,40);
+        Move2.setAlignment(Pos.CENTER);
+
         Move3.setPrefSize(100,40);
+        Move3.setAlignment(Pos.CENTER);
+
         Move4.setPrefSize(100,40);
+        Move4.setAlignment(Pos.CENTER);
+
+
+        //TextArea
+        layer4.setPadding(new Insets(10,0,10,20));
+        layer4.setSpacing(30);
+
+        layer4.setAlignment(Pos.CENTER);
+        moveDesc.setPrefSize(300,100);
+        moveDesc.setWrapText(true);
+        checkMark.setPrefSize(70,70);
+
 
 
     }
@@ -188,6 +323,7 @@ public class ChoosePokemonView {
     public Button getLeftArrow(){return this.leftArrow;}
     public Button getRightArrow(){return this.rightArrow;}
 
+
     public void incrementChosenPokemonCounter(){ this.pokemonChosenCounter += 1;}
 
     // assumes currpokeind is updated before this function is called
@@ -202,19 +338,58 @@ public class ChoosePokemonView {
     }
 
     public void setMove1(){
-        Move1.setText(this.chooseFromPoke.get(currPokeInd).getMoves().get(0));
+        String moveName = this.chooseFromPoke.get(currPokeInd).getMoves().get(0);
+        if(moveName.length()>12){
+        moveName = moveName.replace("_","\n");}
+        else {
+            moveName = moveName.replace("_"," ");
+        }
+        moveName = moveName.replace("$"," ");
+
+        Move1.setText(moveName);
     }
 
     public void setMove2(){
-        Move2.setText(this.chooseFromPoke.get(currPokeInd).getMoves().get(1));
+        String moveName = this.chooseFromPoke.get(currPokeInd).getMoves().get(1);
+        //moveName = moveName.replace("_","\n ");
+
+        if(moveName.length()>12){
+            moveName = moveName.replace("_","\n");}
+        else {
+            moveName = moveName.replace("_"," ");
+        }
+        moveName = moveName.replace("$"," ");
+
+
+        Move2.setText(moveName);
     }
 
     public void setMove3(){
-        Move3.setText(this.chooseFromPoke.get(currPokeInd).getMoves().get(2));
+        String moveName = this.chooseFromPoke.get(currPokeInd).getMoves().get(2);
+        //moveName = moveName.replace("_","\n ");
+
+        if(moveName.length()>12){
+            moveName = moveName.replace("_","\n");}
+        else {
+            moveName = moveName.replace("_"," ");
+        }
+        moveName = moveName.replace("$"," ");
+
+        Move3.setText(moveName);
     }
 
     public void setMove4(){
-        Move4.setText(this.chooseFromPoke.get(currPokeInd).getMoves().get(3));
+        String moveName = this.chooseFromPoke.get(currPokeInd).getMoves().get(3);
+        //moveName = moveName.replace("_","\n ");
+
+        if(moveName.length()>12){
+            moveName = moveName.replace("_","\n");}
+        else {
+            moveName = moveName.replace("_"," ");
+        }
+        moveName = moveName.replace("$"," ");
+
+        Move4.setText(moveName);
     }
 
     public VBox getRoot() {
