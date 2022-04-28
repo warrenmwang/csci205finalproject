@@ -262,7 +262,7 @@ public class GuiController {
         choosePokemonView.getExitBtn().setOnMouseClicked(event -> {
             // switch to the starting scene
             model.stop();
-            choosePokemonView.setPokemonChosenCounter(0);
+            choosePokemonView.resetPointers();
             primaryStage.setScene(startScene);
         });
 

@@ -33,6 +33,8 @@ import java.util.ArrayList;
 public class ChoosePokemonView {
 
     private ArrayList<Pokemon> chooseFromPoke;
+    private ArrayList<Pokemon> originalPoketeam;
+    private ArrayList<Image> originalPokeImg;
     private int currPokeInd;
 
     // layers are from top to bottom
@@ -59,6 +61,7 @@ public class ChoosePokemonView {
      * Constructor
      */
     public ChoosePokemonView(ArrayList<Pokemon> team){
+        this.originalPoketeam = new ArrayList<>(team);
         this.chooseFromPoke = new ArrayList<>(team);
         System.out.println(team);
         System.out.println("start of view");
@@ -215,6 +218,8 @@ public class ChoosePokemonView {
             allPokeImgs.add(new Image(url));
         }
 
+        originalPokeImg = new ArrayList<>(allPokeImgs);
+
         // set currViewPokemon based on currPokeInd
         currViewPokemon = new ImageView(allPokeImgs.get(currPokeInd));
         layer2.getChildren().add(leftArrow);
@@ -322,6 +327,13 @@ public class ChoosePokemonView {
     public Button getExitBtn(){return this.exitBtn;}
     public Button getLeftArrow(){return this.leftArrow;}
     public Button getRightArrow(){return this.rightArrow;}
+
+    public void resetPointers(){
+        pokemonChosenCounter =0;
+        currPokeInd = 0;
+        chooseFromPoke = new ArrayList<>(originalPoketeam);
+        allPokeImgs = new ArrayList<>(originalPokeImg);
+    }
 
 
     public void incrementChosenPokemonCounter(){ this.pokemonChosenCounter += 1;}
