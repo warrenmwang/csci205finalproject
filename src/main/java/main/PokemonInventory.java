@@ -14,7 +14,8 @@ public class PokemonInventory {
         dataLoader = new DataLoader();
         allPokemon = new HashMap<>();
         usedPokemonIDs = new ArrayList<>();
-        ArrayList<Pokemon> tmp = dataLoader.getCSVFromOnline();
+        //ArrayList<Pokemon> tmp = dataLoader.getCSVFromOnline();
+        ArrayList<Pokemon> tmp = dataLoader.getTESTSETPokemon();
 
 
         // put all pokemon into map
