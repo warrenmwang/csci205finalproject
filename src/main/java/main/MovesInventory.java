@@ -641,30 +641,32 @@ public class MovesInventory {
     // TODO: finish
     //power: 70, Accur: 1, ELECTRIC, user switch out after move is used
     public void volt_switch(Player attacker, Player defender, Move move) {
-        double Accur = 1.0;
+        simplemove(attacker,defender,move);
 
-        // Get poke
-        Pokemon attackPoke = attacker.getCurrPokemon();
-        Pokemon defenderPoke = defender.getCurrPokemon();
-
-        double damage = 0;
-        //deal damage or effect based on accuracy
-        boolean hit = false;
-        if (AccuracyCheck(Accur)) {
-            hit = true;
-            damage = calcDamage(attackPoke, defenderPoke, move);
-        }
-
-        // Pokemon receives damage, check if alive
-        defenderPoke.receiveDamage(damage);
-
-        //todo
-        if (attacker.getNumberOfPokemon() >= 2) {
-            attacker.switchCurrPokemon(2);
-        }
-
-        // Print move message
-        printAttackMessage(attackPoke,defenderPoke,move,hit,damage,hit);
+//        double Accur = 1.0;
+//
+//        // Get poke
+//        Pokemon attackPoke = attacker.getCurrPokemon();
+//        Pokemon defenderPoke = defender.getCurrPokemon();
+//
+//        double damage = 0;
+//        //deal damage or effect based on accuracy
+//        boolean hit = false;
+//        if (AccuracyCheck(Accur)) {
+//            hit = true;
+//            damage = calcDamage(attackPoke, defenderPoke, move);
+//        }
+//
+//        // Pokemon receives damage, check if alive
+//        defenderPoke.receiveDamage(damage);
+//
+//        //todo
+//        if (attacker.getNumberOfPokemon() >= 2) {
+//            attacker.switchCurrPokemon(2);
+//        }
+//
+//        // Print move message
+//        printAttackMessage(attackPoke,defenderPoke,move,hit,damage,hit);
     }
 
     public void iron_head(Player attacker, Player defender, Move move) {
@@ -908,27 +910,25 @@ public class MovesInventory {
 
     //todo
     public void u_turn(Player attacker,  Player defender, Move move) {
-        double Accur = move.getAccuracy();
-        double effectAccur = 0.2;
+        simplemove(attacker,defender,move);
 
-        // Get poke
-        Pokemon attackPoke = attacker.getCurrPokemon();
-        Pokemon defenderPoke = defender.getCurrPokemon();
-
-        double damage = 0.0;
-        //deal damage or effect based on accuracy
-        boolean hit = false;
-
-        if (AccuracyCheck(Accur)) {
-            hit = true;
-            damage = calcDamage(attackPoke, defenderPoke, move);
-
-
-
-
-        }
-
-        defenderPoke.receiveDamage(damage);
+//        double Accur = move.getAccuracy();
+//        double effectAccur = 0.2;
+//
+//        // Get poke
+//        Pokemon attackPoke = attacker.getCurrPokemon();
+//        Pokemon defenderPoke = defender.getCurrPokemon();
+//
+//        double damage = 0.0;
+//        //deal damage or effect based on accuracy
+//        boolean hit = false;
+//
+//        if (AccuracyCheck(Accur)) {
+//            hit = true;
+//            damage = calcDamage(attackPoke, defenderPoke, move);
+//        }
+//
+//        defenderPoke.receiveDamage(damage);
     }
 
         // I believe this should call the switch move if it lands
@@ -1381,6 +1381,11 @@ public class MovesInventory {
 
 
     public void shuck_you_up(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+
+    public void surf(Player attacker, Player defender, Move move){
         simplemove(attacker,defender,move);
     }
 

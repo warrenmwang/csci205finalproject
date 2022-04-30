@@ -34,6 +34,8 @@ public class Model {
 //    // getter method
 //    public BattleMacro getBattleMacro(){ return battleMacro; }
 
+    public void setBattleMacro(BattleMacro bm){battleMacro = bm;}
+
     /**
      * Constructor
      */
@@ -57,6 +59,7 @@ public class Model {
     public void run(){
         t.start();
     }
+
 
     public void getNewThread(){
         Runnable r = () -> {

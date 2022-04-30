@@ -33,7 +33,7 @@ public class Bot extends Player{
     public Bot(ArrayList<Pokemon> initTeam)throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
         // initialize bot's team and difficulty
         super(initTeam);
-        difficulty = 0;
+        difficulty = 1;
         movesInventory = new MovesInventory();
     }
 
@@ -111,7 +111,11 @@ public class Bot extends Player{
                     dmgmax = movedmgs.get(i);
                 }
             }
+
             moveID = idmax;
+            if(moveID>= 4){
+                moveID = 0;
+            }
             return movesInventory.getMove(getCurrPokemon().getMove(moveID));
 
             }

@@ -63,19 +63,15 @@ public class ChoosePokemonView {
     public ChoosePokemonView(ArrayList<Pokemon> team){
         this.originalPoketeam = new ArrayList<>(team);
         this.chooseFromPoke = new ArrayList<>(team);
-        System.out.println(team);
-        System.out.println("start of view");
+
         for(Pokemon p:team){
             System.out.println(p.getID());
         }
-        System.out.println("end of view");
         currPokeInd = 0;
         pokemonChosenCounter = 0;
-        System.out.println("step3");
+
         initSceneGraph();
-        System.out.println("step4");
         initSceneStyling();
-        System.out.println("step5");
     }
 
     public void setChooseFromPoke(ArrayList<Pokemon> chooseFromPoke) {
@@ -340,7 +336,7 @@ public class ChoosePokemonView {
 
     // assumes currpokeind is updated before this function is called
     public void updateCurrViewPokemon(){
-        System.out.println("updatecurrviewpoke " + currPokeInd);
+//        System.out.println("updatecurrviewpoke " + currPokeInd);
         this.currViewPokemon.setImage(this.allPokeImgs.get(currPokeInd));
     }
 
