@@ -21,25 +21,22 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.BattleMacro;
 import main.MovesInventory;
-import main.Pokemon;
 import main.UserInput;
 
-import javax.print.event.PrintJobAttributeListener;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.sql.Array;
-import java.sql.Time;
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.System.exit;
 
 public class GuiController {
-    private TextView textView;
+//    private TextView textView;
     private BattleView battleView;
     private ChoosePokemonView choosePokemonView;
     private StartGameView startGameView;
-    private TransitionAndEndGameView transitionAndEndGameView;
+    private TransitionAndEndGameView forfeitView;
+    private RuleView ruleView;
+    private TransitionAndEndGameView endGameView;
 
     private Stage primaryStage;
     private Scene guiScene;
@@ -47,7 +44,9 @@ public class GuiController {
     private Scene battleScene;
     private Scene choosePokemonScene;
     private Scene startScene;
-    private Scene transitionAndEndGameScene;
+    private Scene forfeitScene;
+    private Scene ruleScene;
+    private Scene endGameScene;
     private MovesInventory movesInventory;
 
     private Model model;
@@ -61,41 +60,44 @@ public class GuiController {
         // before creating out main game, change sys.out to something we capture
         PrintStream sysOutOrig = System.out;
         newSysOut = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(newSysOut));
+        //System.setOut(new PrintStream(newSysOut));
 
         movesInventory = new MovesInventory();
 
 
         // create model
         battleMacro = new BattleMacro();
-        this.model = new Model(battleMacro);
+        model = new Model(battleMacro);
 
         // create all the views
-        this.startGameView = new StartGameView();
+        startGameView = new StartGameView();
 //        this.battleView = new BattleView(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage(), battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
 //        this.textView = new TextView();
         this.battleView = battleView;
-        this.textView = textView;
-
-        this.choosePokemonView = new ChoosePokemonView(battleMacro.getBattleMicro().getUserTeam());
-        transitionAndEndGameView = new TransitionAndEndGameView();
+//        this.textView = textView;
+        choosePokemonView = new ChoosePokemonView(battleMacro.getBattleMicro().getUserTeam());
+        forfeitView = new TransitionAndEndGameView();
+        ruleView = new RuleView();
+        endGameView = new TransitionAndEndGameView();
 
         // create scenes from the views
-        this.startScene = new Scene(this.startGameView.getRoot());
-        this.textScene = new Scene(this.textView.getRoot());
-        this.battleScene = new Scene(this.battleView.getRoot());
-        this.choosePokemonScene = new Scene(this.choosePokemonView.getRoot());
-        transitionAndEndGameScene = new Scene(transitionAndEndGameView.getRoot());
+        startScene = new Scene(startGameView.getRoot());
+        textScene = new Scene(textView.getRoot());
+        battleScene = new Scene(battleView.getRoot());
+        choosePokemonScene = new Scene(choosePokemonView.getRoot());
+        forfeitScene = new Scene(forfeitView.getRoot());
+        ruleScene = new Scene(ruleView.getRoot());
+        endGameScene = new Scene(endGameView.getRoot());
 
-        // start with the gui scene
-        // TODO start the game with the StartGameScene
+        // start the game with the StartGameScene
         this.primaryStage = primaryStage;
         this.primaryStage.setScene(startScene);
-        //this.primaryStage.setScene(choosePokemonScene);
         this.primaryStage.sizeToScene();
         this.primaryStage.show();
 
         this.primaryStage.setTitle("Pokemon BattleFactory Simulator");
+
+        this.primaryStage.setResizable(false);
 
 
         initEventHandler();
@@ -111,28 +113,22 @@ public class GuiController {
             // restart main game loop
             model.getNewThread();
             model.run();
-            // update choosepokemon scene
-            choosePokemonView.updateCurrViewPokemon();
-            choosePokemonView.setAllMoves();
+            updateChoosePokemonScene();
 
             // switch to choosepokemonscene
             primaryStage.setScene(choosePokemonScene);
         });
 
         startGameView.getExit_btn().setOnMouseClicked(event -> {
-            //TODO terminate the program
+            // terminate the program
             exit(0);
 
         });
 
         startGameView.getRule().setOnMouseClicked(event -> {
-            // let's reuse the transition and end game view for this
-            primaryStage.setScene(transitionAndEndGameScene);
-            transitionAndEndGameView.updateTextArea("RULES To be written...");
-
+            // switch to rule scene (rules are hardcoded in)
+            primaryStage.setScene(ruleScene);
         });
-
-        // TODO switch from BattleView to DoYouWantToPlayAgainAndEndScene
 
 
         // -------------------- BATTLE VIEW -------------------
@@ -152,8 +148,7 @@ public class GuiController {
             UserInput.setUSERINPUT("attack");
             UserInput.setCanGetUSERINPUT(true);
 
-            try{TimeUnit.SECONDS.sleep(1);}catch(Exception e){};
-
+            try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
 
             // show moves box
             battleView.bottomRightBoxToggleChoices(0);
@@ -164,7 +159,7 @@ public class GuiController {
             UserInput.setCanGetUSERINPUT(true);
 
             // show what pokemon user can choose from
-            try{TimeUnit.SECONDS.sleep(1);}catch(Exception e){};
+            try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
             battleView.updateBottomLeftTextBox(newSysOut.toString());
 //            newSysOut.reset();
 
@@ -184,9 +179,9 @@ public class GuiController {
 
 
             // transition to end scene
-            try{TimeUnit.MILLISECONDS.sleep(50);}catch(Exception e){};
-            primaryStage.setScene(transitionAndEndGameScene);
-            transitionAndEndGameView.updateTextArea(newSysOut.toString());
+            try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
+            primaryStage.setScene(forfeitScene);
+            forfeitView.updateTextArea(newSysOut.toString());
         });
 
 
@@ -197,8 +192,16 @@ public class GuiController {
             UserInput.setCanGetUSERINPUT(true);
 
             UserInput.waitPlayerDied();
-            try {TimeUnit.MILLISECONDS.sleep(500);} catch (Exception e) {}
+            try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
+
+            // check if all of user's pokemon are dead, then switch to end scene
+            if(battleMacro.getBattleMicro().getGameOverStatus()){
+                endGameView.updateTextArea(newSysOut.toString());
+                primaryStage.setScene(endGameScene);
+            }
+
             if(UserInput.getNeedToSwitch()){
+                battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
                 System.out.println("approved to switch");
                 battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                 battleView.bottomRightBoxToggleChoices(2);
@@ -210,7 +213,7 @@ public class GuiController {
 
                 // TODO show results of battle outcome in text area
 //            newSysOut.reset();
-                try {TimeUnit.SECONDS.sleep(1);} catch (Exception e) {}
+                try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
 
                 battleView.updateBottomLeftTextBox(newSysOut.toString());
 //            newSysOut.reset();
@@ -218,13 +221,8 @@ public class GuiController {
                 // toggle to show 3 moves after fight
                 battleView.bottomRightBoxToggleChoices(1);
 
-                // update view with new sprites and moves
-                battleView.setBotPokemonImageURL(battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
-                battleView.setPlayerPokemonImageURL(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage());
-
-                battleView.setCurrPokemon(battleMacro.getBattleMicro().getUserTeam().get(0)); // update curr poke
-                battleView.updatePokemonSprites(); // update sprites shown
-                battleView.updateMovesBox(); // update 4moves box with curr pokemon move names
+                // update battle view's sprites and names
+                updateBattleView();
             }
         });
 
@@ -233,8 +231,16 @@ public class GuiController {
             UserInput.setCanGetUSERINPUT(true);
 
             UserInput.waitPlayerDied();
-            try {TimeUnit.MILLISECONDS.sleep(500);} catch (Exception e) {}
+            try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
+
+            // check if all of user's pokemon are dead, then switch to end scene
+            if(battleMacro.getBattleMicro().getGameOverStatus()){
+                endGameView.updateTextArea(newSysOut.toString());
+                primaryStage.setScene(endGameScene);
+            }
+
             if(UserInput.getNeedToSwitch()){
+                battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
                 System.out.println("approved to switch");
                 battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                 battleView.bottomRightBoxToggleChoices(2);
@@ -242,33 +248,33 @@ public class GuiController {
             } else {
                 // TODO show results of battle outcome in text area
 //            newSysOut.reset();
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (Exception e) {
-                }
-                ;
+                try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
+
                 battleView.updateBottomLeftTextBox(newSysOut.toString());
 //            newSysOut.reset();
 
                 // toggle to show 3 moves after fight
                 battleView.bottomRightBoxToggleChoices(1);
 
-                // update view with new sprites and moves
-                battleView.setBotPokemonImageURL(battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
-                battleView.setPlayerPokemonImageURL(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage());
-
-                battleView.setCurrPokemon(battleMacro.getBattleMicro().getUserTeam().get(0)); // update curr poke
-                battleView.updatePokemonSprites(); // update sprites shown
-                battleView.updateMovesBox();
-            }// update 4moves box with curr pokemon move names
+                // update battle view's sprites and names
+                updateBattleView();
+            }
         });
 
         battleView.getMove3().setOnMouseClicked(event -> {
             UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUser().getCurrPokemon().getMove(2));
             UserInput.setCanGetUSERINPUT(true);
             UserInput.waitPlayerDied();
-            try {TimeUnit.MILLISECONDS.sleep(500);} catch (Exception e) {}
+            try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
+
+            // check if all of user's pokemon are dead, then switch to end scene
+            if(battleMacro.getBattleMicro().getGameOverStatus()){
+                endGameView.updateTextArea(newSysOut.toString());
+                primaryStage.setScene(endGameScene);
+            }
+
             if(UserInput.getNeedToSwitch()){
+                battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
                 System.out.println("approved to switch");
                 battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                 battleView.bottomRightBoxToggleChoices(2);
@@ -276,24 +282,16 @@ public class GuiController {
             } else {
                 // TODO show results of battle outcome in text area
 //            newSysOut.reset();
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (Exception e) {
-                }
-                ;
+                try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
+
                 battleView.updateBottomLeftTextBox(newSysOut.toString());
 //            newSysOut.reset();
 
                 // toggle to show 3 moves after fight
                 battleView.bottomRightBoxToggleChoices(1);
 
-                // update view with new sprites and moves
-                battleView.setBotPokemonImageURL(battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
-                battleView.setPlayerPokemonImageURL(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage());
-
-                battleView.setCurrPokemon(battleMacro.getBattleMicro().getUserTeam().get(0)); // update curr poke
-                battleView.updatePokemonSprites(); // update sprites shown
-                battleView.updateMovesBox(); // update 4moves box with curr pokemon move names
+                // update battle view's sprites and names
+                updateBattleView();
             }
         });
 
@@ -301,8 +299,16 @@ public class GuiController {
             UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUser().getCurrPokemon().getMove(3));
             UserInput.setCanGetUSERINPUT(true);
             UserInput.waitPlayerDied();
-            try {TimeUnit.MILLISECONDS.sleep(500);} catch (Exception e) {}
+            try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
+
+            // check if all of user's pokemon are dead, then switch to end scene
+            if(battleMacro.getBattleMicro().getGameOverStatus()){
+                endGameView.updateTextArea(newSysOut.toString());
+                primaryStage.setScene(endGameScene);
+            }
+
             if(UserInput.getNeedToSwitch()){
+                battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
                 System.out.println("approved to switch");
                 battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                 battleView.bottomRightBoxToggleChoices(2);
@@ -310,25 +316,19 @@ public class GuiController {
             } else {
                 // TODO show results of battle outcome in text area
 //            newSysOut.reset();
-                try {
-                    TimeUnit.SECONDS.sleep(1);
-                } catch (Exception e) {
-                }
-                ;
+                try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
+
                 battleView.updateBottomLeftTextBox(newSysOut.toString());
 //            newSysOut.reset();
 
                 // toggle to show 3 moves after fight
                 battleView.bottomRightBoxToggleChoices(1);
 
-                // update view with new sprites and moves
-                battleView.setBotPokemonImageURL(battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
-                battleView.setPlayerPokemonImageURL(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage());
-
-                battleView.setCurrPokemon(battleMacro.getBattleMicro().getUserTeam().get(0)); // update curr poke
-                battleView.updatePokemonSprites(); // update sprites shown
-                battleView.updateMovesBox(); // update 4moves box with curr pokemon move names
+                // update battle view's sprites and names
+                updateBattleView();
             }
+
+
         });
 
 
@@ -339,20 +339,21 @@ public class GuiController {
                 UserInput.setCanGetUSERINPUT(true);
 
                 // update text area
-                try{TimeUnit.SECONDS.sleep(1);}catch(Exception e){};
+                try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
                 battleView.updateBottomLeftTextBox(newSysOut.toString());
                 newSysOut.reset();
 
                 // switch box back to 3 choices
                 battleView.bottomRightBoxToggleChoices(1);
 
-                // update view with new sprites and moves
-                battleView.setBotPokemonImageURL(battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
-                battleView.setPlayerPokemonImageURL(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage());
+                // update battle view's sprites and names
+                updateBattleView();
 
-                battleView.setCurrPokemon(battleMacro.getBattleMicro().getUserTeam().get(0)); // update curr poke
-                battleView.updatePokemonSprites(); // update sprites shown
-                battleView.updateMovesBox(); // update 4moves box with curr pokemon move names
+                // check if all of user's pokemon are dead, then switch to end scene
+                if(battleMacro.getBattleMicro().getGameOverStatus()){
+                    endGameView.updateTextArea(newSysOut.toString());
+                    primaryStage.setScene(endGameScene);
+                }
             }
             // if dead, do nothing
         });
@@ -365,7 +366,7 @@ public class GuiController {
 
 
                 // update text area
-                try {TimeUnit.SECONDS.sleep(1);} catch (Exception e) {}
+                try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
 
                 battleView.updateBottomLeftTextBox(newSysOut.toString());
                 newSysOut.reset();
@@ -373,13 +374,14 @@ public class GuiController {
                 // switch box back to 3 choices
                 battleView.bottomRightBoxToggleChoices(1);
 
-                // update view with new sprites and moves
-                battleView.setBotPokemonImageURL(battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
-                battleView.setPlayerPokemonImageURL(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage());
+                // update battle view's sprites and names
+                updateBattleView();
 
-                battleView.setCurrPokemon(battleMacro.getBattleMicro().getUserTeam().get(0)); // update curr poke
-                battleView.updatePokemonSprites(); // update sprites shown
-                battleView.updateMovesBox(); // update 4moves box with curr pokemon move names
+                // check if all of user's pokemon are dead, then switch to end scene
+                if(battleMacro.getBattleMicro().getGameOverStatus()){
+                    endGameView.updateTextArea(newSysOut.toString());
+                    primaryStage.setScene(endGameScene);
+                }
             }
             // if dead, do nothing
         });
@@ -392,6 +394,9 @@ public class GuiController {
         // choose pokemon
         choosePokemonView.getCheckMark().setOnMouseClicked(event -> {
             UserInput.setUSERINPUT(choosePokemonView.getCurrPokemonID());
+
+            System.out.println(choosePokemonView.getCurrPokemonID());
+
             UserInput.setCanGetUSERINPUT(true);
             choosePokemonView.incrementChosenPokemonCounter();
 
@@ -401,23 +406,20 @@ public class GuiController {
 
             // increment counter, then set curr pokemon to be where the new index is at
             choosePokemonView.incCurrPokeInd();
-            choosePokemonView.updateCurrViewPokemon();
-            // then update the moves on the screen
-            choosePokemonView.setAllMoves();
+
+            choosePokemonView.getMoveDesc().setText(newSysOut.toString());
+            updateChoosePokemonScene();
+
+            choosePokemonView.getMoveDesc().setText(newSysOut.toString());
 
 
             // check if need to switch scene when 3 pokemon are chosen
             if(choosePokemonView.getPokemonChosenCounter() == 3){
                 // update the battlescene with player's curr pokemon
                 // sleep to allow botteam to update
-                try{TimeUnit.MILLISECONDS.sleep(5);}catch(Exception e){}
-                // update view with new sprites and moves
-                battleView.setBotPokemonImageURL(battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
-                battleView.setPlayerPokemonImageURL(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage());
-
-                battleView.setCurrPokemon(battleMacro.getBattleMicro().getUserTeam().get(0)); // update curr poke
-                battleView.updatePokemonSprites(); // update sprites shown
-                battleView.updateMovesBox(); // update 4moves box with curr pokemon move names
+                try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){}
+                // update battle view's sprites and names
+                updateBattleView();
 
                 // change to battlescene
                 primaryStage.setScene(battleScene);
@@ -428,18 +430,14 @@ public class GuiController {
         choosePokemonView.getLeftArrow().setOnMouseClicked(event -> {
             // decrement counter, then set curr pokemon to be where the new index is at
             choosePokemonView.decCurrPokeInd();
-            choosePokemonView.updateCurrViewPokemon();
-            // then update the moves on the screen
-            choosePokemonView.setAllMoves();
+            updateChoosePokemonScene();
         });
 
         // right arrow cycle pokemon, add index, wrap around if neeeded
         choosePokemonView.getRightArrow().setOnMouseClicked(event -> {
             // increment counter, then set curr pokemon to be where the new index is at
             choosePokemonView.incCurrPokeInd();
-            choosePokemonView.updateCurrViewPokemon();
-            // then update the moves on the screen
-            choosePokemonView.setAllMoves();
+            updateChoosePokemonScene();
         });
 
 
@@ -530,7 +528,7 @@ public class GuiController {
             try{battleMacro = new BattleMacro();}catch(Exception e){}
             battleMacro.getBattleMicro().generateInitialBotRandomTeam();
 
-            try{TimeUnit.MILLISECONDS.sleep(500);}catch(Exception e){}
+            try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){}
 
             model.setBattleMacro(battleMacro);
             choosePokemonView = new ChoosePokemonView(battleMacro.getBattleMicro().getUserTeam());
@@ -544,70 +542,154 @@ public class GuiController {
             primaryStage.setScene(startScene);
         });
 
-        // ------- Transition and End Scene -------
-        transitionAndEndGameView.getYesBtn().setOnMouseClicked(event -> {
+        // ------- Forfeit Scene -------
+        forfeitView.getYesBtn().setOnMouseClicked(event -> {
             // send y to sys.in
             UserInput.setUSERINPUT("y");
             UserInput.setCanGetUSERINPUT(true);
 
-            // refresh textArea
-            try{TimeUnit.SECONDS.sleep(1);}catch(Exception e){};
-            transitionAndEndGameView.updateTextArea(newSysOut.toString());
+            // switch to end game scene
             newSysOut.reset();
+            System.out.println("Do you want to play again? (y/n)");
+            endGameView.updateTextArea(newSysOut.toString());
+
+            endGameView.getYesBtn().setText("Yes - end");
+            endGameView.getNoBtn().setText("No - end");
+            primaryStage.setScene(endGameScene);
         });
 
-        transitionAndEndGameView.getNoBtn().setOnMouseClicked(event -> {
+        forfeitView.getNoBtn().setOnMouseClicked(event -> {
             // send n to sys.in
             UserInput.setUSERINPUT("n");
             UserInput.setCanGetUSERINPUT(true);
 
-            // refresh textArea
-            try{TimeUnit.SECONDS.sleep(1);}catch(Exception e){};
-            transitionAndEndGameView.updateTextArea(newSysOut.toString());
-            newSysOut.reset();
-        });
-
-
-
-        // ------- TEXT VIEW (NOT NEEDED AT END) --------
-
-        // switch from text to gui
-        textView.getSwitchSceneBtn().setOnMouseClicked(event -> {
+            // go to battleview
             primaryStage.setScene(battleScene);
         });
 
-        // refresh the screen when we press the refresh button
-        textView.getBtn1().setOnMouseClicked(Event -> {
-            refreshTextAreaWithSysOut();
+        // -------- rule scene -------
+        ruleView.getBackButton().setOnMouseClicked(event -> {
+            primaryStage.setScene(startScene);
         });
 
-        // get user input from the textField box
-        textView.getInputTextField().setOnAction(event -> {
-            // read in user input from System.in
-            String stringToPassIntoNewSysIn = textView.getInputTextField().getText();
-
-            textView.getTestBottomLabel().setText(stringToPassIntoNewSysIn);
-
-            UserInput.setUSERINPUT(stringToPassIntoNewSysIn);
+        // ------- end game scene ------
+        endGameView.getYesBtn().setOnMouseClicked(event -> {
+            // send y to sys.in
+            UserInput.setUSERINPUT("y");
             UserInput.setCanGetUSERINPUT(true);
-            try{
-                TimeUnit.MILLISECONDS.sleep(100);
-            }catch(Exception e){
 
-            }
-            refreshTextAreaWithSysOut();
+            try{TimeUnit.MILLISECONDS.sleep(2000);}catch(Exception e){}
+
+            // update choosepokemonview with new team of 6 generated from battlemacro
+            System.out.println("\n\n\ngeting user team from macro\n\n\n");
+            choosePokemonView.setOriginalPoketeamAndCleanChooseFromPoke(battleMacro.getBattleMicro().getUserTeam());
+            // update choosefrompokemon scene (should display 6 new random poke to choose from)
+            updateChoosePokemonScene();
+            // switch to scene
+            primaryStage.setScene(choosePokemonScene);
         });
 
+        endGameView.getNoBtn().setOnMouseClicked(event -> {
+            // send n to sys.in
+            newSysOut.reset();
+            UserInput.setUSERINPUT("n");
+            UserInput.setCanGetUSERINPUT(true);
+
+            // refresh textArea
+            try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
+
+            battleMacro.printExitGameMessage();
+            endGameView.updateTextArea(newSysOut.toString()); // print end game stats
+
+            // remove all buttons in this end scene, player only can exit now.
+            endGameView.getYesBtn().setDisable(true);
+            endGameView.getYesBtn().setVisible(false);
+
+            endGameView.getNoBtn().setDisable(true);
+            endGameView.getNoBtn().setVisible(false);
+
+        });
+
+
+
+
+//        // ------- TEXT VIEW (NOT NEEDED AT END) --------
+//
+//        // switch from text to gui
+//        textView.getSwitchSceneBtn().setOnMouseClicked(event -> {
+//            primaryStage.setScene(battleScene);
+//        });
+//
+//        // refresh the screen when we press the refresh button
+//        textView.getBtn1().setOnMouseClicked(Event -> {
+//            refreshTextAreaWithSysOut();
+//        });
+//
+//        // get user input from the textField box
+//        textView.getInputTextField().setOnAction(event -> {
+//            // read in user input from System.in
+//            String stringToPassIntoNewSysIn = textView.getInputTextField().getText();
+//
+//            textView.getTestBottomLabel().setText(stringToPassIntoNewSysIn);
+//
+//            UserInput.setUSERINPUT(stringToPassIntoNewSysIn);
+//            UserInput.setCanGetUSERINPUT(true);
+//            try{
+//                TimeUnit.MILLISECONDS.sleep(100);
+//            }catch(Exception e){
+//
+//            }
+//            refreshTextAreaWithSysOut();
+//        });
+
+
+
     }
 
+    private void updateChoosePokemonScene() {
+        // update choosepokemon scene
+        choosePokemonView.updateCurrViewPokemon();
+        choosePokemonView.setAllMoves();
+    }
 
-    // ------------------- for the Text scene, which won't be used in final product -----
     /**
-     * Refresh text area of the TextView
+     * update Battle View's sprites and names
      */
-    public void refreshTextAreaWithSysOut(){
-        textView.getOutputText().setText("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
-        textView.getOutputText().appendText(newSysOut.toString());
-        textView.getOutputText().setScrollTop(Double.MAX_VALUE); // set scrolled to bottom
+    public void updateBattleView(){
+        try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){}
+
+        // update view with new sprites and moves
+        battleView.setBotPokemonImageURL(battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
+        battleView.setPlayerPokemonImageURL(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage());
+
+        battleView.setCurrPokemon(battleMacro.getBattleMicro().getUserTeam().get(0)); // update curr poke
+        battleView.setBotCurrPokemon(battleMacro.getBattleMicro().getBotTeam().get(0)); // update curr bot poke
+        battleView.updatePokemonSprites(); // update sprites and names shown
+        battleView.updateMovesBox(); // update 4moves box with curr pokemon move names
+
+        // update both pokemon's healthbar
+        double newPercentageHealthPlayer = battleMacro.getBattleMicro().getUser().getCurrPokemon().getHP() / battleMacro.getBattleMicro().getUser().getCurrPokemon().getMaxHp();
+        double newPercentageHealthBot = battleMacro.getBattleMicro().getBotTeam().get(0).getHP() / battleMacro.getBattleMicro().getBotTeam().get(0).getMaxHp();
+        double newHealthWidthPlayer = (newPercentageHealthPlayer * battleView.getNAMETEXTBARWIDTH());
+        double newHealthWidthBot = (newPercentageHealthBot * battleView.getNAMETEXTBARWIDTH());
+
+        battleView.getPlayerHpBar().setWidth(newHealthWidthPlayer);
+        battleView.getBotHpBar().setWidth(newHealthWidthBot);
+
     }
+
+
+
+//    // ------------------- for the Text scene, which won't be used in final product -----
+//    /**
+//     * Refresh text area of the TextView
+//     */
+//    public void refreshTextAreaWithSysOut(){
+//        textView.getOutputText().setText("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n");
+//        textView.getOutputText().appendText(newSysOut.toString());
+//        textView.getOutputText().setScrollTop(Double.MAX_VALUE); // set scrolled to bottom
+//    }
+
+
+
 }

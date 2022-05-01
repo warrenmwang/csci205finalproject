@@ -199,7 +199,8 @@ public class BattleMicro {
     /**
      * Generates the 6 Random Pokemon for the Player
      */
-    public void generateInitialPlayerRandomTeam(){ userTeam = generateRandomTeam(); }
+    public void generateInitialPlayerRandomTeam(){ userTeam = generateRandomTeam();
+        System.out.println("hahaha I have generate user team\n\n\n\n\n\n");}
 
     /**
      * Generates the 6 Random Pokemon for the Bot

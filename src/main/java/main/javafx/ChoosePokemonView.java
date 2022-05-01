@@ -406,4 +406,24 @@ public class ChoosePokemonView {
 
     public ArrayList<Pokemon> getChooseFromPoke(){return chooseFromPoke;}
 
+    // set new team and erase choosefrompoke list
+    public void setOriginalPoketeamAndCleanChooseFromPoke(ArrayList<Pokemon> newTeam){
+        originalPoketeam = new ArrayList<>(newTeam);
+        chooseFromPoke = new ArrayList<>(newTeam);
+
+        currPokeInd = 0;
+        pokemonChosenCounter = 0;
+
+        // update poke images
+        allPokeImgs = new ArrayList<>();
+
+        for(Pokemon p : chooseFromPoke){
+            p.resetAllstats(); // reset poke's stats
+            
+            String url = p.getBotImage(); // get bot image bc that faces forward
+            allPokeImgs.add(new Image(url));
+        }
+
+    }
+
 }

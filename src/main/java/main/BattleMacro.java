@@ -19,6 +19,7 @@ package main;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class BattleMacro {
     private int playerWins;
@@ -93,6 +94,7 @@ public class BattleMacro {
                 // ask if player wants to play again, updates game state
                 promptPlayAgain();
             }
+            try{TimeUnit.MILLISECONDS.sleep(100);} catch(Exception e){}
             // if new game, reset, then change into Battle state
             if(getGameState().equals(GameState.NEW_GAME)){
                 reset();

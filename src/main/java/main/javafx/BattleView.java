@@ -17,6 +17,9 @@
 package main.javafx;
 
 import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -24,11 +27,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
 import main.Move;
 import main.Pokemon;
 
 public class BattleView {
 
+    private static final int NAMETEXTBARWIDTH = 150;
     private VBox root;
     private GridPane gridPane;
     private HBox bottomHBox;
@@ -54,6 +59,15 @@ public class BattleView {
     private Button Poke0Btn;
     private Button Poke1Btn;
 
+
+    private HBox temp1;
+    private HBox temp2;
+    private HBox temp3;
+    private HBox temp4;
+
+    private HBox poke01;
+
+
     private Button refreshTextAreaBtn;
 
     private StackPane bottomRightChoiceStackPane; // holds the 2 vbox's to swap places when necessary
@@ -70,6 +84,11 @@ public class BattleView {
     private ImageView botPokemonImageView;
 
     private Pokemon currPokemon;
+    private Pokemon botCurrPokemon;
+    private Rectangle botNameBackground;
+    private Rectangle playerNameBackground;
+    private Text playerName;
+    private Text botName;
 
 
     // -------------- getter methods -------------
@@ -93,12 +112,15 @@ public class BattleView {
     public Button getPoke1Btn(){return Poke1Btn;}
 
     public Button getRefreshTextAreaBtn(){return refreshTextAreaBtn;}
+    public int getNAMETEXTBARWIDTH(){return NAMETEXTBARWIDTH;}
+
 
 
     // ---------------- setter methods ---------------
     public void setPlayerPokemonImageURL(String newString){this.playerPokemonImageURL = newString; }
     public void setBotPokemonImageURL(String newString){this.botPokemonImageURL = newString; }
     public void setCurrPokemon(Pokemon poke){currPokemon = poke;}
+    public void setBotCurrPokemon(Pokemon poke){botCurrPokemon = poke;}
 
 
 
@@ -145,31 +167,50 @@ public class BattleView {
             // initialize sprites
             initPokemonSprites();
 
-
-            playerBaseHp = new Rectangle(150,20);
+            // player's poke name
+            playerNameBackground = new Rectangle(NAMETEXTBARWIDTH, 20);
+            playerNameBackground.setFill(Color.BEIGE);
+            playerName = new Text("PLAYER CURR NAME");
+            // player's poke hp
+            playerBaseHp = new Rectangle(NAMETEXTBARWIDTH,20);
             playerBaseHp.setFill(Color.GRAY);
-            playerHpBar = new Rectangle(150,20);
+            playerHpBar = new Rectangle(NAMETEXTBARWIDTH,20);
             playerHpBar.setFill(Color.RED);
-            playerHpBar.setWidth(120);
+            playerHpBar.setWidth(120); // setting smaller width to make hp less than full
 
-
-            BotBaseHp = new Rectangle(150,20);
+            // bot's poke name
+            botNameBackground = new Rectangle(NAMETEXTBARWIDTH, 20);
+            botNameBackground.setFill(Color.BEIGE);
+            botName = new Text("BOT CURR NAME");
+            // bot's poke hp
+            BotBaseHp = new Rectangle(NAMETEXTBARWIDTH,20);
             BotBaseHp.setFill(Color.GRAY);
-            BotHpBar = new Rectangle(150,20);
+            BotHpBar = new Rectangle(NAMETEXTBARWIDTH,20);
             BotHpBar.setFill(Color.RED);
-            BotHpBar.setWidth(120);
+            BotHpBar.setWidth(120); // setting smaller width to make hp less than full
 
 
+            gridPane.add(playerNameBackground, 1, 2);
+            gridPane.add(playerName, 1, 2); // add name on top of the name background
+            GridPane.setValignment(playerNameBackground, VPos.BOTTOM);
+            GridPane.setValignment(playerName, VPos.BOTTOM);
 
             gridPane.add(playerBaseHp,2,4);
             gridPane.add(playerHpBar, 2, 4);
             GridPane.setHalignment(playerBaseHp, HPos.LEFT);
             GridPane.setHalignment(playerHpBar, HPos.LEFT);
 
+
+            gridPane.add(botNameBackground, 3,2);
+            gridPane.add(botName, 3, 2); // add name on top of the name background
+            GridPane.setValignment(botNameBackground, VPos.BOTTOM);
+            GridPane.setValignment(botName, VPos.BOTTOM);
+
             gridPane.add(BotBaseHp,2,1);
             gridPane.add(BotHpBar, 2, 1);
             GridPane.setHalignment(BotBaseHp, HPos.RIGHT);
             GridPane.setHalignment(BotHpBar, HPos.RIGHT);
+            gridPane.setHgap(10);
 
 
             //gridPane.add(new Text("Bot Pokemon HEALTHBAR"), 2, 1);
@@ -199,8 +240,8 @@ public class BattleView {
         Move3 = new Button("123");
         Move4 = new Button("123");
         MoveHolderBox = new VBox();
-        HBox temp1 = new HBox();
-        HBox temp2 = new HBox();
+        temp1 = new HBox();
+        temp2 = new HBox();
         temp1.getChildren().add(Move1);
         temp1.getChildren().add(Move2);
         temp2.getChildren().add(Move3);
@@ -215,12 +256,12 @@ public class BattleView {
         Forfeit = new Button("Forfeit");
         placeHolderBtn = new Button("Nothing");
         ThreeChoiceHolderBox = new VBox();
-        HBox temp3 = new HBox();
-        HBox temp4 = new HBox();
+        temp3 = new HBox();
+        temp4 = new HBox();
         temp3.getChildren().add(Attack);
         temp3.getChildren().add(Switch);
         temp4.getChildren().add(Forfeit);
-        temp4.getChildren().add(placeHolderBtn);
+//        temp4.getChildren().add(placeHolderBtn);
         ThreeChoiceHolderBox.getChildren().add(temp3);
         ThreeChoiceHolderBox.getChildren().add(temp4);
 
@@ -229,7 +270,7 @@ public class BattleView {
         Poke0Btn = new Button("0");
         Poke1Btn = new Button("1");
 
-        HBox poke01 = new HBox();
+        poke01 = new HBox();
         poke01.getChildren().add(Poke1Btn);
         poke01.getChildren().add(Poke0Btn);
 
@@ -300,8 +341,10 @@ public class BattleView {
         gridPane.getRowConstraints().add(new RowConstraints(100));
         gridPane.getRowConstraints().add(new RowConstraints(100));
 
+        gridPane.setGridLinesVisible(true);
+
         // ---------- BOTTOM RIGHT STACK PANE -------
-        bottomRightChoiceStackPane.setPrefSize(200,200);
+        //bottomRightChoiceStackPane.setPrefSize(200,200);
 
 
         // -------- Bottom HBox -------------
@@ -310,84 +353,82 @@ public class BattleView {
                 "-fx-background-repeat: stretch;" +
                 "-fx-background-size: 1000 700;" +
                 "-fx-background-position: center center;");
+
+
+
+        bottomHBox.setAlignment(Pos.CENTER_LEFT);
+        bottomHBox.setSpacing(50);
+
+        bottomLeftTextBox.setMinSize(600,200);
+        bottomLeftTextBox.setMaxSize(600,200);
+        bottomRightStandaloneBox.setPrefSize(450,200);
+
+
+        //All settings for buttons
+        int ButtonWidth = 90;
+        int ButtonHeight = 50;
+        int ButtonHorizontalSpacing = 20;
+        int ButtonVerticalSpacing = 20;
+
+        Insets choosePaddings = new Insets(30,50,0,50);
+
+        bottomRightStandaloneBox.setPadding(choosePaddings);
+
+
+
+        //Attack, switch setting
+        ThreeChoiceHolderBox.setAlignment(Pos.CENTER);
+        ThreeChoiceHolderBox.setSpacing(ButtonVerticalSpacing);
+
+        temp3.setSpacing(ButtonHorizontalSpacing);
+        temp4.setSpacing(ButtonHorizontalSpacing);
+
+        Attack.setPrefSize(ButtonWidth,ButtonHeight);
+        Switch.setPrefSize(ButtonWidth,ButtonHeight);
+        Forfeit.setPrefSize(ButtonWidth,ButtonHeight);
+//        placeHolderBtn.setPrefSize(ButtonWidth,ButtonHeight);
+
+
+
+        MoveHolderBox.setAlignment(Pos.CENTER);
+        MoveHolderBox.setSpacing(20);
+
+
+
+
+
+        ChoosePokemonHolderBox.setAlignment(Pos.CENTER);
+        ChoosePokemonHolderBox.setSpacing(20);
     }
 
     /**
      * Toggles whether to show 3 choices or 4 moves
      */
     public void bottomRightBoxToggleChoices(int ind){
-        System.out.println("enter bottomRightBoxToggleChoices");
-
-//        try{ bottomHBox.getChildren().remove(ThreeChoiceHolderBox);}catch(Exception e){
-//            System.out.println("threechoice catch");
-//        }
-//        try{ bottomHBox.getChildren().remove(ChoosePokemonHolderBox);}catch(Exception e){
-//            System.out.println("choosepoke catch");
-//        }
-//        try{ bottomHBox.getChildren().remove(MoveHolderBox);}catch(Exception e){
-//            System.out.println("moveholder catch");
-//        }
-//        bottomHBox.getChildren().clear();
-//        bottomHBox.getChildren().add(bottomLeftTextBox);
-//        bottomRightStandaloneBox = new VBox();
+//        System.out.println("enter bottomRightBoxToggleChoices");
 
         bottomHBox.getChildren().remove(1);
 
         switch(ind){
             // switch to Moves
             case(0):{
-//                try{
-//                    while(true){
-//                        bottomHBox.getChildren().remove(0);
-//                    }
-//                } catch (Exception e){}
-
-//                bottomRightStandaloneBox.getChildren().add(MoveHolderBox);
                 bottomHBox.getChildren().add(MoveHolderBox);
                 break;
             }
             // switch to 3 choices
             case(1):{
-//                try{
-//                    while(true){
-//                        bottomHBox.getChildren().remove(0);
-//                    }
-//                } catch (Exception e){}
-
-//                bottomHBox.getChildren().remove(1);
-
-//                bottomRightStandaloneBox.getChildren().add(ThreeChoiceHolderBox);
                 bottomHBox.getChildren().add(ThreeChoiceHolderBox);
                 break;
             }
             // switch to Switch pokemon buttons
             case(2):{
-                System.out.println("start 2");
-//                try{
-//                    while(true){
-//                        bottomHBox.getChildren().remove(0);
-//                    }
-//                } catch (Exception e){}
-
-//                System.out.println(bottomHBox.getChildren().get(0));
-//                System.out.println(bottomHBox.getChildren().get(1));
-
-
-//                bottomHBox.getChildren().remove(bottomHBox.getChildren().get(1));
-//                System.out.println("removed");
-
-//                bottomRightStandaloneBox.getChildren().add(ChoosePokemonHolderBox);
-
+//                System.out.println("start 2");
                 bottomHBox.getChildren().add(ChoosePokemonHolderBox);
-//                System.out.println("added new");
-
-                System.out.println("leave 2");
+//                System.out.println("leave 2");
                 break;
             }
         }
-
-//        bottomHBox.getChildren().add(bottomRightStandaloneBox);
-        System.out.println("leave bottomRightBoxToggleChoices");
+//        System.out.println("leave bottomRightBoxToggleChoices");
     }
 
 
@@ -410,6 +451,8 @@ public class BattleView {
     public void updatePokemonSprites(){
         playerPokemonImageView.setImage(new Image(playerPokemonImageURL));
         botPokemonImageView.setImage(new Image(botPokemonImageURL));
+        playerName.setText(currPokemon.getName());
+        botName.setText(botCurrPokemon.getName());
     }
 
     // TODO guicontroller will call this box to update the 4 moves buttons with the names

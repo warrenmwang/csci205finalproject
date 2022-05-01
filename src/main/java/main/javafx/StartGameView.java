@@ -16,6 +16,7 @@
 
 package main.javafx;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,7 +31,6 @@ public class StartGameView {
     public StartGameView(){
         initSceneGraph();
         initStyling();
-        initEventHandler();
     }
 
     public VBox getRoot() {
@@ -66,12 +66,20 @@ public class StartGameView {
     }
 
     public void initStyling(){
+        root.setAlignment(Pos.CENTER);
+
+        int width = 100;
+        int height = 30;
+        int spacing = 10;
+
+        start_game.setPrefSize(width,height);
+        Rule.setPrefSize(width,height);
+        exit_btn.setPrefSize(width,height);
+
+        root.setSpacing(spacing);
 
     }
 
 
-    public void initEventHandler(){
 
-
-    }
 }

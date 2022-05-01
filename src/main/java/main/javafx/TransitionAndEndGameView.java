@@ -20,13 +20,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.w3c.dom.Text;
 
-;
-
+/**
+ * Transition / End Game View
+ *
+ * Will be used in 3 places
+ * 1. When game ends in the middle of the battle (player or bot loses)
+ * 2. When player forfeits
+ * 3. When player wants to see the rules
+ */
 public class TransitionAndEndGameView {
 
-    // TODO this entire class....no design for this yet
     private VBox root;
     private Button yesBtn;
     private Button noBtn;
@@ -37,6 +41,7 @@ public class TransitionAndEndGameView {
     public Button getYesBtn(){return yesBtn;}
     public Button getNoBtn(){return noBtn;}
     public VBox getRoot(){return root;}
+
 
 
     /**

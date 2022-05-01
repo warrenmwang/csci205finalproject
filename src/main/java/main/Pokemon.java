@@ -106,8 +106,13 @@ public class Pokemon {
 
     public void resetstatsNoHp(){
         double currentHp = this.getHP();
-        this.setStats(this.originalStats);
+        this.setStats(new ArrayList<>(this.originalStats));
         this.setHp(currentHp);
+        this.statusEffect = PokemonStatusEffect.NO_EFFECT;
+    }
+
+    public void resetAllstats(){
+        this.setStats(new ArrayList<>(this.originalStats));
         this.statusEffect = PokemonStatusEffect.NO_EFFECT;
     }
 
