@@ -96,26 +96,26 @@ public class Player {
         Move SelectedMove = new Move("blank", "0,0,0,0,0,0");
 
         // player can either switch, attack, or forfeit
-        System.out.println("Player, do you want to switch, attack, or forfeit?");
+//        System.out.println("Player, do you want to switch, attack, or forfeit?");
         UserInput.waitFXinput();
         String input = UserInput.getUSERINPUT();
         switch (input) {
             case ("Switch"): {
                 // print out currently selected pokemon
-                System.out.println("Your currently selected Pokemon: ");
-                System.out.println(this.getCurrPokemon());
+//                System.out.println("Your currently selected Pokemon: ");
+//                System.out.println(this.getCurrPokemon());
 
                 // print out other pokemon user can switch their current pokemon with
-                System.out.println("Other Pokemon you can switch with: ");
-                for (int i = 1; i < this.getNumberOfPokemon(); i++) {
-                    System.out.println(this.getPokemonTeam().get(i));
-                }
+//                System.out.println("Other Pokemon you can switch with: ");
+//                for (int i = 1; i < this.getNumberOfPokemon(); i++) {
+//                    System.out.println(this.getPokemonTeam().get(i));
+//                }
 
                 // get user selection
-                System.out.println("Which Pokemon do you want to switch with?");
+//                System.out.println("Which Pokemon do you want to switch with?");
                 String id = readInputLine(); // read in ID
-                System.out.println("Read in id: " + id);
-                //todo: change name into ID/index
+//                System.out.println("Read in id: " + id);
+
                 int id_as_index = 0;
                 for(Pokemon p: pokemonTeam){
                     if(p.getID().equalsIgnoreCase(id)){
@@ -127,20 +127,20 @@ public class Player {
 
 
 //                int id_as_index = pokemonTeam.indexOf(pokemonTeam.stream().filter(p -> p.getID().equals(id)));
-                System.out.println("id_as_index: " + id_as_index);
+//                System.out.println("id_as_index: " + id_as_index);
                 SelectedMove = new Move("Switch", String.format("%d,0,0,0,0", id_as_index));
                 break;
             }
 
 
             case ("attack"): {
-                System.out.println("Which move do you want to choose?");
+//                System.out.println("Which move do you want to choose?");
                 // print out the moves of the currently selected pokemon for the player to select from
-                System.out.println("~~~Moves available~~~");
-                for (String move : this.getCurrPokemon().getMoves()) {
-                    System.out.println(move);
-                }
-                System.out.println("~~~~~~~~~~~~");
+//                System.out.println("~~~Moves available~~~");
+//                for (String move : this.getCurrPokemon().getMoves()) {
+//                    System.out.println(move);
+//                }
+//                System.out.println("~~~~~~~~~~~~");
 
                 String selectMove = readInputLine();
                 // read in user selection

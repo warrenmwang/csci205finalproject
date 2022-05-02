@@ -30,6 +30,7 @@ public class BattleMacro {
 
     private GameState gameState;
     private boolean firstTurn;
+    private boolean Reseting;
 
 
     /**
@@ -131,13 +132,21 @@ public class BattleMacro {
         battleMicro.setPlayerWonStatus(false);
 
         // generate random 6 pokemon teams
-        if(!firstTurn){
-        battleMicro.generateInitialPlayerRandomTeam();}
+        if(!firstTurn || Reseting){
+        battleMicro.generateInitialPlayerRandomTeam();
+        Reseting = false;}
         battleMicro.generateInitialBotRandomTeam();
 
         // bring teams down to their final form of 3
-        battleMicro.initPlayer();
         battleMicro.initBot();
+
+        if (battleMicro.initPlayer() == -1){
+            firstTurn = false;
+            Reseting = true;
+            reset();
+            return;
+        };
+
 
         // create the Player and Bot objects with their handpicked teams for play
         battleMicro.constructPlayer();

@@ -17,6 +17,7 @@
 
 package main.javafx;
 
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.BattleMacro;
@@ -25,9 +26,11 @@ import main.UserInput;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.math.BigInteger;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.System.exit;
+import static java.lang.System.load;
 
 public class GuiController {
 //    private TextView textView;
@@ -37,6 +40,7 @@ public class GuiController {
     private TransitionAndEndGameView forfeitView;
     private RuleView ruleView;
     private TransitionAndEndGameView endGameView;
+    private LoadingScreenView loadingScreenView;
 
     private Stage primaryStage;
     private Scene guiScene;
@@ -47,6 +51,7 @@ public class GuiController {
     private Scene forfeitScene;
     private Scene ruleScene;
     private Scene endGameScene;
+    private Scene loadingScreenScene;
     private MovesInventory movesInventory;
 
     private Model model;
@@ -60,7 +65,7 @@ public class GuiController {
         // before creating out main game, change sys.out to something we capture
         PrintStream sysOutOrig = System.out;
         newSysOut = new ByteArrayOutputStream();
-        //System.setOut(new PrintStream(newSysOut));
+        System.setOut(new PrintStream(newSysOut));
 
         movesInventory = new MovesInventory();
 
@@ -79,6 +84,7 @@ public class GuiController {
         forfeitView = new TransitionAndEndGameView();
         ruleView = new RuleView();
         endGameView = new TransitionAndEndGameView();
+        loadingScreenView = new LoadingScreenView();
 
         // create scenes from the views
         startScene = new Scene(startGameView.getRoot());
@@ -88,6 +94,7 @@ public class GuiController {
         forfeitScene = new Scene(forfeitView.getRoot());
         ruleScene = new Scene(ruleView.getRoot());
         endGameScene = new Scene(endGameView.getRoot());
+        loadingScreenScene = new Scene(loadingScreenView.getRoot());
 
         // start the game with the StartGameScene
         this.primaryStage = primaryStage;
@@ -99,7 +106,7 @@ public class GuiController {
 
         this.primaryStage.setResizable(false);
 
-
+        model.run();
         initEventHandler();
     }
 
@@ -111,8 +118,8 @@ public class GuiController {
         startGameView.getStart_game().setOnMouseClicked(event -> {
 
             // restart main game loop
-            model.getNewThread();
-            model.run();
+            //model.getNewThread();
+
             updateChoosePokemonScene();
 
             // switch to choosepokemonscene
@@ -209,12 +216,12 @@ public class GuiController {
 
             if(UserInput.getNeedToSwitch()){
                 battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
-                System.out.println("approved to switch");
+//                System.out.println("approved to switch");
                 battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                 battleView.bottomRightBoxToggleChoices(2);
                 UserInput.setNeedToSwitch(false);
             } else {
-                System.out.println("not approved to switch");
+//                System.out.println("not approved to switch");
                 UserInput.setNeedToSwitch(false);
 
 
@@ -248,7 +255,7 @@ public class GuiController {
 
             if(UserInput.getNeedToSwitch()){
                 battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
-                System.out.println("approved to switch");
+//                System.out.println("approved to switch");
                 battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                 battleView.bottomRightBoxToggleChoices(2);
                 UserInput.setNeedToSwitch(false);
@@ -282,7 +289,7 @@ public class GuiController {
 
             if(UserInput.getNeedToSwitch()){
                 battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
-                System.out.println("approved to switch");
+//                System.out.println("approved to switch");
                 battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                 battleView.bottomRightBoxToggleChoices(2);
                 UserInput.setNeedToSwitch(false);
@@ -316,7 +323,7 @@ public class GuiController {
 
             if(UserInput.getNeedToSwitch()){
                 battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
-                System.out.println("approved to switch");
+//                System.out.println("approved to switch");
                 battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                 battleView.bottomRightBoxToggleChoices(2);
                 UserInput.setNeedToSwitch(false);
@@ -349,7 +356,7 @@ public class GuiController {
                 // after switch, bot will attack me, check if need to switch if user gets one shot
                 if(UserInput.getNeedToSwitch()){
                     battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
-                    System.out.println("approved to switch");
+//                    System.out.println("approved to switch");
                     battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                     battleView.bottomRightBoxToggleChoices(2);
                     UserInput.setNeedToSwitch(false);
@@ -388,7 +395,7 @@ public class GuiController {
                 // after switch, bot will attack me, check if need to switch if user gets one shot
                 if(UserInput.getNeedToSwitch()){
                     battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
-                    System.out.println("approved to switch");
+//                    System.out.println("approved to switch");
                     battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                     battleView.bottomRightBoxToggleChoices(2);
                     UserInput.setNeedToSwitch(false);
@@ -425,7 +432,7 @@ public class GuiController {
         choosePokemonView.getCheckMark().setOnMouseClicked(event -> {
             UserInput.setUSERINPUT(choosePokemonView.getCurrPokemonID());
 
-            System.out.println(choosePokemonView.getCurrPokemonID());
+//            System.out.println(choosePokemonView.getCurrPokemonID());
 
             UserInput.setCanGetUSERINPUT(true);
             choosePokemonView.incrementChosenPokemonCounter();
@@ -445,6 +452,7 @@ public class GuiController {
 
             // check if need to switch scene when 3 pokemon are chosen
             if(choosePokemonView.getPokemonChosenCounter() == 3){
+                newSysOut.reset();
                 // update the battlescene with player's curr pokemon
                 // sleep to allow botteam to update
                 try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){}
@@ -477,7 +485,7 @@ public class GuiController {
             try {
                 newSysOut.reset();
             }catch(Exception e){
-                System.out.println("???");
+//                System.out.println("???");
             }
             System.out.println(PokeDes);
             choosePokemonView.getMoveDesc().clear();
@@ -507,7 +515,7 @@ public class GuiController {
             try {
                 newSysOut.reset();
             }catch(Exception e){
-                System.out.println("???");
+//                System.out.println("???");
             }
             System.out.println(movesInventory.getMove(moveName));
             choosePokemonView.getMoveDesc().clear();
@@ -521,7 +529,7 @@ public class GuiController {
             try {
                 newSysOut.reset();
             }catch(Exception e){
-                System.out.println("???");
+//                System.out.println("???");
             }
             System.out.println(movesInventory.getMove(moveName));
             choosePokemonView.getMoveDesc().clear();
@@ -535,7 +543,7 @@ public class GuiController {
             try {
                 newSysOut.reset();
             }catch(Exception e){
-                System.out.println("???");
+//                System.out.println("???");
             }
             System.out.println(movesInventory.getMove(moveName));
             choosePokemonView.getMoveDesc().clear();
@@ -545,28 +553,41 @@ public class GuiController {
 
         // exit button returns player to the start game scene
         choosePokemonView.getExitBtn().setOnMouseClicked(event -> {
+
+//            primaryStage.setScene(loadingScreenScene);
+
+            UserInput.setUSERINPUT("exit");
+            UserInput.setCanGetUSERINPUT(true);
+
             // switch to the starting scene
 
             // stop the model and reset pokemon view pointers (if go back to choosepokescene, pointer will be 0)
-            model.stop();
+            //model.stop();
             choosePokemonView.resetPointers();
+
+            // switch to loading screen, wait, and do stuff before switching back to original scene
+
+            try{TimeUnit.MILLISECONDS.sleep(2000);}catch(Exception e){}
+
+            // update choosepokemonview with new team of 6 generated from battlemacro
+//            System.out.println("\n\n\ngeting user team from macro\n\n\n");
+            choosePokemonView.setOriginalPoketeamAndCleanChooseFromPoke(battleMacro.getBattleMicro().getUserTeam());
 
             // reset teams in battlemacro, and recreate everything
 //            try{battleMacro.reset();}catch(Exception e){}
 //            battleMacro.getBattleMicro().generateInitialPlayerRandomTeam();
 //            battleMacro.getBattleMicro().generateInitialBotRandomTeam();
-            try{battleMacro = new BattleMacro();}catch(Exception e){}
-            battleMacro.getBattleMicro().generateInitialBotRandomTeam();
-
-            try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){}
-
-            model.setBattleMacro(battleMacro);
-            choosePokemonView = new ChoosePokemonView(battleMacro.getBattleMicro().getUserTeam());
-            choosePokemonScene = new Scene(choosePokemonView.getRoot());
-            this.battleView = new BattleView(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage(), battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
-            battleScene = new Scene(battleView.getRoot());
-
-            initEventHandler();
+//            try{battleMacro = new BattleMacro();}catch(Exception e){}
+//            battleMacro.getBattleMicro().generateInitialBotRandomTeam();
+//
+//            try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){}
+//
+//            model.setBattleMacro(battleMacro);
+//            choosePokemonView = new ChoosePokemonView(battleMacro.getBattleMicro().getUserTeam());
+//            choosePokemonScene = new Scene(choosePokemonView.getRoot());
+//            this.battleView = new BattleView(battleMacro.getBattleMicro().getUserTeam().get(0).getPlayerImage(), battleMacro.getBattleMicro().getBotTeam().get(0).getBotImage());
+//            battleScene = new Scene(battleView.getRoot());
+//            initEventHandler();
 
             // switch to start scene
             primaryStage.setScene(startScene);
@@ -599,7 +620,20 @@ public class GuiController {
 
         // -------- rule scene -------
         ruleView.getBackButton().setOnMouseClicked(event -> {
+//            primaryStage.setScene(loadingScreenScene);
+//            this.primaryStage.sizeToScene();
+//            primaryStage.show();
+
+//            try{TimeUnit.MILLISECONDS.sleep(2000);}catch(Exception e){}
             primaryStage.setScene(startScene);
+
+//            Runnable r = () -> {
+//                try{TimeUnit.MILLISECONDS.sleep(2000);}catch(Exception e){}
+//                primaryStage.setScene(startScene);
+//            };
+//            Thread t = new Thread(r);
+//            t.start();
+
         });
 
         // ------- end game scene ------
@@ -608,10 +642,12 @@ public class GuiController {
             UserInput.setUSERINPUT("y");
             UserInput.setCanGetUSERINPUT(true);
 
+            // switch to loading screen, wait, and do stuff before switching back to original scene
+//            primaryStage.setScene(loadingScreenScene);
             try{TimeUnit.MILLISECONDS.sleep(2000);}catch(Exception e){}
 
             // update choosepokemonview with new team of 6 generated from battlemacro
-            System.out.println("\n\n\ngeting user team from macro\n\n\n");
+//            System.out.println("\n\n\ngeting user team from macro\n\n\n");
             choosePokemonView.setOriginalPoketeamAndCleanChooseFromPoke(battleMacro.getBattleMicro().getUserTeam());
             // update choosefrompokemon scene (should display 6 new random poke to choose from)
             updateChoosePokemonScene();

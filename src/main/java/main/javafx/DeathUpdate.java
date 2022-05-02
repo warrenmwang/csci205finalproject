@@ -31,25 +31,25 @@ public class DeathUpdate {
 
     // makes bottom right box to show remaining alive pokemon to choose from
     public static void switchOtherPokemonToChooseFromBox(){
-        System.out.println("entered switchOtherPokemonToChooseFromBox");
+//        System.out.println("entered switchOtherPokemonToChooseFromBox");
 
         BattleView battleView = guiController.getBattleView();
-        System.out.println("battleview get");
+//        System.out.println("battleview get");
         BattleMacro battleMacro = guiController.getBattleMacro();
-        System.out.println("battlemacro getted");
+//        System.out.println("battlemacro getted");
         battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
-        System.out.println("switch poke updated");
+//        System.out.println("switch poke updated");
         battleView.bottomRightBoxToggleChoices(2);
 
 
-        System.out.println("exiting switchOtherPokemonToChooseFromBox");
+//        System.out.println("exiting switchOtherPokemonToChooseFromBox");
     }
 
     public static void checkNeedUpdateBattleViewSprite(){
-        System.out.println("enter checkNeedUpdateBattleViewSprite");
+//        System.out.println("enter checkNeedUpdateBattleViewSprite");
 
         if(playerCurrPokemonDied){
-            System.out.println("playerCurrPokemonDied");
+//            System.out.println("playerCurrPokemonDied");
 
             // reset var
             playerCurrPokemonDied = false;
@@ -68,7 +68,7 @@ public class DeathUpdate {
         }
 
         if(botCurrPokemonDied){
-            System.out.println("botCurrPokemonDied");
+//            System.out.println("botCurrPokemonDied");
 
             // reset var
             botCurrPokemonDied = false;
@@ -86,7 +86,7 @@ public class DeathUpdate {
             battleView.updateMovesBox(); // update 4moves box with curr pokemon move names
         }
 
-        System.out.println("leaving checkNeedUpdateBattleViewSprite");
+//        System.out.println("leaving checkNeedUpdateBattleViewSprite");
 
     }
 }

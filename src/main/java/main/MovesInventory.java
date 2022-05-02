@@ -247,16 +247,16 @@ public class MovesInventory {
      */
     public void Switch(Player attacker, Player defender, Move move) {
         int SwitchIndex = (int) move.getBasePower();
-        System.out.println("switchindex: " + SwitchIndex);
+//        System.out.println("switchindex: " + SwitchIndex);
         attacker.switchCurrPokemon(SwitchIndex);
 
         // TODO remove me
         // print out new team
-        System.out.println("------------- New Pokemon Team After Switching -------------");
-        for(Pokemon p : attacker.getPokemonTeam()){
-            System.out.println(p);
-        }
-        System.out.println("-------------  -------------  -------------");
+//        System.out.println("------------- New Pokemon Team After Switching -------------");
+//        for(Pokemon p : attacker.getPokemonTeam()){
+//            System.out.println(p);
+//        }
+//        System.out.println("-------------  -------------  -------------");
     }
 
 
@@ -1386,6 +1386,10 @@ public class MovesInventory {
 
 
     public void surf(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+    public void rock_slide(Player attacker, Player defender, Move move){
         simplemove(attacker,defender,move);
     }
 

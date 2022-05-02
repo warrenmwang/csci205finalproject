@@ -45,6 +45,7 @@ public class ChoosePokemonView {
     private HBox layer4;
     private HBox layer5;
     private Label bottomTip;
+    private Label bottomTip2;
     private Button exitBtn;
     private Button leftArrow;
     private Button rightArrow;
@@ -66,9 +67,9 @@ public class ChoosePokemonView {
         this.originalPoketeam = new ArrayList<>(team);
         this.chooseFromPoke = new ArrayList<>(team);
 
-        for(Pokemon p:team){
-            System.out.println(p.getID());
-        }
+//        for(Pokemon p:team){
+//            System.out.println(p.getID());
+//        }
         currPokeInd = 0;
         pokemonChosenCounter = 0;
 
@@ -251,6 +252,7 @@ public class ChoosePokemonView {
 
         // layer 5 contents
         bottomTip = new Label("Click on the Pokemon Image or the Move Name for more information.");
+        bottomTip2 = new Label("Please choose three Pokemon");
         layer5.getChildren().add(bottomTip);
 
         // add all layers to root

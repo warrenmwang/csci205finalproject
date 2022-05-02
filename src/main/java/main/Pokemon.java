@@ -174,8 +174,8 @@ public class Pokemon {
                 "moves: %s\n" +
                 "statusEffect: %s\n" +
                 "isAlive: %s\n" +
-                "turnsActive: %s\n" +
-                "item %s\n", id, name, currStats, originalStats, types, moves, statusEffect, isAlive, turnsActive, item);
+                "turnsActive: %s\n"
+                , id, name, currStats, originalStats, types, moves, statusEffect, isAlive, turnsActive);
     }
 
     public String toSmallString(){
