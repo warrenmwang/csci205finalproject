@@ -18,9 +18,11 @@ package main.javafx;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 /**
  * Transition / End Game View
@@ -28,27 +30,28 @@ import javafx.scene.layout.VBox;
  * Will be used in 3 places
  * 1. When game ends in the middle of the battle (player or bot loses)
  * 2. When player forfeits
- * 3. When player wants to see the rules
  */
-public class TransitionAndEndGameView {
+public class ForfeitAndEndView {
 
     private VBox root;
     private Button yesBtn;
     private Button noBtn;
-    private TextArea textArea;
+    private Label textToDisplay;
     private HBox yesNoBox;
+
 
     // GETTER METHODS
     public Button getYesBtn(){return yesBtn;}
     public Button getNoBtn(){return noBtn;}
     public VBox getRoot(){return root;}
+    public Label getTextToDisplay() {return textToDisplay;}
 
 
 
     /**
      * Constructor
      */
-    public TransitionAndEndGameView(){
+    public ForfeitAndEndView(){
         initSceneGraph();
         initSceneStyling();
     }
@@ -58,7 +61,7 @@ public class TransitionAndEndGameView {
         root = new VBox();
         yesBtn = new Button("Yes");
         noBtn = new Button("No");
-        textArea = new TextArea("replace me");
+        textToDisplay = new Label("replace me");
         yesNoBox = new HBox();
 
         // add yes and no button to yes no hbox
@@ -66,11 +69,12 @@ public class TransitionAndEndGameView {
         yesNoBox.getChildren().add(noBtn);
 
         // add things to root
-        root.getChildren().add(textArea);
+        root.getChildren().add(textToDisplay);
         root.getChildren().add(yesNoBox);
     }
     public void initSceneStyling(){
         root.setPrefSize(500,500);
+        root.setAlignment(Pos.CENTER);
 
         // All settings for buttons
         int ButtonWidth = 90;
@@ -81,9 +85,14 @@ public class TransitionAndEndGameView {
         yesNoBox.setAlignment(Pos.CENTER);
         yesNoBox.setSpacing(ButtonHorizontalSpacing);
         yesBtn.setPrefSize(ButtonWidth, ButtonHeight);
+        yesBtn.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
         noBtn.setPrefSize(ButtonWidth, ButtonHeight);
+        noBtn.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
 
-        textArea.setPrefSize(500, 400);
+        textToDisplay.setPrefSize(500, 400);
+        textToDisplay.setAlignment(Pos.CENTER);
+        textToDisplay.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        textToDisplay.setWrapText(true);
     }
 
     /**
@@ -91,7 +100,6 @@ public class TransitionAndEndGameView {
      * @param content
      */
     public void updateTextArea(String content){
-        textArea.setText(content);
-        textArea.setScrollTop(Double.MAX_VALUE);
+        textToDisplay.setText(content);
     }
 }

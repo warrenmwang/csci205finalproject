@@ -17,7 +17,6 @@
 
 package main.javafx;
 
-import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.BattleMacro;
@@ -26,20 +25,18 @@ import main.UserInput;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.math.BigInteger;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.System.exit;
-import static java.lang.System.load;
 
 public class GuiController {
 //    private TextView textView;
     private BattleView battleView;
     private ChoosePokemonView choosePokemonView;
     private StartGameView startGameView;
-    private TransitionAndEndGameView forfeitView;
+    private ForfeitAndEndView forfeitView;
     private RuleView ruleView;
-    private TransitionAndEndGameView endGameView;
+    private ForfeitAndEndView endGameView;
     private LoadingScreenView loadingScreenView;
 
     private Stage primaryStage;
@@ -81,9 +78,9 @@ public class GuiController {
         this.battleView = battleView;
 //        this.textView = textView;
         choosePokemonView = new ChoosePokemonView(battleMacro.getBattleMicro().getUserTeam());
-        forfeitView = new TransitionAndEndGameView();
+        forfeitView = new ForfeitAndEndView();
         ruleView = new RuleView();
-        endGameView = new TransitionAndEndGameView();
+        endGameView = new ForfeitAndEndView();
         loadingScreenView = new LoadingScreenView();
 
         // create scenes from the views
@@ -186,13 +183,12 @@ public class GuiController {
         });
 
         battleView.getForfeit().setOnMouseClicked(event -> {
+            newSysOut.reset();
             UserInput.setUSERINPUT("forfeit");
             UserInput.setCanGetUSERINPUT(true);
 
             // tell user if they really want to forfeit
             battleView.updateBottomLeftTextBox(newSysOut.toString());
-//            newSysOut.reset();
-
 
             // transition to end scene
             try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
@@ -203,7 +199,7 @@ public class GuiController {
 
         // MOVES
         battleView.getMove1().setOnMouseClicked(event -> {
-//            newSysOut.reset();
+            newSysOut.reset();
             UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUser().getCurrPokemon().getMove(0));
             UserInput.setCanGetUSERINPUT(true);
 
@@ -243,6 +239,7 @@ public class GuiController {
         });
 
         battleView.getMove2().setOnMouseClicked(event -> {
+            newSysOut.reset();
             UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUser().getCurrPokemon().getMove(1));
             UserInput.setCanGetUSERINPUT(true);
 
@@ -278,6 +275,7 @@ public class GuiController {
         });
 
         battleView.getMove3().setOnMouseClicked(event -> {
+            newSysOut.reset();
             UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUser().getCurrPokemon().getMove(2));
             UserInput.setCanGetUSERINPUT(true);
             UserInput.waitPlayerDied();
@@ -312,6 +310,7 @@ public class GuiController {
         });
 
         battleView.getMove4().setOnMouseClicked(event -> {
+            newSysOut.reset();
             UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUser().getCurrPokemon().getMove(3));
             UserInput.setCanGetUSERINPUT(true);
             UserInput.waitPlayerDied();
@@ -644,9 +643,10 @@ public class GuiController {
             UserInput.setUSERINPUT("y");
             UserInput.setCanGetUSERINPUT(true);
 
-            // switch to loading screen, wait, and do stuff before switching back to original scene
-//            primaryStage.setScene(loadingScreenScene);
-            try{TimeUnit.MILLISECONDS.sleep(2000);}catch(Exception e){}
+
+
+            // wait
+            try{TimeUnit.MILLISECONDS.sleep(2200);}catch(Exception e){}
 
             // update choosepokemonview with new team of 6 generated from battlemacro
 //            System.out.println("\n\n\ngeting user team from macro\n\n\n");
@@ -654,6 +654,7 @@ public class GuiController {
             // update choosefrompokemon scene (should display 6 new random poke to choose from)
             updateChoosePokemonScene();
             // switch to scene
+            newSysOut.reset();
             primaryStage.setScene(choosePokemonScene);
         });
 
@@ -675,7 +676,6 @@ public class GuiController {
 
             endGameView.getNoBtn().setDisable(true);
             endGameView.getNoBtn().setVisible(false);
-
         });
 
 

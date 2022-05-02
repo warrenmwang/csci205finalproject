@@ -27,6 +27,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import main.Move;
 import main.Pokemon;
@@ -257,13 +259,14 @@ public class BattleView {
         placeHolderBtn = new Button("Nothing");
         ThreeChoiceHolderBox = new VBox();
         temp3 = new HBox();
-        temp4 = new HBox();
+//        temp4 = new HBox();
         temp3.getChildren().add(Attack);
         temp3.getChildren().add(Switch);
-        temp4.getChildren().add(Forfeit);
+        temp3.getChildren().add(Forfeit);
+//        temp4.getChildren().add(Forfeit);
 //        temp4.getChildren().add(placeHolderBtn);
         ThreeChoiceHolderBox.getChildren().add(temp3);
-        ThreeChoiceHolderBox.getChildren().add(temp4);
+//        ThreeChoiceHolderBox.getChildren().add(temp4);
 
         //create switch Pokemon button
         ChoosePokemonHolderBox = new VBox();
@@ -363,48 +366,70 @@ public class BattleView {
         bottomLeftTextBox.setMaxSize(600,200);
         bottomRightStandaloneBox.setPrefSize(450,200);
 
+        // fonts of all buttons
+        Attack.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Switch.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Forfeit.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Move1.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Move2.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Move3.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Move4.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Poke0Btn.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Poke1Btn.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
 
-        //All settings for buttons
-        int ButtonWidth = 100;
-        int ButtonHeight = 50;
-        int ButtonHorizontalSpacing = 20;
-        int ButtonVerticalSpacing = 20;
+        // Attack, Switch, Forfeit sizes
+        int ASFButtonWidth = 150;
+        int ASFButtonHeight = 80;
+        int ASFButtonHorizontalSpacing = 20;
+        int ASFButtonVerticalSpacing = 20;
 
-        Insets choosePaddings = new Insets(30,50,0,50);
+        //Insets choosePaddings = new Insets(30,50,0,50);
 
-        bottomRightStandaloneBox.setPadding(choosePaddings);
+        //bottomRightStandaloneBox.setPadding(choosePaddings);
 
 
 
         //Attack, switch setting
         ThreeChoiceHolderBox.setAlignment(Pos.CENTER);
-        ThreeChoiceHolderBox.setSpacing(ButtonVerticalSpacing);
+        ThreeChoiceHolderBox.setSpacing(ASFButtonVerticalSpacing);
 
-        temp3.setSpacing(ButtonHorizontalSpacing);
-        temp4.setSpacing(ButtonHorizontalSpacing);
+        temp3.setSpacing(ASFButtonHorizontalSpacing);
+//        temp4.setSpacing(ASFButtonHorizontalSpacing);
 
-        Attack.setPrefSize(ButtonWidth,ButtonHeight);
-        Switch.setPrefSize(ButtonWidth,ButtonHeight);
-        Forfeit.setPrefSize(ButtonWidth,ButtonHeight);
+        Attack.setPrefSize(ASFButtonWidth,ASFButtonHeight);
+        Switch.setPrefSize(ASFButtonWidth,ASFButtonHeight);
+        Forfeit.setPrefSize(ASFButtonWidth,ASFButtonHeight);
 //        placeHolderBtn.setPrefSize(ButtonWidth,ButtonHeight);
 
 
+        // 4 moves sizes
+        int MovesButtonWidth = 150;
+        int MovesButtonHeight = 80;
+        int MovesButtonHorizontalSpacing = 20;
+        int MovesButtonVerticalSpacing = 20;
+
         // 4 moves
         MoveHolderBox.setAlignment(Pos.CENTER);
-        MoveHolderBox.setSpacing(ButtonVerticalSpacing);
-        temp1.setSpacing(ButtonHorizontalSpacing);
-        temp2.setSpacing(ButtonHorizontalSpacing);
-        Move1.setPrefSize(ButtonWidth+20, ButtonHeight);
-        Move2.setPrefSize(ButtonWidth+20, ButtonHeight);
-        Move3.setPrefSize(ButtonWidth+20, ButtonHeight);
-        Move4.setPrefSize(ButtonWidth+20, ButtonHeight);
+        MoveHolderBox.setSpacing(MovesButtonVerticalSpacing);
+        temp1.setSpacing(MovesButtonHorizontalSpacing);
+        temp2.setSpacing(MovesButtonHorizontalSpacing);
+        Move1.setPrefSize(MovesButtonWidth, MovesButtonHeight);
+        Move2.setPrefSize(MovesButtonWidth, MovesButtonHeight);
+        Move3.setPrefSize(MovesButtonWidth, MovesButtonHeight);
+        Move4.setPrefSize(MovesButtonWidth, MovesButtonHeight);
+
+        // 2 poke buttons sizes
+        int PokeButtonWidth = 150;
+        int PokeButtonHeight = 80;
+        int PokeButtonHorizontalSpacing = 20;
+        int PokeButtonVerticalSpacing = 20;
 
         // switch pokemon options
         ChoosePokemonHolderBox.setAlignment(Pos.CENTER);
-        ChoosePokemonHolderBox.setSpacing(ButtonVerticalSpacing);
-        poke01.setSpacing(ButtonHorizontalSpacing);
-        Poke0Btn.setPrefSize(ButtonWidth+20, ButtonHeight);
-        Poke1Btn.setPrefSize(ButtonWidth+20, ButtonHeight);
+        ChoosePokemonHolderBox.setSpacing(PokeButtonVerticalSpacing);
+        poke01.setSpacing(PokeButtonHorizontalSpacing);
+        Poke0Btn.setPrefSize(PokeButtonWidth, PokeButtonHeight);
+        Poke1Btn.setPrefSize(PokeButtonWidth, PokeButtonHeight);
     }
 
     /**
