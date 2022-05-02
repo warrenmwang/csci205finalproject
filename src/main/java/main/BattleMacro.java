@@ -18,17 +18,17 @@ package main;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class BattleMacro {
     private int playerWins;
     private int playerLosses;
     private int numberOfRounds;
     private BattleMicro battleMicro;
-//    private boolean whoseTurn; // 1 for Player, 0 for Bot
 
     private GameState gameState;
     private boolean firstTurn;
+    private boolean Reseting;
 
 
     /**
@@ -51,6 +51,8 @@ public class BattleMacro {
 
     public BattleMicro getBattleMicro() {return this.battleMicro;}
 
+    public double getWinRate() { return (double)playerWins/((double)playerWins+(double) playerLosses);}
+
     /**
      * Main Game Loop. Calls functions on the BattleMicro object and other BattleMacro
      * objects when necessary to facilitate the progression of the game.
@@ -59,7 +61,7 @@ public class BattleMacro {
         // TODO: check for 14 consecutive wins and then print a very special message
         //    check for loss streaks and also print a very special message (toxic)
         //    if (wins == 0 && losses >= 1){
-            // sout("You smell! LOL!!!!!!"))
+
 
         // use reset function to create teams, prompt for picking teams,
         // refresh variables
@@ -81,6 +83,7 @@ public class BattleMacro {
             // check if player forfeited, won, less
             if(battleMicro.getForfeitStatus()){
                 // ask if player wants to play again, updates game state
+                addLoss();
                 promptPlayAgain();
             }else if(battleMicro.getGameOverStatus()){
                 if(battleMicro.getPlayerWonStatus()){
@@ -93,6 +96,7 @@ public class BattleMacro {
                 // ask if player wants to play again, updates game state
                 promptPlayAgain();
             }
+            try{TimeUnit.MILLISECONDS.sleep(100);} catch(Exception e){}
             // if new game, reset, then change into Battle state
             if(getGameState().equals(GameState.NEW_GAME)){
                 reset();
@@ -120,29 +124,33 @@ public class BattleMacro {
      * Reset the saved game variables.
      */
     public void reset()throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
-        playerWins = 0;
-        playerLosses = 0;
-        numberOfRounds = 0;
 
         // reset all important BattleMicro statuses
         battleMicro.setGameOverStatus(false);
         battleMicro.setPlayerWonStatus(false);
 
         // generate random 6 pokemon teams
-        if(!firstTurn){
-        battleMicro.generateInitialPlayerRandomTeam();}
+        if(!firstTurn || Reseting){
+        battleMicro.generateInitialPlayerRandomTeam();
+        Reseting = false;}
         battleMicro.generateInitialBotRandomTeam();
 
         // bring teams down to their final form of 3
-        battleMicro.initPlayer();
         battleMicro.initBot();
+
+        if (battleMicro.initPlayer() == -1){
+            firstTurn = false;
+            Reseting = true;
+            reset();
+            return;
+        };
+
 
         // create the Player and Bot objects with their handpicked teams for play
         battleMicro.constructPlayer();
         battleMicro.constructBot();
 
-        // initialize userinput obj
-        //battleMicro.initInput();
+
     }
 
     /**
@@ -164,8 +172,14 @@ public class BattleMacro {
      * Exit Game Message function
      */
     public void printExitGameMessage(){
-        System.out.printf("You have played %d rounds, won %d times, and loss %d times.\n", numberOfRounds, playerWins, playerLosses);
-        System.out.println("We are sad to see you go, but have a nice day.");
+
+        System.out.printf("Rounds Played: %d\n", numberOfRounds);
+        System.out.printf("Wins: %d\n", playerWins);
+        System.out.printf("Losses: %d\n", playerLosses);
+
+        double winRate = (double)playerWins/((double)playerWins+(double) playerLosses);
+        System.out.printf("Win Rate: %.2f\n", winRate);
+
     }
 
     private String readInputLine(){

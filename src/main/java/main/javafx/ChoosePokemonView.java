@@ -25,6 +25,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import main.Pokemon;
 
 
@@ -43,6 +45,9 @@ public class ChoosePokemonView {
     private HBox layer2;
     private HBox layer3;
     private HBox layer4;
+    private VBox layer5;
+    private Label bottomTip;
+    private Label bottomTip2;
     private Button exitBtn;
     private Button leftArrow;
     private Button rightArrow;
@@ -56,6 +61,9 @@ public class ChoosePokemonView {
     private Button checkMark;
     private TextArea moveDesc;
     private int pokemonChosenCounter;
+    private ImageView leftArrowImage;
+    private ImageView rightArrowImage;
+    private ImageView checkMarkImage;
 
     /**
      * Constructor
@@ -63,137 +71,36 @@ public class ChoosePokemonView {
     public ChoosePokemonView(ArrayList<Pokemon> team){
         this.originalPoketeam = new ArrayList<>(team);
         this.chooseFromPoke = new ArrayList<>(team);
-        System.out.println(team);
-        System.out.println("start of view");
-        for(Pokemon p:team){
-            System.out.println(p.getID());
-        }
-        System.out.println("end of view");
+
         currPokeInd = 0;
         pokemonChosenCounter = 0;
-        System.out.println("step3");
+
         initSceneGraph();
-        System.out.println("step4");
         initSceneStyling();
-        System.out.println("step5");
-    }
-
-    public void setChooseFromPoke(ArrayList<Pokemon> chooseFromPoke) {
-        this.chooseFromPoke = chooseFromPoke;
-    }
-
-    public void setCurrPokeInd(int currPokeInd) {
-        this.currPokeInd = currPokeInd;
-    }
-
-    public void setRoot(VBox root) {
-        this.root = root;
-    }
-
-    public HBox getLayer1() {
-        return layer1;
-    }
-
-    public void setLayer1(HBox layer1) {
-        this.layer1 = layer1;
-    }
-
-    public HBox getLayer2() {
-        return layer2;
-    }
-
-    public void setLayer2(HBox layer2) {
-        this.layer2 = layer2;
-    }
-
-    public HBox getLayer3() {
-        return layer3;
-    }
-
-    public void setLayer3(HBox layer3) {
-        this.layer3 = layer3;
-    }
-
-    public HBox getLayer4() {
-        return layer4;
-    }
-
-    public void setLayer4(HBox layer4) {
-        this.layer4 = layer4;
-    }
-
-    public void setExitBtn(Button exitBtn) {
-        this.exitBtn = exitBtn;
-    }
-
-    public void setLeftArrow(Button leftArrow) {
-        this.leftArrow = leftArrow;
-    }
-
-    public void setRightArrow(Button rightArrow) {
-        this.rightArrow = rightArrow;
-    }
-
-    public void setAllPokeImgs(ArrayList<Image> allPokeImgs) {
-        this.allPokeImgs = allPokeImgs;
     }
 
     public ImageView getCurrViewPokemon() {
         return currViewPokemon;
     }
 
-    public void setCurrViewPokemon(ImageView currViewPokemon) {
-        this.currViewPokemon = currViewPokemon;
-    }
-
     public Button getMove1() {
         return Move1;
-    }
-
-    public void setMove1(Button move1) {
-        Move1 = move1;
     }
 
     public Button getMove2() {
         return Move2;
     }
 
-    public void setMove2(Button move2) {
-        Move2 = move2;
-    }
-
     public Button getMove3() {
         return Move3;
-    }
-
-    public void setMove3(Button move3) {
-        Move3 = move3;
     }
 
     public Button getMove4() {
         return Move4;
     }
-
-    public void setMove4(Button move4) {
-        Move4 = move4;
-    }
-
-    public void setCheckMark(Button checkMark) {
-        this.checkMark = checkMark;
-    }
-
     public TextArea getMoveDesc() {
         return moveDesc;
     }
-
-    public void setMoveDesc(TextArea moveDesc) {
-        this.moveDesc = moveDesc;
-    }
-
-    public void setPokemonChosenCounter(int pokemonChosenCounter) {
-        this.pokemonChosenCounter = pokemonChosenCounter;
-    }
-
     /**
      * Create scene contents
      */
@@ -203,14 +110,15 @@ public class ChoosePokemonView {
         layer2 = new HBox();
         layer3 = new HBox();
         layer4 = new HBox();
+        layer5 = new VBox();
 
         // layer 1 contents
         exitBtn = new Button("Exit");
         layer1.getChildren().add(exitBtn);
 
         // layer 2 contents
-        leftArrow = new Button("<--");
-        rightArrow = new Button("-->");
+        leftArrow = new Button("");
+        rightArrow = new Button("");
         allPokeImgs = new ArrayList<>();
 
         for(Pokemon p : chooseFromPoke){
@@ -245,18 +153,24 @@ public class ChoosePokemonView {
         layer3.getChildren().add(Move4);
 
         // layer 4 contents
-        checkMark = new Button("yes");
+        checkMark = new Button();
         moveDesc = new TextArea();
         layer4.getChildren().add(moveDesc);
         layer4.getChildren().add(checkMark);
 
+        // layer 5 contents
+        bottomTip = new Label("Click on the Pokemon Image or the Move Name for more information.");
+
+        bottomTip2 = new Label("Please choose three Pokemon.");
+        layer5.getChildren().add(bottomTip);
+        layer5.getChildren().add(bottomTip2);
 
         // add all layers to root
         root.getChildren().add(layer1);
         root.getChildren().add(layer2);
         root.getChildren().add(layer3);
         root.getChildren().add(layer4);
-
+        root.getChildren().add(layer5);
     }
 
     /**
@@ -264,46 +178,85 @@ public class ChoosePokemonView {
      */
     public void initSceneStyling(){
         // set a pref size for the whole thing
-        root.setPrefSize(450, 500);
+        root.setPrefSize(700, 865);
+
+        // layer 1 exit
+        layer1.setPadding(new Insets(5,0,0,5));
+        exitBtn.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        exitBtn.setPrefSize(100,50);
+
+
+        // ----- layer 2 ------
 
         // set a max size for pokemon being viewed
-        currViewPokemon.setFitHeight(250);
-        currViewPokemon.setFitWidth(250);
+        currViewPokemon.setFitHeight(400);
+        currViewPokemon.setFitWidth(400);
 
-        //left and right switches
+        //  left and right switches
         layer2.setAlignment(Pos.CENTER_LEFT);
-        layer2.setPadding(new Insets(10,50,10,50));
+        layer2.setPadding(new Insets(10,30,10,30));
         layer2.setSpacing(10);
-        leftArrow.setPrefSize(60,10);
-        rightArrow.setPrefSize(60,10);
+        leftArrow.setMaxSize(90,40);
+        rightArrow.setMaxSize(90,40);
 
-        //buttons
-        layer3.setPadding(new Insets(10,10,10,10));
+        leftArrowImage = new ImageView(new Image("http://eg.bucknell.edu/~wmw015/code/csci205-final/left_arrow.png"));
+        leftArrowImage.setPreserveRatio(true);
+        leftArrowImage.setFitWidth(90);
+        leftArrow.setGraphic(leftArrowImage);
+        rightArrowImage = new ImageView(new Image("http://eg.bucknell.edu/~wmw015/code/csci205-final/right_arrow.png"));
+        rightArrowImage.setPreserveRatio(true);
+        rightArrowImage.setFitWidth(90);
+        rightArrow.setGraphic(rightArrowImage);
+
+        // buttons
+        int ButtonWidth = 160;
+        int ButtonHeight = 100;
+
+        layer3.setPadding(new Insets(10,10,10,15));
         layer3.setSpacing(10);
-        Move1.setPrefSize(100,40);
+        Move1.setPrefSize(ButtonWidth,ButtonHeight);
         Move1.setAlignment(Pos.CENTER);
+        Move1.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Move1.setWrapText(true);
 
-        Move2.setPrefSize(100,40);
+        Move2.setPrefSize(ButtonWidth,ButtonHeight);
         Move2.setAlignment(Pos.CENTER);
+        Move2.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Move2.setWrapText(true);
 
-        Move3.setPrefSize(100,40);
+        Move3.setPrefSize(ButtonWidth,ButtonHeight);
         Move3.setAlignment(Pos.CENTER);
+        Move3.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Move3.setWrapText(true);
 
-        Move4.setPrefSize(100,40);
+        Move4.setPrefSize(ButtonWidth,ButtonHeight);
         Move4.setAlignment(Pos.CENTER);
+        Move4.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        Move4.setWrapText(true);
 
-
-        //TextArea
+        // layer 4 left text area
         layer4.setPadding(new Insets(10,0,10,20));
-        layer4.setSpacing(30);
-
-        layer4.setAlignment(Pos.CENTER);
-        moveDesc.setPrefSize(300,100);
+        layer4.setSpacing(45);
+        layer4.setAlignment(Pos.CENTER_LEFT);
+        moveDesc.setPrefSize(480,200);
         moveDesc.setWrapText(true);
-        checkMark.setPrefSize(70,70);
+        moveDesc.setFont(Font.font("Verdana", FontWeight.NORMAL, 18));
 
+        // layer 4 right check mark
+        checkMark.setPrefSize(100,100);
+        checkMarkImage = new ImageView(new Image("http://eg.bucknell.edu/~wmw015/code/csci205-final/checkmark.png"));
+        checkMarkImage.setFitWidth(100);
+        checkMarkImage.setPreserveRatio(true);
+        checkMark.setGraphic(checkMarkImage);
 
-
+        // layer 5 bottom tip
+        layer5.setAlignment(Pos.CENTER);
+        bottomTip.setAlignment(Pos.CENTER);
+        layer5.setPadding(new Insets(5,0,0,0));
+        bottomTip.setFont(Font.font("Verdana", FontWeight.NORMAL, 18));
+        bottomTip.setWrapText(true);
+        bottomTip2.setAlignment(Pos.CENTER);
+        bottomTip2.setFont(Font.font("Verdana", FontWeight.NORMAL, 18));
     }
 
 
@@ -340,7 +293,6 @@ public class ChoosePokemonView {
 
     // assumes currpokeind is updated before this function is called
     public void updateCurrViewPokemon(){
-        System.out.println("updatecurrviewpoke " + currPokeInd);
         this.currViewPokemon.setImage(this.allPokeImgs.get(currPokeInd));
     }
 
@@ -409,5 +361,25 @@ public class ChoosePokemonView {
     }
 
     public ArrayList<Pokemon> getChooseFromPoke(){return chooseFromPoke;}
+
+    // set new team and erase choosefrompoke list
+    public void setOriginalPoketeamAndCleanChooseFromPoke(ArrayList<Pokemon> newTeam){
+        originalPoketeam = new ArrayList<>(newTeam);
+        chooseFromPoke = new ArrayList<>(newTeam);
+
+        currPokeInd = 0;
+        pokemonChosenCounter = 0;
+
+        // update poke images
+        allPokeImgs = new ArrayList<>();
+
+        for(Pokemon p : chooseFromPoke){
+            p.resetAllstats(); // reset poke's stats
+
+            String url = p.getBotImage(); // get bot image bc that faces forward
+            allPokeImgs.add(new Image(url));
+        }
+
+    }
 
 }

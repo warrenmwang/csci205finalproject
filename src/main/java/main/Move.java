@@ -27,6 +27,7 @@ public class Move {
     private double accuracy;
     private String Type;
     private String designation;
+    private String priority;
     private String specialEffect;
 
     /**
@@ -43,6 +44,7 @@ public class Move {
         this.accuracy = Double.parseDouble(scnr.next());
         this.Type = scnr.next();
         this.designation = scnr.next();
+        this.priority = scnr.next();
         this.specialEffect = scnr.next();
     }
 
@@ -65,8 +67,6 @@ public class Move {
     public String getType() {return this.Type;}
 
     public String getDesignation() {return this.designation;}
-
-    public String getSpecialEffect() {return this.specialEffect;}
 
     public void setBasePower(double basePower) {this.basePower = basePower;}
 

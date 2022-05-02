@@ -33,7 +33,7 @@ public class Bot extends Player{
     public Bot(ArrayList<Pokemon> initTeam)throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
         // initialize bot's team and difficulty
         super(initTeam);
-        difficulty = 0;
+        difficulty = 1;
         movesInventory = new MovesInventory();
     }
 
@@ -44,15 +44,13 @@ public class Bot extends Player{
      * @return Move object that encapsulates the move that was randomly selected
      */
     public Move botChooseMove(Pokemon Defender) {
-        // TODO remove me
-        System.out.println("----------------- Entering Bot Smart Choose Move -----------------");
-        // TODO implement difficulty
+
         if (this.difficulty == 1) {
             //if the difficulty is easy, the bot will just select a random move and never switch
             //use completely random moves
             int moveID = new Random().nextInt(4);
 
-            System.out.println(getCurrPokemon().getMove(moveID));
+
 
             return movesInventory.getMove(getCurrPokemon().getMove(moveID));
 
@@ -111,7 +109,11 @@ public class Bot extends Player{
                     dmgmax = movedmgs.get(i);
                 }
             }
+
             moveID = idmax;
+            if(moveID>= 4){
+                moveID = 0;
+            }
             return movesInventory.getMove(getCurrPokemon().getMove(moveID));
 
             }
@@ -136,12 +138,7 @@ public class Bot extends Player{
     // if no move oneshots, return 5
     public int isOneshot(Pokemon Defender){
         for( int i = 0; i < 4; i ++){
-            System.out.println("curr poke: " + getCurrPokemon());
-
-            System.out.println("curr poke move: " + getCurrPokemon().getMove(i));
-
             Move move = movesInventory.getMove(getCurrPokemon().getMove(i));
-            System.out.println("move in isOneshot: " + move);
             double dmg = movesInventory.calcDamage(this.getCurrPokemon(), Defender, move);
             if(dmg > Defender.getHP()){
                 return i;

@@ -1,6 +1,6 @@
 package main;
 
-import javax.sound.midi.Soundbank;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class MovesInventory {
 
 
 
-    // TODO Constructor
+
 
     /**
      * Constructor
@@ -50,7 +50,6 @@ public class MovesInventory {
         attackSwitchMove.add("u_turn");
         attackSwitchMove.add("volt_switch");
 
-        ArrayList<String> thirdPriotityMove = new ArrayList<>();
 
         PriorityMoveList = new ArrayList<>();
         PriorityMoveList.add(firstPriorityMove);
@@ -97,9 +96,7 @@ public class MovesInventory {
         return this.allMultipliers;
     }
 
-    public ArrayList<String> getAllTypes() {
-        return this.allTypes;
-    }
+
 
     public Move getMove(String moveName) {
         return this.allMoves.get(moveName);
@@ -120,7 +117,7 @@ public class MovesInventory {
         if(didMoveHit){
             // move hits
             System.out.println("" + attacker.getName() + " used " + move.getName() + " against " + defender.getName() + "!");
-            System.out.printf("It hits and deals %f damage!\n", damage);
+            System.out.printf("It hits and deals %.0f damage!\n", damage);
         }else{
             // move missed
             System.out.println("" + attacker.getName() + " used " + move.getName() + " against " + defender.getName() + "!");
@@ -129,6 +126,7 @@ public class MovesInventory {
     }
 
     //todo
+    //??
     public void printStatusMoveMessage(Pokemon attacker, Pokemon defender, Move move){}
 
     /**
@@ -247,16 +245,8 @@ public class MovesInventory {
      */
     public void Switch(Player attacker, Player defender, Move move) {
         int SwitchIndex = (int) move.getBasePower();
-        System.out.println("switchindex: " + SwitchIndex);
         attacker.switchCurrPokemon(SwitchIndex);
-
-        // TODO remove me
-        // print out new team
-        System.out.println("------------- New Pokemon Team After Switching -------------");
-        for(Pokemon p : attacker.getPokemonTeam()){
-            System.out.println(p);
-        }
-        System.out.println("-------------  -------------  -------------");
+        
     }
 
 
@@ -641,30 +631,32 @@ public class MovesInventory {
     // TODO: finish
     //power: 70, Accur: 1, ELECTRIC, user switch out after move is used
     public void volt_switch(Player attacker, Player defender, Move move) {
-        double Accur = 1.0;
+        simplemove(attacker,defender,move);
 
-        // Get poke
-        Pokemon attackPoke = attacker.getCurrPokemon();
-        Pokemon defenderPoke = defender.getCurrPokemon();
-
-        double damage = 0;
-        //deal damage or effect based on accuracy
-        boolean hit = false;
-        if (AccuracyCheck(Accur)) {
-            hit = true;
-            damage = calcDamage(attackPoke, defenderPoke, move);
-        }
-
-        // Pokemon receives damage, check if alive
-        defenderPoke.receiveDamage(damage);
-
-        //todo
-        if (attacker.getNumberOfPokemon() >= 2) {
-            attacker.switchCurrPokemon(2);
-        }
-
-        // Print move message
-        printAttackMessage(attackPoke,defenderPoke,move,hit,damage,hit);
+//        double Accur = 1.0;
+//
+//        // Get poke
+//        Pokemon attackPoke = attacker.getCurrPokemon();
+//        Pokemon defenderPoke = defender.getCurrPokemon();
+//
+//        double damage = 0;
+//        //deal damage or effect based on accuracy
+//        boolean hit = false;
+//        if (AccuracyCheck(Accur)) {
+//            hit = true;
+//            damage = calcDamage(attackPoke, defenderPoke, move);
+//        }
+//
+//        // Pokemon receives damage, check if alive
+//        defenderPoke.receiveDamage(damage);
+//
+//        //todo
+//        if (attacker.getNumberOfPokemon() >= 2) {
+//            attacker.switchCurrPokemon(2);
+//        }
+//
+//        // Print move message
+//        printAttackMessage(attackPoke,defenderPoke,move,hit,damage,hit);
     }
 
     public void iron_head(Player attacker, Player defender, Move move) {
@@ -908,27 +900,25 @@ public class MovesInventory {
 
     //todo
     public void u_turn(Player attacker,  Player defender, Move move) {
-        double Accur = move.getAccuracy();
-        double effectAccur = 0.2;
+        simplemove(attacker,defender,move);
 
-        // Get poke
-        Pokemon attackPoke = attacker.getCurrPokemon();
-        Pokemon defenderPoke = defender.getCurrPokemon();
-
-        double damage = 0.0;
-        //deal damage or effect based on accuracy
-        boolean hit = false;
-
-        if (AccuracyCheck(Accur)) {
-            hit = true;
-            damage = calcDamage(attackPoke, defenderPoke, move);
-
-
-
-
-        }
-
-        defenderPoke.receiveDamage(damage);
+//        double Accur = move.getAccuracy();
+//        double effectAccur = 0.2;
+//
+//        // Get poke
+//        Pokemon attackPoke = attacker.getCurrPokemon();
+//        Pokemon defenderPoke = defender.getCurrPokemon();
+//
+//        double damage = 0.0;
+//        //deal damage or effect based on accuracy
+//        boolean hit = false;
+//
+//        if (AccuracyCheck(Accur)) {
+//            hit = true;
+//            damage = calcDamage(attackPoke, defenderPoke, move);
+//        }
+//
+//        defenderPoke.receiveDamage(damage);
     }
 
         // I believe this should call the switch move if it lands
@@ -1383,6 +1373,17 @@ public class MovesInventory {
     public void shuck_you_up(Player attacker, Player defender, Move move){
         simplemove(attacker,defender,move);
     }
+
+
+    public void surf(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+    public void rock_slide(Player attacker, Player defender, Move move){
+        simplemove(attacker,defender,move);
+    }
+
+
 
 
     // complete turn
