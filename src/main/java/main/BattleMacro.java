@@ -173,9 +173,10 @@ public class BattleMacro {
      */
     public void printExitGameMessage(){
 
-        System.out.printf("Rounds Played: %d\n", numberOfRounds);
+        System.out.printf("Turns Played: %d\n", numberOfRounds);
         System.out.printf("Wins: %d\n", playerWins);
         System.out.printf("Losses: %d\n", playerLosses);
+        System.out.printf("Matches played: %d\n", playerLosses+playerWins);
 
         double winRate = (double)playerWins/((double)playerWins+(double) playerLosses);
         System.out.printf("Win Rate: %.2f\n", winRate);

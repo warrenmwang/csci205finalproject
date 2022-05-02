@@ -33,7 +33,7 @@ public class Bot extends Player{
     public Bot(ArrayList<Pokemon> initTeam)throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
         // initialize bot's team and difficulty
         super(initTeam);
-        difficulty = 1;
+        difficulty = 2;
         movesInventory = new MovesInventory();
     }
 
