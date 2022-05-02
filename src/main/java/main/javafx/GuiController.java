@@ -164,8 +164,10 @@ public class GuiController {
         battleView.getSwitch().setOnMouseClicked(event -> {
             // if player has a pokemon alive to switch to
             if(battleMacro.getBattleMicro().getUser().getPokemonTeam().get(1).getIsAlive() || battleMacro.getBattleMicro().getUser().getPokemonTeam().get(2).getIsAlive()) {
+//                System.out.println("sendSwitch command");
                 UserInput.setUSERINPUT("Switch");
                 UserInput.setCanGetUSERINPUT(true);
+
 
                 // show what pokemon user can choose from
                 try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
@@ -356,7 +358,7 @@ public class GuiController {
                 // after switch, bot will attack me, check if need to switch if user gets one shot
                 if(UserInput.getNeedToSwitch()){
                     battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
-//                    System.out.println("approved to switch");
+                    System.out.println("approved to switch");
                     battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                     battleView.bottomRightBoxToggleChoices(2);
                     UserInput.setNeedToSwitch(false);
@@ -395,7 +397,7 @@ public class GuiController {
                 // after switch, bot will attack me, check if need to switch if user gets one shot
                 if(UserInput.getNeedToSwitch()){
                     battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
-//                    System.out.println("approved to switch");
+                    System.out.println("approved to switch");
                     battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
                     battleView.bottomRightBoxToggleChoices(2);
                     UserInput.setNeedToSwitch(false);

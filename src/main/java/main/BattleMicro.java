@@ -199,9 +199,9 @@ public class BattleMicro {
     /**
      * Generates the 6 Random Pokemon for the Player
      */
-    public void generateInitialPlayerRandomTeam(){ userTeam = generateRandomTeam();
+    public void generateInitialPlayerRandomTeam(){ userTeam = generateRandomTeam();}
 //        System.out.println("hahaha I have generate user team\n\n\n\n\n\n");
-    }
+
 
     /**
      * Generates the 6 Random Pokemon for the Bot
@@ -227,9 +227,10 @@ public class BattleMicro {
         ArrayList<String> selectedIDs = new ArrayList<>(3);
         // get user to select 3 pokemon by id
 
-        //Original
+        //Original - delete me
 //        while(!canGetUSERINPUT){}
 //        Scanner scnr = new Scanner(USERINPUT);
+
         while(n > 0){
 //            System.out.printf("You have %d choices remaining. Please type the ID of the Pokemon that you want: ", n);
 //            System.out.println("userinput"+USERINPUT);
@@ -457,6 +458,7 @@ public class BattleMicro {
         if(secondPlayer.getForfeitStatus() || getGameOverStatus()){
             return;
         }
+        //OLD DELETE ME
 //        if(attackSwitchMove.contains(secondMove.getName())) {
 //            if (currSecondPoke == secondPlayer.getCurrPokemon()) {
 //                System.out.println("which Pokemon do you want to Switch?");
@@ -576,6 +578,7 @@ public class BattleMicro {
                 UserInput.setCanGetSwitch(true);
 //                System.out.println("fin - 2 userinput set can get switch");
 
+                // OLD DELETE ME
                 //DeathUpdate.switchOtherPokemonToChooseFromBox();
 
                 try{TimeUnit.SECONDS.sleep(1);}catch(Exception e){};
