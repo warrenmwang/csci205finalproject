@@ -68,8 +68,6 @@ public class Move {
 
     public String getDesignation() {return this.designation;}
 
-    public String getSpecialEffect() {return this.specialEffect;}
-
     public void setBasePower(double basePower) {this.basePower = basePower;}
 
 

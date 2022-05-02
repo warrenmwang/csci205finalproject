@@ -1,19 +1,10 @@
 package main;
 
 
-import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-
-
-
-
-import java.net.URISyntaxException;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -117,11 +108,5 @@ public class DataLoader {
         return allMoves;
 
     }
-//
-//    public ArrayList<String> getTESTSETItems() throws IOException{
-//        // get from online, skip header line
-//        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/csci205-final/TESTSET-Items.csv");
-//        Scanner scnr = new Scanner(url.openStream());
-//        scnr.nextLine();
-//    }
+
 }

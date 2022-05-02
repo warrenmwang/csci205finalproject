@@ -1,6 +1,6 @@
 package main;
 
-import javax.sound.midi.Soundbank;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class MovesInventory {
 
 
 
-    // TODO Constructor
+
 
     /**
      * Constructor
@@ -50,7 +50,6 @@ public class MovesInventory {
         attackSwitchMove.add("u_turn");
         attackSwitchMove.add("volt_switch");
 
-        ArrayList<String> thirdPriotityMove = new ArrayList<>();
 
         PriorityMoveList = new ArrayList<>();
         PriorityMoveList.add(firstPriorityMove);
@@ -97,9 +96,7 @@ public class MovesInventory {
         return this.allMultipliers;
     }
 
-    public ArrayList<String> getAllTypes() {
-        return this.allTypes;
-    }
+
 
     public Move getMove(String moveName) {
         return this.allMoves.get(moveName);
@@ -129,6 +126,7 @@ public class MovesInventory {
     }
 
     //todo
+    //??
     public void printStatusMoveMessage(Pokemon attacker, Pokemon defender, Move move){}
 
     /**
@@ -247,16 +245,8 @@ public class MovesInventory {
      */
     public void Switch(Player attacker, Player defender, Move move) {
         int SwitchIndex = (int) move.getBasePower();
-//        System.out.println("switchindex: " + SwitchIndex);
         attacker.switchCurrPokemon(SwitchIndex);
-
-        // TODO remove me
-        // print out new team
-//        System.out.println("------------- New Pokemon Team After Switching -------------");
-//        for(Pokemon p : attacker.getPokemonTeam()){
-//            System.out.println(p);
-//        }
-//        System.out.println("-------------  -------------  -------------");
+        
     }
 
 

@@ -4,7 +4,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -44,15 +43,6 @@ public class RuleView {
         root.setPrefSize(800, 700);
         // style rules text
         Insets padding = new Insets(30,50,0,50);
-//        String Pokerules = "Hello! Welcome to an interaction of the infamous pokemon battle factory, where trainers' knowledge is put to the test! \n" +
-//                "Rules proceed as follows.\n" +
-//                "\t1. Players will select 3 pokemon from a list of 6 randomly selected pokemon before battling. Whoever wins the battle will progress.\n" +
-//                "\t2. Unlike the original battle factory, teams are re-selected from another randomly generated pool of 6 pokemon after each match.\n" +
-//                "\t    There is also no team preview for the opposing team.\n" +
-//                "\t3. There are 64 pokemon from which the 6 pokemon are randomly selected for the players.\n" +
-//                "\t    In this iteration, there are no special items, sleep or freeze moves, and lastly no abilities.\n" +
-//                "\t    Additionally some pokemon have had their stats altered and some moves have had their effects changed or base powers altered. \n" +
-//                "\t4. 4 of the 64 pokemon are themed around the show “Attack on Titan”, this application has no affiliation with the brand at all whatsoever. \n";
 
         String Pokerules = "Hello! Welcome to an interaction of the infamous pokemon battle factory, where trainers' knowledge is put to the test! \n\n" +
                 "Rules proceed as follows.\n" +
@@ -67,11 +57,9 @@ public class RuleView {
         Rules.setPadding(padding);
         Rules.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
         // style the back btn
-        //All settings for buttons
+        // All settings for buttons
         int ButtonWidth = 90;
         int ButtonHeight = 50;
-        int ButtonHorizontalSpacing = 20;
-        int ButtonVerticalSpacing = 20;
         BackButton.setPrefSize(ButtonWidth, ButtonHeight);
         BackButton.setAlignment(Pos.CENTER);
         BackButton.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
@@ -80,15 +68,6 @@ public class RuleView {
         bottomBox.setPadding(padding);
         bottomBox.setAlignment(Pos.CENTER);
 
-
-    }
-
-    public Label getRules() {
-        return Rules;
-    }
-
-    public HBox getBottomBox() {
-        return bottomBox;
     }
 
     public Button getBackButton() {

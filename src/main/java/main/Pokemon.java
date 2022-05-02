@@ -1,7 +1,7 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class Pokemon {
     private String id;
@@ -65,10 +65,9 @@ public class Pokemon {
     public Double getSpAtk() { return this.currStats.get(SPATK); }
     public Double getSpDef() { return this.currStats.get(SPDEF); }
     public Double getSpe() { return this.currStats.get(SPEED); }
-    public ArrayList<Double> getStats() { return this.currStats; }
-    public ArrayList<String> getTypes() { return this.types; }
+
     public ArrayList<String> getMoves() { return this.moves; }
-    public String getItems() { return this.item; }
+
     public int getTurnsActive() { return this.turnsActive;}
 
     public String getBotImage() {return this.botImage;}
@@ -79,7 +78,7 @@ public class Pokemon {
 
     public String getType1() { return types.get(0);}
     public String getType2() { return types.get(1);}
-    //public double getAccurRate() { return 1.0;}
+
 
     public String getMove(int index){
         return moves.get(index);
@@ -167,7 +166,6 @@ public class Pokemon {
     public String toString() {
         return String.format("id: %s\n" +
                 "name: %s\n"+
-//                "image: %s\n" +
                 "currStats: %s\n" +
                 "origStats: %s\n" +
                 "types: %s\n" +

@@ -50,7 +50,6 @@ public class ForfeitAndEndView {
     public Button getYesBtn(){return yesBtn;}
     public Button getNoBtn(){return noBtn;}
     public VBox getRoot(){return root;}
-    public Label getTextToDisplay() {return textToDisplay;}
 
 
     public ImageView getClown(){return clown;}

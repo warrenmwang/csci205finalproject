@@ -59,7 +59,6 @@ public class StartGameView {
 
     public void initSceneGraph(){
         root = new VBox();
-//        String logo  = "https://scontent.fagc2-1.fna.fbcdn.net/v/t1.18169-9/13221733_1245911422087669_2877110423342676825_n.png?_nc_cat=109&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=0uwTrWnJrGcAX_GSEvC&_nc_ht=scontent.fagc2-1.fna&oh=00_AT9_x3MoYsNw3MYoosqUnghJg_xIb0-No5ndrH_EVjB96g&oe=629138CD";
         String logo = "http://eg.bucknell.edu/~wmw015/code/csci205-final/updatedbattlefactorymenubackground.jpg";
         Image image1 = new Image(logo);
         logoView = new ImageView(image1);

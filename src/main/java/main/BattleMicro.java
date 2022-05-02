@@ -5,12 +5,9 @@ import main.javafx.DeathUpdate;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.sql.Array;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class BattleMicro {
@@ -24,9 +21,7 @@ public class BattleMicro {
     private ArrayList<Pokemon> userTeam;   // only used to generate the initial Player team
     private ArrayList<Pokemon> botTeam;   // only used to generate the initial Bot team
 
-//    private ArrayList<Pokemon> AtkDef = new ArrayList<>(2);
-//    private Pokemon Attaker;
-//    private Pokemon Defender;
+
 
     private PokemonInventory pokemonInventory;
     private MovesInventory movesInventory;
@@ -40,8 +35,6 @@ public class BattleMicro {
     private ArrayList<ArrayList<String>> PriorityMoveList;
 
     private ArrayList<String> attackSwitchMove;
-
-    //private UserInput userInput;
 
 
 
@@ -138,12 +131,8 @@ public class BattleMicro {
             secondMove = userMove;
         }
 
-//        // TODO : remove me
-//        System.out.println("\ncheckTurn");
-//        System.out.println("firstPlayer is: " + firstPlayer);
-//        System.out.println("secondPlayer is: " + secondPlayer);
-//        System.out.println("firstPlayer's move: " + firstMove);
-//        System.out.println("secondPlayer's move: " + secondMove + "\n");
+
+
     }
 
 
@@ -200,7 +189,7 @@ public class BattleMicro {
      * Generates the 6 Random Pokemon for the Player
      */
     public void generateInitialPlayerRandomTeam(){ userTeam = generateRandomTeam();}
-//        System.out.println("hahaha I have generate user team\n\n\n\n\n\n");
+
 
 
     /**
@@ -214,33 +203,15 @@ public class BattleMicro {
      * Then, this function will only update {@link #userTeam} ArrayList of Pokemon to be those 3 selected Pokemon.
      */
     public int initPlayer(){
-        // print out the 6 Pokemon options that the user can choose from
-//        System.out.println("Please choose 3 from the 6 Pokemon shown here:");
-//        System.out.println("Your first Pokemon choice will be the first Pokemon you deploy.");
-//        for(int i = 0; i < userTeam.size(); i++){
-//            System.out.println(userTeam.get(i));
-//        }
 
         // create helper vars
         int n = 3;
         String id;
         ArrayList<String> selectedIDs = new ArrayList<>(3);
         // get user to select 3 pokemon by id
-
-        //Original - delete me
-//        while(!canGetUSERINPUT){}
-//        Scanner scnr = new Scanner(USERINPUT);
-
         while(n > 0){
-//            System.out.printf("You have %d choices remaining. Please type the ID of the Pokemon that you want: ", n);
-//            System.out.println("userinput"+USERINPUT);
-//            System.out.println("cangetuserinput"+canGetUSERINPUT);
-
             UserInput.waitFXinput();
             id = UserInput.getUSERINPUT();
-
-//            System.out.println("\n\n");
-//            System.out.println(id);
 
             if(id.equals("exit")){
                 return -1;
@@ -249,18 +220,6 @@ public class BattleMicro {
             selectedIDs.add(id);
             n--;
         }
-
-        //Test
-//        while(n > 0){
-//            System.out.printf("You have %d choices remaining. Please type the ID of the Pokemon that you want: ", n);
-//            String a = System.in.toString();
-//            while(a.equals(System.in.toString())){}
-//            Scanner scnr = new Scanner(System.in);
-//            id = scnr.nextLine();
-//            selectedIDs.add(id);
-//            n--;
-//        }
-
 
 
         // loop thru original pokemon team, new team only has pokemon whose id are in selectedIDs list
@@ -272,20 +231,12 @@ public class BattleMicro {
             }
         }
 
-//        // TODO remove me
-//        // print out selected pokemon
-//        System.out.println("------------------ You just selected the following pokemon: ------------------");
-//        for(Pokemon p: newTeam){
-//            System.out.println(p);
-//        }
-//        System.out.println("------------------  ------------------  ------------------");
 
         // update player's team in the Player object AND in the BattleMicro object
         setUserTeam(newTeam);
 
         try{constructPlayer();} catch (Exception e){}
         return 0;
-//        UserInput = user.getUserInput();
     }
 
     /**
@@ -301,14 +252,6 @@ public class BattleMicro {
             randIndex = rand.nextInt(botTeam.size());
             botTeam.remove(randIndex);
         }
-
-//        //TODO remove me
-//        System.out.println("------------------ Printing BOT's Team: ------------------");
-//        for(Pokemon p : botTeam){
-//            System.out.println(p);
-//        }
-//        System.out.println("------------------  ------------------  ------------------");
-
         setBotTeam(botTeam);
         try{constructBot();} catch(Exception e){}
     }
@@ -316,10 +259,7 @@ public class BattleMicro {
     /**
      * Constructs the Player object once their team has been completely chosen and is ready to play.
      */
-    public void constructPlayer()throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{ user = new Player(userTeam);
-        // initialize userinput obj
-        //initInput();
-        }
+    public void constructPlayer()throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{ user = new Player(userTeam);}
 
     /**
      * Constructs the Bot object once their team has been completely chosen and is ready to play.
@@ -367,46 +307,14 @@ public class BattleMicro {
      * Does everything within a single round of a Battle.
      */
     public void playOneTurn() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
-        // FIXME: weird funkiness occurs when bot switches pokemon and player attacks in the first turn
-
-        //System.out.println("------------------ Start of New Turn ------------------");
-//        System.out.printf("Current user pokemon : \n" + user.getCurrPokemon());
-//        System.out.printf("YOUR pokemon HP is at %.2f%s health.\n ", 100.0 * (user.getCurrPokemon().getHP() / user.getCurrPokemon().getMaxHp()), "%");
-//        System.out.printf("Current opponent's pokemon : \n" + bot.getCurrPokemon());
-//        System.out.printf("BOT's pokemon is at %.2f%s health.\n", 100.0 * (bot.getCurrPokemon().getHP() / bot.getCurrPokemon().getMaxHp()), "%");
-
         // get player's moves
-//        System.out.println("------------------ PLAYER CHOOSE MOVE ------------------");
+
         Move userMove = user.chooseMove();
-//        System.out.println(userMove);
 
-
-
-
-//        System.out.println("------------------ BOT CHOOSE MOVE ------------------");
         Move botMove = bot.botChooseMove(user.getCurrPokemon());
-//        System.out.println(botMove);
-
-
-
 
         // See who gets the first move in this round
         checkTurn(userMove,botMove);
-
-
-        //for uturn and volt switch
-//        int switchIndexFirst = 0;
-//        int switchIndexSecond = 0;
-//        Pokemon currSecondPoke = secondPlayer.getCurrPokemon();
-//        if(attackSwitchMove.contains(firstMove.getName())){
-//            //show the pokemon can be changed
-//            switchIndexFirst = firstPlayer.askChooseSwitch();
-//        }
-
-
-
-
-//        System.out.println("------------------ First Player's Move Commences ------------------");
 
         // check if forfeit
         if(firstPlayer.getForfeitStatus() || getGameOverStatus()){
@@ -417,7 +325,7 @@ public class BattleMicro {
         Attack(firstPlayer, firstMove , secondPlayer);
 
         // checks to see if game is over if a pokemon has died
-//        System.out.println("------------------ Checking if Pokemon Died after First Player's Move ------------------");
+
         if (checkDeath() == 1){
             // JAVAFX
             DeathUpdate.checkNeedUpdateBattleViewSprite();
@@ -428,8 +336,6 @@ public class BattleMicro {
         DeathUpdate.checkNeedUpdateBattleViewSprite();
 
 
-        //switch (usually should be 0)
-//        firstPlayer.switchCurrPokemon(switchIndexFirst);
 
         // Quit if one of the following applies:
         // 1. Forfeit
@@ -440,12 +346,11 @@ public class BattleMicro {
             return;
         }
 
-//        System.out.println("------------------ Second Player's Move Commences ------------------");
         // If game is still in progress, second move player goes:
         Attack(secondPlayer, secondMove, firstPlayer);
 
 
-//        System.out.println("------------------ Checking if Pokemon Died after Second Player's Move ------------------");
+
         // checks to see if game is over if a pokemon has died
         checkDeath();
         // JAVAFX
@@ -458,21 +363,13 @@ public class BattleMicro {
         if(secondPlayer.getForfeitStatus() || getGameOverStatus()){
             return;
         }
-        //OLD DELETE ME
-//        if(attackSwitchMove.contains(secondMove.getName())) {
-//            if (currSecondPoke == secondPlayer.getCurrPokemon()) {
-//                System.out.println("which Pokemon do you want to Switch?");
-//                switchIndexSecond = secondPlayer.askChooseSwitch();
-//                secondPlayer.switchCurrPokemon(switchIndexSecond);
-//            }
-//        }
 
 
-//        System.out.println("------------------ End of Turn ------------------");
+
         // end turn effect
         endTurnEffect(firstPlayer,secondPlayer);
 
-        //TODO : check if pokemon switch
+
         checkDeath();
 
         // JAVAFX
@@ -481,15 +378,6 @@ public class BattleMicro {
 
 
     }
-
-
-
-    // check if any of the current pokemon have died
-    // if a pokemon has died, need to choose another pokemon to take
-    // the place of the current pokemon
-    // if the user's pokemon has died, let the user choose
-    // if the bot's pokemon has died, just choose the next pokemon in its array
-    // need to a designation somewhere that the pokemon has died and cannot be reselected
 
     /**
      * After Pokemon have attacked, checks to see if a Pokemon has died AND
@@ -546,7 +434,7 @@ public class BattleMicro {
     public int checkDeathHelper(){
 
         if(user.getCurrPokemon().getHP() <= 0){
-//            System.out.println("your pokemon has died");
+
             // user's pokemon has died
 
             // first set user's curr pokemon isAlive status to false
@@ -554,7 +442,7 @@ public class BattleMicro {
 
 
             DeathUpdate.setPlayerCurrPokemonDied(true);
-//            System.out.println("fin - DeathUpdate.setPlayerCurrPokemonDied(true);");
+
 
 
             // check to see if player has any remaining pokemon to choose from
@@ -570,26 +458,19 @@ public class BattleMicro {
             if(alivePoke.size() > 0){
                 // JAVAFX only update if player has an alive pokemon to choose from and switch to
                 DeathUpdate.setPlayerCurrPokemonDied(true);
-//                System.out.println("fin - death update set player curr pokemon died true");
+
 
 
                 UserInput.setNeedToSwitch(true);
-//                System.out.println("fin - 1 userinput set need to switch");
-                UserInput.setCanGetSwitch(true);
-//                System.out.println("fin - 2 userinput set can get switch");
 
-                // OLD DELETE ME
-                //DeathUpdate.switchOtherPokemonToChooseFromBox();
+                UserInput.setCanGetSwitch(true);
+
+
+
 
                 try{TimeUnit.SECONDS.sleep(1);}catch(Exception e){};
 
-                // print out pokemon they can choose from
-//                System.out.println("Your remaining alive Pokemon to choose from: ");
-//                for(Pokemon p : alivePoke){
-//                    System.out.println(p);
-//                }
-                // read in user selection
-//                System.out.println("ID of the Pokemon to make current: ");
+
                 String id = UserInput.readInputLine();
                 // set the current pokemon isAlive status to dead
                 // then swap it with the newly selected pokemon
@@ -611,7 +492,7 @@ public class BattleMicro {
             bot.getCurrPokemon().setIsAlive(false);
 
             DeathUpdate.setBotCurrPokemonDied(true);
-//            System.out.println("fin - bot death update set curr poke died true");
+
 
             // search for next available pokemon if any
             for(Pokemon p : bot.getPokemonTeam()){
@@ -624,12 +505,12 @@ public class BattleMicro {
             if(!bot.getCurrPokemon().getIsAlive()){
                 // bot has no alive pokmon remaining to choose from, player has won
                 UserInput.setCanGetSwitch(true);
-//                System.out.println("fin - bot user input can get switch true (bot cant cont playing)");
+
                 return 4;
             }else{
                 // bot can continue playing
                 UserInput.setCanGetSwitch(true);
-//                System.out.println("fin - bot user input can get switch true (bot can cont playing)");
+
                 return 2;
             }
         }else {
@@ -666,10 +547,6 @@ public class BattleMicro {
     public boolean XOR(boolean statement1, boolean statement2){
         return ( ( statement1 || statement2 ) && ! ( statement1 && statement2 ) );
     }
-
-//    public void initInput(){
-//        userInput = user.getUserInput();
-//    }
 
 
 }

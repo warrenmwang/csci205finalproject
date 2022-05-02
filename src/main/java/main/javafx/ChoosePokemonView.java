@@ -72,9 +72,6 @@ public class ChoosePokemonView {
         this.originalPoketeam = new ArrayList<>(team);
         this.chooseFromPoke = new ArrayList<>(team);
 
-//        for(Pokemon p:team){
-//            System.out.println(p.getID());
-//        }
         currPokeInd = 0;
         pokemonChosenCounter = 0;
 
@@ -82,122 +79,28 @@ public class ChoosePokemonView {
         initSceneStyling();
     }
 
-    public void setChooseFromPoke(ArrayList<Pokemon> chooseFromPoke) {
-        this.chooseFromPoke = chooseFromPoke;
-    }
-
-    public void setCurrPokeInd(int currPokeInd) {
-        this.currPokeInd = currPokeInd;
-    }
-
-    public void setRoot(VBox root) {
-        this.root = root;
-    }
-
-    public HBox getLayer1() {
-        return layer1;
-    }
-
-    public void setLayer1(HBox layer1) {
-        this.layer1 = layer1;
-    }
-
-    public HBox getLayer2() {
-        return layer2;
-    }
-
-    public void setLayer2(HBox layer2) {
-        this.layer2 = layer2;
-    }
-
-    public HBox getLayer3() {
-        return layer3;
-    }
-
-    public void setLayer3(HBox layer3) {
-        this.layer3 = layer3;
-    }
-
-    public HBox getLayer4() {
-        return layer4;
-    }
-
-    public void setLayer4(HBox layer4) {
-        this.layer4 = layer4;
-    }
-
-    public void setExitBtn(Button exitBtn) {
-        this.exitBtn = exitBtn;
-    }
-
-    public void setLeftArrow(Button leftArrow) {
-        this.leftArrow = leftArrow;
-    }
-
-    public void setRightArrow(Button rightArrow) {
-        this.rightArrow = rightArrow;
-    }
-
-    public void setAllPokeImgs(ArrayList<Image> allPokeImgs) {
-        this.allPokeImgs = allPokeImgs;
-    }
-
     public ImageView getCurrViewPokemon() {
         return currViewPokemon;
-    }
-
-    public void setCurrViewPokemon(ImageView currViewPokemon) {
-        this.currViewPokemon = currViewPokemon;
     }
 
     public Button getMove1() {
         return Move1;
     }
 
-    public void setMove1(Button move1) {
-        Move1 = move1;
-    }
-
     public Button getMove2() {
         return Move2;
-    }
-
-    public void setMove2(Button move2) {
-        Move2 = move2;
     }
 
     public Button getMove3() {
         return Move3;
     }
 
-    public void setMove3(Button move3) {
-        Move3 = move3;
-    }
-
     public Button getMove4() {
         return Move4;
     }
-
-    public void setMove4(Button move4) {
-        Move4 = move4;
-    }
-
-    public void setCheckMark(Button checkMark) {
-        this.checkMark = checkMark;
-    }
-
     public TextArea getMoveDesc() {
         return moveDesc;
     }
-
-    public void setMoveDesc(TextArea moveDesc) {
-        this.moveDesc = moveDesc;
-    }
-
-    public void setPokemonChosenCounter(int pokemonChosenCounter) {
-        this.pokemonChosenCounter = pokemonChosenCounter;
-    }
-
     /**
      * Create scene contents
      */
@@ -305,7 +208,7 @@ public class ChoosePokemonView {
         rightArrowImage.setFitWidth(90);
         rightArrow.setGraphic(rightArrowImage);
 
-        //buttons
+        // buttons
         int ButtonWidth = 160;
         int ButtonHeight = 100;
 
@@ -390,7 +293,6 @@ public class ChoosePokemonView {
 
     // assumes currpokeind is updated before this function is called
     public void updateCurrViewPokemon(){
-//        System.out.println("updatecurrviewpoke " + currPokeInd);
         this.currViewPokemon.setImage(this.allPokeImgs.get(currPokeInd));
     }
 

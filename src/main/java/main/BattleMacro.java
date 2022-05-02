@@ -16,12 +16,8 @@
 
 package main;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 public class BattleMacro {
@@ -29,7 +25,6 @@ public class BattleMacro {
     private int playerLosses;
     private int numberOfRounds;
     private BattleMicro battleMicro;
-//    private boolean whoseTurn; // 1 for Player, 0 for Bot
 
     private GameState gameState;
     private boolean firstTurn;
@@ -66,7 +61,7 @@ public class BattleMacro {
         // TODO: check for 14 consecutive wins and then print a very special message
         //    check for loss streaks and also print a very special message (toxic)
         //    if (wins == 0 && losses >= 1){
-            // sout("You smell! LOL!!!!!!"))
+
 
         // use reset function to create teams, prompt for picking teams,
         // refresh variables
@@ -129,9 +124,6 @@ public class BattleMacro {
      * Reset the saved game variables.
      */
     public void reset()throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
-        //playerWins = 0;
-        //playerLosses = 0;
-        //numberOfRounds = 0;
 
         // reset all important BattleMicro statuses
         battleMicro.setGameOverStatus(false);
@@ -158,8 +150,7 @@ public class BattleMacro {
         battleMicro.constructPlayer();
         battleMicro.constructBot();
 
-        // initialize userinput obj
-        //battleMicro.initInput();
+
     }
 
     /**
@@ -181,12 +172,11 @@ public class BattleMacro {
      * Exit Game Message function
      */
     public void printExitGameMessage(){
-//        System.out.printf("You have played %d rounds, won %d times, and loss %d times.\n", numberOfRounds, playerWins, playerLosses);
-//        System.out.println("We are sad to see you go, but have a nice day.");
+
         System.out.printf("Rounds Played: %d\n", numberOfRounds);
         System.out.printf("Wins: %d\n", playerWins);
         System.out.printf("Losses: %d\n", playerLosses);
-        //if(playerLosses + playerWins == 0){ playerLosses = 1;}
+
         double winRate = (double)playerWins/((double)playerWins+(double) playerLosses);
         System.out.printf("Win Rate: %.2f\n", winRate);
 

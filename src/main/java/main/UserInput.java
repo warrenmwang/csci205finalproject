@@ -24,10 +24,7 @@ public class UserInput {
     private static boolean canGetSwitch = false;
     private static boolean needToSwitch = false;
 
-    public static String getUSERINPUT() {
-//        System.out.println("Someone get: " + USERINPUT);
-        return USERINPUT; }
-    private static Boolean getCanGetUSERINPUT() { return canGetUSERINPUT; }
+    public static String getUSERINPUT() {return USERINPUT; }
     public static void setUSERINPUT(String input){ USERINPUT = input; }
     public static void setCanGetUSERINPUT(Boolean status){ canGetUSERINPUT = status;}
 

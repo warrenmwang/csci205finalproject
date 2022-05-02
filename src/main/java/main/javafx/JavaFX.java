@@ -19,9 +19,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class JavaFX extends Application{
-
-    private TextView view1;
-    private BattleView view2;
+    private BattleView battleView;
     private GuiController controller2;
 
     /**
@@ -31,12 +29,9 @@ public class JavaFX extends Application{
      */
     @Override
     public void init() throws Exception {
-        //bot
         String placeholder2 = "https://img.pokemondb.net/sprites/black-white/anim/back-normal/rotom-wash.gif";
-//        //player
         String placeholder1 = "https://img.pokemondb.net/sprites/heartgold-soulsilver/back-normal/bulbasaur.png";
-        view1 = new TextView();
-        view2 = new BattleView(placeholder1, placeholder2);
+        battleView = new BattleView(placeholder1, placeholder2);
         super.init();
     }
 
@@ -53,12 +48,9 @@ public class JavaFX extends Application{
     public void start(Stage primaryStage) {
         // give the primary stage to the controller to be able to switch scenes
         try {
-//            controller2 = new GuiController(primaryStage);
-            controller2 = new GuiController(view1, view2, primaryStage);
+            controller2 = new GuiController(battleView, primaryStage);
             DeathUpdate.setGuiController(controller2);
-        }catch(Exception e){
-
-        }
+        }catch(Exception e){}
     }
 
     /**
@@ -69,5 +61,3 @@ public class JavaFX extends Application{
         launch(args);
     }
 }
-
-//[//////___]

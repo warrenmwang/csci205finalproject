@@ -18,23 +18,10 @@ package main.javafx;
 
 import main.BattleMacro;
 
-import java.util.concurrent.TimeUnit;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-
 public class Model {
-
-    public Thread getT() {
-        return t;
-    }
-
     private BattleMacro battleMacro;
     Thread t;
-//
-//    // getter method
-//    public BattleMacro getBattleMacro(){ return battleMacro; }
 
-    public void setBattleMacro(BattleMacro bm){battleMacro = bm;}
 
     /**
      * Constructor
@@ -46,37 +33,14 @@ public class Model {
         Runnable r = () -> {
             try {
                 battleMacro.mainGameLoop();
-            } catch (Exception e) {
-                // blah
-            }
+            } catch (Exception e) {}
         };
         t = new Thread(r);
         t.setDaemon(true);
-
     }
 
 
     public void run(){
         t.start();
     }
-
-
-    public void getNewThread(){
-        Runnable r = () -> {
-            try {
-                battleMacro.mainGameLoop();
-            } catch (Exception e) {
-                // blah
-            }
-        };
-        t = new Thread(r);
-        t.setDaemon(true);
-    }
-
-    public void stop(){
-        t.interrupt();
-
-    }
 }
-
-
