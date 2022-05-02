@@ -293,13 +293,13 @@ public class BattleView {
         root.getChildren().add(bottomHBox);
 
 
-        // TODO remove switch scenebtn below
-        SwitchSceneBtn = new Button("switch scene");
-        root.getChildren().add(SwitchSceneBtn);
-
-        // TODO remove me
-        refreshTextAreaBtn = new Button("refresh textArea");
-        root.getChildren().add(refreshTextAreaBtn);
+//        // TODO remove switch scenebtn below
+//        SwitchSceneBtn = new Button("switch scene");
+//        root.getChildren().add(SwitchSceneBtn);
+//
+//        // TODO remove me
+//        refreshTextAreaBtn = new Button("refresh textArea");
+//        root.getChildren().add(refreshTextAreaBtn);
     }
 
     /**
@@ -348,11 +348,11 @@ public class BattleView {
 
 
         // -------- Bottom HBox -------------
-        bottomHBox.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
-        bottomHBox.setStyle("-fx-background-image: url('http://eg.bucknell.edu/~wmw015/code/csci205-final/bottomhboximage.jpg');" +
-                "-fx-background-repeat: stretch;" +
-                "-fx-background-size: 1000 700;" +
-                "-fx-background-position: center center;");
+//        bottomHBox.setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
+//        bottomHBox.setStyle("-fx-background-image: url('http://eg.bucknell.edu/~wmw015/code/csci205-final/bottomhboximage.jpg');" +
+//                "-fx-background-repeat: stretch;" +
+//                "-fx-background-size: 1000 700;" +
+//                "-fx-background-position: center center;");
 
 
 
@@ -365,7 +365,7 @@ public class BattleView {
 
 
         //All settings for buttons
-        int ButtonWidth = 90;
+        int ButtonWidth = 100;
         int ButtonHeight = 50;
         int ButtonHorizontalSpacing = 20;
         int ButtonVerticalSpacing = 20;
@@ -389,16 +389,22 @@ public class BattleView {
 //        placeHolderBtn.setPrefSize(ButtonWidth,ButtonHeight);
 
 
-
+        // 4 moves
         MoveHolderBox.setAlignment(Pos.CENTER);
-        MoveHolderBox.setSpacing(20);
+        MoveHolderBox.setSpacing(ButtonVerticalSpacing);
+        temp1.setSpacing(ButtonHorizontalSpacing);
+        temp2.setSpacing(ButtonHorizontalSpacing);
+        Move1.setPrefSize(ButtonWidth+20, ButtonHeight);
+        Move2.setPrefSize(ButtonWidth+20, ButtonHeight);
+        Move3.setPrefSize(ButtonWidth+20, ButtonHeight);
+        Move4.setPrefSize(ButtonWidth+20, ButtonHeight);
 
-
-
-
-
+        // switch pokemon options
         ChoosePokemonHolderBox.setAlignment(Pos.CENTER);
-        ChoosePokemonHolderBox.setSpacing(20);
+        ChoosePokemonHolderBox.setSpacing(ButtonVerticalSpacing);
+        poke01.setSpacing(ButtonHorizontalSpacing);
+        Poke0Btn.setPrefSize(ButtonWidth+20, ButtonHeight);
+        Poke1Btn.setPrefSize(ButtonWidth+20, ButtonHeight);
     }
 
     /**

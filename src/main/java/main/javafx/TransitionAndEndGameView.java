@@ -16,6 +16,7 @@
 
 package main.javafx;
 
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
@@ -55,8 +56,8 @@ public class TransitionAndEndGameView {
     public void initSceneGraph(){
         // instantiate vars
         root = new VBox();
-        yesBtn = new Button("yes");
-        noBtn = new Button("no");
+        yesBtn = new Button("Yes");
+        noBtn = new Button("No");
         textArea = new TextArea("replace me");
         yesNoBox = new HBox();
 
@@ -70,6 +71,18 @@ public class TransitionAndEndGameView {
     }
     public void initSceneStyling(){
         root.setPrefSize(500,500);
+
+        // All settings for buttons
+        int ButtonWidth = 90;
+        int ButtonHeight = 50;
+        int ButtonHorizontalSpacing = 20;
+        int ButtonVerticalSpacing = 20;
+
+        yesNoBox.setAlignment(Pos.CENTER);
+        yesNoBox.setSpacing(ButtonHorizontalSpacing);
+        yesBtn.setPrefSize(ButtonWidth, ButtonHeight);
+        noBtn.setPrefSize(ButtonWidth, ButtonHeight);
+
         textArea.setPrefSize(500, 400);
     }
 

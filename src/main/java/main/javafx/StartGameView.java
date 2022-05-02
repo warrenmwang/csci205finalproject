@@ -68,13 +68,13 @@ public class StartGameView {
     public void initStyling(){
         root.setAlignment(Pos.CENTER);
 
-        int width = 100;
-        int height = 30;
+        int ButtonWidth = 100;
+        int ButtonHeight = 50;
         int spacing = 10;
 
-        start_game.setPrefSize(width,height);
-        Rule.setPrefSize(width,height);
-        exit_btn.setPrefSize(width,height);
+        start_game.setPrefSize(ButtonWidth,ButtonHeight);
+        Rule.setPrefSize(ButtonWidth,ButtonHeight);
+        exit_btn.setPrefSize(ButtonWidth,ButtonHeight);
 
         root.setSpacing(spacing);
 

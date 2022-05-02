@@ -133,15 +133,15 @@ public class GuiController {
 
         // -------------------- BATTLE VIEW -------------------
 
-        battleView.getRefreshTextAreaBtn().setOnMouseClicked(event -> {
-            battleView.updateBottomLeftTextBox(newSysOut.toString());
-        });
+//        battleView.getRefreshTextAreaBtn().setOnMouseClicked(event -> {
+//            battleView.updateBottomLeftTextBox(newSysOut.toString());
+//        });
 
 
-        // switch from gui to text
-        battleView.getSwitchSceneBtn().setOnMouseClicked(event -> {
-              primaryStage.setScene(textScene);
-        });
+//        // switch from gui to text
+//        battleView.getSwitchSceneBtn().setOnMouseClicked(event -> {
+//              primaryStage.setScene(textScene);
+//        });
 
         // attack switch forfeit buttons
         battleView.getAttack().setOnMouseClicked(event -> {
@@ -155,18 +155,25 @@ public class GuiController {
         });
 
         battleView.getSwitch().setOnMouseClicked(event -> {
-            UserInput.setUSERINPUT("Switch");
-            UserInput.setCanGetUSERINPUT(true);
+            // if player has a pokemon alive to switch to
+            if(battleMacro.getBattleMicro().getUser().getPokemonTeam().get(1).getIsAlive() || battleMacro.getBattleMicro().getUser().getPokemonTeam().get(2).getIsAlive()) {
+                UserInput.setUSERINPUT("Switch");
+                UserInput.setCanGetUSERINPUT(true);
 
-            // show what pokemon user can choose from
-            try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
-            battleView.updateBottomLeftTextBox(newSysOut.toString());
-//            newSysOut.reset();
+                // show what pokemon user can choose from
+                try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
 
-            // TODO switch to the moves buttons and rename them with the names of the remaining
-            //   pokemon that user can choose from
-            battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
-            battleView.bottomRightBoxToggleChoices(2);
+                battleView.updateBottomLeftTextBox(newSysOut.toString());
+                //            newSysOut.reset();
+
+                // TODO switch to the moves buttons and rename them with the names of the remaining
+                //   pokemon that user can choose from
+                battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
+                battleView.bottomRightBoxToggleChoices(2);
+            } else {
+                // no pokemon alive to switch to, tell user
+                System.out.println("You have no alive Pokemon left to switch to.");
+            }
         });
 
         battleView.getForfeit().setOnMouseClicked(event -> {
@@ -338,21 +345,33 @@ public class GuiController {
                 UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUserTeam().get(1).getID());
                 UserInput.setCanGetUSERINPUT(true);
 
-                // update text area
-                try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){};
-                battleView.updateBottomLeftTextBox(newSysOut.toString());
-                newSysOut.reset();
+                try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
+                // after switch, bot will attack me, check if need to switch if user gets one shot
+                if(UserInput.getNeedToSwitch()){
+                    battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
+                    System.out.println("approved to switch");
+                    battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
+                    battleView.bottomRightBoxToggleChoices(2);
+                    UserInput.setNeedToSwitch(false);
+                } else {
 
-                // switch box back to 3 choices
-                battleView.bottomRightBoxToggleChoices(1);
+                    // update text area
+                    try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
 
-                // update battle view's sprites and names
-                updateBattleView();
+                    battleView.updateBottomLeftTextBox(newSysOut.toString());
+                    newSysOut.reset();
 
-                // check if all of user's pokemon are dead, then switch to end scene
-                if(battleMacro.getBattleMicro().getGameOverStatus()){
-                    endGameView.updateTextArea(newSysOut.toString());
-                    primaryStage.setScene(endGameScene);
+                    // switch box back to 3 choices
+                    battleView.bottomRightBoxToggleChoices(1);
+
+                    // update battle view's sprites and names
+                    updateBattleView();
+
+                    // check if all of user's pokemon are dead, then switch to end scene
+                    if (battleMacro.getBattleMicro().getGameOverStatus()) {
+                        endGameView.updateTextArea(newSysOut.toString());
+                        primaryStage.setScene(endGameScene);
+                    }
                 }
             }
             // if dead, do nothing
@@ -364,23 +383,34 @@ public class GuiController {
                 UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUserTeam().get(2).getID());
                 UserInput.setCanGetUSERINPUT(true);
 
-
-                // update text area
                 try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
 
-                battleView.updateBottomLeftTextBox(newSysOut.toString());
-                newSysOut.reset();
+                // after switch, bot will attack me, check if need to switch if user gets one shot
+                if(UserInput.getNeedToSwitch()){
+                    battleView.getPlayerHpBar().setWidth(0); // set hp bar to zero
+                    System.out.println("approved to switch");
+                    battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
+                    battleView.bottomRightBoxToggleChoices(2);
+                    UserInput.setNeedToSwitch(false);
+                } else {
 
-                // switch box back to 3 choices
-                battleView.bottomRightBoxToggleChoices(1);
+                    // update text area
+                    try {TimeUnit.MILLISECONDS.sleep(100);} catch (Exception e) {}
 
-                // update battle view's sprites and names
-                updateBattleView();
+                    battleView.updateBottomLeftTextBox(newSysOut.toString());
+                    newSysOut.reset();
 
-                // check if all of user's pokemon are dead, then switch to end scene
-                if(battleMacro.getBattleMicro().getGameOverStatus()){
-                    endGameView.updateTextArea(newSysOut.toString());
-                    primaryStage.setScene(endGameScene);
+                    // switch box back to 3 choices
+                    battleView.bottomRightBoxToggleChoices(1);
+
+                    // update battle view's sprites and names
+                    updateBattleView();
+
+                    // check if all of user's pokemon are dead, then switch to end scene
+                    if (battleMacro.getBattleMicro().getGameOverStatus()) {
+                        endGameView.updateTextArea(newSysOut.toString());
+                        primaryStage.setScene(endGameScene);
+                    }
                 }
             }
             // if dead, do nothing
@@ -553,8 +583,8 @@ public class GuiController {
             System.out.println("Do you want to play again? (y/n)");
             endGameView.updateTextArea(newSysOut.toString());
 
-            endGameView.getYesBtn().setText("Yes - end");
-            endGameView.getNoBtn().setText("No - end");
+//            endGameView.getYesBtn().setText("Yes - end");
+//            endGameView.getNoBtn().setText("No - end");
             primaryStage.setScene(endGameScene);
         });
 

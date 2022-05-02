@@ -43,6 +43,8 @@ public class ChoosePokemonView {
     private HBox layer2;
     private HBox layer3;
     private HBox layer4;
+    private HBox layer5;
+    private Label bottomTip;
     private Button exitBtn;
     private Button leftArrow;
     private Button rightArrow;
@@ -199,6 +201,7 @@ public class ChoosePokemonView {
         layer2 = new HBox();
         layer3 = new HBox();
         layer4 = new HBox();
+        layer5 = new HBox();
 
         // layer 1 contents
         exitBtn = new Button("Exit");
@@ -241,18 +244,21 @@ public class ChoosePokemonView {
         layer3.getChildren().add(Move4);
 
         // layer 4 contents
-        checkMark = new Button("yes");
+        checkMark = new Button("Yes");
         moveDesc = new TextArea();
         layer4.getChildren().add(moveDesc);
         layer4.getChildren().add(checkMark);
 
+        // layer 5 contents
+        bottomTip = new Label("Click on the Pokemon Image or the Move Name for more information.");
+        layer5.getChildren().add(bottomTip);
 
         // add all layers to root
         root.getChildren().add(layer1);
         root.getChildren().add(layer2);
         root.getChildren().add(layer3);
         root.getChildren().add(layer4);
-
+        root.getChildren().add(layer5);
     }
 
     /**
@@ -260,7 +266,7 @@ public class ChoosePokemonView {
      */
     public void initSceneStyling(){
         // set a pref size for the whole thing
-        root.setPrefSize(450, 500);
+        root.setPrefSize(460, 500);
 
         // set a max size for pokemon being viewed
         currViewPokemon.setFitHeight(250);
@@ -274,18 +280,21 @@ public class ChoosePokemonView {
         rightArrow.setPrefSize(60,10);
 
         //buttons
+        int ButtonWidth = 110;
+        int ButtonHeight = 40;
+
         layer3.setPadding(new Insets(10,10,10,10));
         layer3.setSpacing(10);
-        Move1.setPrefSize(100,40);
+        Move1.setPrefSize(ButtonWidth,ButtonHeight);
         Move1.setAlignment(Pos.CENTER);
 
-        Move2.setPrefSize(100,40);
+        Move2.setPrefSize(ButtonWidth,ButtonHeight);
         Move2.setAlignment(Pos.CENTER);
 
-        Move3.setPrefSize(100,40);
+        Move3.setPrefSize(ButtonWidth,ButtonHeight);
         Move3.setAlignment(Pos.CENTER);
 
-        Move4.setPrefSize(100,40);
+        Move4.setPrefSize(ButtonWidth,ButtonHeight);
         Move4.setAlignment(Pos.CENTER);
 
 
@@ -297,8 +306,6 @@ public class ChoosePokemonView {
         moveDesc.setPrefSize(300,100);
         moveDesc.setWrapText(true);
         checkMark.setPrefSize(70,70);
-
-
 
     }
 
@@ -419,7 +426,7 @@ public class ChoosePokemonView {
 
         for(Pokemon p : chooseFromPoke){
             p.resetAllstats(); // reset poke's stats
-            
+
             String url = p.getBotImage(); // get bot image bc that faces forward
             allPokeImgs.add(new Image(url));
         }
