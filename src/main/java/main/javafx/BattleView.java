@@ -42,7 +42,7 @@ public class BattleView {
     private StackPane topStackPane;
     private String playerPokemonImageURL;
     private String botPokemonImageURL;
-    private final String backgroundImageURL = "http://eg.bucknell.edu/~wmw015/code/backgroundforpokemon.jfif";
+    private final String backgroundImageURL = "http://eg.bucknell.edu/~wmw015/code/csci205-final/backgroundforpokemon.jfif";
 
     private Rectangle playerBaseHp;
     private Rectangle playerHpBar;
@@ -72,9 +72,9 @@ public class BattleView {
 
     private Button refreshTextAreaBtn;
 
-    private StackPane bottomRightChoiceStackPane; // holds the 2 vbox's to swap places when necessary
+//    private StackPane bottomRightChoiceStackPane; // holds the 2 vbox's to swap places when necessary
 
-    private VBox bottomRightStandaloneBox;
+//    private VBox bottomRightStandaloneBox;
 
     private VBox MoveHolderBox; // a vbox holding a hbox
     private VBox ThreeChoiceHolderBox; // a vbox holding a hbox
@@ -150,7 +150,7 @@ public class BattleView {
         gridPane = new GridPane();
         bottomHBox = new HBox();
         topStackPane = new StackPane();
-        bottomRightChoiceStackPane = new StackPane();
+//        bottomRightChoiceStackPane = new StackPane();
 
         // ----- GridPane within top StackPane ------
         try {
@@ -233,7 +233,7 @@ public class BattleView {
         }
 
         // -------- Bottom HBox contents (Moves or Choices) --------
-        bottomLeftTextBox = new TextArea("BOTTOM LEFT TEXT BOX");
+        bottomLeftTextBox = new TextArea("Press the buttons on the right to play!");
         bottomHBox.getChildren().add(bottomLeftTextBox);
 
         // create moves btns, put moves btns into moves holder, put into bottom right stackpane
@@ -286,9 +286,10 @@ public class BattleView {
         // add stackpane with both 4moves and 3choice vboxes to bottomhbox, will be in btmright corner
 
         // initialize to be 3 choices box, don't use stackpane anymore, just store box, swap with 4 moves when needed
-        bottomRightStandaloneBox = new VBox();
-        bottomRightStandaloneBox.getChildren().add(ThreeChoiceHolderBox);
-        bottomHBox.getChildren().add(bottomRightStandaloneBox);
+//        bottomRightStandaloneBox = new VBox();
+//        bottomRightStandaloneBox.getChildren().add(ThreeChoiceHolderBox);
+//        bottomHBox.getChildren().add(bottomRightStandaloneBox);
+        bottomHBox.getChildren().add(ThreeChoiceHolderBox);
 
         // ----- putting containers and on screen control into root -----
         topStackPane.getChildren().add(gridPane);
@@ -360,11 +361,12 @@ public class BattleView {
 
 
         bottomHBox.setAlignment(Pos.CENTER_LEFT);
-        bottomHBox.setSpacing(50);
+        bottomHBox.setSpacing(10);
 
         bottomLeftTextBox.setMinSize(600,200);
         bottomLeftTextBox.setMaxSize(600,200);
-        bottomRightStandaloneBox.setPrefSize(450,200);
+        bottomLeftTextBox.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+//        bottomRightStandaloneBox.setPrefSize(450,200);
 
         // fonts of all buttons
         Attack.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
@@ -392,6 +394,7 @@ public class BattleView {
         //Attack, switch setting
         ThreeChoiceHolderBox.setAlignment(Pos.CENTER);
         ThreeChoiceHolderBox.setSpacing(ASFButtonVerticalSpacing);
+        ThreeChoiceHolderBox.setPadding(new Insets(0,10,0,0));
 
         temp3.setSpacing(ASFButtonHorizontalSpacing);
 //        temp4.setSpacing(ASFButtonHorizontalSpacing);
@@ -403,7 +406,7 @@ public class BattleView {
 
 
         // 4 moves sizes
-        int MovesButtonWidth = 150;
+        int MovesButtonWidth = 200;
         int MovesButtonHeight = 80;
         int MovesButtonHorizontalSpacing = 20;
         int MovesButtonVerticalSpacing = 20;
@@ -411,22 +414,28 @@ public class BattleView {
         // 4 moves
         MoveHolderBox.setAlignment(Pos.CENTER);
         MoveHolderBox.setSpacing(MovesButtonVerticalSpacing);
+        MoveHolderBox.setPadding(new Insets(0,0,0,7));
         temp1.setSpacing(MovesButtonHorizontalSpacing);
         temp2.setSpacing(MovesButtonHorizontalSpacing);
         Move1.setPrefSize(MovesButtonWidth, MovesButtonHeight);
+        Move1.setWrapText(true);
         Move2.setPrefSize(MovesButtonWidth, MovesButtonHeight);
+        Move2.setWrapText(true);
         Move3.setPrefSize(MovesButtonWidth, MovesButtonHeight);
+        Move3.setWrapText(true);
         Move4.setPrefSize(MovesButtonWidth, MovesButtonHeight);
+        Move4.setWrapText(true);
 
         // 2 poke buttons sizes
-        int PokeButtonWidth = 150;
-        int PokeButtonHeight = 80;
+        int PokeButtonWidth = 200;
+        int PokeButtonHeight = 100;
         int PokeButtonHorizontalSpacing = 20;
         int PokeButtonVerticalSpacing = 20;
 
         // switch pokemon options
         ChoosePokemonHolderBox.setAlignment(Pos.CENTER);
         ChoosePokemonHolderBox.setSpacing(PokeButtonVerticalSpacing);
+        ChoosePokemonHolderBox.setPadding(new Insets(0,0,0,5));
         poke01.setSpacing(PokeButtonHorizontalSpacing);
         Poke0Btn.setPrefSize(PokeButtonWidth, PokeButtonHeight);
         Poke1Btn.setPrefSize(PokeButtonWidth, PokeButtonHeight);

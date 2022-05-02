@@ -16,6 +16,9 @@
 
 package main;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
@@ -53,6 +56,8 @@ public class BattleMacro {
 
     public BattleMicro getBattleMicro() {return this.battleMicro;}
 
+    public double getWinRate() { return (double)playerWins/((double)playerWins+(double) playerLosses);}
+
     /**
      * Main Game Loop. Calls functions on the BattleMicro object and other BattleMacro
      * objects when necessary to facilitate the progression of the game.
@@ -83,6 +88,7 @@ public class BattleMacro {
             // check if player forfeited, won, less
             if(battleMicro.getForfeitStatus()){
                 // ask if player wants to play again, updates game state
+                addLoss();
                 promptPlayAgain();
             }else if(battleMicro.getGameOverStatus()){
                 if(battleMicro.getPlayerWonStatus()){
@@ -123,9 +129,9 @@ public class BattleMacro {
      * Reset the saved game variables.
      */
     public void reset()throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
-        playerWins = 0;
-        playerLosses = 0;
-        numberOfRounds = 0;
+        //playerWins = 0;
+        //playerLosses = 0;
+        //numberOfRounds = 0;
 
         // reset all important BattleMicro statuses
         battleMicro.setGameOverStatus(false);
@@ -175,8 +181,15 @@ public class BattleMacro {
      * Exit Game Message function
      */
     public void printExitGameMessage(){
-        System.out.printf("You have played %d rounds, won %d times, and loss %d times.\n", numberOfRounds, playerWins, playerLosses);
-        System.out.println("We are sad to see you go, but have a nice day.");
+//        System.out.printf("You have played %d rounds, won %d times, and loss %d times.\n", numberOfRounds, playerWins, playerLosses);
+//        System.out.println("We are sad to see you go, but have a nice day.");
+        System.out.printf("Rounds Played: %d\n", numberOfRounds);
+        System.out.printf("Wins: %d\n", playerWins);
+        System.out.printf("Losses: %d\n", playerLosses);
+        //if(playerLosses + playerWins == 0){ playerLosses = 1;}
+        double winRate = (double)playerWins/((double)playerWins+(double) playerLosses);
+        System.out.printf("Win Rate: %.2f\n", winRate);
+
     }
 
     private String readInputLine(){

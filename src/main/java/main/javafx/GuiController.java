@@ -18,6 +18,8 @@
 package main.javafx;
 
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import main.BattleMacro;
 import main.MovesInventory;
@@ -669,6 +671,36 @@ public class GuiController {
 
             battleMacro.printExitGameMessage();
             endGameView.updateTextArea(newSysOut.toString()); // print end game stats
+
+            // show pic of clown if player is bad
+            double winRate = battleMacro.getWinRate();
+            // TODO show different label of text with a special message depending on winrate
+            if(winRate < 0.5){
+                endGameView.getlevelOfPlayerMsg().setText("Try Harder.");
+                endGameView.getlevelOfPlayerMsg().setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+                endGameView.getRoot().getChildren().add(endGameView.getlevelOfPlayerMsg());
+                endGameView.getRoot().getChildren().add(endGameView.getClown());
+            } else if(winRate >= 0.5 && winRate <= 0.6){
+                endGameView.getlevelOfPlayerMsg().setText("Average Player.");
+                endGameView.getlevelOfPlayerMsg().setFont(Font.font("Verdana", FontWeight.NORMAL, 30));
+                endGameView.getRoot().getChildren().add(endGameView.getlevelOfPlayerMsg());
+            } else if(winRate > 0.6 && winRate <= 0.7){
+                endGameView.getlevelOfPlayerMsg().setText("Decent Player.");
+                endGameView.getlevelOfPlayerMsg().setFont(Font.font("Verdana", FontWeight.NORMAL, 40));
+                endGameView.getRoot().getChildren().add(endGameView.getlevelOfPlayerMsg());
+            }else if(winRate > 0.7 && winRate <= 0.8){
+                endGameView.getlevelOfPlayerMsg().setText("Advanced Player.");
+                endGameView.getlevelOfPlayerMsg().setFont(Font.font("Verdana", FontWeight.NORMAL, 50));
+                endGameView.getRoot().getChildren().add(endGameView.getlevelOfPlayerMsg());
+            }else if(winRate > 0.8 && winRate <= 0.9){
+                endGameView.getlevelOfPlayerMsg().setText("Master Player.");
+                endGameView.getlevelOfPlayerMsg().setFont(Font.font("Verdana", FontWeight.NORMAL, 60));
+                endGameView.getRoot().getChildren().add(endGameView.getlevelOfPlayerMsg());
+            }else if(winRate > 0.9 && winRate <= 1){
+                endGameView.getlevelOfPlayerMsg().setText("Legendary Player.");
+                endGameView.getlevelOfPlayerMsg().setFont(Font.font("Verdana", FontWeight.NORMAL, 40));
+                endGameView.getRoot().getChildren().add(endGameView.getlevelOfPlayerMsg());
+            }
 
             // remove all buttons in this end scene, player only can exit now.
             endGameView.getYesBtn().setDisable(true);

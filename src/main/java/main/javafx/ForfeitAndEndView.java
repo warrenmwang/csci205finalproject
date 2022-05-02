@@ -19,10 +19,14 @@ package main.javafx;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+
+
 
 /**
  * Transition / End Game View
@@ -38,6 +42,8 @@ public class ForfeitAndEndView {
     private Button noBtn;
     private Label textToDisplay;
     private HBox yesNoBox;
+    private ImageView clown;
+    private Label levelOfPlayerMsg;
 
 
     // GETTER METHODS
@@ -47,6 +53,8 @@ public class ForfeitAndEndView {
     public Label getTextToDisplay() {return textToDisplay;}
 
 
+    public ImageView getClown(){return clown;}
+    public Label getlevelOfPlayerMsg(){return levelOfPlayerMsg;}
 
     /**
      * Constructor
@@ -63,6 +71,8 @@ public class ForfeitAndEndView {
         noBtn = new Button("No");
         textToDisplay = new Label("replace me");
         yesNoBox = new HBox();
+        clown = new ImageView(new Image("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/325/clown-face_1f921.png"));
+        levelOfPlayerMsg = new Label("");
 
         // add yes and no button to yes no hbox
         yesNoBox.getChildren().add(yesBtn);
@@ -89,10 +99,13 @@ public class ForfeitAndEndView {
         noBtn.setPrefSize(ButtonWidth, ButtonHeight);
         noBtn.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
 
-        textToDisplay.setPrefSize(500, 400);
+        textToDisplay.setPrefSize(500, 250);
         textToDisplay.setAlignment(Pos.CENTER);
         textToDisplay.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
         textToDisplay.setWrapText(true);
+
+        clown.setFitWidth(200);
+        clown.setPreserveRatio(true);
     }
 
     /**

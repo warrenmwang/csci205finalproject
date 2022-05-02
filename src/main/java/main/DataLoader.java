@@ -21,7 +21,7 @@ public class DataLoader {
 
     public ArrayList<Pokemon> getTESTSETPokemon() throws IOException {
         // get from online, skip header line
-        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Pokemon.csv");
+        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/csci205-final/TESTSET-Pokemon.csv");
         Scanner scnr = new Scanner(url.openStream());
         scnr.nextLine();
 
@@ -97,7 +97,7 @@ public class DataLoader {
         HashMap<String,Move> allMoves = new HashMap<>();
 
         // get from online, skip header line
-        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Moves.csv");
+        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/csci205-final/TESTSET-Moves.csv");
         Scanner scnr = new Scanner(url.openStream());
         scnr.nextLine();
 
@@ -120,7 +120,7 @@ public class DataLoader {
 //
 //    public ArrayList<String> getTESTSETItems() throws IOException{
 //        // get from online, skip header line
-//        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/TESTSET-Items.csv");
+//        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/csci205-final/TESTSET-Items.csv");
 //        Scanner scnr = new Scanner(url.openStream());
 //        scnr.nextLine();
 //    }

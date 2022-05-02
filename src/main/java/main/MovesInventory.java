@@ -120,7 +120,7 @@ public class MovesInventory {
         if(didMoveHit){
             // move hits
             System.out.println("" + attacker.getName() + " used " + move.getName() + " against " + defender.getName() + "!");
-            System.out.printf("It hits and deals %f damage!\n", damage);
+            System.out.printf("It hits and deals %.0f damage!\n", damage);
         }else{
             // move missed
             System.out.println("" + attacker.getName() + " used " + move.getName() + " against " + defender.getName() + "!");
@@ -1392,6 +1392,8 @@ public class MovesInventory {
     public void rock_slide(Player attacker, Player defender, Move move){
         simplemove(attacker,defender,move);
     }
+
+
 
 
     // complete turn
