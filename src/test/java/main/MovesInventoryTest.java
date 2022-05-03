@@ -13,9 +13,7 @@ class MovesInventoryTest {
     void setUp() {
         try {
             movesInventory = new MovesInventory();
-        } catch(Exception e){
-            System.out.println("???");
-        }
+        } catch(Exception e){}
     }
 
     @Test

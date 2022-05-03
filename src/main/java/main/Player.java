@@ -10,12 +10,9 @@ public class Player {
     private int numberOfPokemon;
     private ArrayList<Pokemon> pokemonTeam;
     // NOTE: current Pokemon is first in list
-
     private MovesInventory movesInventory;
     private boolean ForfeitStatus = false;
     private boolean protectState = true;
-
-
 
 
     /**
@@ -28,7 +25,6 @@ public class Player {
         this.pokemonTeam = initPokemon;
         this.numberOfPokemon = initPokemon.size();
         this.movesInventory = new MovesInventory();
-
     }
 
     /**
@@ -45,7 +41,6 @@ public class Player {
      * @param ind index of Pokemon to be selected in the Player's Pokemon Team
      */
     public void switchCurrPokemon(int ind) {
-
         getCurrPokemon().resetstatsNoHp();
         Collections.swap(this.pokemonTeam, 0, ind);
     }
@@ -82,10 +77,6 @@ public class Player {
     }
     public void setForfeitStatus(boolean status) {this.ForfeitStatus = status;}
 
-
-
-
-
     /**
      * Prompt player to choose a move that is available to their current Pokemon.
      *
@@ -93,15 +84,11 @@ public class Player {
      */
     public Move chooseMove() {
         Move SelectedMove = new Move("blank", "0,0,0,0,0,0,0");
-
         UserInput.waitFXinput();
         String input = UserInput.getUSERINPUT();
         switch (input) {
             case ("Switch"): {
                 String id = readInputLine(); // read in ID
-
-
-
                 int id_as_index = 0;
                 for(Pokemon p: pokemonTeam){
                     if(p.getID().equalsIgnoreCase(id)){
@@ -110,22 +97,15 @@ public class Player {
                         id_as_index++;
                     }
                 }
-
-
                 SelectedMove = new Move("Switch", String.format("%d,0,0,0,0,0", id_as_index));
                 break;
             }
-
-
             case ("attack"): {
-
-
                 String selectMove = readInputLine();
                 // read in user selection
                 SelectedMove = movesInventory.getMove(selectMove);
                 break;
             }
-
             case ("forfeit"): {
                 System.out.println("Are you sure you want to forfeit? (y/n): ");
                 UserInput.waitFXinput();
@@ -133,14 +113,10 @@ public class Player {
                 if (input.equalsIgnoreCase("y")) {
                     ForfeitStatus = true;
                 }
-
                 break;
             }
-
         }
-
         return SelectedMove;
-
     }
 
 
@@ -152,13 +128,6 @@ public class Player {
     public boolean getForfeitStatus(){
         return ForfeitStatus;
     }
-
-
-
-
-
-
-
 
 
 }

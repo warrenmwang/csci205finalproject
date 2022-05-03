@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 
 public class JavaFX extends Application{
     private BattleView battleView;
-    private GuiController controller2;
+    private GuiController guiController;
 
     /**
      * The application initialization method. This method is called immediately
@@ -48,8 +48,8 @@ public class JavaFX extends Application{
     public void start(Stage primaryStage) {
         // give the primary stage to the controller to be able to switch scenes
         try {
-            controller2 = new GuiController(battleView, primaryStage);
-            DeathUpdate.setGuiController(controller2);
+            guiController = new GuiController(battleView, primaryStage);
+            DeathUpdate.setGuiController(guiController);
         }catch(Exception e){}
     }
 

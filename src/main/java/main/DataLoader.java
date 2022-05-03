@@ -75,9 +75,6 @@ public class DataLoader {
             types.add(type1);
             types.add(type2);
 
-
-
-            //(String id, String name, String image, ArrayList<Double> stats, ArrayList<String> moves, ArrayList<String> types, ArrayList<String> items){
             allPoke.add(new Pokemon(id, name, bot_image, stats, moves, types, item,player_image));
         }
 

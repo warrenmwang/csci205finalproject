@@ -163,8 +163,15 @@ class BattleMicroTest {
             bm.generateInitialBotRandomTeam();
             bm.generateInitialPlayerRandomTeam();
 
-            
+            bm.getUser().getCurrPokemon().setIsAlive(false);
 
+            assertEquals(1,bm.checkDeathHelper());
+
+           for(Pokemon p : bm.getUser().getPokemonTeam()){
+               p.setIsAlive(false);
+           }
+
+           assertEquals(3,bm.checkDeathHelper());
 
 
 

@@ -58,11 +58,6 @@ public class BattleMacro {
      * objects when necessary to facilitate the progression of the game.
      */
     public void mainGameLoop() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
-        // TODO: check for 14 consecutive wins and then print a very special message
-        //    check for loss streaks and also print a very special message (toxic)
-        //    if (wins == 0 && losses >= 1){
-
-
         // use reset function to create teams, prompt for picking teams,
         // refresh variables
         reset();

@@ -106,7 +106,6 @@ public class MovesInventory {
 
     public ArrayList<String> getAttackSwitchMove() { return attackSwitchMove;}
 
-    // TODO: call this function in every move function
     /**
      * Attack print statement to showcase what actually happens when a pokemon attacks another pokemon
      * @param attacker
@@ -200,7 +199,7 @@ public class MovesInventory {
 
 
         double dmgVariance = (new Random().nextInt(150) + 850) / 1000.0;
-        ;
+
         dmg = dmg * dmgVariance;
         dmg = dmg * modifier * criticalMult;
 
@@ -380,6 +379,7 @@ public class MovesInventory {
         attackPoke.setSpe(2 * attackPoke.getSpe());
 
         printStatusMoveMessage(attackPoke,defenderPoke,move);
+        System.out.println(attackPoke.getName() + " doubled its speed!");
     }
 
 
@@ -427,6 +427,7 @@ public class MovesInventory {
             if (AccuracyCheck(effectAccur)) {
                 effectHit = true;
                 defenderPoke.setSpDef(0.667 * defenderPoke.getSpDef());
+                System.out.println(defenderPoke.getName() + " had its special defence lowered!");
             }
         }
 
@@ -435,6 +436,7 @@ public class MovesInventory {
 
         // Print move message
         printAttackMessage(attackPoke,defenderPoke,move,hit,damage,effectHit);
+
     }
 
     public void recover(Player attacker, Player defender, Move move) {
@@ -445,6 +447,7 @@ public class MovesInventory {
         attackPoke.heal(0.5 * attackPoke.getMaxHp());
 
         printStatusMoveMessage(attackPoke,defenderPoke,move);
+        System.out.println(attackPoke.getName() + " restored 50% of its max health!");
     }
 
     //power: 70, Accur: 1, ICE, special
@@ -516,6 +519,7 @@ public class MovesInventory {
             if (AccuracyCheck(effectAccur)) {
                 effectHit = true;
                 defenderPoke.setSpDef(0.667 * defenderPoke.getSpDef());
+                System.out.println(defenderPoke.getName() + " had its special attack lowered!");
             }
         }
 
@@ -524,6 +528,7 @@ public class MovesInventory {
 
         // Print move message
         printAttackMessage(attackPoke,defenderPoke,move,hit,damage,effectHit);
+
     }
 
     //power: 70, Accur: 1, GRASS, special
@@ -570,6 +575,7 @@ public class MovesInventory {
             if (AccuracyCheck(effectAccur)) {
                 effectHit = true;
                 defenderPoke.setStatusEffect(PokemonStatusEffect.PARALYZED);
+                System.out.println(defenderPoke.getName() + " got paralyzed!");
             }
         }
         // Pokemeon receives damage, check if alive
@@ -577,6 +583,7 @@ public class MovesInventory {
 
         // Print move message
         printAttackMessage(attackPoke,defenderPoke,move,hit,damage,effectHit);
+
     }
 
     //power: 110, Accur:0.9, FIRE, special, 30% lower defender atk by 33%
@@ -600,6 +607,7 @@ public class MovesInventory {
             if (AccuracyCheck(effectAccur)) {
                 effectHit = true;
                 defenderPoke.setAtk(0.667 * defenderPoke.getAtk());
+                System.out.println(defenderPoke.getName() + " had its attack lowered!");
             }
         }
         // Pokemeon receives damage, check if alive
@@ -607,6 +615,7 @@ public class MovesInventory {
 
         // Print move message
         printAttackMessage(attackPoke,defenderPoke,move,hit,damage,effectHit);
+
     }
 
 
@@ -658,6 +667,7 @@ public class MovesInventory {
             if (AccuracyCheck(effectAccur)) {
                 effectHt = true;
                 attackPoke.setSpDef(0.667 * attackPoke.getSpDef());
+                System.out.println(attackPoke.getName() + " had its attack raised!");
             }
         }
         defenderPoke.receiveDamage(damage);
@@ -708,6 +718,7 @@ public class MovesInventory {
             if(AccuracyCheck(effectAccur)){
                 effectHit = true;
                 defenderPoke.setStatusEffect(PokemonStatusEffect.BURNED);
+                System.out.println(defenderPoke.getName() + " was burned!");
             }
         }
 
@@ -741,6 +752,7 @@ public class MovesInventory {
             if(AccuracyCheck(effectAccur)){
                 effectHit = true;
                 defenderPoke.setSpAtk(defenderPoke.getSpAtk() * 0.66);
+                System.out.println(defenderPoke.getName() + " had its special attack lowered!");
             }
         }
 
@@ -761,7 +773,7 @@ public class MovesInventory {
         attackerPoke.setSpe(1.5 * attackerPoke.getSpe());
 
         printStatusMoveMessage(attackerPoke,defenderPoke,move);
-
+        System.out.println(attackerPoke.getName() + " had its attack and speed raised by 50%!");
     }
 
 
@@ -783,7 +795,7 @@ public class MovesInventory {
             if(AccuracyCheck(effectAccur)){
                 effectHit = true;
                 defenderPoke.setStatusEffect(PokemonStatusEffect.BURNED);
-
+                System.out.println(defenderPoke.getName() + " got burned!");
             }
         }
 
@@ -804,6 +816,7 @@ public class MovesInventory {
         }
 
         printStatusMoveMessage(attackerPoke,defenderPoke,move);
+        System.out.println("Your team had their status afflictions removed!");
     }
 
     public void thunder_wave(Player attacker,  Player defender, Move move) {
@@ -814,6 +827,7 @@ public class MovesInventory {
         defenderPoke.setStatusEffect(PokemonStatusEffect.PARALYZED);
 
         printStatusMoveMessage(attackerPoke,defenderPoke,move);
+        System.out.println(defenderPoke.getName() + " got paralyzed!");
     }
 
 
@@ -836,7 +850,7 @@ public class MovesInventory {
             if(AccuracyCheck(effectAccur)){
                 effectHit = true;
                 defenderPoke.setStatusEffect(PokemonStatusEffect.BURNED);
-
+                System.out.println(defenderPoke.getName() + " got burned!");
             }
         }
 
@@ -861,6 +875,7 @@ public class MovesInventory {
         attackerPoke.setSpe(1.5 * attackerPoke.getSpe());
 
         printStatusMoveMessage(attackerPoke,defenderPoke,move);
+        System.out.println(attackerPoke.getName() + " had its special attack, special defence, and speed raised by 50%!");
     }
 
 
@@ -881,12 +896,14 @@ public class MovesInventory {
             defenderPoke.setStatusEffect(PokemonStatusEffect.TOXIC);
 
             printStatusMoveMessage(attackerPoke, defenderPoke, move);
+            System.out.println(defenderPoke.getName() + " got badly poisoned!");
     }
 
 
     public void protect(Player attacker,  Player defender, Move move) {
         Pokemon attackPoke = attacker.getCurrPokemon();
         attackPoke.setProtectState(true);
+        System.out.println(attackPoke.getName() + " is immune to opposing attacks this turn!"); // thanks
 
     }
 
@@ -954,6 +971,7 @@ public class MovesInventory {
 
         // Print move message
         printAttackMessage(attackPoke, defenderPoke, move, hit, damage,hit);
+        System.out.println(attackPoke.getName() + " blew up!");
     }
 
 
@@ -968,6 +986,7 @@ public class MovesInventory {
         attackerPoke.setSpDef(1.5 * attackerPoke.getSpDef());
 
         printStatusMoveMessage(attackerPoke,defenderPoke,move);
+        System.out.println(attackerPoke.getName() + " had its defence and attack raised, but its defence lowered.");
     }
 
 
@@ -989,7 +1008,7 @@ public class MovesInventory {
             if(AccuracyCheck(effectAccur)){
                 effectHit = true;
                 defenderPoke.setStatusEffect(PokemonStatusEffect.PARALYZED);
-
+                System.out.println(defenderPoke.getName() + " got paralyzed!");
             }
         }
 
@@ -1027,7 +1046,7 @@ public class MovesInventory {
             if(AccuracyCheck(effectAccur)){
                 effectHit = true;
                 defenderPoke.setStatusEffect(PokemonStatusEffect.TOXIC);
-
+                System.out.println(defenderPoke.getName() + " got badly poisoned!");
             }
         }
 
@@ -1062,6 +1081,7 @@ public class MovesInventory {
         attackerPoke.setSpDef(1.5 * attackerPoke.getSpDef());
 
         printStatusMoveMessage(attackerPoke,defenderPoke,move);
+        System.out.println(attackerPoke.getName() + " had its special attack and special defence raised!");
     }
 
 
@@ -1093,6 +1113,7 @@ public class MovesInventory {
 
         // Print move message
         printAttackMessage(attackPoke, defenderPoke, move, hit, damage,hit);
+        System.out.println(attackPoke.getName() + " had its special attack cut in half!");
     }
 
 
@@ -1128,7 +1149,7 @@ public class MovesInventory {
             if(AccuracyCheck(effectAccur)){
                 effectHit = true;
                 defenderPoke.setStatusEffect(PokemonStatusEffect.TOXIC);
-
+                System.out.println(defenderPoke.getName() + " got badly poisoned!");
             }
         }
 
@@ -1157,7 +1178,7 @@ public class MovesInventory {
             if(AccuracyCheck(effectAccur)){
                 effectHit = true;
                 attackPoke.setSpAtk(1.5 * attackPoke.getSpAtk());
-
+                System.out.println(attackPoke.getName() + " had its special attack raised!");
             }
         }
 
@@ -1186,7 +1207,7 @@ public class MovesInventory {
             if(AccuracyCheck(effectAccur)){
                 effectHit = true;
                 defenderPoke.setStatusEffect(PokemonStatusEffect.PARALYZED);
-
+                System.out.println(defenderPoke.getName() + " got paralyzed!");
             }
         }
 
@@ -1205,6 +1226,7 @@ public class MovesInventory {
         defenderPoke.setStatusEffect(PokemonStatusEffect.BURNED);
 
         printStatusMoveMessage(attackerPoke,defenderPoke,move);
+        System.out.println(defenderPoke.getName() + " got burned!");
     }
 
 
@@ -1227,7 +1249,7 @@ public class MovesInventory {
             if(AccuracyCheck(effectAccur)){
                 effectHit = true;
                 defenderPoke.setSpDef(0.66 * defenderPoke.getSpDef());
-
+                System.out.println(defenderPoke.getName() + " had its special defence lowered!");
             }
         }
 
@@ -1242,6 +1264,7 @@ public class MovesInventory {
         Pokemon defenderPoke = defender.getCurrPokemon();
         simplemove(attacker,defender,move);
         defenderPoke.resetstatsNoHp();
+        System.out.println(defenderPoke.getName() + " had its stat changes nullified!");
     }
 
     public void shadow_ball(Player attacker, Player defender, Move move){
@@ -1260,6 +1283,7 @@ public class MovesInventory {
         attackerPoke.setAtk(2* attackerPoke.getAtk());
 
         printStatusMoveMessage(attackerPoke,defenderPoke,move);
+        System.out.println(attackerPoke.getName() + " had its attack doubled!");
     }
 
     public void titanic_rage(Player attacker, Player defender, Move move){
@@ -1281,6 +1305,7 @@ public class MovesInventory {
         attackerPoke.setSpAtk(1.5 * attackerPoke.getSpAtk());
 
         printStatusMoveMessage(attackerPoke,defenderPoke,move);
+        System.out.println(attackerPoke.getName() + " had its special attack and speed raised!");
     }
 
 

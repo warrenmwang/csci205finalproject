@@ -25,13 +25,17 @@ public class UserInput {
     private static boolean needToSwitch = false;
 
     public static String getUSERINPUT() {return USERINPUT; }
+    public static boolean getNeedToSwitch(){return needToSwitch;}
+    public static boolean getCanGetUserInput() { return canGetUSERINPUT;}
+    public static boolean getCanGetSwitch() {return canGetSwitch;}
+
+
+
     public static void setUSERINPUT(String input){ USERINPUT = input; }
     public static void setCanGetUSERINPUT(Boolean status){ canGetUSERINPUT = status;}
-
-
     public static void setNeedToSwitch(boolean status) {needToSwitch = status;}
     public static void setCanGetSwitch(boolean status){canGetSwitch = status;}
-    public static boolean getNeedToSwitch(){return needToSwitch;}
+
 
 
     public static String readInputLine(){
