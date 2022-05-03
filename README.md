@@ -24,8 +24,9 @@ CS-E major, Education minor. I am graduating in 2024 and am very excited to work
 
 ## Project Information
 This is a Pokemon Battle Factory Simulator.
-A video of this game being played can be found here
+A video demonstration of our project can be found LINK_HERE_TODO.
 
 ## How to run it
 
-Run main.Main
+Run `main.Main`. Alternatively, please run the following commands:
+`gradle build` then `gradle run`.
