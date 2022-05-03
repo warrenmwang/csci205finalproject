@@ -2,9 +2,7 @@ package main;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
@@ -16,16 +14,21 @@ class BattleMicroTest {
 
     @Test
     void checkTurn() {
-        Pokemon Poke1 = new Pokemon();
-        Poke1.setSpe(1000);
+        try {
 
-        Pokemon Poke2 = new Pokemon();
-        Poke1.setSpe(10);
+            BattleMicro bm = new BattleMicro();
+            Pokemon Poke1 = new Pokemon();
+            Poke1.setSpe(1000);
 
+            Pokemon Poke2 = new Pokemon();
+            Poke1.setSpe(10);
+
+
+        } catch (Exception e){}
 
     }
 
-    @Test
+    @Test //test if Attack can invoke other methods in MovesInventory
     void Attack() {
         try {
             ArrayList<Pokemon> PokeList= new ArrayList<>();

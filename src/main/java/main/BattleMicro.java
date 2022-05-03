@@ -166,7 +166,10 @@ public class BattleMicro {
         String id;
         int randNum;
         while(true){
-            randNum = rand.nextInt(1, pokemonInventory.getNumPokemon() - 1) -1; // offset by 1 bc there is no id of 0, id range is [1, totNum]
+//            randNum = rand.nextInt(2, pokemonInventory.getNumPokemon() - 2) ; // offset by 1 bc there is no id of 0, id range is [1, totNum]
+            int max = pokemonInventory.getNumPokemon() + 1; // add one to make 64 inclusive
+            int min = 1;
+            randNum = rand.nextInt(max - min) + min;
             id = String.format("%d", randNum);
             // if id NOT already selected, add this new pokemon and save the id
             // else skip to next iteration of while loop to pick randomly again
@@ -178,7 +181,7 @@ public class BattleMicro {
             }
 
             // exit random selecting if we have 6 pokemon
-            if(retList.size() == 6){
+            if(retList.size() >= 6){
                 break;
             }
         }

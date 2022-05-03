@@ -123,6 +123,8 @@ public class MovesInventory {
             System.out.println("" + attacker.getName() + " used " + move.getName() + " against " + defender.getName() + "!");
             System.out.println("It misses.");
         }
+
+
     }
 
 
@@ -308,6 +310,8 @@ public class MovesInventory {
 
         // Print move message
         printAttackMessage(attackPoke,defenderPoke,move,hit,damage,hit);
+        System.out.println("");
+        System.out.println(attackPoke.getName() + "'s special attack was halved! ");
 
 
     }
@@ -339,6 +343,8 @@ public class MovesInventory {
 
         // Print move message
         printAttackMessage(attackPoke,defenderPoke,move,hit,damage,hit);
+        System.out.println("");
+        System.out.println(attackPoke.getName() + " was healed for " + 0.5 * damage);
     }
 
     //power: 90, accur: 1, FIGHTING, physical, no effect
