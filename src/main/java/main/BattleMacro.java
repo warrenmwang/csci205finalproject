@@ -131,13 +131,16 @@ public class BattleMacro {
 
         // generate random 6 pokemon teams
         if(!firstTurn || Reseting){
-        battleMicro.generateInitialPlayerRandomTeam();
-        Reseting = false;}
-        battleMicro.generateInitialBotRandomTeam();
+            battleMicro.generateInitialPlayerRandomTeam();
+            Reseting = false;
+        }
+        battleMicro.generateInitialBotRandomTeam(); // always reset bot team
 
         // bring teams down to their final form of 3
+        // bring bot team down to 3
         battleMicro.initBot();
 
+        // bring player team down to 3
         if (battleMicro.initPlayer() == -1){
             firstTurn = false;
             Reseting = true;
@@ -149,8 +152,6 @@ public class BattleMacro {
         // create the Player and Bot objects with their handpicked teams for play
         battleMicro.constructPlayer();
         battleMicro.constructBot();
-
-
     }
 
     /**
@@ -172,7 +173,6 @@ public class BattleMacro {
      * Exit Game Message function
      */
     public void printExitGameMessage(){
-
         System.out.printf("Turns Played: %d\n", numberOfRounds);
         System.out.printf("Wins: %d\n", playerWins);
         System.out.printf("Losses: %d\n", playerLosses);

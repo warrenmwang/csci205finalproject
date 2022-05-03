@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -47,7 +48,7 @@ class BattleMicroTest {
      */
     @Test
     void initPlayer() throws IOException, InvocationTargetException, IllegalAccessException, NoSuchMethodException{
-        InputStream sysInOrig = System.in; // save System.in to be restored later
+//        InputStream sysInOrig = System.in; // save System.in to be restored later
 
         // initialize the BattleMicro (initializes the PokemonInventory)
         // this generates the 6 random pokemon initially in the userTeam
@@ -64,13 +65,32 @@ class BattleMicroTest {
 
         // choose the first 3 ids for our testing
         // put the three ids into our string
-        String newLine = System.getProperty("line.separator");
-        String INPUT = "" + Ids_6.get(0) + newLine + Ids_6.get(1) + newLine + Ids_6.get(2) + newLine;
+//        String newLine = System.getProperty("line.separator");
+//        String INPUT = "" +  + newLine + Ids_6.get(1) + newLine + Ids_6.get(2) + newLine;
+        String input1 = Ids_6.get(0);
+        String input2 = Ids_6.get(1);
+        String input3 = Ids_6.get(2);
 
         // put our Simulate input string into a ByteArrayInputStream
         // then set System.in to be this ByteArrayInputStream that holds our simulated input
-        ByteArrayInputStream in = new ByteArrayInputStream(INPUT.getBytes());
-        System.setIn(in);
+//        ByteArrayInputStream in = new ByteArrayInputStream(INPUT.getBytes());
+//        System.setIn(in);
+
+        // set input with time delay to allow model to make use of input
+        Runnable r = () -> {
+            try{TimeUnit.MILLISECONDS.sleep(500);}catch(Exception e){}
+            UserInput.setUSERINPUT(input1);
+            UserInput.setCanGetUSERINPUT(true);
+            try{TimeUnit.MILLISECONDS.sleep(500);}catch(Exception e){}
+            UserInput.setUSERINPUT(input2);
+            UserInput.setCanGetUSERINPUT(true);
+            try{TimeUnit.MILLISECONDS.sleep(500);}catch(Exception e){}
+            UserInput.setUSERINPUT(input3);
+            UserInput.setCanGetUSERINPUT(true);
+        };
+
+        Thread t = new Thread(r);
+        t.start();
 
         // Call the function that prompts the user to choose 3 Pokemon
         bm.initPlayer();
@@ -86,7 +106,7 @@ class BattleMicroTest {
         // also assert that userTeam has only 3 Pokemon
         assertEquals(3, userTeam.size());
 
-        System.setIn(sysInOrig); // restore System.in to original
+//        System.setIn(sysInOrig); // restore System.in to original
     }
 
     /**

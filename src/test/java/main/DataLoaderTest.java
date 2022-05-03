@@ -17,7 +17,7 @@ class DataLoaderTest {
             DataLoader dataLoader = new DataLoader();
             ArrayList<Pokemon> pokemon = dataLoader.getTESTSETPokemon();
             // check that we have all 26 pokemon
-            assertEquals(26, pokemon.size());
+            assertEquals(64, pokemon.size());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
