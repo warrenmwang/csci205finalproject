@@ -162,11 +162,11 @@ public class BattleMicro {
         // of the random pokemon to be selected from the hashmap of pokemon from pokeInv
         // then add that to our to be returned ArrayList of Pokemon
         // need to make sure no duplicates are selected!
-        Random rand = new Random();
+
+        Random rand = new Random(System.currentTimeMillis());
         String id;
         int randNum;
         while(true){
-//            randNum = rand.nextInt(2, pokemonInventory.getNumPokemon() - 2) ; // offset by 1 bc there is no id of 0, id range is [1, totNum]
             int max = pokemonInventory.getNumPokemon() + 1; // add one to make 64 inclusive
             int min = 1;
             randNum = rand.nextInt(max - min) + min;

@@ -336,8 +336,6 @@ public class MovesInventory {
         // Pokemeon receives damage, check if alive
         defenderPoke.receiveDamage(damage);
 
-
-
         //Special effect: attacker heal half of the damage
         attackPoke.heal(0.5 * damage);
 
@@ -348,7 +346,7 @@ public class MovesInventory {
     }
 
     //power: 90, accur: 1, FIGHTING, physical, no effect
-    public void skyuppercut(Player attacker, Player defender, Move move) {
+    public void sky_uppercut(Player attacker, Player defender, Move move) {
         double Accur = 1.0;
 
         // Get poke
@@ -439,8 +437,6 @@ public class MovesInventory {
         printAttackMessage(attackPoke,defenderPoke,move,hit,damage,effectHit);
     }
 
-    //todo
-    //status, heal 50% maxHp
     public void recover(Player attacker, Player defender, Move move) {
         // Get poke
         Pokemon attackPoke = attacker.getCurrPokemon();
@@ -637,35 +633,8 @@ public class MovesInventory {
         printAttackMessage(attackPoke,defenderPoke,move,hit,damage,false);
     }
 
-    // TODO: finish
-    //power: 70, Accur: 1, ELECTRIC, user switch out after move is used
     public void volt_switch(Player attacker, Player defender, Move move) {
         simplemove(attacker,defender,move);
-
-//        double Accur = 1.0;
-//
-//        // Get poke
-//        Pokemon attackPoke = attacker.getCurrPokemon();
-//        Pokemon defenderPoke = defender.getCurrPokemon();
-//
-//        double damage = 0;
-//        //deal damage or effect based on accuracy
-//        boolean hit = false;
-//        if (AccuracyCheck(Accur)) {
-//            hit = true;
-//            damage = calcDamage(attackPoke, defenderPoke, move);
-//        }
-//
-//        // Pokemon receives damage, check if alive
-//        defenderPoke.receiveDamage(damage);
-//
-//        //todo
-//        if (attacker.getNumberOfPokemon() >= 2) {
-//            attacker.switchCurrPokemon(2);
-//        }
-//
-//        // Print move message
-//        printAttackMessage(attackPoke,defenderPoke,move,hit,damage,hit);
     }
 
     public void iron_head(Player attacker, Player defender, Move move) {
@@ -697,10 +666,6 @@ public class MovesInventory {
         printAttackMessage(attackPoke,defenderPoke,move,hit,damage,effectHt);
 
     }
-
-
-
-
 
 
     public void dragon_claw(Player attacker, Player defender, Move move) {
@@ -841,9 +806,6 @@ public class MovesInventory {
         printStatusMoveMessage(attackerPoke,defenderPoke,move);
     }
 
-
-    //todo
-    //status move with 0.9 accur
     public void thunder_wave(Player attacker,  Player defender, Move move) {
         //get poke
         Pokemon attackerPoke = attacker.getCurrPokemon();
@@ -907,48 +869,21 @@ public class MovesInventory {
     }
 
 
-    //todo
     public void u_turn(Player attacker,  Player defender, Move move) {
         simplemove(attacker,defender,move);
-
-//        double Accur = move.getAccuracy();
-//        double effectAccur = 0.2;
-//
-//        // Get poke
-//        Pokemon attackPoke = attacker.getCurrPokemon();
-//        Pokemon defenderPoke = defender.getCurrPokemon();
-//
-//        double damage = 0.0;
-//        //deal damage or effect based on accuracy
-//        boolean hit = false;
-//
-//        if (AccuracyCheck(Accur)) {
-//            hit = true;
-//            damage = calcDamage(attackPoke, defenderPoke, move);
-//        }
-//
-//        defenderPoke.receiveDamage(damage);
     }
 
-        // I believe this should call the switch move if it lands
 
     public void toxic(Player attacker,  Player defender, Move move) {
-//        //get poke
-//        double Accur = move.getAccuracy();
-//        if (AccuracyCheck(Accur)) {
             Pokemon attackerPoke = attacker.getCurrPokemon();
             Pokemon defenderPoke = defender.getCurrPokemon();
 
             defenderPoke.setStatusEffect(PokemonStatusEffect.TOXIC);
 
             printStatusMoveMessage(attackerPoke, defenderPoke, move);
-
-
     }
 
 
-    //todo
-    //new status, immune (priority = 2)
     public void protect(Player attacker,  Player defender, Move move) {
         Pokemon attackPoke = attacker.getCurrPokemon();
         attackPoke.setProtectState(true);
@@ -966,8 +901,6 @@ public class MovesInventory {
     }
 
 
-    //todo
-    //test on set move base power
     public void gyro_ball(Player attacker,  Player defender, Move move) {
         double Accur = move.getAccuracy();
 
@@ -1024,8 +957,6 @@ public class MovesInventory {
     }
 
 
-    //todo
-    //strange to change speed twice
     public void curse(Player attacker,  Player defender, Move move) {
         //get poke
         Pokemon attackerPoke = attacker.getCurrPokemon();
@@ -1068,9 +999,6 @@ public class MovesInventory {
         printAttackMessage(attackPoke, defenderPoke, move, hit, damage,effectHit);
     }
 
-    //Todo
-    //code in check turn
-    // priority = 1
     public void ice_shard(Player attacker,  Player defender, Move move) {
         simplemove(attacker,defender,move);
     }
@@ -1172,9 +1100,6 @@ public class MovesInventory {
         simplemove(attacker,defender,move);
     }
 
-    //todo
-    //code in check turn
-    // priority = 1
     public void aqua_jet(Player attacker,  Player defender, Move move) {
         simplemove(attacker,defender,move);
     }
@@ -1313,7 +1238,6 @@ public class MovesInventory {
     }
 
 
-    // TODO : sequence
     public void clear_smog(Player attacker, Player defender, Move move){
         Pokemon defenderPoke = defender.getCurrPokemon();
         simplemove(attacker,defender,move);
@@ -1397,30 +1321,6 @@ public class MovesInventory {
         attacker.setForfeitStatus(true);
     }
 
-
-
-
-    // complete turn
-        // prompt users for input (switch, 1 of 4 attacks, or quit)
-        // if one user chooses to switch pokemon, that pokemon switches out first, the other pokemon then gets the opportunity to use a move
-        // if both switch, then the pokemon's speed is compared. the faster one switches out first
-        // if both pokemon attack, the faster pokemon attacks first. If the other pokemon's health falls below 0 after the move is used it does not attack back. Otherwise, the game updates changes in status or item checks, the other pokemon attacks back and the game again checks for updates in status or items
-        // after this both pokemon's end of turn effects kick in such as toxic dealing damage and leftovers healing a pokemon's health
-
-        // methods:
-        // select moves,   added
-        // switch,         added
-        // switch_reset,   added
-        // thorough_reset, added
-        // quit
-        // check_first_move
-
-        // Readinput:
-
-        // readstring
-        // readInt
-        // readdouble
-        // ...
 
     }
 
