@@ -13,20 +13,27 @@ class BattleMicroTest {
 
 
     @Test
-    void checkTurn() {
+    void checkTurn(){
         try {
-
             BattleMicro bm = new BattleMicro();
-            Pokemon Poke1 = new Pokemon();
-            Poke1.setSpe(1000);
+            bm.generateInitialBotRandomTeam();
+            bm.generateInitialPlayerRandomTeam();
 
-            Pokemon Poke2 = new Pokemon();
-            Poke1.setSpe(10);
+            bm.getUser().getCurrPokemon().setSpe(1000);
+            bm.getBot().getCurrPokemon().setSpe(10);
+
+            Move m1= new Move("blank1","0,0,0,0,0,0");
+            Move m2= new Move("blank2","0,0,0,0,0,0");
+
+            bm.checkTurn(m1,m2);
+
+            assertEquals(false,bm.getWhoseTurn());
 
 
-        } catch (Exception e){}
 
+        }catch (Exception e){}
     }
+
 
     @Test //test if Attack can invoke other methods in MovesInventory
     void Attack() {
@@ -147,5 +154,20 @@ class BattleMicroTest {
         // randomly select 3 from the 6 (double random selection) to get final bot pokemon team
         bm.initBot();
         assertEquals(3, bm.getBotTeam().size());
+    }
+
+    @Test
+    void checkDeathHelper(){
+        try {
+            BattleMicro bm = new BattleMicro();
+            bm.generateInitialBotRandomTeam();
+            bm.generateInitialPlayerRandomTeam();
+
+            
+
+
+
+
+        }catch (Exception e){}
     }
 }

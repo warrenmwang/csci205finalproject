@@ -49,7 +49,7 @@ public class RuleView {
                 "\t1. Players will select 3 pokemon from a list of 6 randomly selected pokemon before battling. Whoever wins the battle will progress.\n" +
                 "\t2. Unlike the original battle factory, teams are re-selected from another randomly generated pool of 6 pokemon after each match. There is also no team preview for the opposing team.\n" +
                 "\t3. There are 64 pokemon from which the 6 pokemon are randomly selected for the players. In this iteration, there are no special items, sleep or freeze moves, and lastly no abilities. Additionally some pokemon have had their stats altered and some moves have had their effects changed or base powers altered. \n" +
-                "\t4. Four of the 64 pokemon are themed around the show “Attack on Titan”, this application has no affiliation with the brand at all whatsoever. \n";
+                "\t4. Four of the 64 pokemon are themed around the show \"Attack on Titan\", this application has no affiliation with the brand at all whatsoever. \n";
 
         Rules.setText(Pokerules);
         Rules.setWrapText(true);
