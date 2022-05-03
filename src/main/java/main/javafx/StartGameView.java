@@ -28,7 +28,8 @@ import javafx.scene.text.FontWeight;
 
 public class StartGameView {
     private VBox root;
-    private Button start_game;
+    private Button startGameNormal;
+    private Button startGameHard;
     private Button Rule;
     private Button exit_btn;
     private HBox btnsBox;
@@ -53,9 +54,10 @@ public class StartGameView {
         return Rule;
     }
 
-    public Button getStart_game() {
-        return start_game;
+    public Button getStartGameNormal() {
+        return startGameNormal;
     }
+    public Button getStartGameHard(){return startGameHard;}
 
     public void initSceneGraph(){
         root = new VBox();
@@ -63,15 +65,15 @@ public class StartGameView {
         Image image1 = new Image(logo);
         logoView = new ImageView(image1);
 
-        start_game = new Button("Start Game");
-
+        startGameNormal = new Button("Normal");
+        startGameHard = new Button("Hard");
         Rule = new Button("Rules");
-
         exit_btn = new Button("Exit");
 
         btnsBox = new HBox();
         btnsBox.getChildren().add(Rule);
-        btnsBox.getChildren().add(start_game);
+        btnsBox.getChildren().add(startGameNormal);
+        btnsBox.getChildren().add(startGameHard);
         btnsBox.getChildren().add(exit_btn);
 
         root.getChildren().addAll(logoView,btnsBox);
@@ -88,10 +90,13 @@ public class StartGameView {
         int ButtonHeight = 65;
         int spacing = 10;
 
-        start_game.setPrefSize(ButtonWidth,ButtonHeight);
+        startGameNormal.setPrefSize(ButtonWidth,ButtonHeight);
+        startGameHard.setPrefSize(ButtonWidth, ButtonHeight);
         Rule.setPrefSize(ButtonWidth,ButtonHeight);
         exit_btn.setPrefSize(ButtonWidth,ButtonHeight);
-        start_game.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+
+        startGameNormal.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
+        startGameHard.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
         Rule.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
         exit_btn.setFont(Font.font("Verdana", FontWeight.NORMAL, 20));
 

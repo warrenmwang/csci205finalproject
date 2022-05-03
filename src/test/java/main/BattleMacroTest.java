@@ -8,6 +8,7 @@ class BattleMacroTest {
 
     @Test
     void winCheck() {
+
     }
 
     @Test

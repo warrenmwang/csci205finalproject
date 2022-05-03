@@ -47,6 +47,7 @@ public class GuiController {
     private Scene ruleScene;
     private Scene endGameScene;
     private MovesInventory movesInventory;
+    private int difficultyLevel;
 
     private Model model;
     private ByteArrayOutputStream newSysOut;
@@ -103,20 +104,30 @@ public class GuiController {
 
         // ---------- START GAME ------------------
 
-        startGameView.getStart_game().setOnMouseClicked(event -> {
-
+        // normal difficulty start game
+        startGameView.getStartGameNormal().setOnMouseClicked(event -> {
+            difficultyLevel = 1;
             updateChoosePokemonScene();
-
             // switch to choosepokemonscene
             primaryStage.setScene(choosePokemonScene);
         });
 
+        // hard difficulty start game
+        startGameView.getStartGameHard().setOnMouseClicked(event -> {
+            difficultyLevel = 2;
+            updateChoosePokemonScene();
+            // switch to choosepokemonscene
+            primaryStage.setScene(choosePokemonScene);
+        });
+
+        // quit game
         startGameView.getExit_btn().setOnMouseClicked(event -> {
             // terminate the program
             exit(0);
 
         });
 
+        // show rules
         startGameView.getRule().setOnMouseClicked(event -> {
             // switch to rule scene (rules are hardcoded in)
             primaryStage.setScene(ruleScene);
@@ -125,7 +136,7 @@ public class GuiController {
 
         // -------------------- BATTLE VIEW -------------------
 
-        // attack switch forfeit buttons
+        // Attack
         battleView.getAttack().setOnMouseClicked(event -> {
             UserInput.setUSERINPUT("attack");
             UserInput.setCanGetUSERINPUT(true);
@@ -136,6 +147,7 @@ public class GuiController {
             battleView.bottomRightBoxToggleChoices(0);
         });
 
+        // Switch
         battleView.getSwitch().setOnMouseClicked(event -> {
             // if player has a pokemon alive to switch to
             if(battleMacro.getBattleMicro().getUser().getPokemonTeam().get(1).getIsAlive() || battleMacro.getBattleMicro().getUser().getPokemonTeam().get(2).getIsAlive()) {
@@ -158,6 +170,7 @@ public class GuiController {
             }
         });
 
+        // Forfeit
         battleView.getForfeit().setOnMouseClicked(event -> {
             newSysOut.reset();
             UserInput.setUSERINPUT("forfeit");
@@ -173,7 +186,7 @@ public class GuiController {
         });
 
 
-        // MOVES
+        // Move1
         battleView.getMove1().setOnMouseClicked(event -> {
             newSysOut.reset();
             UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUser().getCurrPokemon().getMove(0));
@@ -210,6 +223,7 @@ public class GuiController {
             }
         });
 
+        // Move2
         battleView.getMove2().setOnMouseClicked(event -> {
             newSysOut.reset();
             UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUser().getCurrPokemon().getMove(1));
@@ -243,6 +257,7 @@ public class GuiController {
             }
         });
 
+        // Move3
         battleView.getMove3().setOnMouseClicked(event -> {
             newSysOut.reset();
             UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUser().getCurrPokemon().getMove(2));
@@ -275,6 +290,7 @@ public class GuiController {
             }
         });
 
+        // Move4
         battleView.getMove4().setOnMouseClicked(event -> {
             newSysOut.reset();
             UserInput.setUSERINPUT(battleMacro.getBattleMicro().getUser().getCurrPokemon().getMove(3));
@@ -309,7 +325,7 @@ public class GuiController {
 
         });
 
-
+        // Switch to other Poke0
         battleView.getPoke0Btn().setOnMouseClicked(event -> {
             if(battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive()) {
                 // if alive, switch to that pokemon
@@ -347,6 +363,7 @@ public class GuiController {
             // if dead, do nothing
         });
 
+        // Switch to other Poke1
         battleView.getPoke1Btn().setOnMouseClicked(event -> {
             if(battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive()) {
                 // if alive, switch to that pokemon
@@ -390,7 +407,7 @@ public class GuiController {
 
         // ----------- CHOOSE POKEMON VIEW -------------
 
-        // choose pokemon
+        // confirm select curr viewing pokemon
         choosePokemonView.getCheckMark().setOnMouseClicked(event -> {
             UserInput.setUSERINPUT(choosePokemonView.getCurrPokemonID());
 
@@ -416,8 +433,10 @@ public class GuiController {
                 // update the battlescene with player's curr pokemon
                 // sleep to allow botteam to update
                 try{TimeUnit.MILLISECONDS.sleep(100);}catch(Exception e){}
-                // update battle view's sprites and names
+                // update battle view's sprites and names (player and bot will have been constructed here)
                 updateBattleView();
+                // TODO update the bot difficulty based on the gameMode selected
+                battleMacro.getBattleMicro().getBot().setDifficulty(difficultyLevel);
 
                 // change to battlescene
                 primaryStage.setScene(battleScene);
@@ -439,7 +458,7 @@ public class GuiController {
         });
 
 
-        //In choosePokemonscene, display move description when move button is clicked
+        // Curr Viewing Poke desc
         choosePokemonView.getCurrViewPokemon().setOnMouseClicked(event -> {
             String PokeDes = choosePokemonView.getChooseFromPoke().get(choosePokemonView.getCurrPokeInd()).toSmallString();
             newSysOut.reset();
@@ -512,6 +531,7 @@ public class GuiController {
         });
 
         // ------- Forfeit Scene -------
+        // confirm forfeit
         forfeitView.getYesBtn().setOnMouseClicked(event -> {
             // send y to sys.in
             UserInput.setUSERINPUT("y");
@@ -524,6 +544,7 @@ public class GuiController {
             primaryStage.setScene(endGameScene);
         });
 
+        // decline forfeit
         forfeitView.getNoBtn().setOnMouseClicked(event -> {
             // send n to sys.in
             UserInput.setUSERINPUT("n");
@@ -534,11 +555,13 @@ public class GuiController {
         });
 
         // -------- rule scene -------
+        // return to start scene
         ruleView.getBackButton().setOnMouseClicked(event -> {
             primaryStage.setScene(startScene);
         });
 
         // ------- end game scene ------
+        // confirm play again
         endGameView.getYesBtn().setOnMouseClicked(event -> {
             // send y to sys.in
             UserInput.setUSERINPUT("y");
@@ -556,6 +579,7 @@ public class GuiController {
             primaryStage.setScene(choosePokemonScene);
         });
 
+        // decline play again, end of game
         endGameView.getNoBtn().setOnMouseClicked(event -> {
             // send n to sys.in
             newSysOut.reset();
@@ -608,6 +632,9 @@ public class GuiController {
 
     }
 
+    /**
+     * Updates the view of the choosePokemonScene
+     */
     private void updateChoosePokemonScene() {
         // update choosepokemon scene
         choosePokemonView.updateCurrViewPokemon();

@@ -34,14 +34,6 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation(platform('org.junit:junit-bom:5.8.2'))
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
-    implementation 'com.github.haifengl:smile-core:2.6.0'
-    implementation 'com.github.haifengl:smile-io:2.6.0'
-    implementation 'com.github.haifengl:smile-data:2.6.0'
-    implementation 'com.github.haifengl:smile-math:2.6.0'
-    implementation 'com.github.haifengl:smile-plot:2.6.0'
-    implementation 'org.apache.logging.log4j:log4j-api:2.17.2'
-    implementation 'org.apache.logging.log4j:log4j-core:2.17.2'
-    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.2'
 }
 
 application {

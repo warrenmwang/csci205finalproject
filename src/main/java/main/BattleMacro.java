@@ -159,6 +159,13 @@ public class BattleMacro {
      * @return
      */
     public void promptPlayAgain(){
+        if(battleMicro.getPlayerWonStatus()){
+            // player won
+            System.out.println("You Won.");
+        }else{
+            // player lost
+            System.out.println("You Lost.");
+        }
         System.out.println("Do you want to play again? [y/n]");
         String reply = readInputLine();
 

@@ -80,6 +80,7 @@ public class Player {
     public int getNumberOfPokemon() {
         return numberOfPokemon;
     }
+    public void setForfeitStatus(boolean status) {this.ForfeitStatus = status;}
 
 
 

@@ -125,8 +125,7 @@ public class MovesInventory {
         }
     }
 
-    //todo
-    //??
+
     public void printStatusMoveMessage(Pokemon attacker, Pokemon defender, Move move){}
 
     /**
@@ -165,7 +164,7 @@ public class MovesInventory {
             criticalMult = 1;
         }
 
-        // TODO
+
         // check type of move against defender's both types
 
         double stab = 1;
@@ -206,14 +205,11 @@ public class MovesInventory {
 
         if(defender.getProtectState()){
             dmg = 0;
+            defender.setProtectState(false);
         }
-        defender.setProtectState(false);
 
-//      System.out.println(stab);
-//        System.out.println(criticalMult);
-//        System.out.println(dmgVariance);
-//        System.out.println(modifier);
-//        System.out.println(dmg);
+
+
         return Math.ceil(dmg); //rounds up damage to prevent endless battles
     }
 
@@ -231,10 +227,17 @@ public class MovesInventory {
         }
     }
 
-    // FIXME: HashMap returns null when called by Bot's botChooseMove, calling isOneShort, calling damageParam (here)
+
     // returns the multiplier value at the intersection of the two moves given
     public double damageParam(String attackType, String defendType) {
-        return allMultipliers.get(attackType).get(defendType);
+        double multiplier = allMultipliers.get(attackType).get(defendType);
+
+        if(allMultipliers.get(attackType).get(defendType) == null){
+            return 1.0;
+        } else {
+            return multiplier;
+        }
+
     }
 
     /**
@@ -545,7 +548,7 @@ public class MovesInventory {
     }
 
     //power: 90, Accur: 1, ELECTRIC, special, 20% set defender statuc to paralysis
-    public void thunderbolt(Player attacker, Player defender, Move move) {
+    public void thunder_bolt(Player attacker, Player defender, Move move) {
         double Accur = 1.0;
         double effectAccur = 0.2;
 
@@ -835,7 +838,7 @@ public class MovesInventory {
 
     //todo
     //status move with 0.9 accur
-    public void thunderwave(Player attacker,  Player defender, Move move) {
+    public void thunder_wave(Player attacker,  Player defender, Move move) {
         //get poke
         Pokemon attackerPoke = attacker.getCurrPokemon();
         Pokemon defenderPoke = defender.getCurrPokemon();
@@ -1381,6 +1384,11 @@ public class MovesInventory {
 
     public void rock_slide(Player attacker, Player defender, Move move){
         simplemove(attacker,defender,move);
+    }
+
+
+    public void testMove(Player attacker, Player defender, Move move) {
+        attacker.setForfeitStatus(true);
     }
 
 

@@ -113,6 +113,7 @@ public class Pokemon {
     public void resetAllstats(){
         this.setStats(new ArrayList<>(this.originalStats));
         this.statusEffect = PokemonStatusEffect.NO_EFFECT;
+        this.isAlive = true;
     }
 
 
@@ -184,4 +185,7 @@ public class Pokemon {
                 "moves: %s\n",name,originalStats,types,moves);
 
     }
+
+    //pokemon object
+    public Pokemon(){}
 }

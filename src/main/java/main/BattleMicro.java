@@ -68,6 +68,7 @@ public class BattleMicro {
     public boolean getGameOverStatus(){ return this.gameOverStatus; }
     public boolean getPlayerWonStatus(){ return this.playerWonStatus; }
     public Player getUser() { return this.user; }
+    public Bot getBot(){return bot;}
 
 
     // setter methods
@@ -180,6 +181,11 @@ public class BattleMicro {
             if(retList.size() == 6){
                 break;
             }
+        }
+
+        //reset all pokemon's stats and alive state
+        for(Pokemon p:retList){
+            p.resetAllstats();
         }
 
         return retList;

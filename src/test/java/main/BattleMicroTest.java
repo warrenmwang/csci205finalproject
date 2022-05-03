@@ -16,10 +16,32 @@ class BattleMicroTest {
 
     @Test
     void checkTurn() {
+        Pokemon Poke1 = new Pokemon();
+        Poke1.setSpe(1000);
+
+        Pokemon Poke2 = new Pokemon();
+        Poke1.setSpe(10);
+
+
     }
 
     @Test
-    void attack() {
+    void Attack() {
+        try {
+            ArrayList<Pokemon> PokeList= new ArrayList<>();
+
+            Player player1 = new Player(PokeList);
+            Player player2 = new Player(PokeList);
+            MovesInventory movesInventory = new MovesInventory();
+            Move attackMove = new Move("testMove","0,0,0,0,0,0");
+            BattleMicro bm = new BattleMicro();
+
+            assertEquals(false,player1.getForfeitStatus());
+            bm.Attack(player1,attackMove,player2);
+            assertEquals(true,player1.getForfeitStatus());
+
+
+        }catch(Exception e){}
     }
 
     /**
