@@ -47,10 +47,7 @@ completely random AI like the first matches have, our AI will check if any of th
 move if it can. The user also can play infinite matches, rather than being limited to 7 at a time. Certain Pokemon also had their base
 stats changed to make the game more fun and have wider variation from the base games. 
 Another spin we added to make the game our own was to create a few Pokemon to add to the game. For example, the three titan 
-characters are from a show that all of our group enjoyed called "Attack on Titan" with these characters being staples in that show. 
-
-
-INSERT A COUPLE OF PARAGRAPHS EXPLAINING THIS
+characters are from a show that all of our group enjoyed called "Attack on Titan" with these characters being staples in that show.
 
 ## List of All 3rd Party Libraries
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
@@ -58,7 +55,7 @@ INSERT A COUPLE OF PARAGRAPHS EXPLAINING THIS
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     
 ## Video Demonstration
-A video demonstration of our project can be found LINK_HERE_TODO.
+A video demonstration of our project can be found [here](https://mediaspace.bucknell.edu/media/Team+6+-+CSCI205+Final+Project+PresentationA+Pokemon+Battle+Factory/1_30hxy74s).
 
 ## How to run it
 
