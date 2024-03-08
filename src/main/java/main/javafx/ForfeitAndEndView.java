@@ -70,7 +70,8 @@ public class ForfeitAndEndView {
         noBtn = new Button("No");
         textToDisplay = new Label("replace me");
         yesNoBox = new HBox();
-        clown = new ImageView(new Image("https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/325/clown-face_1f921.png"));
+        // FIXME: the clown doesn't show ? 
+        clown = new ImageView(new Image(getClass().getResourceAsStream("/data/clown.webp")));
         levelOfPlayerMsg = new Label("");
 
         // add yes and no button to yes no hbox

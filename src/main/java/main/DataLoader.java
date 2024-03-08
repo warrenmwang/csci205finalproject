@@ -1,7 +1,7 @@
 package main;
 
 
-
+import java.io.InputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class DataLoader {
 
     public ArrayList<Pokemon> getTESTSETPokemon() throws IOException {
-        // get from online, skip header line
-        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/csci205-final/TESTSET-Pokemon.csv");
-        Scanner scnr = new Scanner(url.openStream());
+        InputStream is = getClass().getResourceAsStream("/data/TESTSET-Pokemon.csv");
+        Scanner scnr = new Scanner(is);
+        // skip header line
         scnr.nextLine();
 
         Scanner CSVScanner;
@@ -84,9 +84,9 @@ public class DataLoader {
     public HashMap<String,Move> getTESTSETMoves() throws IOException {
         HashMap<String,Move> allMoves = new HashMap<>();
 
-        // get from online, skip header line
-        URL url = new URL("http://eg.bucknell.edu/~wmw015/code/csci205-final/TESTSET-Moves.csv");
-        Scanner scnr = new Scanner(url.openStream());
+        InputStream is = getClass().getResourceAsStream("/data/TESTSET-Moves.csv");
+        Scanner scnr = new Scanner(is);
+        // skip header line
         scnr.nextLine();
 
         Scanner moveScanner;

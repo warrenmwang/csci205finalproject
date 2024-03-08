@@ -41,7 +41,6 @@ public class BattleView {
     private StackPane topStackPane;
     private String playerPokemonImageURL;
     private String botPokemonImageURL;
-    private final String backgroundImageURL = "http://eg.bucknell.edu/~wmw015/code/csci205-final/backgroundforpokemon.jfif";
 
     private Rectangle playerBaseHp;
     private Rectangle playerHpBar;
@@ -238,7 +237,7 @@ public class BattleView {
      */
     public void initSceneStyling() {
         // -------------------- root --------------------
-        Image img = new Image(backgroundImageURL);
+        Image img = new Image(getClass().getResourceAsStream("/data/backgroundforpokemon.jfif"));
 
         BackgroundImage bImg = new BackgroundImage(img,
                 BackgroundRepeat.NO_REPEAT,
@@ -377,11 +376,11 @@ public class BattleView {
      * Initialize pokemon sprites
      */
     public void initPokemonSprites(){
-        playerPokemonImageView = new ImageView(new Image(playerPokemonImageURL));
+        playerPokemonImageView = new ImageView(new Image(getClass().getResourceAsStream(playerPokemonImageURL)));
         playerPokemonImageView.setFitHeight(200);
         playerPokemonImageView.setFitWidth(200);
 
-        botPokemonImageView = new ImageView(new Image(botPokemonImageURL));
+        botPokemonImageView = new ImageView(new Image(getClass().getResourceAsStream(botPokemonImageURL)));
         botPokemonImageView.setFitWidth(250);
         botPokemonImageView.setFitHeight(250);
     }
@@ -390,8 +389,8 @@ public class BattleView {
      * Function to update pokemon sprites on battlescene
      */
     public void updatePokemonSprites(){
-        playerPokemonImageView.setImage(new Image(playerPokemonImageURL));
-        botPokemonImageView.setImage(new Image(botPokemonImageURL));
+        playerPokemonImageView.setImage(new Image(getClass().getResourceAsStream(playerPokemonImageURL)));
+        botPokemonImageView.setImage(new Image(getClass().getResourceAsStream(botPokemonImageURL)));
         playerName.setText(currPokemon.getName());
         botName.setText(botCurrPokemon.getName());
     }

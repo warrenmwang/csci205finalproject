@@ -1,0 +1,67 @@
+Move name,base power,accuracy,typing,designation,priority,effect
+overheat,140,0.9,FIRE,special,0,halves user's special attack after being used
+giga_drain,75,1,GRASS,special,0,restores half of damage dealt to user
+earthquake,110,1,GROUND,physical,0,NULL
+sky_uppercut,90,1,FIGHTING,physical,0,NULL
+agility,0,9999,NULL,status,0,doubles user's speed
+psychic,90,1,PSYCHIC,special,0,50% chance to lower opponent's special defence by 33%
+recover,0,9999,NULL,status,0,restores 50% of user's MAX health
+hidden_power_ice,70,1,ICE,special,0,NULL
+stone_edge,110,0.9,ROCK,physical,0,NULL
+ice_beam,90,1,ICE,special,0,30% chance to lower opponent's special attack by 33%
+hidden_power_grass,70,1,GRASS,special,0,NULL
+thunder_bolt,90,1,ELECTRIC,special,0,20% chance to set opponent's status to paralysis
+heat_wave,110,0.9,FIRE,special,0,30% chance to lower opponent's attack by 33%
+air_slash,100,1,FLYING,special,0,NULL
+volt_switch,70,1,ELECTRIC,special,0,user switches out after move is used
+iron_head,80,1,STEEL,physical,0,30% chance to raise user's attack by 50%
+dragon_claw,100,1,DRAGON,physical,0,NULL
+fire_punch,75,1,FIRE,physical,0,20% chance to set opponents status to burn
+waterfall,100,1,WATER,physical,0,NULL
+ice_punch,75,1,ICE,physical,0,50% chance to lower opponent's special attack by 33%
+dragon_dance,0,9999,NULL,status,0,raises user's attack and speed by 50%
+scald,90,1,WATER,special,0,20% chance to set opponent's status to burn
+heal_bell,0,9999,NULL,status,0,set all pokemon on team's status to null
+thunder_wave,0,0.9,NULL,status,0,set opponent's status to paralysis
+scorching_sands,90,1,GROUND,special,0,20% chance to set opponent's status to burn
+bug_buzz,100,1,BUG,special,0,NULL
+quiver_dance,0,9999,NULL,status,0,"raises user's special attack, special defence, and speed by 50%"
+shadow_claw,100,1,GHOST,physical,0,NULL
+u_turn,70,1,BUG,physical,0,user switches out after move is used
+toxic,0,0.9,NULL,status,0,sets opponent's status to toxic
+protect,0,9999,NULL,status,,user is immune this turn (same priority as switching)
+play_rough,110,0.9,FAIRY,physical,0,NULL
+diamond_storm,130,0.9,ROCK,physical,0,NULL
+gyro_ball,0,1,STEEL,physical,0,base damage is 1/2 (opponent speed - user speed) [cannot be lower than 0 or greater than 150]
+explosion,400,1,NORMAL,physical,0,set user's health to 0
+curse,0,9999,NULL,status,0,"lower user's speed by 33%, raise speed, defence and special defence by 50%"
+body_slam,80,1,NORMAL,physical,0,20% chance to set opponents status to paralysis
+ice_shard,50,1,ICE,physical,0,goes first (if other move has this effect compare speed)
+night_slash,100,1,DARK,physical,0,NULL
+poison_jab,90,1,POISON,physical,0,20% chance to set opponent status to toxic
+poltergeist,110,1,GHOST,physical,0,NULL
+dazzling_gleam,100,1,FAIRY,special,0,NULL
+hidden_power_fire,70,1,FIRE,special,0,NULL
+calm_mind,0,9999,NULL,status,0,raises user's special attack and special defence by 50%
+dual_wingbeat,90,1,FLYING,physical,0,NULL
+draco_meteor,140,0.9,DRAGON,special,0,halves user's special attack after being used
+megahorn,120,0.9,BUG,physical,0,NULL
+aqua_jet,50,1,WATER,physical,1,goes first (if other move has this effect compare speed)
+aura_sphere,90,1,FIGHTING,special,0,NULL
+sludge_wave,100,1,POISON,special,0,20% chance to set opponent's status to toxic
+earth_power,95,1,GROUND,special,0,30% chance to raise user's special attack by 50%
+thunder_fang,90,1,ELECTRIC,physical,0,20% chance to set opponent's status to paralysis
+will_o_wisp,0,0.9,NULL,status,0,sets opponent's status to burn
+dark_pulse,90,1,DARK,special,0,30% chance to lower opponent's special defence by 33%
+clear_smog,50,9999,POISON,special,0,set opponent's stat changes to zero
+shadow_ball,100,100,GHOST,special,0,NULL
+hydro_pump,120,0.9,WATER,special,0,NULL
+swords_dance,0,9999,NULL,status,0,raises user's attack by 100%
+titanic_rage,120,1,FIGHTING,physical,0,NULL
+ackerman_insight,70,1,FAIRY,physical,1,this attack goes first
+wild_growth,0,9999,NULL,status,0,raises user's speed and special attack by 50%. 
+zen_headbutt,100,1,PSYCHIC,physical,0,NULL
+shadow_rush,130,1,GHOST,physical,0,NULL
+seed_bomb,90,1,GRASS,physical,0,NULL
+flash_cannon,110,1,STEEL,special,0,NULL
+shuck_you_up,1,1,DRAGON,special,0,NULL

@@ -31,6 +31,7 @@ public class DeathUpdate {
     public static void switchOtherPokemonToChooseFromBox(){
         BattleView battleView = guiController.getBattleView();
         BattleMacro battleMacro = guiController.getBattleMacro();
+        // NOTE: what the fuck is this super long line -- 2 years later me 
         battleView.updateSwitchPoke(battleMacro.getBattleMicro().getUserTeam().get(1).getName(), battleMacro.getBattleMicro().getUserTeam().get(1).getIsAlive(), battleMacro.getBattleMicro().getUserTeam().get(2).getName(), battleMacro.getBattleMicro().getUserTeam().get(2).getIsAlive());
         battleView.bottomRightBoxToggleChoices(2);
     }

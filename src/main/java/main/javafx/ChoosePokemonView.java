@@ -122,8 +122,8 @@ public class ChoosePokemonView {
         allPokeImgs = new ArrayList<>();
 
         for(Pokemon p : chooseFromPoke){
-            String url = p.getBotImage(); // get bot image bc that faces forward
-            allPokeImgs.add(new Image(url));
+            // String url = p.getBotImage(); // get bot image bc that faces forward
+            allPokeImgs.add(new Image(getClass().getResourceAsStream(p.getBotImage())));
         }
 
         originalPokeImg = new ArrayList<>(allPokeImgs);
@@ -199,11 +199,11 @@ public class ChoosePokemonView {
         leftArrow.setMaxSize(90,40);
         rightArrow.setMaxSize(90,40);
 
-        leftArrowImage = new ImageView(new Image("http://eg.bucknell.edu/~wmw015/code/csci205-final/left_arrow.png"));
+        leftArrowImage = new ImageView(new Image(getClass().getResourceAsStream("/data/left_arrow.png")));
         leftArrowImage.setPreserveRatio(true);
         leftArrowImage.setFitWidth(90);
         leftArrow.setGraphic(leftArrowImage);
-        rightArrowImage = new ImageView(new Image("http://eg.bucknell.edu/~wmw015/code/csci205-final/right_arrow.png"));
+        rightArrowImage = new ImageView(new Image(getClass().getResourceAsStream("/data/right_arrow.png")));
         rightArrowImage.setPreserveRatio(true);
         rightArrowImage.setFitWidth(90);
         rightArrow.setGraphic(rightArrowImage);
@@ -244,7 +244,7 @@ public class ChoosePokemonView {
 
         // layer 4 right check mark
         checkMark.setPrefSize(100,100);
-        checkMarkImage = new ImageView(new Image("http://eg.bucknell.edu/~wmw015/code/csci205-final/checkmark.png"));
+        checkMarkImage = new ImageView(new Image(getClass().getResourceAsStream("/data/checkmark.png")));
         checkMarkImage.setFitWidth(100);
         checkMarkImage.setPreserveRatio(true);
         checkMark.setGraphic(checkMarkImage);
@@ -377,7 +377,7 @@ public class ChoosePokemonView {
             p.resetAllstats(); // reset poke's stats
 
             String url = p.getBotImage(); // get bot image bc that faces forward
-            allPokeImgs.add(new Image(url));
+            allPokeImgs.add(new Image(getClass().getResourceAsStream(url)));
         }
 
     }

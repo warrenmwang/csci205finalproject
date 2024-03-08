@@ -29,8 +29,8 @@ public class JavaFX extends Application{
      */
     @Override
     public void init() throws Exception {
-        String placeholder2 = "https://img.pokemondb.net/sprites/black-white/anim/back-normal/rotom-wash.gif";
-        String placeholder1 = "https://img.pokemondb.net/sprites/heartgold-soulsilver/back-normal/bulbasaur.png";
+        String placeholder2 = "";
+        String placeholder1 = "";
         battleView = new BattleView(placeholder1, placeholder2);
         super.init();
     }

@@ -61,8 +61,7 @@ public class StartGameView {
 
     public void initSceneGraph(){
         root = new VBox();
-        String logo = "http://eg.bucknell.edu/~wmw015/code/csci205-final/updatedbattlefactorymenubackground.jpg";
-        Image image1 = new Image(logo);
+        Image image1 = new Image(getClass().getResourceAsStream("/data/updatedbattlefactorymenubackground.jpg"));
         logoView = new ImageView(image1);
 
         startGameNormal = new Button("Normal");
