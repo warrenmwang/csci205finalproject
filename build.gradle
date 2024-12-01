@@ -2,7 +2,7 @@ plugins{
     id 'application'
     id 'java'
     id 'idea'
-    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
 group 'org.csci205finalproject'
@@ -24,9 +24,8 @@ test {
     }
 }
 
-// Needs to be either 11.0.2 (LTS) or 17
 javafx {
-    version = "17.0.2"
+    version = "17.0.10"
     modules = [ 'javafx.graphics', 'javafx.controls', 'javafx.fxml' ]
 }
 
@@ -36,8 +35,13 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
 }
 
+java {
+    modularity.inferModulePath = true
+}
+
 application {
-    mainClassName = "main.Main"
+    mainClass = "main.Main"
+    mainModule = 'csci205finalproject'
 
     if (project.hasProperty("mainClass")) {
         getMainClass().set(project.getProperty("mainClass"))

@@ -53,11 +53,16 @@ characters are from a show that all of our group enjoyed called "Attack on Titan
     implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation(platform('org.junit:junit-bom:5.8.2'))
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
-    
+
 ## Video Demonstration
 A video demonstration of our project can be found [here](https://mediaspace.bucknell.edu/media/Team+6+-+CSCI205+Final+Project+PresentationA+Pokemon+Battle+Factory/1_30hxy74s).
 
 ## How to run it
 
-Run `main.Main`. Alternatively, please run the following commands:
-`gradle build` then `gradle run`.
+Install `Java 17.0.10` and `Gradle 7.2`.
+
+Run via:
+```
+gradle build
+gradle run
+```
