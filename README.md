@@ -66,3 +66,6 @@ Run via:
 gradle build
 gradle run
 ```
+
+Alternatively a portable version for Windows should be released [here](https://github.com/warrenmwang/csci205finalproject/releases/tag/v1.0.0)
+where you can easily find an .exe in the folder to double click and run.

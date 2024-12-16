@@ -50,3 +50,9 @@ application {
         getMainClass().set(mainClassName)
     }
 }
+
+task printModulePath {
+    doLast {
+        println configurations.runtimeClasspath.asPath
+    }
+}
